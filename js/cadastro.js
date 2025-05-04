@@ -1,1 +1,1 @@
-// cadastro.js: Cadastro e validação
+//  cadastro.js: Cadastro e validação

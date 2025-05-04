@@ -1,1 +1,1 @@
-// auth.js: Login, logout, validação de sessão
+//  auth.js: Login, logout, validação de sessão
