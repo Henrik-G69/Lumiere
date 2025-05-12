@@ -1,5 +1,7 @@
 body{
     margin: 0;
+    background-color: rgb(41, 41, 41);
+    overflow-x: hidden;
 }
 
 #CreatePlaylist{
@@ -35,7 +37,7 @@ body{
 }
 .containerInput input{
     border: none;
-    border-bottom: 1px solid #7c0000;
+    border-bottom: 1px solid #e30b5c;
     outline: none;
     background-color: transparent;
     width: 100%;
@@ -58,7 +60,7 @@ body{
 .containerControlCreatePlaylist button{
     border: none;
     outline: none;
-    background-color: #7c0000;
+    background-color: #e30b5c;
     color: #d8d7d7;
     padding: 4px;
     border-radius: 3px;
@@ -67,11 +69,10 @@ body{
 nav{
     width: 100%;
     height: 80px;
-    background-color:  #7c0000;
+    background-color:  #e30b5c;
     display: flex;
     justify-content: center;
     align-items: center;
-   
 }
 
 nav h1{
@@ -81,7 +82,6 @@ nav h1{
 }
 main{
     width: 100%;
-    height: 100vh;
     background-color: rgb(41, 41, 41);
 }
 .control{
@@ -90,7 +90,7 @@ main{
     background-color: rgb(107, 106, 106);
     display: flex;
     align-items: center;
-    box-shadow: 2px 2px 50px  rgb(24, 24, 24);
+    box-shadow: 2px 2px 50px rgb(24, 24, 24);
 }
 .control button{
     padding: 10px;
@@ -98,12 +98,37 @@ main{
     border: none;
     margin-left: 10px;
     cursor: pointer;
-    background-color: #7c0000;
+    background-color: #e30b5c;
     color: #fff;
 }
-
+.playlists{
+    background-color: #777777;
+    width: 300px;
+    height: 90px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    box-shadow: 2px 2px 50px rgb(24, 24, 24);
+    cursor: pointer;
+}
+.playlists div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playlists h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.playlists img{
+    width: 50px;
+    border-radius: 10px;
+}
 .containerPlaylist{
     width: 100%;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +188,7 @@ main{
 .genres p{
     margin: 0;
     border-radius: 5px;
-    background-color: #7c0000;
+    background-color: #e30b5c;
     padding: 3px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -177,4 +202,48 @@ main{
     margin: 0;
     font-size: 12px;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.filmes{
+    width: 80%;
+    padding: 20px; 
+    background-color: #2b2b2b;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 100px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+.containerPlaylist2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.containerPlaylist2 .contentPlaylist2{
+    margin: 0;
+    width: 200px;
+    height: 380px;
+    background-color: rgb(49, 49, 49);
+    border-radius: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+    
+}
+.contentPlaylist2 img{
+    width: 100%;
+    height: 70%;
+    border-radius: 10px 10px 0 0;
+
+}
+.contentPlaylist2 h1, p{
+    color: #fff;
 }
