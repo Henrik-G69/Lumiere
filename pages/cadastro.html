@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumière - Criar Conta</title>
-    <link rel="stylesheet" href="./../css/cadastro.css">
-</head>
+    <link rel="stylesheet"  href="./../css/cadastro.css">
+  </head>
 <body>
     <div class="background-image"></div>
     <div class="container">
-        <div class="logo-header">
-           <img src="./../img/logo_text.png" alt="Lumière Logo"  class="logo-image">
-            <nav>
+    <div class="logo-header">
+    <img src="./../img/logo_text.png"  alt="Lumière Logo"  class="logo-image">
+
+         <nav>
                 <a href="#">Início</a>
                 <a href="#">Filmes e Séries</a>
                 <a href="#">Minhas Listas</a>
                 <a href="#">Reviews</a>
                 <a href="#">Match Game</a>
                 <a href="#">Qual é o Filme?</a>
-                </nav>
-                 <div class="user-actions">
+            </nav>
+            <div class="user-actions">
                 <button class="icon-button" aria-label="Pesquisar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
                 <button class="icon-button" aria-label="Modo Noturno"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
                 <button class="icon-button" aria-label="Perfil"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
@@ -57,7 +58,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Qual é o seu gênero? <span class="label-hint">(Opcional)</span></label>
+                    <label>Qual o seu gênero? <span class="label-hint">(opcional)</span></label>
                     <div class="gender-options">
                         <input type="radio" id="mulher" name="gender" value="mulher">
                         <label for="mulher">Mulher</label>
@@ -72,7 +73,7 @@
                     <label>Qual sua data de nascimento?</label>
                     <div class="birthdate-selects">
                         <div class="select-container">
-                            <select id="birthDay" name="birthDay" required>  
+                            <select id="birthDay" name="birthDay" required>
                                 <option value="" disabled selected>Dia</option>
                                 </select>
                         </div>
@@ -109,94 +110,10 @@
             <p id="successMessage" class="success-message"></p>
         </div>
     </div>
- </div>
-    <div class="form-container">
-    <h2>Criar uma conta</h2>
-
-    <p class="login-link"> Já tem uma conta? <a href="#">Faça login</a></p>
-
-    <form id="signup-Form">
-    <div class="form-row">
-    <div class="form-group">
-    <label for="firstName">Primeiro nome</label>
-    <input type="text" id="firstName"  name="firstName" required>
-    <div class="error-message" id="firstNameError"></div> 
-    </div>
-    <div class="form-group">
-    <label for="lastName">Segundo nome</label>
-    <input type="text" id="lastName"  name="lastName" required>
-    <div class="error-message"  id="lastNameError"></div>
-    </div>
-    </div>
-
-    <div class="form-group" >
-   <label for="nickname"> Apelido <span class="label-hint">(É a forma como vão se referir a você no Lumière)</span></label>
-   <input type="text" id="nickname" name="nickname" required>
-   <div class="error-message"  id="nicknameError"></div>
-     </div>
-
-
-     <div class="form-group">
-     <label for="email">Endereço de email</label>
-     <input type="email" id="email"  name="email" required>
-     <div class="error-message"  id="emailError"></div>
-     </div>
-
-     <div class="form-group">
-    <label> Qual é o seu gênero? <span class="label-hint">(Optional)</span></label>
-    <div class="gender-options">
-    <input type="radio"  id="female"  name="gender" value="female">
-    <label for="female">Female</label>
-    <input type="radio" id="male"  name="gender"   value="male">
-    <label for="male">Male</label>
-    <input type="radio" id="non-binary" name="gender"  value="non-binary">
-    <label for="non-binary">Non-binary</label>
-    </div>
-     </div>
-
-    <div class="form-group">
-    <label>Qual sua data de nascimento?</label>
-    <div class="birthdate-selects">
-    <div class="select-container">
-    <select id="birthDay"  name="birthDay" required>
-    <option value="disabled selected">Dia</option>
-    </select>
-    </div>
-
-    <div class="select-container">
-    <select id="birthMonth" name="birthMonth" required>
-    <option value="disabled-selected">Mês</option>
-    </select>
-    </div>
-
-
-    <div class="select-container">
-    <select id="birthYear"  name="birthYear" required>
-    <option value="disabled-selected">Ano</option>
-    </select>
-    </div>
-    </div>
-    <div class="error-message" id="birthDateError"></div>
-    </div>
-
-    <div class="form-row" >
-    <div class="form-group">
-    <label for="password">Senha</label>
-    <input type="password"  id="password" name="password" required>
-    <div class="error-message" id="passwordError"></div>
-    </div>
-    <div class="form-group">
-    <label for="confirmPassword">Confirme sua senha</label>
-    <input type="password" id="confirmPassword"  name="confirmPassword" required>
-    <div class="error-message" id="confirmPasswordError"></div>
-    </div>
-</div>
-
-    <button type="submit" class="submit-button">Registrar-se</button>
-    </form>
-    <p id="successMessage" class="success-Message"></p>
-    </div>
- </div>
     <script src="script.js"></script>
 </body>
 </html>
+</html>
+   
+
+    
