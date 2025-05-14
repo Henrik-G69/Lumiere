@@ -1,0 +1,160 @@
+
+
+body{  
+  font-family: 'Poppins', sans-serif;
+  background-color: #1C1C1C;
+  color: white;
+  position: relative;
+}
+.lists-page{
+  margin-top: 40px;
+  position: relative;
+}
+.all-lists-container{
+  position: relative;
+  top: 20%;
+  left: 12%;
+  right: 12%;
+}
+.minhas-listas{
+  position: relative;
+  border: 1px solid #585858;;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 8px;
+}
+.lists-top-container{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: absolute;
+  top: -15px;
+}
+
+.list-section-button{
+  width: 115px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background-color: #EB004B;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.add-list-button{
+  width: 27px;
+  height: 27px;
+  border: 2px solid #EB004B;
+  font-weight: bolder;
+  border-radius: 20px;
+  color: white;
+  background-color: #EB004B;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.list-details-container{
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  display: flex;
+  gap: 630px;
+}
+.list-description{
+  display: flex;
+  gap: 10px;
+}
+.list-description p:nth-of-type(1){
+  font-weight: bold;
+}
+.list-description p:nth-of-type(2){
+  cursor: pointer;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2b2b2b;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.arrow {
+  font-size: 15px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.indicators {
+  display: flex;
+  gap: 1px;
+}
+
+.dot {
+  width: 12px;
+  height: 4px;
+  background-color: #555;
+  border-radius: 2px;
+}
+
+.dot.active {
+  background-color: #EB004B;
+}
+
+.films-carousel {
+  background-color: #1C1C1C;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.film-on-list {
+  background-color: #2E2E2E;
+  width: 180px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.film-banner-list-carousel {
+  width: 160px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.film-on-list-details {
+  margin-top: 12px;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+
+.list-details-timestamp,
+.views {
+  font-size: 13px;
+  background-color: #1C1C1C;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #555;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
