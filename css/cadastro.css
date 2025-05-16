@@ -377,6 +377,48 @@
                 box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
                 }
 
+
+                .terms-group{
+                    display: flex;         /* alinha o checkbox e o label na mesma linha*/
+                    align-items: flex-start; 
+                    margin-bottom: 20px;  /* espaçamento abaixo, antes do botão*/
+                    margin-top: 5px;      /*  leve espaçamento na parte acima */
+                }
+
+
+                .terms-group input[type="checkbox"] {
+                        margin-right: 10px;  /* espaço entre o checkbox e o texto */
+                        margin-top: 3px;     /* ajuste leve para fazer o alinhamento vertical entre o checkbox com a primeira linha do texto */
+                        width: 18px;         /* largura do checkbox */
+                        height: 16px;        /* altura do checkbox */
+                        accent-color: var(--primary-color); /* cor do checkbox quando acontece a ação de marcar */
+                        flex-shrink: 0;  /* impede que o checkbox encolha se o texto for longo */
+                }
+
+
+
+                .terms-label {
+                    font-size: 0.85em;  /* tamanho da fonte do texto do termo de serviço */
+                    color: var(--placeholder-color); 
+                    line-height: 1.4;
+                    font-weight: 400; /* peso da fonte normal */
+                    flex-grow: 1;     /* permite que o label ocupe o espaço restante */
+                }
+
+
+                .terms-label a {
+                    color: var(--primary-color); /* cor do link do termo */
+                    text-decoration: underline;  /* sublinhado o texto para indicar que é um link */
+                    font-weight: 500;            /* destaque para os links */
+                }
+
+
+                .terms-label a:hover {
+                    color: var(--primary-color); 
+                    text-decoration: none;  /* o sublinhado some quando passar o mouse em cima do link */
+                }
+                
+
                 /* modificações para se adequar a proporção para telas menores */
                 @media (max-width: 768px) {
                     .logo-header {
