@@ -180,7 +180,7 @@
             
             .login-link a {
 
-                color: blue;
+                color: #E30b5C;
                 text-decoration: none;
                 font-weight: 500;
             }
@@ -312,7 +312,7 @@
                 appearance: none; /* tira a seta do select*/
                 -webkit-appearance: none;
                 -moz-appearance: none;
-                background-image: url();
+                background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23B0B0B0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
                 background-repeat: no-repeat;
                 background-position: right 15px center;
                 background-size: 12px;
@@ -369,5 +369,71 @@
                 text-align: center;
                 font-weight: 500;
                }
+
+               /* estilização para inputs inválidos */
+                .form-group input.invalid,
+                .form-group select.invalid {
+                border-color: var(--error-color);
+                box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+                }
+
+                /* modificações para se adequar a proporção para telas menores */
+                @media (max-width: 768px) {
+                    .logo-header {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 15px;
+                }
+                    .logo-header nav {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                 }
+                    .user-actions {
+                    margin-top: 10px;
+                 }
+                     .form-container {
+                    padding: 25px; /* reduzido para telas menores */
+                 }
+                    .form-row {
+                     flex-direction: column;
+                    gap: 0; 
+                }
+                    .form-row .form-group {
+                     margin-bottom: 20px; /* adiciona margem de volta*/
+                }
+                    .birthdate-selects {
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                    .form-group select {
+                    background-position: right 10px center;
+                    padding-right: 30px;
+                 }   
+
+                }
+
+                @media (max-width: 480px) {
+                    .logo-text {
+                     font-size: 2em;
+                }
+                    .logo-header nav a {
+                     font-size: 1em;
+                 }
+                    .form-container h2 {
+                    font-size: 1.6em;
+                 }
+                    .form-group input[type="text"],
+                    .form-group input[type="email"],
+                    .form-group input[type="password"],
+                    .form-group select {
+                     padding: 12px 15px;
+                 }
+                     .submit-button {
+                     padding: 14px;
+                    font-size: 1em;
+                 }
+                
+                }
 
             
