@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/minhaslistas.css" />
+    <link rel="stylesheet" href="minhaslistas.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,241 +23,449 @@
     <title>Minhas Listas</title>
   </head>
   <body>
-    <div class="lists-page">
-      <div class="all-lists-container">
-        <div class="lists-top-container">
-          <button class="list-section-button">Minhas Listas</button>
-          <button class="add-list-button">+</button>
+      <!-- lists-page is the container that demarks
+       the start of a list section, likeas 'filmes com
+       anne hathaway' or 'matches que você já fez'-->
+      <div class="lists-page">
+      <!-- the following container is the one *actually*
+       having the section and its elements-->
+        <div class="all-lists-container">
+          <!-- lists-top-container refers to the items
+           on the top of each container, and yes,
+           it's important.-->
+          <div class="lists-top-container">
+            <button class="list-section-button">Minhas Listas</button>
+            <button class="add-list-button">+</button>
+          </div>
+          <!-- list-item is the container of a list,
+           it contains its description and the movies
+           within it-->
+          <div class="list-item">
+            <div class="list-details-container">
+              <div class="list-description">
+                <p>Filmes com a Anne Hathaway</p>
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+              <div class="carousel-controls">
+                <button class="arrow">&#8592;</button>
+                <div class="indicators">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+                <button class="arrow">&#8594;</button>
+              </div>
+            </div>
+            <div class="films-carousel">
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h30min</div>
+                  <div class="views">2K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h57min</div>
+                  <div class="views">1.5K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 2h10min</div>
+                  <div class="views">1.8K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 2h20min</div>
+                  <div class="views">3K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h42min</div>
+                  <div class="views">5K</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="list-item">
+            <div class="list-details-container">
+              <div class="list-description">
+                <p>Filmes com a Anne Hathaway</p>
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+              <div class="carousel-controls">
+                <button class="arrow">&#8592;</button>
+                <div class="indicators">
+                  <span class="dot active"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+                <button class="arrow">&#8594;</button>
+              </div>
+            </div>
+            <div class="films-carousel">
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h30min</div>
+                  <div class="views">2K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h57min</div>
+                  <div class="views">1.5K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 2h10min</div>
+                  <div class="views">1.8K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 2h20min</div>
+                  <div class="views">3K</div>
+                </div>
+              </div>
+              <div class="film-on-list">
+                <img
+                  class="film-banner-list-carousel"
+                  src="../img/batman.jpg"
+                  alt="Batman"
+                />
+                <div class="film-on-list-details">
+                  <div class="list-details-timestamp">&#128336; 1h42min</div>
+                  <div class="views">5K</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Filmes com a Anne Hathaway</p>
-              <span class="material-symbols-outlined">edit</span>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">&#8592;</button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+        <!-- this is the second list section,
+         it'll be the match section, including the
+         match banner-->
+        <div class="lists-page">
+          <div class="all-lists-container">
+              <div class="lists-top-container">
+                <button class="list-section-button">Matches</button>
+                <button class="add-list-button">+</button>
               </div>
-              <button class="arrow">&#8594;</button>
-            </div>
-          </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h30min</div>
-                <div class="views">2K</div>
+              <div class="list-item">
+                <div class="list-details-container">
+                  <div class="list-description">
+                    <p>Matches que você já fez!</p>
+                    <span class="material-symbols-outlined">edit</span>
+                  </div>
+                  <div class="carousel-controls">
+                    <button class="arrow">&#8592;</button>
+                    <div class="indicators">
+                      <span class="dot active"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                    </div>
+                    <button class="arrow">&#8594;</button>
+                  </div>
+                </div>
+                <div class="films-carousel">
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h30min</div>
+                      <div class="views">2K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h57min</div>
+                      <div class="views">1.5K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h10min</div>
+                      <div class="views">1.8K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h20min</div>
+                      <div class="views">3K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h42min</div>
+                      <div class="views">5K</div>
+                    </div>
+                  </div>
+                </div>
+                <!--here we have the banner of the match game-->
+                <div class="list-banner-match-container">
+                  <img src="../img/Container.png" class="list-banner-match">
+                  <div class="list-banner-match-description">
+                    <div class="list-banner-match-description-text">
+                      <p>Precisando de uma recomendação?</p>
+                      <p>Faça um Match!</p>
+                    </div>
+                    <div>
+                      <button class="list-banner-match-button">Match!</button>
+                    </div>
+                  </div>  
+                </div>
               </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h57min</div>
-                <div class="views">1.5K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h10min</div>
-                <div class="views">1.8K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h20min</div>
-                <div class="views">3K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h42min</div>
-                <div class="views">5K</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Filmes com a Anne Hathaway</p>
-              <span class="material-symbols-outlined">edit</span>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">&#8592;</button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-              <button class="arrow">&#8594;</button>
-            </div>
-          </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h30min</div>
-                <div class="views">2K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h57min</div>
-                <div class="views">1.5K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h10min</div>
-                <div class="views">1.8K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h20min</div>
-                <div class="views">3K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h42min</div>
-                <div class="views">5K</div>
-              </div>
-            </div>
           </div>
         </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Filmes com a Anne Hathaway</p>
-              <span class="material-symbols-outlined">edit</span>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">&#8592;</button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+        <!--here is the third section! hehe =] -->
+        <div class="lists-page">
+          <div class="all-lists-container">
+              <div class="lists-top-container">
+                <button class="list-section-button">Assistir mais tarde</button>
+                <button class="add-list-button">+</button>
               </div>
-              <button class="arrow">&#8594;</button>
-            </div>
+              <div class="list-item">
+                <div class="list-details-container">
+                  <div class="list-description">
+                    <p>Assistir mais tarde</p>
+                    <span class="material-symbols-outlined">edit</span>
+                  </div>
+                  <div class="carousel-controls">
+                    <button class="arrow">&#8592;</button>
+                    <div class="indicators">
+                      <span class="dot active"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                    </div>
+                    <button class="arrow">&#8594;</button>
+                  </div>
+                </div>
+                <div class="films-carousel">
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h30min</div>
+                      <div class="views">2K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h57min</div>
+                      <div class="views">1.5K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h10min</div>
+                      <div class="views">1.8K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="..../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h20min</div>
+                      <div class="views">3K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="..../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h42min</div>
+                      <div class="views">5K</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h30min</div>
-                <div class="views">2K</div>
+        </div>
+        <!--here we have the history section,
+        it's a quite importante list, although
+        the visual isn't exactly related to its importance,
+        but its infos will be used in the match algorithm-->
+        <div class="lists-page">
+          <div class="all-lists-container">
+              <div class="lists-top-container">
+                <button class="list-section-button">Histórico</button>
+                <button class="add-list-button">+</button>
               </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h57min</div>
-                <div class="views">1.5K</div>
+              <div class="list-item">
+                <div class="list-details-container">
+                  <div class="list-description">
+                    <p>Histórico do que você já assistiu</p>
+                    <span class="material-symbols-outlined">edit</span>
+                  </div>
+                  <div class="carousel-controls">
+                    <button class="arrow">&#8592;</button>
+                    <div class="indicators">
+                      <span class="dot active"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                      <span class="dot"></span>
+                    </div>
+                    <button class="arrow">&#8594;</button>
+                  </div>
+                </div>
+                <div class="films-carousel">
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h30min</div>
+                      <div class="views">2K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h57min</div>
+                      <div class="views">1.5K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h10min</div>
+                      <div class="views">1.8K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 2h20min</div>
+                      <div class="views">3K</div>
+                    </div>
+                  </div>
+                  <div class="film-on-list">
+                    <img
+                      class="film-banner-list-carousel"
+                      src="../img/batman.jpg"
+                      alt="Batman"
+                    />
+                    <div class="film-on-list-details">
+                      <div class="list-details-timestamp">&#128336; 1h42min</div>
+                      <div class="views">5K</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h10min</div>
-                <div class="views">1.8K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 2h20min</div>
-                <div class="views">3K</div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img
-                class="film-banner-list-carousel"
-                src="/img/batman.jpg"
-                alt="Batman"
-              />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">&#128336; 1h42min</div>
-                <div class="views">5K</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-    </div>
   </body>
 </html>
