@@ -1,59 +1,62 @@
 
-
-body{  
+body {  
   font-family: 'Poppins', sans-serif;
   background-color: #1C1C1C;
   color: white;
   margin: 0;
-  padding: 40px 0;
+  padding: 26px 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
-.lists-page{
+
+.lists-page {
   width: 90%;
-  max-width: 1200px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-.all-lists-container{
+  max-width: 780px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: 100%;
-  border: 1px solid #585858;
-  border-radius: 8px;
-  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 15px;
+}
+
+.all-lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: 19.5px;
+  width: 780px;
+  border: 1.3px solid #585858;
+  border-radius: 5.2px;
+  padding: 13px;
   box-sizing: border-box;
   position: relative;
 }
-.lists-top-container{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    position: absolute;
-    top: -15px;
-  
+
+.lists-top-container {
+  display: flex;
+  gap: 6.5px;
+  align-items: center;
+  position: absolute;
+  top: -9.75px;
 }
 
-.list-section-button{
+.list-section-button {
   width: auto;
-  padding: 8px 15px;
+  padding: 5.2px 9.75px;
   border: none;
-  border-radius: 6px;
+  border-radius: 3.9px;
   color: white;
   background-color: #eb004b;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 9.1px;
 }
 
-.add-list-button{
-  width: 28px;
-  height: 28px;
-  border: 2px solid #eb004b;
+.add-list-button {
+  width: 18.2px;
+  height: 18.2px;
+  border: 1.3px solid #eb004b;
   font-weight: bolder;
-  border-radius: 50%;
+  border-radius: 65%;
   color: white;
   background-color: #eb004b;
   cursor: pointer;
@@ -61,30 +64,32 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 10.4px;
 }
-.list-details-container{
-  margin-bottom: 10px;
+
+.list-details-container {
+  margin-bottom: 6.5px;
   margin-left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 9.75px;
+  padding-right: 9.75px;
 }
-.list-description{
+
+.list-description {
   display: flex;
-  gap: 10px;
+  gap: 6.5px;
   align-items: center;
   overflow-x: auto;
   padding-left: 0;
   padding-right: 0;
   margin-bottom: 0px;
 }
-.list-description p:nth-of-type(1){
-  font-family: "Manrope", sans-serif;
+
+.list-description p:nth-of-type(1) {
   font-weight: 700;
-  font-size: 2.5vw;
+  font-size: 1.625vw;
   line-height: 1;
   letter-spacing: -0.02em;
   color: #f5f5f5;
@@ -92,8 +97,9 @@ body{
   margin-bottom: 0px;
   white-space: nowrap;
 }
+
 .list-description span.material-symbols-outlined {
-  font-size: 2.5vw;
+  font-size: 1.625vw;
   width: auto;
   height: auto;
   cursor: pointer;
@@ -105,30 +111,32 @@ body{
 
 @media (min-width: 768px) {
   .list-description p:nth-of-type(1) {
-    font-size: 32px;
+    font-size: 20.8px;
   }
 
   .list-description span.material-symbols-outlined {
-    font-size: 32px;
+    font-size: 20.8px;
     width: auto;
   }
 }
-.list-description p:nth-of-type(2){
+
+.list-description p:nth-of-type(2) {
   cursor: pointer;
 }
+
 .carousel-controls {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #2b2b2b;
-  width: 150px;
-  height: 50px;
-  border-radius: 10px;
-  gap: 10px;
+  width: 97.5px;
+  height: 32.5px;
+  border-radius: 6.5px;
+  gap: 6.5px;
 }
 
 .arrow {
-  font-size: 15px;
+  font-size: 9.75px;
   background: none;
   border: none;
   color: white;
@@ -137,14 +145,14 @@ body{
 
 .indicators {
   display: flex;
-  gap: 1px;
+  gap: 0.65px;
 }
 
 .dot {
-  width: 12px;
-  height: 4px;
+  width: 7.8px;
+  height: 2.6px;
   background-color: #555;
-  border-radius: 2px;
+  border-radius: 1.3px;
 }
 
 .dot.active {
@@ -155,22 +163,23 @@ body{
   margin-left: 0;
   margin-right: 0;
   display: flex;
-  gap: 20px;
+  gap: 13px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding: 15px;
+  padding: 9.75px;
+
 }
 
 .film-on-list {
   background-color: #3F3F3F;
-  width: 209px;
+  width: 135.85px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
-  padding: 12px;
+  align-items: flex-start;
+  padding: 7.8px;
   box-sizing: border-box;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 5.2px;
 }
 
 .film-banner-list-carousel {
@@ -178,13 +187,13 @@ body{
   height: auto;
   aspect-ratio: 140 / 190;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 3.9px;
 }
 
 .film-on-list-details {
-  margin-top: 8px;
-  gap: 8px;
-  display: flex; 
+  margin-top: 5.2px;
+  gap: 5.2px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -192,14 +201,51 @@ body{
 
 .list-details-timestamp,
 .views {
-  font-size: 12px;
+  font-size: 7.8px;
   background-color: rgba(28, 28, 28, 0.8);
   color: white;
-  padding: 6px 10px;
-  border-radius: 20px;
-  border: 1px solid #555;
+  padding: 3.9px 6.5px;
+  border-radius: 13px;
+  border: 1.3px solid #555;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5.2px;
+}
+.list-banner-match-container{
+  position: relative;
+  cursor: pointer;
+}
+.list-banner-match{
+  background-color: green;
+  margin-top: 12px;
+  object-fit: cover;
+  height: 90px;
+  width: 740px;
+  margin-left: 6.5px;
+  margin-right: 0;
+  z-index: 0;
+}
+.list-banner-match-description{
+  top: 30px;
+  right: 30px;
+  gap: 340px;
+  display: flex;
+  position: absolute;
+}
+.list-banner-match-description-text{
+  line-height: 8px;
+
+}
+.list-banner-match-button{
+  margin-top: 15px;
+  width: 54px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #eb004b;
+  font-weight: bold;
+  font-size: 9px;
+  cursor: pointer;
 }
