@@ -409,7 +409,7 @@
                     .form-group select {
                     background-position: right 10px center;
                     padding-right: 30px;
-                 }   
+                }   
 
                 }
 
@@ -419,18 +419,18 @@
                 }
                     .logo-header nav a {
                      font-size: 1em;
-                 }
+                }
                     .form-container h2 {
                     font-size: 1.6em;
-                 }
+                }
                     .form-group input[type="text"],
                     .form-group input[type="email"],
                     .form-group input[type="password"],
                     .form-group select {
                      padding: 12px 15px;
                  }
-                     .submit-button {
-                     padding: 14px;
+                    .submit-button {
+                    padding: 14px;
                     font-size: 1em;
                  }
                 
