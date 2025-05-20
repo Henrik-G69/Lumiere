@@ -1,0 +1,286 @@
+/* Início do arquivo CSS: openSerie.css */
+
+/* Reset básico e tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    /* Cor escura de fundo */
+    color: #e0e0e0;
+    /* Cor clara de texto */
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+}
+
+.header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff005c;
+    /* Tom rosa vivo */
+}
+
+.nav-main ul {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-main li a:hover {
+    color: #ff005c;
+}
+
+.header-actions .btn-icon {
+    font-size: 1.2rem;
+    margin-left: 15px;
+}
+
+/* BANNER */
+.banner {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.banner-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    bottom: 200px;
+}
+
+.banner-info h1 {
+    font-size: 3rem;
+}
+
+.banner-info p {
+    max-width: auto;
+    margin: 10px 0;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 10px;
+}
+.banner-buttons .btn-play {
+    display: flex;
+    align-items: center;
+    background-color: #ff005c;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+.container-details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+}
+/* EPISODES */
+.episodes {
+    padding: 40px;
+}
+
+.season {
+    background-color: #1f1f1f;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.season-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.episode-list {
+    list-style: none;
+}
+
+.episode-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.episode-thumb {
+    width: 120px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.episode-details h4 {
+    font-size: 1.1rem;
+}
+
+.episode-duration {
+    margin-left: auto;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background-color: #1f1f1f;
+    padding: 20px;
+    margin: 40px;
+    border-radius: 8px;
+}
+
+.info-block+.info-block {
+    margin-top: 20px;
+}
+
+.languages span {
+    display: inline-block;
+    background: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+/* DESCRIPTION */
+.description {
+    padding: 0 40px 40px;
+}
+
+/* CAST */
+.cast {
+    padding: 0 40px 40px;
+}
+
+.cast-list {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.cast-member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+/* REVIEWS */
+.reviews {
+    background-color: #1f1f1f;
+    padding: 40px;
+}
+
+.btn-add-review {
+    background-color: #ff005c;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.review-item {
+    margin-bottom: 20px;
+}
+
+.review-item h3 span {
+    color: #ff005c;
+}
+
+.btn-check-reviews {
+    background: none;
+    color: #ff005c;
+    font-weight: bold;
+}
+
+/* MATCH CTA */
+.match-cta {
+    background-image: url('../img/Container.png');
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    color: #fff;
+}
+.open-serie-match-bakground {
+    width: 100%;
+    height: 100%;
+}
+.open-serie-match-description {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+.open-serie-match-button {
+    background-color: #ff005c;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1f1f1f;
+    padding: 40px;
+    text-align: center;
+}
+
+.footer-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.footer-policy a {
+    color: #888;
+    margin: 0 5px;
+}
+
+/* Fim do arquivo CSS */
