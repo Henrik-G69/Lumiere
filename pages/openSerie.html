@@ -1,151 +1,195 @@
 <!-- Início do arquivo HTML: openSerie.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <!-- Meta tags e título -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes da Série - Lumière</title>
-  <!-- Link para o arquivo de estilos CSS externo -->
-  <link rel="stylesheet" href="../public/css/openSerie.css">
+    <!-- Meta tags e título -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Série - Lumière</title>
+    <!-- Link para o arquivo de estilos CSS externo -->
+    <link rel="stylesheet" href="../public/css/openSerie.css">
 </head>
+
 <body>
-  <!-- Início da HEADER -->
-  <header class="header">
-    <div class="logo">Lumière</div>
-    <nav class="nav-main" aria-label="Navegação principal">
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Filmes & Séries</a></li>
-        <li><a href="#">Minhas Listas</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Match Game</a></li>
-        <li><a href="#">Qual é o Filme?</a></li>
-      </ul>
-    </nav>
-    <div class="header-actions">
-      <button class="btn-icon">🔍</button>
-      <button class="btn-icon">👤</button>
-      <button class="btn-icon dark-mode-toggle">🌙</button>
+    <!-- Início da HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+        </div>
+        <nav class="nav-main" aria-label="Navegação principal">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Filmes & Séries</a></li>
+                <li><a href="#">Minhas Listas</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Match Game</a></li>
+                <li><a href="#">Qual é o Filme?</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-icon">
+                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
+            </button>
+            <button class="btn-icon">
+                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+            </button>
+            <button class="btn-icon dark-mode-toggle">
+                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
+            </button>
+        </div>
+    </header>
+    <!-- Fim da HEADER -->
+
+    <!-- Seção principal: Banner da série -->
+    <section class="banner">
+        <img src="../public/img/strangerthings_s3_illustrated_vertical_final_rgb_digital__en-1.webp"
+            alt="Stranger Things" class="banner-img">
+        <div class="banner-info">
+            <h1>Stranger Things</h1>
+            <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
+                supernatural forces and one strange little girl.</p>
+            <div class="banner-buttons">
+                <button class="btn-play">
+                    <img src="../public/icons/playIcon.svg" alt="Play Icon" class="play-icon">
+                    Play Now
+                </button>
+                <button class="btn-icon">
+                    <img src="../public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
+                </button>
+                <button class="btn-icon">
+                    <img src="../public/icons/Curtir.svg" alt="Like Icon" class="like-icon">
+                </button>
+                <button class="btn-icon">
+                    <img src="../public/icons/Audio.svg" alt="Volume Icon" class="volume-icon">
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-details">
+    <!-- Seção de Temporadas e Episódios -->
+    <div>
+    <section class="episodes">
+        <h2>Seasons and Episodes</h2>
+        <div class="season">
+            <header class="season-header">
+                <h3>Season 01</h3>
+                <span>9 Episodes</span>
+                <button class="btn-toggle">⬇️</button>
+            </header>
+            <!-- Lista de episódios da temporada 1 -->
+            <ul class="episode-list">
+                <li class="episode-item">
+                    <span class="episode-number">01</span>
+                    <img src="thumbs/ep1.jpg" alt="Chapter One" class="episode-thumb">
+                    <div class="episode-details">
+                        <h4>Chapter One: The Vanishing of Will Byers</h4>
+                        <p>On his way from a friend’s house, young Will sees something terrifying. Nearby, a sinister
+                            secret lurks in the depths of a government lab.</p>
+                    </div>
+                    <span class="episode-duration">49 min</span>
+                </li>
+                <!-- Repetir para cada episódio -->
+            </ul>
+        </div>
+        <!-- Repetir blocos .season para demais temporadas -->
+    </section>
+
+    <!-- Seção de Descrição expandida -->
+    <section class="description">
+        <h2>Description</h2>
+        <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
+            supernatural forces and one strange little girl.</p>
+    </section>
+
+    <!-- Seção de Elenco -->
+    <section class="cast">
+        <h2>Cast</h2>
+        <div class="cast-list">
+            <!-- Cada .cast-member representa um ator/atriz -->
+            <div class="cast-member">
+                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <img src="../public/img/AtorST3.png" alt="Ator 2">
+                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+            </div>
+            <!-- Adicionar setas de navegação -->
+        </div>
+    </section>
+
+    <!-- Seção de Reviews -->
+    <section class="reviews">
+        <h2>Reviews</h2>
+        <button class="btn-add-review">+ Add Your Review</button>
+        <div class="review-list">
+            <article class="review-item">
+                <h3>Aniket Roy <span>4.5★</span></h3>
+                <p>This movie was recommended to me by a very dear friend who went for the movie by herself. I went to
+                    the cinemas to watch but had a houseful board so couldn’t watch it.</p>
+            </article>
+            <!-- Repetir .review-item -->
+        </div>
+        <button class="btn-check-reviews">Check Reviews →</button>
+    </section>
     </div>
-  </header>
-  <!-- Fim da HEADER -->
 
-  <!-- Seção principal: Banner da série -->
-  <section class="banner">
-    <img src="banners/stranger-things.jpg" alt="Stranger Things" class="banner-img">
-    <div class="banner-info">
-      <h1>Stranger Things</h1>
-      <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.</p>
-      <div class="banner-buttons">
-        <button class="btn-play">Play Now</button>
-        <button class="btn-icon">➕</button>
-        <button class="btn-icon">👍</button>
-        <button class="btn-icon">🔈</button>
-      </div>
+    <div>
+    <!-- Seção lateral: Detalhes adicionais da série -->
+    <section class="sidebar">
+        <div class="info-block">
+            <h4>Released Year</h4>
+            <p>2022</p>
+        </div>
+        <div class="info-block">
+            <h4>Available Languages</h4>
+            <div class="languages">
+                <span>English</span>
+                <span>Hindi</span>
+                <span>Tamil</span>
+                <span>Telugu</span>
+                <span>Kannada</span>
+            </div>
+        </div>
+        <!-- Outros blocos: Plataformas, Ratings, Genres, Director, Music -->
+    </section>
     </div>
-  </section>
-
-  <!-- Seção de Temporadas e Episódios -->
-  <section class="episodes">
-    <h2>Seasons and Episodes</h2>
-    <div class="season">
-      <header class="season-header">
-        <h3>Season 01</h3>
-        <span>9 Episodes</span>
-        <button class="btn-toggle">⬇️</button>
-      </header>
-      <!-- Lista de episódios da temporada 1 -->
-      <ul class="episode-list">
-        <li class="episode-item">
-          <span class="episode-number">01</span>
-          <img src="thumbs/ep1.jpg" alt="Chapter One" class="episode-thumb">
-          <div class="episode-details">
-            <h4>Chapter One: The Vanishing of Will Byers</h4>
-            <p>On his way from a friend’s house, young Will sees something terrifying. Nearby, a sinister secret lurks in the depths of a government lab.</p>
-          </div>
-          <span class="episode-duration">49 min</span>
-        </li>
-        <!-- Repetir para cada episódio -->
-      </ul>
     </div>
-    <!-- Repetir blocos .season para demais temporadas -->
-  </section>
 
-  <!-- Seção lateral: Detalhes adicionais da série -->
-  <aside class="sidebar">
-    <div class="info-block">
-      <h4>Released Year</h4>
-      <p>2022</p>
-    </div>
-    <div class="info-block">
-      <h4>Available Languages</h4>
-      <div class="languages">
-        <span>English</span>
-        <span>Hindi</span>
-        <span>Tamil</span>
-        <span>Telugu</span>
-        <span>Kannada</span>
-      </div>
-    </div>
-    <!-- Outros blocos: Plataformas, Ratings, Genres, Director, Music -->
-  </aside>
+    <!-- Seção de chamada para ação (Match) -->
+    <section class="match-cta">
+            <div class="open-serie-match-description">
+                <div class="open-serie-match-description-text">
+                    <h2>Precisando de uma recomendação?</h2>
+                    <h2>Faça um Match!</h2>
+                </div>
+                <div>
+                    <button class="open-serie-match-button">Match!</button>
+                </div>
+            </div>
+    </section>
 
-  <!-- Seção de Descrição expandida -->
-  <section class="description">
-    <h2>Description</h2>
-    <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.</p>
-  </section>
-
-  <!-- Seção de Elenco -->
-  <section class="cast">
-    <h2>Cast</h2>
-    <div class="cast-list">
-      <!-- Cada .cast-member representa um ator/atriz -->
-      <div class="cast-member">
-        <img src="cast/member1.jpg" alt="Ator 1">
-      </div>
-      <!-- Adicionar setas de navegação -->
-    </div>
-  </section>
-
-  <!-- Seção de Reviews -->
-  <section class="reviews">
-    <h2>Reviews</h2>
-    <button class="btn-add-review">+ Add Your Review</button>
-    <div class="review-list">
-      <article class="review-item">
-        <h3>Aniket Roy <span>4.5★</span></h3>
-        <p>This movie was recommended to me by a very dear friend who went for the movie by herself. I went to the cinemas to watch but had a houseful board so couldn’t watch it.</p>
-      </article>
-      <!-- Repetir .review-item -->
-    </div>
-    <button class="btn-check-reviews">Check Reviews →</button>
-  </section>
-
-  <!-- Seção de chamada para ação (Match) -->
-  <section class="match-cta">
-    <h2>Precisando de uma recomendação? Faça um match!</h2>
-    <button class="btn-match">Match</button>
-  </section>
-
-  <!-- Início da FOOTER -->
-  <footer class="footer">
-    <nav class="footer-nav" aria-label="Navegação do rodapé">
-      <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Categorias</a></li>
-        <li><a href="#">Jogos</a></li>
-        <li><a href="#">Listas</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Login</a></li>
-      </ul>
-    </nav>
-    <p class="copyright">©2025 Lumière. Todos os direitos reservados.</p>
-    <nav class="footer-policy" aria-label="Políticas do site">
-      <a href="#">Termos de Uso</a> • <a href="#">Políticas de Privacidade</a> • <a href="#">Políticas de Cookies</a>
-    </nav>
-  </footer>
-  <!-- Fim da FOOTER -->
+    <!-- Início da FOOTER -->
+    <footer class="footer">
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Jogos</a></li>
+                <li><a href="#">Listas</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+        <p class="copyright">©2025 Lumière. Todos os direitos reservados.</p>
+        <nav class="footer-policy" aria-label="Políticas do site">
+            <a href="#">Termos de Uso</a> • <a href="#">Políticas de Privacidade</a> • <a href="#">Políticas de
+                Cookies</a>
+        </nav>
+    </footer>
+    <!-- Fim da FOOTER -->
 </body>
+
 </html>
