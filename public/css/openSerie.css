@@ -8,8 +8,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
+    font-family: 'Raleway', sans-serif;
+    background-color: #1f1f1f;
     /* Cor escura de fundo */
     color: #e0e0e0;
     /* Cor clara de texto */
@@ -31,26 +31,42 @@ button {
 /* HEADER */
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 20px;
+    padding: 8px;
     background-color: #1f1f1f;
 }
 
 .header .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ff005c;
+    color: #EB004B;
     /* Tom rosa vivo */
 }
 
+.nav-main {
+    background-color: #2e2e2e ;
+    padding: 6px 40px;
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: #3f3f3f;
+}
 .nav-main ul {
+    list-style-type: none;
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 30px;
 }
 
+.destaque {
+    background-color: #1f1f1f ;
+    padding: 14px 24px;
+    border-radius: 8px;
+    color: #EB004B;
+    font-weight: 700;
+}
 .nav-main li a:hover {
-    color: #ff005c;
+    color: #EB004B;
 }
 
 .header-actions .btn-icon {
