@@ -1,0 +1,118 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    box-sizing: border-box
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+.movie-hero{
+    width: 100%;
+    height: 86vh;
+    position: relative;
+    overflow: hidden; 
+    display: flex;    
+    align-items: center; 
+    justify-content: center; 
+}
+
+.movie-hero::before{
+    content: "";
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.30);
+    z-index: 1;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.movie-hero__image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.movie-hero__details{
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    padding: 1.5rem;
+    z-index: 2;
+    left: 360px;
+    top: 50px;
+}
+.movie-hero__title{
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 3px;
+}
+.movie-hero__synopsis{
+    width: 400px;
+    font-size: small;
+}
+.movie-hero__info-group{
+    font-size: small;
+    display: flex;
+    gap: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.movie-hero__watch-button{
+    font-weight: bolder;
+    color: white;
+    background-color: #EB004B;
+    border: none;
+    border-radius: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.movie-hero__addlist-button,
+.movie-hero__like-button{
+    color: white;
+    font-weight: bolder;
+    margin-left: 5px;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    font-size: large;
+    background-color:
+     #1C1C1C;
+    border: 1px solid #303030 ;
+    cursor: pointer;
+}
+.movie-hero__container-nav-buttons{
+    display: flex;
+    transform: translateY(-50%);
+    gap: 1220px;
+    justify-content: space-between;
+    align-items: center;
+    top: 50%;
+    position: absolute;
+    z-index: 2;
+}
+.movie-hero__buttons{
+    font-weight: bolder;
+    font-size: large;
+    color: white;
+    background-color: #EB004B;
+    border: none;
+    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
