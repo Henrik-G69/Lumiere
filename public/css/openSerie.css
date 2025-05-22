@@ -28,52 +28,6 @@ button {
     color: inherit;
 }
 
-/* HEADER */
-.header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 8px;
-    background-color: #1f1f1f;
-}
-
-.header .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #EB004B;
-    /* Tom rosa vivo */
-}
-
-.nav-main {
-    background-color: #2e2e2e ;
-    padding: 6px 40px;
-    border-radius: 8px;
-    border: 2px solid;
-    border-color: #3f3f3f;
-}
-.nav-main ul {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.destaque {
-    background-color: #1f1f1f ;
-    padding: 14px 24px;
-    border-radius: 8px;
-    color: #EB004B;
-    font-weight: 700;
-}
-.nav-main li a:hover {
-    color: #EB004B;
-}
-
-.header-actions .btn-icon {
-    font-size: 1.2rem;
-    margin-left: 15px;
-}
-
 /* BANNER */
 .banner {
     position: relative;
@@ -277,26 +231,6 @@ button {
     font-size: 1rem;
     border-radius: 4px;
     margin-top: 20px;
-}
-
-/* FOOTER */
-.footer {
-    background-color: #1f1f1f;
-    padding: 40px;
-    text-align: center;
-}
-
-.footer-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.footer-policy a {
-    color: #888;
-    margin: 0 5px;
 }
 
 /* Fim do arquivo CSS */
