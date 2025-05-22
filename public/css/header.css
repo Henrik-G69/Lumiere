@@ -16,10 +16,14 @@
 
 .nav-main {
     background-color: #2e2e2e ;
+    height: 68px;
     padding: 6px 40px;
     border-radius: 8px;
     border: 2px solid;
     border-color: #3f3f3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .nav-main ul {
     list-style-type: none;
