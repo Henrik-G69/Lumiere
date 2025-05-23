@@ -21,7 +21,7 @@
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
                 <li><a href="#">Início</a></li>
-                <li class="destaque"><a href="#">Filmes & Séries</a></li>
+                <li><a href="#">Filmes & Séries</a></li>
                 <li><a href="#">Minhas Listas</a></li>
                 <li><a href="#">Reviews</a></li>
                 <li><a href="#">Match Game</a></li>
@@ -42,21 +42,39 @@
     </header>
     <!-- Fim da HEADER -->
 
+    <main class="login-main" aria-labelledby="loginTitle">
+        <section class="login-section">
+            <h2 id="loginTitle" class="login-title">Entrar na conta</h2>
+            <p class="login-signup-link">
+                Ainda não tem uma conta?
+                <a href="#" class="login-signup-link__anchor">Registre-se Agora</a>
+            </p>
+
+            <form id="loginForm" class="login-form" action="" method="post" novalidate>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="password">Senha</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" required class="password-input">
+                        <button type="button" class="toggle-password" aria-label="Ver Senha">
+                            <img src="../public/icons/EyeSlashFill.svg" alt="" class="toggle-password__icon">
+                        </button>
+                    </div>
+                    <a href="#" class="forgot-password">Esqueci minha senha</a>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+
+                <button type="submit" class="btn-login">Entrar</button>
+            </form>
+        </section>
+    </main>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
     <!-- Início da FOOTER -->
     <footer class="footer">
         <div class="footer__inner">
@@ -165,4 +183,23 @@
         </div>
     </footer>
     <!-- Fim da FOOTER -->
+
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle-password');
+        const pwdInput = document.querySelector('.password-input');
+        const iconImg = document.querySelector('.toggle-password__icon');
+
+        toggleBtn.addEventListener('click', () => {
+            const show = pwdInput.type === 'password';
+            pwdInput.type = show ? 'text' : 'password';
+            iconImg.src = show
+                ? '../public/icons/EyeFill.svg'
+                : '../public/icons/EyeSlashFill.svg';
+            toggleBtn.setAttribute('aria-label', show ? 'Esconder senha' : 'Ver senha');
+        });
+
+    </script>
+
+
 </body>
