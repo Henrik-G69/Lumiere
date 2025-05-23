@@ -41,25 +41,40 @@
                      top: 0;        
                      left: 0;        
                     width: 100%;
-                     height: 100vh;  
+                    height: 100%;  
                     background-image: url('./../img/imagem_cadastro.jpg'); 
                     background-size: cover;
                     background-position: center; 
                     filter: brightness(0.4); 
-                    z-index: -20;    
+                    z-index: -1;    
             }
               
+            
+
+              .top-bar {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                padding: 25px 0;
+                margin-bottom: 30px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) ;
+                position: relative;
+            }
 
             .container {
 
                 width: 100%;
                 max-width: 120%; /* acomoda o header*/
-                padding: 20px;
+                padding: 0 20px;
+                margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
+
+          
 
             .logo-header { 
 
@@ -68,7 +83,7 @@
                 align-items: center;
                 width: 100%;
                 padding: 20px 0; /*aumento por conta do espaçamento*/
-                margin-bottom: -30px; /* espaço entre o menu de navegação e o formulário*/
+                margin-bottom: -35px; /* espaço entre o menu de navegação e o formulário*/
             } 
 
 
@@ -417,6 +432,18 @@
                     color: var(--primary-color); 
                     text-decoration: none;  /* o sublinhado some quando passar o mouse em cima do link */
                 }
+
+
+                #termsError {
+                    width: 50%;
+                    margin-left: 15px;
+                }
+
+
+                .form-group .terms-group {
+                    flex-wrap: wrap;
+                }
+
                 
 
                 /* modificações para se adequar a proporção para telas menores */
