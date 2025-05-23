@@ -1,0 +1,139 @@
+/* Container principal e background */
+.login-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: url('../img/imagem_cadastro.jpg') center/cover no-repeat;
+}
+
+/* Caixa do formulário de login */
+.login-section {
+  background: #1f1f1f;
+  padding: 40px;
+  border-radius: 40px;
+  max-width: 480px;
+  width: 100%;
+  color: #f5f5f5;
+}
+
+/* Título e link de cadastro */
+.login-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.login-signup-link {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-signup-link__anchor {
+  color: #EB004B;
+  text-decoration: none;
+}
+.login-signup-link__anchor:hover {
+  color: #C1003F;
+}
+
+/* Grupos de campo */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;                /* garante ocupar todo o espaço */
+}
+
+.password-input {
+  width: 100%;                /* campo sempre full-width */
+  box-sizing: border-box;     /* padding + border não altera a largura */
+  padding-right: 2.5rem;      /* espaço para o botão */
+  padding-left: 0.75rem;
+  height: 48px;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  background: #ececec;
+  color: #1f1f1f;
+}
+
+.password-input:focus {
+  outline: 2px solid #EB004B;
+  outline-offset: 2px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle-password__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Links e dicas */
+.forgot-password {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  text-decoration: none;
+  align-self: flex-end;
+}
+.forgot-password:hover {
+  color: #fff;
+}
+
+/* Inputs e botões */
+input[type="email"],
+input[type="password"] {
+  height: 48px;
+  padding: 0.6rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #ececec;
+  color: #1f1f1f;
+}
+
+input:focus {
+  outline: 2px solid #EB004B;
+  outline-offset: 2px;
+}
+
+.btn-login {
+  height: 56px;
+  width: 100%;
+  background: #EB004B;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+.btn-login:hover {
+  background: #A10035;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .login-section {
+    padding: 30px 20px;
+  }
+}
