@@ -95,6 +95,16 @@ select {
     color: #1f1f1f;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #EB004B;
+}
+
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: none
+}
+
 input:focus,
 select:focus {
     outline: 2px solid #EB004B;

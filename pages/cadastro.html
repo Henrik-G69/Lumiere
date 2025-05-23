@@ -50,7 +50,7 @@
                 <a href="#" class="signup-login-link__anchor">Faça login</a>
             </p>
 
-            <form id="signupForm" class="signup-form" novalidate>
+            <form id="signupForm" class="signup-form" action="" method="post" novalidate>
                 <fieldset class="signup-form__row">
                     <div class="form-group">
                         <label for="firstName">Primeiro nome</label>
@@ -98,7 +98,7 @@
                 </fieldset>
 
                 <div class="form-group">
-                    <label>Data de nascimento</label>
+                    <label for="birthDay">Data de nascimento</label>
                     <div class="birthdate-selects">
                         <select id="birthDay" name="birthDay" required>
                             <option value="" disabled selected>Dia</option>
@@ -141,7 +141,7 @@
                 </div>
 
                 <button type="submit" class="btn-submit">Criar Conta</button>
-                <p id="successMessage" class="success-message" role="status"></p>
+                <output id="successMessage" class="success-message"></output>
             </form>
         </section>
     </main>
