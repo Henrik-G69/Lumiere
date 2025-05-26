@@ -13,7 +13,7 @@
 </head>
 
 <body>
-            <!-- Início da HEADER -->
+    <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
@@ -21,37 +21,32 @@
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
                 <li> <a class="nav-options" href="#">Início</a></li>
-                <li ><a class="nav-options" href="#">Filmes & Séries</a></li>
-                <li ><a class="nav-options" href="#">Minhas Listas</a></li>
-                <li ><a class="nav-options" href="#">Reviews</a></li>
-                <li ><a class="nav-options" href="#">Match Game</a></li>
-                <li ><a class="nav-options" href="#">Qual é o Filme?</a></li>
+                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li><a class="nav-options" href="#">Reviews</a></li>
+                <li><a class="nav-options" href="#">Match Game</a></li>
+                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
             <!--search section-->
             <div class="search-container">
                 <button class="btn-icon">
-                  <img src="../public/icons/Search.svg" alt="Search Icon">
+                    <img src="../public/icons/Search.svg" alt="Search Icon">
                 </button>
-                <input
-                  type="text"
-                  id="search-input"
-                  class="search-input"
-                  placeholder="Pesquisar..."
-                  autocomplete="off"
-                />
+                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                    autocomplete="off" />
                 <ul id="results-list" class="dropdown"></ul>
-              </div>
-              
+            </div>
+
             <!--end of search section-->
             <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
+                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
         <script src="header.js"></script>
     </header>
-    <!-- Fim da HEADER --> 
+    <!-- Fim da HEADER -->
 
     <!-- Seção principal: Banner da série -->
     <section class="banner">
@@ -80,107 +75,190 @@
     </section>
 
     <div class="container-details">
-    <!-- Seção de Temporadas e Episódios -->
-    <div>
-    <section class="episodes">
-        <h2>Seasons and Episodes</h2>
-        <div class="season">
-            <header class="season-header">
-                <h3>Season 01</h3>
-                <span>9 Episodes</span>
-                <button class="btn-toggle">⬇️</button>
-            </header>
-            <!-- Lista de episódios da temporada 1 -->
-            <ul class="episode-list">
-                <li class="episode-item">
-                    <span class="episode-number">01</span>
-                    <img src="thumbs/ep1.jpg" alt="Chapter One" class="episode-thumb">
-                    <div class="episode-details">
-                        <h4>Chapter One: The Vanishing of Will Byers</h4>
-                        <p>On his way from a friend’s house, young Will sees something terrifying. Nearby, a sinister
-                            secret lurks in the depths of a government lab.</p>
+        <!-- Seção de Temporadas e Episódios -->
+        <div>
+            <section class="episodes">
+                <h2>Seasons and Episodes</h2>
+                <div class="season">
+                    <header class="season-header">
+                        <h3>Season 01</h3>
+                        <span>9 Episodes</span>
+                        <button class="btn-toggle">⬇️</button>
+                    </header>
+                    <!-- Lista de episódios da temporada 1 -->
+                    <ul class="episode-list">
+                        <li class="episode-item">
+                            <span class="episode-number">01</span>
+                            <img src="thumbs/ep1.jpg" alt="Chapter One" class="episode-thumb">
+                            <div class="episode-details">
+                                <h4>Chapter One: The Vanishing of Will Byers</h4>
+                                <p>On his way from a friend’s house, young Will sees something terrifying. Nearby, a
+                                    sinister
+                                    secret lurks in the depths of a government lab.</p>
+                            </div>
+                            <span class="episode-duration">49 min</span>
+                        </li>
+                        <!-- Repetir para cada episódio -->
+                    </ul>
+                </div>
+                <!-- Repetir blocos .season para demais temporadas -->
+            </section>
+
+            <!-- Seção de Descrição expandida -->
+            <section class="description">
+                <h2>Description</h2>
+                <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
+                    supernatural forces and one strange little girl.</p>
+            </section>
+
+            <!-- Seção de Elenco -->
+            <section class="cast">
+                <h2>Cast</h2>
+                <div class="cast-list">
+                    <!-- Cada .cast-member representa um ator/atriz -->
+                    <div class="cast-member">
+                        <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                        <img src="../public/img/AtorST3.png" alt="Ator 2">
+                        <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                        <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                        <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                        <img src="../public/img/AtrizST3.png" alt="Ator 1">
                     </div>
-                    <span class="episode-duration">49 min</span>
-                </li>
-                <!-- Repetir para cada episódio -->
-            </ul>
+                    <!-- Adicionar setas de navegação -->
+                </div>
+            </section>
+
+            <!-- Seção de Reviews -->
+            <section class="reviews">
+                <h2>Reviews</h2>
+                <button class="btn-add-review">+ Add Your Review</button>
+                <div class="review-list">
+                    <article class="review-item">
+                        <h3>Aniket Roy <span>4.5★</span></h3>
+                        <p>This movie was recommended to me by a very dear friend who went for the movie by herself. I
+                            went to
+                            the cinemas to watch but had a houseful board so couldn’t watch it.</p>
+                    </article>
+                    <!-- Repetir .review-item -->
+                </div>
+                <button class="btn-check-reviews">Check Reviews →</button>
+            </section>
         </div>
-        <!-- Repetir blocos .season para demais temporadas -->
-    </section>
 
-    <!-- Seção de Descrição expandida -->
-    <section class="description">
-        <h2>Description</h2>
-        <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-            supernatural forces and one strange little girl.</p>
-    </section>
+        <div>
+            <!-- Seção lateral: Detalhes adicionais da série -->
+            <div class="detail-card">
+                <!-- Released Year -->
+                <section class="section year">
+                    <div class="titulo-detalhes"><img src="../public/icons/Calendario.svg" alt="Calendario" Class="icon-detalhes">
+                    <h3> Released Year</h3>
+                    </div>
+                    <p class="value">2022</p>
+                </section>
 
-    <!-- Seção de Elenco -->
-    <section class="cast">
-        <h2>Cast</h2>
-        <div class="cast-list">
-            <!-- Cada .cast-member representa um ator/atriz -->
-            <div class="cast-member">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtorST3.png" alt="Ator 2">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <!-- Available Languages -->
+                <section class="section languages">
+                    <div class="titulo-detalhes"><img src="../public/icons/LinguagemIcon.svg" alt="Linguagem" Class="icon-detalhes">
+                    <h3> Available Languages</h3>
+                    </div>
+                    <div class="buttons">
+                        <button>English</button>
+                        <button>Hindi</button>
+                        <button>Tamil</button>
+                        <button>Telegu</button>
+                        <button>Kannada</button>
+                    </div>
+                </section>
+
+                <!-- Where to Watch -->
+                <section class="section watch">
+                    <div class="titulo-detalhes"><img src="../public/icons/Eye.svg" alt="Olho" Class="icon-detalhes">
+                    <h3> Here to Watch</h3>
+                    </div>
+                    <div class="providers">
+                        <img src="../public/img/Netflix.png" alt="Netflix">
+                        <img src="../public/img/Netflix.png" alt="Max">
+                        <img src="../public/img/Netflix.png" alt="Prime Video">
+                        <img src="../public/img/Netflix.png" alt="Globo Play">
+                        <img src="../public/img/Netflix.png" alt="Disney+">
+                    </div>
+                </section>
+
+                <!-- Ratings -->
+                <section class="section ratings">
+                    <div class="titulo-detalhes"> <img src="../public/icons/EstrelaIcon.svg" alt="Estrela" Class="icon-detalhes">
+                    <h3> Ratings</h3>
+                    </div>
+                    <div class="grid-2x2">
+                        <div class="rating-box">
+                            <h4>IMDb</h4>
+                            <div class="stars">★★★★☆ <span>4.5</span></div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>RottenTomatos</h4>
+                            <div class="stars">★★★★☆ <span>4</span></div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>Lumérie</h4>
+                            <div class="stars">★★★★☆ <span>4.5</span></div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>Metacritic</h4>
+                            <div class="stars">★★★★☆ <span>4</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Genres -->
+                <section class="section genres">
+                    <div class="titulo-detalhes"><img src="../public/icons/GeneroIcon.svg" alt="Genero" Class="icon-detalhes">
+                    <h3> Genres</h3>
+                    </div>
+                    <div class="buttons">
+                        <button>Sci-Fi TV</button>
+                        <button>Teen TV Shows</button>
+                        <button>US TV Shows</button>
+                    </div>
+                </section>
+
+                <!-- Director -->
+                <section class="section person">
+                    <h3>Director</h3>
+                    <div class="person-card">
+                        <img src="../public/img/AtorST3.png" alt="The Duffer Brothers">
+                        <div class="info">
+                            <p class="name">The Duffer Brothers</p>
+                            <p class="sub">From USA</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Music -->
+                <section class="section person">
+                    <h3>Music</h3>
+                    <div class="person-card">
+                        <img src="../public/img/AtorST3.png" alt="Kyle Dixon">
+                        <div class="info">
+                            <p class="name">Kyle Dixon</p>
+                            <p class="sub">From USA</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <!-- Adicionar setas de navegação -->
         </div>
-    </section>
-
-    <!-- Seção de Reviews -->
-    <section class="reviews">
-        <h2>Reviews</h2>
-        <button class="btn-add-review">+ Add Your Review</button>
-        <div class="review-list">
-            <article class="review-item">
-                <h3>Aniket Roy <span>4.5★</span></h3>
-                <p>This movie was recommended to me by a very dear friend who went for the movie by herself. I went to
-                    the cinemas to watch but had a houseful board so couldn’t watch it.</p>
-            </article>
-            <!-- Repetir .review-item -->
-        </div>
-        <button class="btn-check-reviews">Check Reviews →</button>
-    </section>
-    </div>
-
-    <div>
-    <!-- Seção lateral: Detalhes adicionais da série -->
-    <section class="sidebar">
-        <div class="info-block">
-            <h4>Released Year</h4>
-            <p>2022</p>
-        </div>
-        <div class="info-block">
-            <h4>Available Languages</h4>
-            <div class="languages">
-                <span>English</span>
-                <span>Hindi</span>
-                <span>Tamil</span>
-                <span>Telugu</span>
-                <span>Kannada</span>
-            </div>
-        </div>
-        <!-- Outros blocos: Plataformas, Ratings, Genres, Director, Music -->
-    </section>
-    </div>
     </div>
 
     <!-- Seção de chamada para ação (Match) -->
     <section class="match-cta">
-            <div class="open-serie-match-description">
-                <div class="open-serie-match-description-text">
-                    <h2>Precisando de uma recomendação?</h2>
-                    <h2>Faça um Match!</h2>
-                </div>
-                <div>
-                    <button class="open-serie-match-button">Match!</button>
-                </div>
+        <div class="open-serie-match-description">
+            <div class="open-serie-match-description-text">
+                <h2>Precisando de uma recomendação?</h2>
+                <h2>Faça um Match!</h2>
             </div>
+            <div>
+                <button class="open-serie-match-button">Match!</button>
+            </div>
+        </div>
     </section>
 
     <!-- Início da FOOTER -->
@@ -291,7 +369,7 @@
         </div>
     </footer>
     <!-- Fim da FOOTER -->
-    
+
 </body>
 
 </html>
