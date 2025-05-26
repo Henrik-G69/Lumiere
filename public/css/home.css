@@ -11,26 +11,18 @@ body{
     box-sizing: inherit;
 }
 .movie-hero{
+    margin-top: 30px;
+}
+.movie-hero-film{
     width: 100%;
     height: 86vh;
-    position: relative;
     overflow: hidden; 
     display: flex;    
     align-items: center; 
     justify-content: center; 
+    position: absolute;
 }
 
-.movie-hero::before{
-    content: "";
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.30);
-    z-index: 1;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
 
 .movie-hero__image{
     object-fit: cover;
@@ -40,6 +32,7 @@ body{
     top: 0;
     left: 0;
     z-index: 0;
+    filter: brightness(75%);
 }
 
 .movie-hero__details{
@@ -116,3 +109,93 @@ body{
     cursor: pointer;
 }
 
+.movie-hero-film:nth-child(1){
+    pointer-events: auto;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+.movie-hero-film:nth-child(2),
+.movie-hero-film:nth-child(3){
+    opacity: 0;
+    pointer-events: none;
+}
+/*this is the movie that is currently appearing*/
+.movie-hero.next .films-list .movie-hero-film:nth-child(1) {
+    animation: showFilm 0.5s ease-in-out 1 forwards;
+}
+
+/*this is the movie that is about to appear*/
+.movie-hero.next .films-list .movie-hero-film:nth-child(2){
+    animation: nextFilm 0.5s ease-in-out 1 forwards;
+}
+/*quando o botão é apertado, este é o filme anterior*/
+.movie-hero.next .films-list .movie-hero-film:nth-child(3){
+    animation: disappearFilm 0.5s ease-in-out 1 forwards;
+}
+@keyframes showFilm{
+    from{
+        width: 80%;
+        filter: blur(30px);
+        transform: translate(100%, -25%);
+    }to{
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes nextFilm{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 0;
+        width: 200px;
+        transform: translateX(-100px);
+        filter: blur(30px);
+    }
+}
+
+@keyframes disappearFilm{
+    from{
+        opacity: 1;
+        filter: blur(0);
+    }
+    to {
+        width: 200px;
+        transform: translateX(-100px);
+        filter: blur(30px);
+        opacity: 0;
+    }
+}
+
+.movie-hero.prev .films-list .movie-hero-film:nth-child(1){
+    animation: showprevFilm 0.5s ease-in-out 1 forwards;
+}
+.movie-hero.prev .films-list .movie-hero-film:nth-child(3){
+    opacity: 0;
+}
+.movie-hero.prev .films-list .movie-hero-film:nth-child(2){
+    animation: disappearprevFilm 0.5s ease-in-out 1 forwards;
+}
+@keyframes showprevFilm{
+    from{
+        width: 200px;
+        transform: translateX(-100px);
+        filter: blur(30px);
+        opacity: 0;
+    }to{
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes disappearprevFilm{
+    from{
+        opacity: 1;
+    }to{
+        width: 80%;
+        filter: blur(30px);
+        transform: translate(100%, -25%) scale(1.2);
+        opacity: 0;
+        
+    }
+}
