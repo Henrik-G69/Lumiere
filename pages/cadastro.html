@@ -1,39 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+    <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumière - Criar Conta</title>
-    <link rel="stylesheet"  href="../public/css/cadastro.css">
-  </head>
+    <title>Criar conta</title>
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/footer.css">
+    <link rel="stylesheet" href="../public/css/header.css">
+    <link rel="stylesheet" href="../public/css/cadastro.css">
+</head>
+
 <body>
-    <div class="background-image"></div>
-    <div class="container">
-    <div class="logo-header">
-    <img src="../public/img/logo_text.png"  alt="Lumière Logo"  class="logo-image">
-       <nav>
-                <a href="#">Início</a>
-                <a href="#">Filmes e Séries</a>
-                <a href="#">Minhas Listas</a>
-                <a href="#">Reviews</a>
-                <a href="#">Match Game</a>
-                <a href="#">Qual é o Filme?</a>
-            </nav>
-     
-
-            <div class="user-actions">
-                <button class="icon-button" aria-label="Pesquisar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-                <button class="icon-button" aria-label="Modo Noturno"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
-                <button class="icon-button" aria-label="Perfil"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></button>
-            </div>
+    <!-- Início da HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
         </div>
+        <nav class="nav-main" aria-label="Navegação principal">
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Filmes & Séries</a></li>
+                <li><a href="#">Minhas Listas</a></li>
+                <li><a href="#">Reviews</a></li>
+                <li><a href="#">Match Game</a></li>
+                <li><a href="#">Qual é o Filme?</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-icon">
+                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
+            </button>
+            <button class="btn-icon">
+                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+            </button>
+            <button class="btn-icon dark-mode-toggle">
+                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
+            </button>
+        </div>
+    </header>
+    <!-- Fim da HEADER -->
 
-        <div class="form-container">
-            <h2>Criar uma conta</h2>
-            <p class="login-link">Já tem uma conta? <a href="#">Faça login</a></p>
+    <main class="signup-main" aria-labelledby="signupTitle">
+        <section class="signup-section">
+            <h2 id="signupTitle" class="signup-title">Criar uma conta</h2>
+            <p class="signup-login-link">
+                Já tem uma conta?
+                <a href="#" class="signup-login-link__anchor">Faça login</a>
+            </p>
 
-            <form id="signupForm">
-                <div class="form-row">
+            <form id="signupForm" class="signup-form" action="" method="post" novalidate>
+                <fieldset class="signup-form__row">
                     <div class="form-group">
                         <label for="firstName">Primeiro nome</label>
                         <input type="text" id="firstName" name="firstName" required>
@@ -44,83 +62,196 @@
                         <input type="text" id="lastName" name="lastName">
                         <div class="error-message" id="lastNameError"></div>
                     </div>
-                </div>
+                </fieldset>
 
                 <div class="form-group">
-                    <label for="nickname">Apelido <span class="label-hint">(É a forma como irão se referir a você no Lumière)</span></label>
+                    <label for="nickname">
+                        Apelido
+                        <span class="label-hint">(Como você aparecerá no Lumière)</span>
+                    </label>
                     <input type="text" id="nickname" name="nickname" required>
                     <div class="error-message" id="nicknameError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Endereço de Email</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                     <div class="error-message" id="emailError"></div>
                 </div>
 
-                <div class="form-group">
-                    <label>Qual o seu gênero? <span class="label-hint">(opcional)</span></label>
+                <fieldset class="form-group">
+                    <legend>Gênero <span class="label-hint">(opcional)</span></legend>
                     <div class="gender-options">
-                        <input type="radio" id="mulher" name="gender" value="mulher">
-                        <label for="mulher">Mulher</label>
-                        <input type="radio" id="homem" name="gender" value="homem">
-                        <label for="homem">Homem</label>
-                        <input type="radio" id="não-binário" name="gender" value="não-binário">
-                        <label for="não-binário">Não-binário</label>
+                        <div>
+                            <input type="radio" id="mulher" name="gender" value="mulher">
+                            <label for="mulher">Feminino</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="homem" name="gender" value="homem">
+                            <label for="homem">Masculino</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="nao-binario" name="gender" value="não-binário">
+                            <label for="nao-binario">Não-binário</label>
+                        </div>
                     </div>
-                </div>
+                </fieldset>
 
                 <div class="form-group">
-                    <label>Qual sua data de nascimento?</label>
+                    <label for="birthDay">Data de nascimento</label>
                     <div class="birthdate-selects">
-                        <div class="select-container">
-                            <select id="birthDay" name="birthDay" required>
-                                <option value="" disabled selected>Dia</option>
-                                </select>
-                        </div>
-                        <div class="select-container">
-                            <select id="birthMonth" name="birthMonth" required>
-                                <option value="" disabled selected>Mês</option>
-                                </select>
-                        </div>
-                        <div class="select-container">
-                            <select id="birthYear" name="birthYear" required>
-                                <option value="" disabled selected>Ano</option>
-                                </select>
-                        </div>
+                        <select id="birthDay" name="birthDay" required>
+                            <option value="" disabled selected>Dia</option>
+                            <!-- dias gerados via JS -->
+                        </select>
+                        <select id="birthMonth" name="birthMonth" required>
+                            <option value="" disabled selected>Mês</option>
+                            <!-- meses gerados via JS -->
+                        </select>
+                        <select id="birthYear" name="birthYear" required>
+                            <option value="" disabled selected>Ano</option>
+                            <!-- anos gerados via JS -->
+                        </select>
                     </div>
                     <div class="error-message" id="birthDateError"></div>
                 </div>
 
-
-                <div class="form-row">
+                <fieldset class="signup-form__row">
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" id="password" name="password" required>
                         <div class="error-message" id="passwordError"></div>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirme sua senha</label>
+                        <label for="confirmPassword">Confirme a senha</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required>
                         <div class="error-message" id="confirmPasswordError"></div>
                     </div>
-                </div>
-                <div class="form-group  checkbox-group">
-                <input type="checkbox"  id="termsCheckbox" name="terms" required>
-                <label for="termsCheckbox"      class="terms-label">
-                Concordo com os <a href="/termos-de-serviço" target="_blank"> Termos de Seriços </a> fornecidos e reconheço que li a <a href="/política-de-privacidade" target="_blank"> Política de privacidade </a>
-                </label>
-                <div class="error-message" id="termsCheckboxError"></div>
-                </div>
-                <button type="submit" class="submit-button">Registrar-se</button>
-            </form>
-            <p id="successMessage" class="success-message"></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
-</html>
-   
+                </fieldset>
 
-    
+                <div class="form-group form-group--terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms" class="terms-label">
+                        Concordo com os
+                        <a href="/termos-de-serviço" target="_blank">Termos de Serviço</a>
+                        e reconheço que li a
+                        <a href="/política-de-privacidade" target="_blank">Política de Privacidade</a>.
+                    </label>
+                    <div class="error-message" id="termsError"></div>
+                </div>
+                <button type="submit" class="btn-submit">Criar Conta</button>
+                <output id="successMessage" class="success-message"></output>
+            </form>
+        </section>
+    </main>
+    <!-- Início da FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
+
+            <!-- Colunas principais -->
+            <div class="footer__cols">
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Início</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Categorias</a></li>
+                        <li><a href="#">Jogos</a></li>
+                        <li><a href="#">Listas</a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Filmes</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Gêneros</a></li>
+                        <li><a href="#">Em alta</a></li>
+                        <li><a href="#">Novidades</a></li>
+                        <li><a href="#">Populares</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Séries</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Gêneros</a></li>
+                        <li><a href="#">Em alta</a></li>
+                        <li><a href="#">Novidades</a></li>
+                        <li><a href="#">Populares</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Jogos</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Match game</a></li>
+                        <li><a href="#">Qual é o filme?</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Reviews</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Meus reviews</a></li>
+                        <li><a href="#">Novos reviews</a></li>
+                        <li><a href="#">Reviews em alta</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Listas</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Minhas Listas</a></li>
+                        <li><a href="#">Nova Lista</a></li>
+                        <li><a href="#">Watchlist</a></li>
+                        <li><a href="#">Matchlist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Perfil</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Editar Perfil</a></li>
+                        <li><a href="#">Minhas Atividades</a></li>
+                        <li><a href="#">Favoritos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col footer__col--social">
+                    <h4 class="footer__title">Conecte-se conosco</h4>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Instagram">
+                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Colunas principais -->
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    ©2025 Lumière. Todos os direitos reservados.
+                </p>
+                <nav class="footer__policies" aria-label="Políticas do site">
+                    <a href="#">Termos de Uso</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Privacidade</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Cookies</a>
+                </nav>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Fim da FOOTER -->
+</body>
+
+</html>
