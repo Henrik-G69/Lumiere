@@ -13,34 +13,45 @@
 </head>
 
 <body>
-    <!-- Início da HEADER -->
+           <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li class="destaque"><a href="#">Filmes & Séries</a></li>
-                <li><a href="#">Minhas Listas</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Match Game</a></li>
-                <li><a href="#">Qual é o Filme?</a></li>
+                <li> <a class="nav-options" href="#">Início</a></li>
+                <li ><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li ><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li ><a class="nav-options" href="#">Reviews</a></li>
+                <li ><a class="nav-options" href="#">Match Game</a></li>
+                <li ><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
+            <!--search section-->
+            <div class="search-container">
+                <button class="btn-icon">
+                  <img src="../public/icons/Search.svg" alt="Search Icon">
+                </button>
+                <input
+                  type="text"
+                  id="search-input"
+                  class="search-input"
+                  placeholder="Pesquisar..."
+                  autocomplete="off"
+                />
+                <ul id="results-list" class="dropdown"></ul>
+              </div>
+              
+            <!--end of search section-->
             <button class="btn-icon">
-                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
-            </button>
-            <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
-            </button>
-            <button class="btn-icon dark-mode-toggle">
-                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
+                <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
+        <script src="header.js"></script>
     </header>
-    <!-- Fim da HEADER -->
+    <!-- Fim da HEADER --> 
 
 
 
