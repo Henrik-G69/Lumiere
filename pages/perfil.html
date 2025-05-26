@@ -2,14 +2,13 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Meta tags e título -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/footer.css">
-    <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/perfil.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/header.css" />
+    <link rel="stylesheet" href="../public/css/perfil.css" />
+    <link rel="stylesheet" href="perfil.css" />
 </head>
 
 <body>
@@ -42,112 +41,84 @@
     </header>
     <!-- Fim da HEADER -->
 
-    <!-- Início da FOOTER -->
-    <footer class="footer">
-        <div class="footer__inner">
-
-            <!-- Colunas principais -->
-            <div class="footer__cols">
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Início</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Jogos</a></li>
-                        <li><a href="#">Listas</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Filmes</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Séries</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Jogos</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Match game</a></li>
-                        <li><a href="#">Qual é o filme?</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Reviews</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Meus reviews</a></li>
-                        <li><a href="#">Novos reviews</a></li>
-                        <li><a href="#">Reviews em alta</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Listas</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Minhas Listas</a></li>
-                        <li><a href="#">Nova Lista</a></li>
-                        <li><a href="#">Watchlist</a></li>
-                        <li><a href="#">Matchlist</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Perfil</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Editar Perfil</a></li>
-                        <li><a href="#">Minhas Atividades</a></li>
-                        <li><a href="#">Favoritos</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col footer__col--social">
-                    <h4 class="footer__title">Conecte-se conosco</h4>
-                    <div class="footer__social">
-                        <a href="#" aria-label="Instagram">
-                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                        </a>
-                    </div>
-                </div>
-
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="../public/img/perfil.jpg"
+                    onerror="this.onerror=null;this.src='https://via.placeholder.com/100?text=%F0%9F%91%A5';"
+                    class="avatar">
+                <h2>Perfil</h2>
             </div>
-            <!-- /Colunas principais -->
-
-            <div class="footer__bottom">
-                <p class="footer__copyright">
-                    ©2025 Lumière. Todos os direitos reservados.
-                </p>
-                <nav class="footer__policies" aria-label="Políticas do site">
-                    <a href="#">Termos de Uso</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Privacidade</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Cookies</a>
-                </nav>
-            </div>
-
+            <ul class="menu">
+                <li class="tab-link active" data-tab="perfil">Perfil</li>
+                <li class="tab-link" data-tab="comunidades">Comunidades</li>
+                <li class="tab-link" data-tab="salvos">Itens salvos</li>
+                <li class="tab-link" data-tab="config">Configurações</li>
+            </ul>
         </div>
-    </footer>
-    <!-- Fim da FOOTER -->
+
+        <div class="main">
+            <div class="tab-content active" id="perfil">
+                <h1>Editar Perfil</h1>
+                <form id="profile-form">
+                    <input type="email" placeholder="Email" name="email" />
+                    <input type="text" placeholder="Nome" name="nome" />
+                    <input type="text" placeholder="Telefone Fixo" name="fixo" />
+                    <input type="text" placeholder="Celular" name="celular" />
+                    <input type="date" name="nascimento" />
+                    <select name="privacidade">
+                        <option value="privado">Perfil Privado</option>
+                        <option value="publico">Perfil Público</option>
+                    </select>
+                    <h2>Alterar Senha</h2>
+                    <input type="password" placeholder="Senha atual" name="senha_atual" />
+                    <input type="password" placeholder="Nova senha" name="nova_senha" />
+                    <input type="password" placeholder="Repetir nova senha" name="repetir_senha" />
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+
+            <div class="tab-content" id="comunidades">
+                <h1>Comunidades</h1>
+                <ul class="community-links">
+                    <li><a href="https://filmow.com" target="_blank">Filmow</a></li>
+                    <li><a href="https://www.letterboxd.com" target="_blank">Letterboxd</a></li>
+                    <li><a href="https://www.imdb.com" target="_blank">IMDb</a></li>
+                    <li><a href="https://www.themoviedb.org" target="_blank">TMDb</a></li>
+                </ul>
+            </div>
+
+            <div class="tab-content" id="salvos">
+                <h1>Filmes Salvos</h1>
+                <div class="movies-grid">
+                    <img src="https://image.tmdb.org/t/p/w300/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Filme 1" />
+                    <img src="https://image.tmdb.org/t/p/w300/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg" alt="Filme 2" />
+                    <img src="https://image.tmdb.org/t/p/w300/5GA3vV1aWWHTSDO5eno8V5zDo8r.jpg" alt="Filme 3" />
+                    <img src="https://image.tmdb.org/t/p/w300/b1Y8SUb12gPHCSSSNlbX4nB3IKy.jpg" alt="Filme 4" />
+                    <img src="https://image.tmdb.org/t/p/w300/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg" alt="Filme 5" />
+                    <img src="https://image.tmdb.org/t/p/w300/bGZn5RVzMMXju4ev7xbl1aLdXqq.jpg" alt="Filme 6" />
+                    <img src="../public/img/espetacular homem aranha.webp" alt="homem aranha" />
+                    <img src="../public/img/harry potter.webp" alt="harry potter" />
+                    <img src="../public/img/nocaute.jpg" alt="nocaute" />
+
+                </div>
+            </div>
+
+            <div class="tab-content" id="config">
+                <h1>Configurações</h1>
+                <div class="config">
+                    <label><input type="checkbox" /> Receber notificações</label>
+                    <label><input type="checkbox" /> Mostrar online</label>
+                    <label><input type="checkbox" /> Tema escuro</label>
+                    <label><input type="checkbox" /> Autoplay de vídeos</label>
+                    <label><input type="checkbox" /> Lembrar login</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../public/js/perfil.js"></script>
 </body>
+
+</html>
