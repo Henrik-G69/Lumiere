@@ -204,6 +204,114 @@ button {
     font-weight: bold;
 }
 
+
+/* DETAIL CARD */
+
+.detail-card {
+  background: #2e2e2e;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 360px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titulo-detalhes {
+    display: flex;
+    gap: 4px;
+}
+.icon-detalhes {
+  width: 16px;
+  height: 16px;
+}
+.section h3 {
+  font-size: 14px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section .value {
+  font-size: 20px;
+  font-weight: bold;
+}
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.buttons button {
+  background: #1f1f1f;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #eee;
+  cursor: pointer;
+}
+.providers {
+  display: flex;
+  gap: 12px;
+}
+.providers img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.ratings .grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.rating-box {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 12px;
+}
+.rating-box h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.stars {
+  font-size: 16px;
+  color: #e91e63; /* rosa, para destacar estrelas */
+}
+.stars span {
+  font-size: 14px;
+  margin-left: 4px;
+  color: #ccc;
+}
+.person-card {
+  display: flex;
+  align-items: center;
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 8px;
+  gap: 12px;
+}
+.person-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.person-card .info .name {
+  font-weight: bold;
+}
+.person-card .info .sub {
+  font-size: 12px;
+  color: #aaa;
+}
+
+
+
 /* MATCH CTA */
 .match-cta {
     background-image: url('../img/Container.png');
