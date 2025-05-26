@@ -19,34 +19,50 @@
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li class="destaque"><a href="#">Filmes & Séries</a></li>
-                <li><a href="#">Minhas Listas</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Match Game</a></li>
-                <li><a href="#">Qual é o Filme?</a></li>
+                <li> <a class="nav-options" href="#">Início</a></li>
+                <li ><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li ><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li ><a class="nav-options" href="#">Reviews</a></li>
+                <li ><a class="nav-options" href="#">Match Game</a></li>
+                <li ><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
+            <!--search section-->
+            <div class="search-container">
+                <button class="btn-icon">
+                  <img src="../public/icons/Search.svg" alt="Search Icon">
+                </button>
+                <input
+                  type="text"
+                  id="search-input"
+                  class="search-input"
+                  placeholder="Pesquisar..."
+                  autocomplete="off"
+                />
+                <ul id="results-list" class="dropdown"></ul>
+              </div>
+              
+            <!--end of search section-->
             <button class="btn-icon">
-                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
-            </button>
-            <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
-            </button>
-            <button class="btn-icon dark-mode-toggle">
-                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
+                <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
+        <script src="header.js"></script>
     </header>
-    <!-- Fim da HEADER -->
 
     <div class="movie-hero">
-        <img src="../public/img/American-Psycho.png" alt="hero-banner" class="movie-hero__image">
+        <!-- this contains the buttons-->
         <div class="movie-hero__container-nav-buttons">
             <button class="movie-hero__buttons" id="movie-hero__prev-button">&#8592;</button>
             <button class="movie-hero__buttons" id="movie-hero__next-button">&#8594;</button>
         </div>
+        <!-- this div contains the details and banner of
+         the carousel's first movie-->
+        <div class="films-list">
+
+        <div class="movie-hero-film" id="film-1">
+       <img src="../public/img/American-Psycho.png" class="movie-hero__image">
         <div class="movie-hero__details">
             <div class="movie-hero__title">
                 American Psycho
@@ -65,118 +81,158 @@
             <button class="movie-hero__addlist-button">+</button>
             <button class="movie-hero__like-button">&#128077;</button>
         </div>
-        <div></div>
-    </div>
-    <script src="home.js"></script>
+             </div>
 
-
-        <!-- Início da FOOTER -->
-    <footer class="footer">
-        <div class="footer__inner">
-
-            <!-- Colunas principais -->
-            <div class="footer__cols">
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Início</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Jogos</a></li>
-                        <li><a href="#">Listas</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
+        <div class="movie-hero-film" id="film-2">
+            <img src="../public/img/kill_bill.jpg" class="movie-hero__image">
+             <div class="movie-hero__details">
+                 <div class="movie-hero__title">
+                     Kill Bill
+                 </div>
+                 <div class="movie-hero__synopsis">
+                    A former assassin wakes from a coma four years after her jealous ex-lover Bill attempts to murder her on her wedding day. Fueled by an insatiable desire for revenge, she vows to get even with every person who contributed to the loss of her unborn child, her entire wedding party, and four years of her life. 
+                 </div>
+                 <div class="movie-hero__info-group">
+                     <div class="movie-hero__genres">Terror &#8226; Comedy</div>
+                     <div class="movie-hero__rating">General Rating: <span style="color: #FFE100;">★★★★★</span></div>
+                 </div>
+                 <button class="movie-hero__watch-button"><span style="font-weight: normal;">&#9654; </span>  Where to Watch</button>
+                 <button class="movie-hero__addlist-button">+</button>
+                 <button class="movie-hero__like-button">&#128077;</button>
+             </div>
+             </div>
+ 
+        <div class="movie-hero-film" id="film-3">
+        <img src="../public/img/sonic3.jpg" class="movie-hero__image">
+            <div class="movie-hero__details">
+                <div class="movie-hero__title">
+                    Sonic The Hedgehog 3 
                 </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Filmes</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
+                <div class="movie-hero__synopsis">
+                    Sonic, Knuckles, and Tails reunite against a powerful new adversary, Shadow, a mysterious villain with powers unlike anything they have faced before. With their abilities outmatched, Team Sonic must seek out an unlikely alliance.
                 </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Séries</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
+                <div class="movie-hero__info-group">
+                    <div class="movie-hero__genres">Terror &#8226; Comedy</div>
+                    <div class="movie-hero__rating">General Rating: <span style="color: #FFE100;">★★★★★</span></div>
                 </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Jogos</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Match game</a></li>
-                        <li><a href="#">Qual é o filme?</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Reviews</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Meus reviews</a></li>
-                        <li><a href="#">Novos reviews</a></li>
-                        <li><a href="#">Reviews em alta</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Listas</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Minhas Listas</a></li>
-                        <li><a href="#">Nova Lista</a></li>
-                        <li><a href="#">Watchlist</a></li>
-                        <li><a href="#">Matchlist</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Perfil</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Editar Perfil</a></li>
-                        <li><a href="#">Minhas Atividades</a></li>
-                        <li><a href="#">Favoritos</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col footer__col--social">
-                    <h4 class="footer__title">Conecte-se conosco</h4>
-                    <div class="footer__social">
-                        <a href="#" aria-label="Instagram">
-                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                        </a>
-                    </div>
-                </div>
-
+                <button class="movie-hero__watch-button"><span style="font-weight: normal;">&#9654; </span>  Where to Watch</button>
+                <button class="movie-hero__addlist-button">+</button>
+                <button class="movie-hero__like-button">&#128077;</button>
             </div>
-            <!-- /Colunas principais -->
-
-            <div class="footer__bottom">
-                <p class="footer__copyright">
-                    ©2025 Lumière. Todos os direitos reservados.
-                </p>
-                <nav class="footer__policies" aria-label="Políticas do site">
-                    <a href="#">Termos de Uso</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Privacidade</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Cookies</a>
-                </nav>
             </div>
-
         </div>
-    </footer>
-    <!-- Fim da FOOTER -->
+    </div>
+
+           <!-- Início da FOOTER -->
+           <footer class="footer">
+            <div class="footer__inner">
+    
+                <!-- Colunas principais -->
+                <div class="footer__cols">
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Início</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Categorias</a></li>
+                            <li><a href="#">Jogos</a></li>
+                            <li><a href="#">Listas</a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">Login</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Filmes</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Gêneros</a></li>
+                            <li><a href="#">Em alta</a></li>
+                            <li><a href="#">Novidades</a></li>
+                            <li><a href="#">Populares</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Séries</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Gêneros</a></li>
+                            <li><a href="#">Em alta</a></li>
+                            <li><a href="#">Novidades</a></li>
+                            <li><a href="#">Populares</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Jogos</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Match game</a></li>
+                            <li><a href="#">Qual é o filme?</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Reviews</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Meus reviews</a></li>
+                            <li><a href="#">Novos reviews</a></li>
+                            <li><a href="#">Reviews em alta</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Listas</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Minhas Listas</a></li>
+                            <li><a href="#">Nova Lista</a></li>
+                            <li><a href="#">Watchlist</a></li>
+                            <li><a href="#">Matchlist</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col">
+                        <h4 class="footer__title">Perfil</h4>
+                        <ul class="footer__list">
+                            <li><a href="#">Editar Perfil</a></li>
+                            <li><a href="#">Minhas Atividades</a></li>
+                            <li><a href="#">Favoritos</a></li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__col footer__col--social">
+                        <h4 class="footer__title">Conecte-se conosco</h4>
+                        <div class="footer__social">
+                            <a href="#" aria-label="Instagram">
+                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                            </a>
+                            <a href="#" aria-label="Facebook">
+                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                            </a>
+                            <a href="#" aria-label="Twitter">
+                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                            </a>
+                        </div>
+                    </div>
+    
+                </div>
+                <!-- /Colunas principais -->
+    
+                <div class="footer__bottom">
+                    <p class="footer__copyright">
+                        ©2025 Lumière. Todos os direitos reservados.
+                    </p>
+                    <nav class="footer__policies" aria-label="Políticas do site">
+                        <a href="#">Termos de Uso</a>
+                        <span class="footer__sep">|</span>
+                        <a href="#">Políticas de Privacidade</a>
+                        <span class="footer__sep">|</span>
+                        <a href="#">Políticas de Cookies</a>
+                    </nav>
+                </div>
+    
+            </div>
+        </footer>
+        <!-- Fim da FOOTER -->
+
+    <script src="../public/js/header.js"></script>
+    <script src="../public/js/home.js"></script>
 </body>
 </html>
