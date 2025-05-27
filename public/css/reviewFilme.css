@@ -1,0 +1,279 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: stretch;
+    padding: 40px;
+    gap: 40px;
+    width: 100%;
+    background-color: #1f1f1f;
+}
+
+/* BANNER */
+.banner {
+  position: relative;
+  height: 80vh;
+  gap: 20px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.banner-info {
+  position: absolute;
+  width: 100%;
+  top: 68%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+
+.banner-info h1 {
+  font-size: 3rem;
+}
+
+.banner-info p {
+  font-size: 1rem;
+  max-height: 48px;
+  overflow:hidden;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.banner-buttons .btn-play {
+  display: flex;
+  align-items: center;
+  background-color: #EB004B;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.container-details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+}
+
+/* DESCRIPTION */
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2e2e2e;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+/* REVIEWS */
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2e2e2e;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.btn-add-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB004B;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.review-item {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-ranking {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.user-ranking span {
+  color: #ffffff;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  background-color: #1f1f1f;
+  padding: 8px;
+  border-radius: 100px;
+  border: 1px solid #3F3F3F;
+}
+.rating-value {
+  margin-left: 8px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* Descrição do review */
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #cccccc;
+  margin: 0;
+}
+.review-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-check-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB004B;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+.cast-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cast-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    gap: 10px;
+}
+
+.arrow {
+  background-color: #EB004B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 100%;
+  border: 1px solid #3a3a3a;
+}
+
+.arrowLeft-icon
+.arrowRight-icon {
+  margin-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.arrowLeft-icon {
+  transform: rotate(180deg);
+}
+
+.stars-icon {
+  width: 16px;
+  height: 16px;
+  fill: #EB004B;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2E2E2E;
+  padding: 0.4rem;
+  border-radius: 6px;
+}
+
+.indicators {
+  display: flex;
+  gap: 2px;
+}
+
+.dot {
+  width: 1rem;
+  height: 0.25rem;
+  background: #3F3F3F;
+  border-radius: 1px;
+}
+
+.dot.active {
+  background: #EB004B;
+}
+
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
