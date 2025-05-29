@@ -221,6 +221,26 @@
   color: #cccccc;
 }
 
+/* Ações do card (botões de interação) */
+.card-actions {
+  margin: 16px 0;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #3F3F3F;
+  color: #EB004B;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.card-actions button:hover {
+  background: rgba(235, 0, 75, 0.1);
+}
+
 /* Descrição do review */
 .card-description {
   font-size: 0.95rem;
