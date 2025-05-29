@@ -1,0 +1,164 @@
+/* CSS */
+/* Container geral: duas colunas (filtros + resultados) */
+.search-page {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    background-color: #1f1f1f;
+    color: #fff;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* 1) SIDEBAR DE FILTROS */
+/* container geral da sidebar */
+.filter-panel {
+  width: 260px;
+  padding: 20px;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  color: #fff;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* 1) Busca */
+.filter-search {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.filter-search input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #3f3f3f;
+  border-radius: 4px;
+  background: #2e2e2e;
+  color: #fff;
+}
+.filter-search button {
+  padding: 8px 16px;
+  background-color: #EB004B;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* labels de grupo */
+.filter-group {
+  margin-bottom: 24px;
+}
+.filter-group label[for] {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* sliders */
+.filter-group input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: #3f3f3f;
+  outline: none;
+}
+.filter-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #EB004B;
+  cursor: pointer;
+  margin-top: -6px; /* centraliza o thumb no track */
+}
+.filter-group input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #EB004B;
+  cursor: pointer;
+}
+
+/* título de cada conjunto de pills */
+.group-title {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* container de pills */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* cada pill */
+.pills label {
+  position: relative;
+  cursor: pointer;
+}
+.pills input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.pills span {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 100px;
+  background: #2e2e2e;
+  color: #cccccc;
+  font-size: 0.85rem;
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+}
+/* estado “checked” vira botão ativo */
+.pills input:checked + span {
+  background: #EB004B;
+  color: #fff;
+}
+
+/* 2) ÁREA DE RESULTADOS */
+.results {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-summary {
+    margin: 0 0 16px;
+    font-size: 2rem;
+    color: #cccccc;
+}
+
+.search-summary strong {
+  color: #EB004B;
+}
+
+.movie-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start; /* alinhamento à esquerda */
+}
+
+/* cada poster “pede” 160px fixos e não cresce */
+.movie-item {
+  flex: 0 0 160px;
+}
+
+/* imagem respeitando o container do .movie-item */
+.movie-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
