@@ -90,6 +90,15 @@
 }
 
 /* REVIEWS */
+.container-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1f1f1f;
+}
+
 .reviews {
   display: flex;
   flex-direction: column;
@@ -113,19 +122,54 @@
 
 .review-list {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
 .review-item {
+  flex: 1 1 calc((100% - 20px) / 2);
+  min-width: 540px;
   background-color: #1f1f1f;
   border-radius: 8px;
   padding: 20px;
-  max-width: 100%;
-  width: 100%;
   box-sizing: border-box;
   color: #ffffff;
   margin: 0 auto;
+}
+
+.card-film-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card-film-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.card-film {
+    display: 0 1 10%;
+    max-width: auto;
+
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: auto;
+   min-width: 156px;
+}
+
+.banner-film {
+  width: 100%;
+  max-width: 10rem;
+  max-height: 12rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
 }
 
 .card-header {
