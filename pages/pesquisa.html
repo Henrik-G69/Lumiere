@@ -13,7 +13,7 @@
 </head>
 
 <body>
-            <!-- Início da HEADER -->
+    <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
@@ -21,53 +21,161 @@
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
                 <li> <a class="nav-options" href="#">Início</a></li>
-                <li ><a class="nav-options" href="#">Filmes & Séries</a></li>
-                <li ><a class="nav-options" href="#">Minhas Listas</a></li>
-                <li ><a class="nav-options" href="#">Reviews</a></li>
-                <li ><a class="nav-options" href="#">Match Game</a></li>
-                <li ><a class="nav-options" href="#">Qual é o Filme?</a></li>
+                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li><a class="nav-options" href="#">Reviews</a></li>
+                <li><a class="nav-options" href="#">Match Game</a></li>
+                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
             <!--search section-->
             <div class="search-container">
                 <button class="btn-icon">
-                  <img src="../public/icons/Search.svg" alt="Search Icon">
+                    <img src="../public/icons/Search.svg" alt="Search Icon">
                 </button>
-                <input
-                  type="text"
-                  id="search-input"
-                  class="search-input"
-                  placeholder="Pesquisar..."
-                  autocomplete="off"
-                />
+                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                    autocomplete="off" />
                 <ul id="results-list" class="dropdown"></ul>
-              </div>
-              
+            </div>
+
             <!--end of search section-->
             <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
+                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
         <script src="header.js"></script>
     </header>
-    <!-- Fim da HEADER --> 
+    <!-- Fim da HEADER -->
+
+    <div class="search-page">
+
+        <!-- 1) SIDEBAR DE FILTROS -->
+        <aside class="filter-panel">
+            <!-- 1) Busca -->
+            <div class="filter-search">
+                <input type="text" placeholder="Pesquisar..." />
+                <button type="button">Pesquisar</button>
+            </div>
+
+            <!-- 2) Sliders -->
+            <div class="filter-group">
+                <label for="price-range">Price Range</label>
+                <input type="range" id="price-range" min="0" max="100" />
+            </div>
+            <div class="filter-group">
+                <label for="discount">Discount</label>
+                <input type="range" id="discount" min="0" max="100" />
+            </div>
+
+            <!-- 3) Pills de filtro -->
+            <div class="filter-group">
+                <span class="group-title">Brand</span>
+                <div class="pills">
+                    <label>
+                        <input type="checkbox" name="brand" value="a" />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="brand" value="b" />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="brand" value="c" checked />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="brand" value="d" />
+                        <span>Name</span>
+                    </label>
+                    <!-- mais... -->
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <span class="group-title">Features</span>
+                <div class="pills">
+                    <label>
+                        <input type="checkbox" name="feature" value="a" />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="feature" value="b" checked />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="feature" value="c" />
+                        <span>Name</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="feature" value="d" />
+                        <span>Name</span>
+                    </label>
+                    <!-- mais... -->
+                </div>
+            </div>
+        </aside>
 
 
+        <!-- 2) RESULTADOS -->
+        <main class="results">
+            <p class="search-summary">
+                Exibindo resultados para: <strong>“Batman”</strong>
+            </p>
 
+            <div class="movie-catalog">
+                <!-- Repita este bloco para cada poster -->
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Batman: O Cavaleiro das Trevas">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Stranger Things">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <!-- ... -->
+            </div>
+        </main>
 
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-    
     <!-- Início da FOOTER -->
     <footer class="footer">
         <div class="footer__inner">
