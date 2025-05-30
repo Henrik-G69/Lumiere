@@ -2,20 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../public/icons/icons.svg">
-    <link rel="stylesheet" href="../public/css/teste.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componente de Avaliação por Estrelas - Solução em Funcionamento</title>
+  <link rel="stylesheet" href="../public/css/teste.css">
 </head>
 
 <body>
+  <div class="rating">
+    <div class="star-rating" style="--pct: 70%;">
+      <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
 
-  <div class="star-wrapper">
-      <!-- camada de fundo -->
-      <img class="stars-bg" src="../public/icons/FiveStars.svg" alt="Five Stars Background">
-      <!-- camada de preenchimento -->
-        <img class="stars-fill" src="../public/icons/FiveStars.svg" alt="Five Stars Fill">
+      <div class="stars-full-wrapper">
+        <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
+      </div>
+    </div>
+    <div class="rating-text">
+      <span class="rating-value">4.2</span>
+    </div>
   </div>
 </body>
 
