@@ -1,54 +1,53 @@
-/* stars.css */
-
-/* 1) Wrapper sets up custom properties and relative positioning */
-.star-wrapper {
-  --pct: 50%;                                  /* visible percentage */
-  --clip-right: calc(100% - var(--pct));       /* amount to hide on the right */
-  position: relative;
-  display: inline-block;                       /* shrink‐wrap to image width */
-  width: 200px;                                /* set to your SVG's natural width */
-  height: auto;
-  overflow: hidden;                            /* ensure any overflow is hidden */
+.rating {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 8px;
+  background-color: #1f1f1f;
+  padding: 8px;
+  border-radius: 100px;
+  border: 1px solid #3F3F3F;
+}
+.rating-value {
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f1f1;
 }
 
-/* 2) Base and fill images both fill the wrapper */
-.star-wrapper img {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-  pointer-events: none;
+.star-rating {
+    position: relative;
+    display: inline-block;
+    --pct: 0%; 
+    /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
+    width: auto; /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
+    height: 16px; /* Corresponde à altura das imagens das estrelas */
 }
 
-/* 3) Background stars (un‐colored) */
-.star-wrapper .stars-bg {
-  /* you can desaturate or dim them if you like: */
-  border: 1px solid blue; /* optional, for debugging */
-  filter: brightness(0.8) saturate(0.2);
+/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
+.star-rating img {
+    display: block; /* Evita problemas de espaçamento indesejado com imagens em linha */
+    width: auto;    /* Permite que as imagens escalem naturalmente com base na altura */
+    height: 16px;   /* Altura fixa para tamanho consistente das estrelas */
 }
 
-/* 4) Fill stars sit absolutely on top, clipped, and re-colored */
-.star-wrapper .stars-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* clip off the right side by the inverse of --pct */
-  clip-path: inset(0 var(--clip-right) 0 0);
-  
-  /* example “gold” tint via CSS filter—you can regenerate for other hues here: */
-  filter: brightness(0)
-          saturate(100%)
-          invert(61%)
-          sepia(87%)
-          saturate(427%)
-          hue-rotate(2deg)
-          brightness(100%)
-          contrast(101%);
-  
-  transition: clip-path 0.3s, filter 0.3s;   /* smooth hover animations, if desired */
+/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
+.stars-full-wrapper {
+    position: absolute; /* Posiciona este wrapper precisamente sobre.stars-bg */
+    top: 0;
+    left: 0;
+    height: 100%; /* Garante que o wrapper corresponda à altura das estrelas */
+    /* Este é o cerne da solução: controla a largura visível e recorta */
+    width: var(--pct); /* Define dinamicamente a largura da janela de recorte */
+    overflow: hidden; /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
 }
 
-/* 5) (Optional) Hover to reveal more or change color */
-.star-wrapper:hover {
-  --pct: 70%;    /* on hover, show 100% fill */
+/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
+.stars-full {
+    position: absolute; /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+    top: 0;
+    left: 0;
+    /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
+       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
+    width: 100%; /* Isso significa 100% da largura *total* da avaliação por estrelas */
 }
