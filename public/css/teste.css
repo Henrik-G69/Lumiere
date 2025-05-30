@@ -1,0 +1,54 @@
+/* stars.css */
+
+/* 1) Wrapper sets up custom properties and relative positioning */
+.star-wrapper {
+  --pct: 50%;                                  /* visible percentage */
+  --clip-right: calc(100% - var(--pct));       /* amount to hide on the right */
+  position: relative;
+  display: inline-block;                       /* shrink‐wrap to image width */
+  width: 200px;                                /* set to your SVG's natural width */
+  height: auto;
+  overflow: hidden;                            /* ensure any overflow is hidden */
+}
+
+/* 2) Base and fill images both fill the wrapper */
+.star-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 3) Background stars (un‐colored) */
+.star-wrapper .stars-bg {
+  /* you can desaturate or dim them if you like: */
+  border: 1px solid blue; /* optional, for debugging */
+  filter: brightness(0.8) saturate(0.2);
+}
+
+/* 4) Fill stars sit absolutely on top, clipped, and re-colored */
+.star-wrapper .stars-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* clip off the right side by the inverse of --pct */
+  clip-path: inset(0 var(--clip-right) 0 0);
+  
+  /* example “gold” tint via CSS filter—you can regenerate for other hues here: */
+  filter: brightness(0)
+          saturate(100%)
+          invert(61%)
+          sepia(87%)
+          saturate(427%)
+          hue-rotate(2deg)
+          brightness(100%)
+          contrast(101%);
+  
+  transition: clip-path 0.3s, filter 0.3s;   /* smooth hover animations, if desired */
+}
+
+/* 5) (Optional) Hover to reveal more or change color */
+.star-wrapper:hover {
+  --pct: 70%;    /* on hover, show 100% fill */
+}
