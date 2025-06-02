@@ -58,58 +58,123 @@
                 <button type="button">Pesquisar</button>
             </div>
 
+
+            <div class="filter-group">
+                <span class="group-title">Gêneros</span>
+                <div class="pills">
+                    <label>
+                        <input type="checkbox" name="feature" value="a" />
+                        <span>Filmes</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="feature" value="b" checked />
+                        <span>Series</span>
+                    </label>
+                </div>
+            </div>
+            
             <!-- 2) Sliders -->
             <div class="filter-group">
-                <label for="price-range">Price Range</label>
-                <input type="range" id="price-range" min="0" max="100" />
-            </div>
-            <div class="filter-group">
-                <label for="discount">Discount</label>
+                <label for="discount">Duração</label>
                 <input type="range" id="discount" min="0" max="100" />
             </div>
 
             <!-- 3) Pills de filtro -->
+
             <div class="filter-group">
-                <span class="group-title">Brand</span>
+                <span class="group-title">Nota</span>
                 <div class="pills">
                     <label>
                         <input type="checkbox" name="brand" value="a" />
-                        <span>Name</span>
+                        <span>
+                            <div class="star-rating" style="--pct: 100%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
                     </label>
                     <label>
-                        <input type="checkbox" name="brand" value="b" />
-                        <span>Name</span>
+                        <input type="checkbox" name="brand" value="a" />
+                        <span>
+                            <div class="star-rating" style="--pct: 80%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
                     </label>
                     <label>
-                        <input type="checkbox" name="brand" value="c" checked />
-                        <span>Name</span>
+                        <input type="checkbox" name="brand" value="a" />
+                        <span>
+                            <div class="star-rating" style="--pct: 60%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
                     </label>
                     <label>
-                        <input type="checkbox" name="brand" value="d" />
-                        <span>Name</span>
+                        <input type="checkbox" name="brand" value="a" />
+                        <span>
+                            <div class="star-rating" style="--pct: 40%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
                     </label>
-                    <!-- mais... -->
+                    <label>
+                        <input type="checkbox" name="brand" value="a" />
+                        <span>
+                            <div class="star-rating" style="--pct: 20%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
                 </div>
             </div>
 
             <div class="filter-group">
-                <span class="group-title">Features</span>
+                <span class="group-title">Gêneros</span>
                 <div class="pills">
                     <label>
                         <input type="checkbox" name="feature" value="a" />
-                        <span>Name</span>
+                        <span>Ação</span>
                     </label>
                     <label>
                         <input type="checkbox" name="feature" value="b" checked />
-                        <span>Name</span>
+                        <span>Aventura</span>
                     </label>
                     <label>
                         <input type="checkbox" name="feature" value="c" />
-                        <span>Name</span>
+                        <span>Animação</span>
                     </label>
                     <label>
                         <input type="checkbox" name="feature" value="d" />
-                        <span>Name</span>
+                        <span>Biografia</span>
                     </label>
                     <!-- mais... -->
                 </div>
