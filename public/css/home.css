@@ -1,201 +1,232 @@
-body{
-    margin: 0;
-    padding: 0;
-    background-color: #1C1C1C;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    box-sizing: border-box
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
-}
-.movie-hero{
+.hero-carousel {
+    position: relative;
+    height: 86vh;
+    overflow: hidden;
     margin-top: 30px;
 }
-.movie-hero-film{
-    width: 100%;
-    height: 86vh;
-    overflow: hidden; 
-    display: flex;    
-    align-items: center; 
-    justify-content: center; 
-    position: absolute;
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
 }
 
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* ALTERAÇÃO: Alinhar a caixa de detalhes à direita como na imagem de referência */
+    justify-content: flex-end;
+    padding-right: 5%;
+    /* Espaçamento da borda direita, ajuste conforme necessário */
+    color: white;
+}
 
-.movie-hero__image{
-    object-fit: cover;
+.carousel-image {
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    object-fit: cover;
+    filter: brightness(70%);
     z-index: 0;
-    filter: brightness(75%);
 }
 
-.movie-hero__details{
+.carousel-details {
     position: relative;
-    width: 90%;
-    max-width: 500px;
-    padding: 1.5rem;
-    z-index: 2;
-    left: 360px;
-    top: 50px;
-}
-.movie-hero__title{
-    font-size: 30px;
-    font-weight: bolder;
-    margin-bottom: 3px;
-}
-.movie-hero__synopsis{
-    width: 400px;
-    font-size: small;
-}
-.movie-hero__info-group{
-    font-size: small;
-    display: flex;
-    gap: 15px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    /* SUGESTÃO: Aumentar um pouco o max-width se o texto parecer muito espremido */
+    max-width: 550px;
+    /* Original: 500px. Ajuste conforme o visual desejado */
+    z-index: 1;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    /* Original: 0.4. Um pouco mais escuro pode ajudar na legibilidade */
+    border-radius: 12px;
+    /* SUGESTÃO: Adicionar um backdrop-filter para efeito de vidro fosco, se desejado (suporte variado em browsers) */
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
-.movie-hero__watch-button{
-    font-weight: bolder;
-    color: white;
+.carousel-details h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.synopsis {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.info-group {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.watch-button {
     background-color: #EB004B;
+    color: white;
+    padding: 10px 14px;
     border: none;
     border-radius: 6px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Adicionar transição suave */
 }
-.movie-hero__addlist-button,
-.movie-hero__like-button{
-    color: white;
-    font-weight: bolder;
-    margin-left: 5px;
-    padding: 0;
+
+.watch-button:hover {
+    background-color: #c8003f;
+    /* Tom mais escuro no hover */
+}
+
+.icon-button {
     width: 36px;
     height: 36px;
-    font-size: large;
-    background-color:
-     #1C1C1C;
-    border: 1px solid #303030 ;
+    background-color: #1C1C1C;
+    color: white;
+    font-size: 1.2rem;
+    border: 1px solid #303030;
     cursor: pointer;
-}
-.movie-hero__container-nav-buttons{
-    display: flex;
-    transform: translateY(-50%);
-    gap: 1220px;
-    justify-content: space-between;
+    border-radius: 6px;
+    display: inline-flex;
+    /* Para centralizar melhor o ícone */
     align-items: center;
-    top: 50%;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    /* Adicionar transição suave */
+}
+
+.icon-button:hover {
+  background-color: #303030;
+}
+
+.carousel-nav {
     position: absolute;
+    top: 50%;
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
     z-index: 2;
 }
-.movie-hero__buttons{
-    font-weight: bolder;
-    font-size: large;
-    color: white;
+
+.carousel-button {
     background-color: #EB004B;
+    color: white;
     border: none;
-    border-radius: 6px;
     width: 40px;
     height: 40px;
+    border-radius: 6px;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
-.movie-hero-film:nth-child(1){
-    pointer-events: auto;
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-.movie-hero-film:nth-child(2),
-.movie-hero-film:nth-child(3){
-    opacity: 0;
-    pointer-events: none;
-}
-/*this is the movie that is currently appearing*/
-.movie-hero.next .films-list .movie-hero-film:nth-child(1) {
-    animation: showFilm 0.5s ease-in-out 1 forwards;
+.arrow {
+  background-color: #EB004B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #3a3a3a;
 }
 
-/*this is the movie that is about to appear*/
-.movie-hero.next .films-list .movie-hero-film:nth-child(2){
-    animation: nextFilm 0.5s ease-in-out 1 forwards;
-}
-/*quando o botão é apertado, este é o filme anterior*/
-.movie-hero.next .films-list .movie-hero-film:nth-child(3){
-    animation: disappearFilm 0.5s ease-in-out 1 forwards;
-}
-@keyframes showFilm{
-    from{
-        width: 80%;
-        filter: blur(30px);
-        transform: translate(100%, -25%);
-    }to{
-        opacity: 1;
-        filter: blur(0);
-    }
+.arrowLeft-icon,
+.arrowRight-icon {
+  margin-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
 }
 
-@keyframes nextFilm{
-    from{
-        opacity: 0;
-    }to{
-        opacity: 0;
-        width: 200px;
-        transform: translateX(-100px);
-        filter: blur(30px);
-    }
+.arrowLeft-icon {
+  rotate: 180deg;
 }
 
-@keyframes disappearFilm{
-    from{
-        opacity: 1;
-        filter: blur(0);
-    }
-    to {
-        width: 200px;
-        transform: translateX(-100px);
-        filter: blur(30px);
-        opacity: 0;
-    }
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #f1f1f1;
 }
 
-.movie-hero.prev .films-list .movie-hero-film:nth-child(1){
-    animation: showprevFilm 0.5s ease-in-out 1 forwards;
-}
-.movie-hero.prev .films-list .movie-hero-film:nth-child(3){
-    opacity: 0;
-}
-.movie-hero.prev .films-list .movie-hero-film:nth-child(2){
-    animation: disappearprevFilm 0.5s ease-in-out 1 forwards;
-}
-@keyframes showprevFilm{
-    from{
-        width: 200px;
-        transform: translateX(-100px);
-        filter: blur(30px);
-        opacity: 0;
-    }to{
-        opacity: 1;
-        filter: blur(0);
-    }
+.rating-value {
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f1f1;
 }
 
-@keyframes disappearprevFilm{
-    from{
-        opacity: 1;
-    }to{
-        width: 80%;
-        filter: blur(30px);
-        transform: translate(100%, -25%) scale(1.2);
-        opacity: 0;
-        
-    }
+.star-rating {
+    position: relative;
+    display: inline-block;
+    --pct: 0%; 
+    /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
+    width: auto; /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
+    height: 16px; /* Corresponde à altura das imagens das estrelas */
+}
+
+/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
+.star-rating img {
+    display: block; /* Evita problemas de espaçamento indesejado com imagens em linha */
+    width: auto;    /* Permite que as imagens escalem naturalmente com base na altura */
+    height: 16px;   /* Altura fixa para tamanho consistente das estrelas */
+}
+
+/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
+.stars-full-wrapper {
+    position: absolute; /* Posiciona este wrapper precisamente sobre.stars-bg */
+    top: 0;
+    left: 0;
+    height: 100%; /* Garante que o wrapper corresponda à altura das estrelas */
+    /* Este é o cerne da solução: controla a largura visível e recorta */
+    width: var(--pct); /* Define dinamicamente a largura da janela de recorte */
+    overflow: hidden; /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+}
+
+/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
+.stars-full {
+    position: absolute; /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+    top: 0;
+    left: 0;
+    /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
+       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
+    width: 100%; /* Isso significa 100% da largura *total* da avaliação por estrelas */
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.banner-buttons .btn-play {
+  display: flex;
+  align-items: center;
+  background-color: #EB004B;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
 }
