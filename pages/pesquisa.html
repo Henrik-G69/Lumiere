@@ -58,36 +58,52 @@
                 <button type="button">Pesquisar</button>
             </div>
 
-
+            <!-- 2) Tipo de Conteúdo -->
             <div class="filter-group">
-                <span class="group-title">Gêneros</span>
+                <span class="group-title">Tipo</span>
                 <div class="pills">
                     <label>
-                        <input type="checkbox" name="feature" value="a" />
+                        <input type="checkbox" name="feature" value="filme"  checked />
                         <span>Filmes</span>
                     </label>
                     <label>
-                        <input type="checkbox" name="feature" value="b" checked />
-                        <span>Series</span>
+                        <input type="checkbox" name="feature" value="serie" checked />
+                        <span>Séries</span>
                     </label>
                 </div>
             </div>
-            
-            <!-- 2) Sliders -->
+
+            <!-- 3) Gêneros (Busca + Tags) -->
             <div class="filter-group">
-                <label for="discount">Duração</label>
-                <input type="range" id="discount" min="0" max="100" />
+                <span class="group-title">Gêneros</span>
+                <div class="genre-tag-input">
+                    <input type="text" id="genre-search" placeholder="Buscar gêneros..." />
+                    <div id="genre-tags" class="tag-container"></div>
+                </div>
             </div>
 
-            <!-- 3) Pills de filtro -->
+            <!-- 4) Ano de Lançamento -->
+            <div class="filter-group">
+                <label for="release-year">Ano de Lançamento</label>
+                <input type="range" id="release-year" min="1900" max="2025" step="1" />
+                <output id="year-output">2023</output>
+            </div>
 
+            <!-- 5) Duração -->
+            <div class="filter-group">
+                <label for="discount">Duração (minutos)</label>
+                <input type="range" id="discount" min="30" max="300" step="10" />
+                <output id="duration-output">120 min</output>
+            </div>
+
+            <!-- 6) Nota -->
             <div class="filter-group">
                 <span class="group-title">Nota</span>
                 <div class="pills">
                     <label>
-                        <input type="checkbox" name="brand" value="a" />
+                        <input type="checkbox" name="rating" value="1" />
                         <span>
-                            <div class="star-rating" style="--pct: 100%;">
+                            <div class="star-rating" style="--pct: 20%;">
                                 <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
                                     alt="Five Stars Background">
 
@@ -99,35 +115,7 @@
                         </span>
                     </label>
                     <label>
-                        <input type="checkbox" name="brand" value="a" />
-                        <span>
-                            <div class="star-rating" style="--pct: 80%;">
-                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                    alt="Five Stars Background">
-
-                                <div class="stars-full-wrapper">
-                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                        alt="Five Stars Fill">
-                                </div>
-                            </div>
-                        </span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="brand" value="a" />
-                        <span>
-                            <div class="star-rating" style="--pct: 60%;">
-                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                    alt="Five Stars Background">
-
-                                <div class="stars-full-wrapper">
-                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                        alt="Five Stars Fill">
-                                </div>
-                            </div>
-                        </span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="brand" value="a" />
+                        <input type="checkbox" name="rating" value="2" />
                         <span>
                             <div class="star-rating" style="--pct: 40%;">
                                 <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
@@ -141,9 +129,37 @@
                         </span>
                     </label>
                     <label>
-                        <input type="checkbox" name="brand" value="a" />
+                        <input type="checkbox" name="rating" value="3" />
                         <span>
-                            <div class="star-rating" style="--pct: 20%;">
+                            <div class="star-rating" style="--pct: 60%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="4" />
+                        <span>
+                            <div class="star-rating" style="--pct: 80%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="5" />
+                        <span>
+                            <div class="star-rating" style="--pct: 100%;">
                                 <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
                                     alt="Five Stars Background">
 
@@ -157,27 +173,15 @@
                 </div>
             </div>
 
+            <!-- 7) Ordenar por -->
             <div class="filter-group">
-                <span class="group-title">Gêneros</span>
-                <div class="pills">
-                    <label>
-                        <input type="checkbox" name="feature" value="a" />
-                        <span>Ação</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="feature" value="b" checked />
-                        <span>Aventura</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="feature" value="c" />
-                        <span>Animação</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="feature" value="d" />
-                        <span>Biografia</span>
-                    </label>
-                    <!-- mais... -->
-                </div>
+                <label for="sort">Ordenar por</label>
+                <select id="sort">
+                    <option value="relevance">Relevância</option>
+                    <option value="rating-desc">Nota (Maior)</option>
+                    <option value="release-desc">Mais Recentes</option>
+                    <option value="duration-asc">Duração (Curta → Longa)</option>
+                </select>
             </div>
         </aside>
 
