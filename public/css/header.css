@@ -1,6 +1,6 @@
 /* HEADER FIXO */
 .header {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -56,15 +56,6 @@
     background-color: #1f1f1f; 
     color: #EB004B;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.5);
-}
-
-/* DESTAQUE (botão especial) */
-.destaque {
-    background-color: #1f1f1f;
-    padding: 14px 24px;
-    border-radius: 8px;
-    color: #EB004B;
-    font-weight: 700;
 }
 
 /* AÇÕES DO HEADER */

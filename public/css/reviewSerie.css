@@ -1,0 +1,387 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    max-width: fit-content;
+    padding: 40px;
+    gap: 40px;
+    width: 100%;
+    background-color: #1f1f1f;
+}
+
+/* BANNER */
+.banner {
+  position: relative;
+  height: 80vh;
+  gap: 20px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+.banner-info {
+  position: absolute;
+  width: 100%;
+  top: 68%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+
+.banner-info h1 {
+  font-size: 3rem;
+}
+
+.banner-info p {
+  font-size: 1rem;
+  max-height: 48px;
+  overflow:hidden;
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.banner-buttons .btn-play {
+  display: flex;
+  align-items: center;
+  background-color: #EB004B;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.container-details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 30px;
+}
+
+/* DESCRIPTION */
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+  background-color: #2e2e2e;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+/* REVIEWS */
+.container-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1f1f1f;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #2e2e2e;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.btn-add-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB004B;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+}
+
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.review-item {
+  flex: 1 1 calc((100% - 20px) / 2);
+  min-width: 540px;
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+
+.card-film-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card-film-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.card-film {
+    display: 0 1 10%;
+    max-width: auto;
+
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: auto;
+   min-width: 156px;
+}
+
+.banner-film {
+  width: 100%;
+  max-width: 10rem;
+  max-height: 12rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-ranking {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.user-ranking span {
+  color: #ffffff;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 8px;
+  background-color: #1f1f1f;
+  padding: 8px;
+  border-radius: 100px;
+  border: 1px solid #3F3F3F;
+}
+.rating-value {
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.star-rating {
+    position: relative;
+    display: inline-block;
+    --pct: 0%; 
+    /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
+    width: auto; /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
+    height: 16px; /* Corresponde à altura das imagens das estrelas */
+}
+
+/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
+.star-rating img {
+    display: block; /* Evita problemas de espaçamento indesejado com imagens em linha */
+    width: auto;    /* Permite que as imagens escalem naturalmente com base na altura */
+    height: 16px;   /* Altura fixa para tamanho consistente das estrelas */
+}
+
+/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
+.stars-full-wrapper {
+    position: absolute; /* Posiciona este wrapper precisamente sobre.stars-bg */
+    top: 0;
+    left: 0;
+    height: 100%; /* Garante que o wrapper corresponda à altura das estrelas */
+    /* Este é o cerne da solução: controla a largura visível e recorta */
+    width: var(--pct); /* Define dinamicamente a largura da janela de recorte */
+    overflow: hidden; /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+}
+
+/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
+.stars-full {
+    position: absolute; /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+    top: 0;
+    left: 0;
+    /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
+       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
+    width: 100%; /* Isso significa 100% da largura *total* da avaliação por estrelas */
+}
+
+
+/* Ações do card (botões de interação) */
+.card-actions {
+  margin: 16px 0;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #3F3F3F;
+  color: #EB004B;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.card-actions button:hover {
+  background: rgba(235, 0, 75, 0.1);
+}
+
+/* Descrição do review */
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #cccccc;
+  margin: 0;
+}
+.review-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-check-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB004B;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+.cast-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cast-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    gap: 10px;
+}
+
+.arrow {
+  background-color: #EB004B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 100%;
+  border: 1px solid #3a3a3a;
+}
+
+.arrowLeft-icon
+.arrowRight-icon {
+  margin-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.arrowLeft-icon {
+  transform: rotate(180deg);
+}
+
+.stars-icon {
+  width: 16px;
+  height: 16px;
+  fill: #EB004B;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2E2E2E;
+  padding: 0.4rem;
+  border-radius: 6px;
+}
+
+.indicators {
+  display: flex;
+  gap: 2px;
+}
+
+.dot {
+  width: 1rem;
+  height: 0.25rem;
+  background: #3F3F3F;
+  border-radius: 1px;
+}
+
+.dot.active {
+  background: #EB004B;
+}
+
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
