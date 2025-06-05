@@ -20,25 +20,31 @@
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li class="destaque"><a href="#">Filmes & Séries</a></li>
-                <li><a href="#">Minhas Listas</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Match Game</a></li>
-                <li><a href="#">Qual é o Filme?</a></li>
+                <li> <a class="nav-options" href="#">Início</a></li>
+                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li><a class="nav-options" href="#">Reviews</a></li>
+                <li><a class="nav-options" href="#">Match Game</a></li>
+                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
-            <button class="btn-icon">
-                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
-            </button>
+            <!--search section-->
+            <div class="search-container">
+                <button class="btn-icon">
+                    <img src="../public/icons/Search.svg" alt="Search Icon">
+                </button>
+                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                    autocomplete="off" />
+                <ul id="results-list" class="dropdown"></ul>
+            </div>
+
+            <!--end of search section-->
             <button class="btn-icon">
                 <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
             </button>
-            <button class="btn-icon dark-mode-toggle">
-                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
-            </button>
         </div>
+        <script src="header.js"></script>
     </header>
     <!-- Fim da HEADER -->
 
@@ -69,107 +75,415 @@
     </section>
 
     <div class="container-details">
-    <!-- Seção de Temporadas e Episódios -->
-    <div>
-    <section class="episodes">
-        <h2>Seasons and Episodes</h2>
-        <div class="season">
-            <header class="season-header">
-                <h3>Season 01</h3>
-                <span>9 Episodes</span>
-                <button class="btn-toggle">⬇️</button>
-            </header>
-            <!-- Lista de episódios da temporada 1 -->
-            <ul class="episode-list">
-                <li class="episode-item">
-                    <span class="episode-number">01</span>
-                    <img src="thumbs/ep1.jpg" alt="Chapter One" class="episode-thumb">
-                    <div class="episode-details">
-                        <h4>Chapter One: The Vanishing of Will Byers</h4>
-                        <p>On his way from a friend’s house, young Will sees something terrifying. Nearby, a sinister
-                            secret lurks in the depths of a government lab.</p>
+        <!-- Seção de Temporadas e Episódios -->
+        <div class="main-content">
+            <section class="episodes">
+                <h2 class="season-title">Seasons and Episodes</h2>
+
+                <div class="season">
+                    <div class="season-header">
+                        <div class="season-div">
+                            <span class="season-count">Season 01</span>
+                            <span class="episode-count">9 Episodes</span>
+                        </div>
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Up Icon" class="arrowDown-icon">
+                        </button>
                     </div>
-                    <span class="episode-duration">49 min</span>
-                </li>
-                <!-- Repetir para cada episódio -->
-            </ul>
+                </div>
+
+                <div class="season expanded">
+                    <div class="season-header">
+                        <div class="season-div">
+                            <span class="season-count">Season 02</span>
+                            <span class="episode-count">8 Episodes</span>
+                        </div>
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Down Icon" class="arrowUp-icon">
+                        </button>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode-number">01</div>
+                        <img src="../public/img/sonic3.jpg" alt="Episode thumbnail" class="episode-thumbnail">
+                        <div class="episode-info">
+                            <div class="episode-title-duration">
+                                <h3>Chapter One: The Vanishing of Will Byers</h3>
+                                <div class="duration">
+                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon"> 49 min
+                                </div>
+                            </div>
+                            <p>On his way from a friend's house, young Will sees something terrifying. Nearby, a
+                                sinister secret lurks in the depths of a government lab.</p>
+                        </div>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode-number">02</div>
+                        <img src="../public/img/sonic3.jpg" alt="Episode thumbnail" class="episode-thumbnail">
+                        <div class="episode-info">
+                            <div class="episode-title-duration">
+                                <h3>Chapter Two: The Weirdo on Maple Street</h3>
+                                <div class="duration">
+                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon"> 56 min
+                                </div>
+                            </div>
+                            <p>Lucas, Mike and Dustin try to talk to the girl they found in the woods. Hopper questions
+                                an anxious Joyce about an unsettling phone call.</p>
+                        </div>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode-number">03</div>
+                        <img src="../public/img/sonic3.jpg" alt="Episode thumbnail" class="episode-thumbnail">
+                        <div class="episode-info">
+                            <div class="episode-title-duration">
+                                <h3>Chapter Three: Holly, Jolly</h3>
+                                <div class="duration">
+                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon"> 52 min
+                                </div>
+                            </div>
+                            <p>An increasingly concerned Nancy looks for Barb and finds out what Jonathan's been up to.
+                                Joyce is convinced Will is trying to talk to her.</p>
+                        </div>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode-number">04</div>
+                        <img src="../public/img/sonic3.jpg" alt="Episode thumbnail" class="episode-thumbnail">
+                        <div class="episode-info">
+                            <div class="episode-title-duration">
+                                <h3>Chapter Four: The Body</h3>
+                                <div class="duration">
+                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon"> 51 min
+                                </div>
+                            </div>
+                            <p>Refusing to believe Will is dead, Joyce tries to connect with her son. The boys give
+                                Eleven a makeover..</p>
+                        </div>
+                    </div>
+
+                    <div class="episode">
+                        <div class="episode-number">05</div>
+                        <img src="../public/img/sonic3.jpg" alt="Episode thumbnail" class="episode-thumbnail">
+                        <div class="episode-info">
+                            <div class="episode-title-duration">
+                                <h3>Chapter Five: The Flea and the Acrobat</h3>
+                                <div class="duration">
+                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon"> 53 min
+                                </div>
+                            </div>
+                            <p>Hopper breaks into the lab while Nancy and Jonathan confront the force that took Will.
+                                The boys ask Mr. Clarke how to travel to another dimension.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="season">
+                    <div class="season-header">
+                        <div class="season-div">
+                            <span class="season-count">Season 03</span>
+                            <span class="episode-count">7 Episodes</span>
+                        </div>
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Up Icon" class="arrowDown-icon">
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Descrição expandida -->
+            <section class="description">
+                <h2>Description</h2>
+                <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
+                    supernatural forces and one strange little girl.</p>
+            </section>
+
+            <!-- Seção de Elenco -->
+            <section class="cast">
+
+                <div class="cast-list">
+                    <h2>Cast</h2>
+                    <div class="buttons-arrows">
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                        </button>
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                        </button>
+                    </div>
+                </div>
+                <!-- Cada .cast-member representa um ator/atriz -->
+                <div class="cast-member">
+                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                    <img src="../public/img/AtorST3.png" alt="Ator 2">
+                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                </div>
+            </section>
+
+            <!-- Seção de Reviews -->
+            <section class="reviews">
+                <div class="cast-list">
+                    <h2>Reviews</h2>
+                    <button class="btn-add-review">
+                        <img src="../public/icons/PlusIcon.svg" alt="Add Icon" class="plus-icon">
+                        Add Your Review
+                    </button>
+                </div>
+                <div class="review-list">
+                    <article class="review-item">
+                        <div class="card-header">
+                            <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
+                            <div class="user-info">
+                                <h3 class="user-name">Aniket Roy</h3>
+                                <p class="user-ranking">
+                                    83° ranking <span>(540 XP)</span>
+                                </p>
+                            </div>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button type="button">Season 1</button>
+                            <button type="button">Episode 7</button>
+                        </div>
+
+                        <p class="card-description">
+                            This movie was recommended to me by a very dear friend who went for the movie by
+                            herself. I
+                            went to the cinemas to watch but couldn’t watch it.
+                        </p>
+                    </article>
+                    <article class="review-item">
+                        <div class="card-header">
+                            <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
+                            <div class="user-info">
+                                <h3 class="user-name">Aniket Roy</h3>
+                                <p class="user-ranking">
+                                    83° ranking <span>(540 XP)</span>
+                                </p>
+                            </div>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-actions">
+                            <button type="button">Season 1</button>
+                            <button type="button">Episode 7</button>
+                        </div>
+
+                        <p class="card-description">
+                            This movie was recommended to me by a very dear friend who went for the movie by herself. I
+                            went to the cinemas to watch but couldn’t watch it.
+                        </p>
+                    </article>
+                    </article>
+                </div>
+                <div class="review-actions">
+                    <button class="btn-check-reviews">Check Reviews
+                        <img src="../public/icons/Arrow.svg" alt="Arrow Icon" class="arrow-icon">
+                    </button>
+                </div>
+            </section>
         </div>
-        <!-- Repetir blocos .season para demais temporadas -->
-    </section>
 
-    <!-- Seção de Descrição expandida -->
-    <section class="description">
-        <h2>Description</h2>
-        <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-            supernatural forces and one strange little girl.</p>
-    </section>
+        <div>
+            <!-- Seção lateral: Detalhes adicionais da série -->
+            <div class="detail-card">
+                <!-- Released Year -->
+                <section class="section year">
+                    <div class="titulo-detalhes"><img src="../public/icons/Calendario.svg" alt="Calendario"
+                            Class="icon-detalhes">
+                        <h3> Released Year</h3>
+                    </div>
+                    <p class="value">2022</p>
+                </section>
 
-    <!-- Seção de Elenco -->
-    <section class="cast">
-        <h2>Cast</h2>
-        <div class="cast-list">
-            <!-- Cada .cast-member representa um ator/atriz -->
-            <div class="cast-member">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtorST3.png" alt="Ator 2">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                <img src="../public/img/AtrizST3.png" alt="Ator 1">
+                <!-- Available Languages -->
+                <section class="section languages">
+                    <div class="titulo-detalhes"><img src="../public/icons/LinguagemIcon.svg" alt="Linguagem"
+                            Class="icon-detalhes">
+                        <h3> Available Languages</h3>
+                    </div>
+                    <div class="buttons">
+                        <button>English</button>
+                        <button>Hindi</button>
+                        <button>Tamil</button>
+                        <button>Telegu</button>
+                        <button>Kannada</button>
+                    </div>
+                </section>
+
+                <!-- Where to Watch -->
+                <section class="section watch">
+                    <div class="titulo-detalhes"><img src="../public/icons/Eye.svg" alt="Olho" Class="icon-detalhes">
+                        <h3> Here to Watch</h3>
+                    </div>
+                    <div class="providers">
+                        <img src="../public/img/Netflix.png" alt="Netflix">
+                        <img src="../public/img/Netflix.png" alt="Max">
+                        <img src="../public/img/Netflix.png" alt="Prime Video">
+                        <img src="../public/img/Netflix.png" alt="Globo Play">
+                        <img src="../public/img/Netflix.png" alt="Disney+">
+                    </div>
+                </section>
+
+                <!-- Ratings -->
+                <section class="section ratings">
+                    <div class="titulo-detalhes"> <img src="../public/icons/EstrelaIcon.svg" alt="Estrela"
+                            Class="icon-detalhes">
+                        <h3> Ratings</h3>
+                    </div>
+                    <div class="grid-2x2">
+                        <div class="rating-box">
+                            <h4>IMDb</h4>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>RottenTomatos</h4>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>Lumérie</h4>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rating-box">
+                            <h4>Metacritic</h4>
+                            <div class="rating">
+                                <div class="star-rating" style="--pct: 70%;">
+                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        alt="Five Stars Background">
+
+                                    <div class="stars-full-wrapper">
+                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            alt="Five Stars Fill">
+                                    </div>
+                                </div>
+                                <div class="rating-text">
+                                    <span class="rating-value">4.2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Genres -->
+                <section class="section genres">
+                    <div class="titulo-detalhes"><img src="../public/icons/GeneroIcon.svg" alt="Genero"
+                            Class="icon-detalhes">
+                        <h3> Genres</h3>
+                    </div>
+                    <div class="buttons">
+                        <button>Sci-Fi TV</button>
+                        <button>Teen TV Shows</button>
+                        <button>US TV Shows</button>
+                    </div>
+                </section>
+
+                <!-- Director -->
+                <section class="section person">
+                    <h3>Director</h3>
+                    <div class="person-card">
+                        <img src="../public/img/AtorST3.png" alt="The Duffer Brothers">
+                        <div class="info">
+                            <p class="name">The Duffer Brothers</p>
+                            <p class="sub">From USA</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Music -->
+                <section class="section person">
+                    <h3>Music</h3>
+                    <div class="person-card">
+                        <img src="../public/img/AtorST3.png" alt="Kyle Dixon">
+                        <div class="info">
+                            <p class="name">Kyle Dixon</p>
+                            <p class="sub">From USA</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <!-- Adicionar setas de navegação -->
         </div>
-    </section>
-
-    <!-- Seção de Reviews -->
-    <section class="reviews">
-        <h2>Reviews</h2>
-        <button class="btn-add-review">+ Add Your Review</button>
-        <div class="review-list">
-            <article class="review-item">
-                <h3>Aniket Roy <span>4.5★</span></h3>
-                <p>This movie was recommended to me by a very dear friend who went for the movie by herself. I went to
-                    the cinemas to watch but had a houseful board so couldn’t watch it.</p>
-            </article>
-            <!-- Repetir .review-item -->
-        </div>
-        <button class="btn-check-reviews">Check Reviews →</button>
-    </section>
-    </div>
-
-    <div>
-    <!-- Seção lateral: Detalhes adicionais da série -->
-    <section class="sidebar">
-        <div class="info-block">
-            <h4>Released Year</h4>
-            <p>2022</p>
-        </div>
-        <div class="info-block">
-            <h4>Available Languages</h4>
-            <div class="languages">
-                <span>English</span>
-                <span>Hindi</span>
-                <span>Tamil</span>
-                <span>Telugu</span>
-                <span>Kannada</span>
-            </div>
-        </div>
-        <!-- Outros blocos: Plataformas, Ratings, Genres, Director, Music -->
-    </section>
-    </div>
     </div>
 
     <!-- Seção de chamada para ação (Match) -->
     <section class="match-cta">
-            <div class="open-serie-match-description">
-                <div class="open-serie-match-description-text">
-                    <h2>Precisando de uma recomendação?</h2>
-                    <h2>Faça um Match!</h2>
-                </div>
-                <div>
-                    <button class="open-serie-match-button">Match!</button>
-                </div>
+        <div class="open-serie-match-description">
+            <div class="open-serie-match-description-text">
+                <h2>Precisando de uma recomendação?</h2>
+                <h2>Faça um Match!</h2>
             </div>
+            <div>
+                <button class="open-serie-match-button">Match!</button>
+            </div>
+        </div>
     </section>
 
     <!-- Início da FOOTER -->
@@ -280,7 +594,7 @@
         </div>
     </footer>
     <!-- Fim da FOOTER -->
-    
+
 </body>
 
 </html>

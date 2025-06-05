@@ -20,43 +20,231 @@
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li class="destaque"><a href="#">Filmes & Séries</a></li>
-                <li><a href="#">Minhas Listas</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">Match Game</a></li>
-                <li><a href="#">Qual é o Filme?</a></li>
+                <li> <a class="nav-options" href="#">Início</a></li>
+                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
+                <li><a class="nav-options" href="#">Minhas Listas</a></li>
+                <li><a class="nav-options" href="#">Reviews</a></li>
+                <li><a class="nav-options" href="#">Match Game</a></li>
+                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
             </ul>
         </nav>
         <div class="header-actions">
-            <button class="btn-icon">
-                <img src="../public/icons/Search.svg" alt="Search Icon" class="search-icon">
-            </button>
+            <!--search section-->
+            <div class="search-container">
+                <button class="btn-icon">
+                    <img src="../public/icons/Search.svg" alt="Search Icon">
+                </button>
+                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                    autocomplete="off" />
+                <ul id="results-list" class="dropdown"></ul>
+            </div>
+
+            <!--end of search section-->
             <button class="btn-icon">
                 <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
             </button>
-            <button class="btn-icon dark-mode-toggle">
-                <img src="../public/icons/Moon.svg" alt="Dark Mode Icon" class="dark-mode-icon">
-            </button>
         </div>
+        <script src="header.js"></script>
     </header>
     <!-- Fim da HEADER -->
 
+    <div class="search-page">
+
+        <!-- 1) SIDEBAR DE FILTROS -->
+        <aside class="filter-panel">
+            <!-- 1) Busca -->
+            <div class="filter-search">
+                <input type="text" placeholder="Pesquisar..." />
+                <button type="button">Pesquisar</button>
+            </div>
+
+            <!-- 2) Tipo de Conteúdo -->
+            <div class="filter-group">
+                <span class="group-title">Tipo</span>
+                <div class="pills">
+                    <label>
+                        <input type="checkbox" name="feature" value="filme"  checked />
+                        <span>Filmes</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="feature" value="serie" checked />
+                        <span>Séries</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3) Gêneros (Busca + Tags) -->
+            <div class="filter-group">
+                <span class="group-title">Gêneros</span>
+                <div class="genre-tag-input">
+                    <input type="text" id="genre-search" placeholder="Buscar gêneros..." />
+                    <div id="genre-tags" class="tag-container"></div>
+                </div>
+            </div>
+
+            <!-- 4) Ano de Lançamento -->
+            <div class="filter-group">
+                <label for="release-year">Ano de Lançamento</label>
+                <input type="range" id="release-year" min="1900" max="2025" step="1" />
+                <output id="year-output">2023</output>
+            </div>
+
+            <!-- 5) Duração -->
+            <div class="filter-group">
+                <label for="discount">Duração (minutos)</label>
+                <input type="range" id="discount" min="30" max="300" step="10" />
+                <output id="duration-output">120 min</output>
+            </div>
+
+            <!-- 6) Nota -->
+            <div class="filter-group">
+                <span class="group-title">Nota</span>
+                <div class="pills">
+                    <label>
+                        <input type="checkbox" name="rating" value="1" />
+                        <span>
+                            <div class="star-rating" style="--pct: 20%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="2" />
+                        <span>
+                            <div class="star-rating" style="--pct: 40%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="3" />
+                        <span>
+                            <div class="star-rating" style="--pct: 60%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="4" />
+                        <span>
+                            <div class="star-rating" style="--pct: 80%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rating" value="5" />
+                        <span>
+                            <div class="star-rating" style="--pct: 100%;">
+                                <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                    alt="Five Stars Background">
+
+                                <div class="stars-full-wrapper">
+                                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                        alt="Five Stars Fill">
+                                </div>
+                            </div>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 7) Ordenar por -->
+            <div class="filter-group">
+                <label for="sort">Ordenar por</label>
+                <select id="sort">
+                    <option value="relevance">Relevância</option>
+                    <option value="rating-desc">Nota (Maior)</option>
+                    <option value="release-desc">Mais Recentes</option>
+                    <option value="duration-asc">Duração (Curta → Longa)</option>
+                </select>
+            </div>
+        </aside>
 
 
+        <!-- 2) RESULTADOS -->
+        <main class="results">
+            <p class="search-summary">
+                Exibindo resultados para: <strong>“Batman”</strong>
+            </p>
 
+            <div class="movie-catalog">
+                <!-- Repita este bloco para cada poster -->
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Batman: O Cavaleiro das Trevas">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Stranger Things">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <div class="movie-item">
+                    <img src="../public/img/batman.jpg" alt="Outro Filme">
+                </div>
+                <!-- ... -->
+            </div>
+        </main>
 
+    </div>
 
-
-
-
-
-
-
-
-
-
-    
     <!-- Início da FOOTER -->
     <footer class="footer">
         <div class="footer__inner">
