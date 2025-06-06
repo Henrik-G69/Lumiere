@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head>  
     <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,7 @@
                 <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
-        <script src="header.js"></script>
+        <script src="../public/js/header.js"></script>
     </header>
     <!-- Fim da HEADER --> 
 
@@ -58,7 +58,7 @@
             <h2 id="signupTitle" class="signup-title">Criar uma conta</h2>
             <p class="signup-login-link">
                 Já tem uma conta?
-                <a href="#" class="signup-login-link__anchor">Faça login</a>
+                <a href="./login.html" class="signup-login-link__anchor">Faça login</a>
             </p>
 
             <form id="signupForm" class="signup-form" action="" method="post" novalidate>
@@ -110,47 +110,52 @@
 
                 <div class="form-group">
                     <label for="birthDay">Data de nascimento</label>
-                    <div class="birthdate-selects">
-                        <select id="birthDay" name="birthDay" required>
-                            <option value="" disabled selected>Dia</option>
-                            <!-- dias gerados via JS -->
-                        </select>
-                        <select id="birthMonth" name="birthMonth" required>
-                            <option value="" disabled selected>Mês</option>
-                            <!-- meses gerados via JS -->
-                        </select>
-                        <select id="birthYear" name="birthYear" required>
-                            <option value="" disabled selected>Ano</option>
-                            <!-- anos gerados via JS -->
-                        </select>
+                        <div class="birthdate-selects">
+                            <select id="birthDay" name="birthDay" required>
+                                </select>
+                            <select id="birthMonth" name="birthMonth" required>
+                                </select>
+                            <select id="birthYear" name="birthYear" required>
+                                </select>
+                        </div>
                     </div>
                     <div class="error-message" id="birthDateError"></div>
                 </div>
-
                 <fieldset class="signup-form__row">
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" name="password" required>
+                        <div class="password-input-wrapper"> <input type="password" id="password" name="password" required>
+                            <button type="button" class="toggle-password" aria-label="Ver senha">
+                                <img src="../public/icons/EyeSlashFill.svg" alt="Mostrar/Esconder Senha" class="toggle-password__icon">
+                            </button>
+                        </div>
                         <div class="error-message" id="passwordError"></div>
                     </div>
                     <div class="form-group">
                         <label for="confirmPassword">Confirme a senha</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <div class="password-input-wrapper"> <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <button type="button" class="toggle-password" aria-label="Ver senha">
+                                <img src="../public/icons/EyeSlashFill.svg" alt="Mostrar/Esconder Senha" class="toggle-password__icon">
+                            </button>
+                        </div>
                         <div class="error-message" id="confirmPasswordError"></div>
                     </div>
                 </fieldset>
 
                 <div class="form-group form-group--terms">
-                    <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms" class="terms-label">
-                        Concordo com os
-                        <a href="/termos-de-serviço" target="_blank">Termos de Serviço</a>
-                        e reconheço que li a
-                        <a href="/política-de-privacidade" target="_blank">Política de Privacidade</a>.
-                    </label>
+                    <div class="terms-content-wrapper">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms" class="terms-label">
+                            Concordo com os
+                            <a href="cadastro.html" target="_blank">Termos de Serviço</a>
+                            e reconheço que li a
+                            <a href="cadastro.html" target="_blank">Política de Privacidade</a>.
+                        </label>
+                    </div>
                     <div class="error-message" id="termsError"></div>
                 </div>
-                <button type="submit" class="btn-submit">Criar Conta</button>
+
+                <button id="btnSubmit" type="submit" class="btn-submit">Criar Conta</button>
                 <output id="successMessage" class="success-message"></output>
             </form>
         </section>
@@ -259,10 +264,11 @@
                     <a href="#">Políticas de Cookies</a>
                 </nav>
             </div>
-
+            
         </div>
     </footer>
     <!-- Fim da FOOTER -->
+    <script src="../public/js/cadastro.js"></script>
 </body>
 
 </html>
