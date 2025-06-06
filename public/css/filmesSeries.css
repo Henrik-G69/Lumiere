@@ -1,0 +1,791 @@
+.containers__separator {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem 0;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.hero-carousel {
+  position: relative;
+  height: 85vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* ALTERAÇÃO: Alinhar a caixa de detalhes à direita como na imagem de referência */
+  justify-content: flex-end;
+  color: white;
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+  z-index: 0;
+  display: block;
+
+}
+
+
+/* Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+
+}
+
+.carousel-details {
+  position: relative;
+  /* SUGESTÃO: Aumentar um pouco o max-width se o texto parecer muito espremido */
+  max-width: 550px;
+  /* Original: 500px. Ajuste conforme o visual desejado */
+  z-index: 1;
+  padding: 2rem;
+  border-radius: 12px;
+  right: 10vh;
+}
+
+.carousel-details h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.synopsis {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.info-group {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.watch-button {
+  background-color: #EB004B;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* Adicionar transição suave */
+}
+
+.watch-button:hover {
+  background-color: #c8003f;
+  /* Tom mais escuro no hover */
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  background-color: #1C1C1C;
+  color: white;
+  font-size: 1.2rem;
+  border: 1px solid #303030;
+  cursor: pointer;
+  border-radius: 6px;
+  display: inline-flex;
+  /* Para centralizar melhor o ícone */
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  /* Adicionar transição suave */
+}
+
+.icon-button:hover {
+  background-color: #303030;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.carousel-button {
+  background-color: #EB004B;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.arrow-hero {
+  background-color: #EB004B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.arrow {
+  background-color: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.arrowLeft-icon,
+.arrowRight-icon {
+  margin-top: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.arrowLeft-icon {
+  rotate: 180deg;
+}
+
+.rating-hero {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #f1f1f1;
+}
+
+.rating-value-hero {
+  margin-left: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.star-rating-hero {
+  position: relative;
+  display: inline-block;
+  --pct: 0%;
+  /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
+  width: auto;
+  /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
+  height: 16px;
+  /* Corresponde à altura das imagens das estrelas */
+}
+
+/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
+.star-rating-hero img {
+  display: block;
+  /* Evita problemas de espaçamento indesejado com imagens em linha */
+  width: auto;
+  /* Permite que as imagens escalem naturalmente com base na altura */
+  height: 16px;
+  /* Altura fixa para tamanho consistente das estrelas */
+}
+
+.star-rating {
+  position: relative;
+  display: inline-block;
+  --pct: 0%;
+  /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
+  width: auto;
+  /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
+  height: 12px;
+  /* Corresponde à altura das imagens das estrelas */
+}
+
+/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
+.star-rating img {
+  display: block;
+  /* Evita problemas de espaçamento indesejado com imagens em linha */
+  width: auto;
+  /* Permite que as imagens escalem naturalmente com base na altura */
+  height: 12px;
+  /* Altura fixa para tamanho consistente das estrelas */
+}
+
+/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
+.stars-full-wrapper {
+  position: absolute;
+  /* Posiciona este wrapper precisamente sobre.stars-bg */
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Garante que o wrapper corresponda à altura das estrelas */
+  /* Este é o cerne da solução: controla a largura visível e recorta */
+  width: var(--pct);
+  /* Define dinamicamente a largura da janela de recorte */
+  overflow: hidden;
+  /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+}
+
+/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
+.stars-full {
+  position: absolute;
+  /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+  top: 0;
+  left: 0;
+  /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
+       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
+  width: 100%;
+  /* Isso significa 100% da largura *total* da avaliação por estrelas */
+}
+
+.banner-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.banner-buttons .btn-play {
+  display: flex;
+  align-items: center;
+  background-color: #EB004B;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.lists-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.all-lists-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  border: 1px solid #3F3F3F;
+  border-radius: 12px;
+  padding: 3rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.lists-top-container {
+  display: flex;
+  gap: 6.5px;
+  align-items: center;
+  position: absolute;
+  top: -0.75rem;
+}
+
+
+.list-section-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  color: #f1f1f1;
+  background-color: #eb004b;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.add-list-button {
+  border: 1px solid #eb004b;
+  border: none;
+  border-radius: 50%;
+  background: #1f1f1f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.plus-icon-fill,
+.check-icon-fill,
+.clock-icon-fill,
+.heart-icon-fill,
+.edit-icon-fill {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.plus-icon-fill:hover,
+.check-icon-fill:hover,
+.clock-icon-fill:hover,
+.heart-icon-fill:hover,
+.edit-icon-fill:hover {
+  height: 2rem;
+  width: 2rem;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list-details-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.list-description {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  overflow-x: auto;
+}
+
+.list-description p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #f5f5f5;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.list-description .material-symbols-outlined {
+  font-size: 1.2rem;
+  color: #eb004b;
+  cursor: pointer;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2E2E2E;
+  padding: 0.4rem;
+  border-radius: 6px;
+}
+
+.indicators {
+  display: flex;
+  gap: 2px;
+}
+
+.dot {
+  width: 1rem;
+  height: 0.25rem;
+  background: #3F3F3F;
+  border-radius: 1px;
+}
+
+.dot.active {
+  background: #EB004B;
+}
+
+.films-carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 1rem;
+}
+
+.film-on-list {
+  flex: 0 0 auto;
+  background: #3F3F3F;
+  padding: 0.5rem;
+  width: 176px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-radius: 4px;
+
+}
+
+.film-banner-list-carousel {
+  width: 100%;
+  aspect-ratio: 140/190;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.film-on-list-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.list-banner-match-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.list-banner-match {
+  object-fit: cover;
+  height: 8rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+/* MATCH CTA */
+.match-cta {
+  background-image: url('../img/Container.png');
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  object-fit: cover;
+  height: 11rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+.open-serie-match-bakground {
+  width: 100%;
+  height: 100%;
+}
+
+.open-serie-match-description {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem 3rem 1rem 3rem;
+  font-size: 1.2rem;
+  justify-content: space-between;
+}
+
+.open-serie-match-button {
+  background-color: #ff005c;
+  font-weight: bold;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* Estrelas */
+
+.list-details-timestamp,
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  font-size: 0.65rem;
+  background: #1f1f1f;
+  color: #f5f5f5;
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #555;
+  gap: 0.3rem;
+}
+
+.duration-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.rating-value,
+.duration-value {
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+/* ==========  CATEGORIES  ========== */
+
+.categories-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-block: 3rem;
+  /* space above & below the block */
+}
+
+.categories-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.section-subtitle {
+  font-size: 0.875rem;
+  color: #aaaaaa;
+  max-width: 36rem;
+  /* keeps the line-length readable */
+  margin-top: 0.25rem;
+}
+
+.categories-carousel {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  overflow-x: auto;
+  /* enables horizontal scroll on small screens */
+  padding-block: 0.25rem;
+  /* a little breathing room */
+}
+
+.category-card {
+  --card-size: 6.5rem;
+  /* tweak once, scales icon & radius */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: var(--card-size);
+  height: var(--card-size);
+  border: none;
+  border-radius: 0.75rem;
+  background: #EB004B;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  background: #EB004B;
+}
+
+.category-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.5rem;
+  filter: brightness(0) invert(1);
+  /* forces icon to white */
+}
+
+.category-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  pointer-events: none;
+  /* keeps click on the whole card */
+}
+
+/* Matches your existing arrows/dots – nothing else to change */
+
+
+.container-reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #1f1f1f;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  gap: 20px;
+  background-color: #2e2e2e;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.review-item {
+  flex: 1 1 calc((100% - 20px) / 2);
+  min-width: 540px;
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  margin: 0 auto;
+}
+
+.card-film-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-film-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.card-film {
+  display: 0 1 10%;
+  max-width: auto;
+
+}
+
+.card-info {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: auto;
+  min-width: 156px;
+}
+
+.banner-film {
+  width: 100%;
+  max-width: 10rem;
+  max-height: 12rem;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 16px;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.user-ranking {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.user-ranking span {
+  color: #ffffff;
+}
+
+/* Ações do card (botões de interação) */
+.card-actions {
+  margin: 16px 0;
+}
+
+.card-actions button {
+  background: transparent;
+  border: 1px solid #3F3F3F;
+  color: #EB004B;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.card-actions button:hover {
+  background: rgba(235, 0, 75, 0.1);
+}
+
+/* Descrição do review */
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #cccccc;
+  margin: 0;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-check-reviews {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #EB004B;
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 4px;
+  gap: 4px;
+}
+
+.cast-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cast-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  gap: 10px;
+}
