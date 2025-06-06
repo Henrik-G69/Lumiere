@@ -49,7 +49,7 @@
                 <img src="../public/icons/PersonCircle.svg"  alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
-        <script src="header.js"></script>
+        <script src="../public/js/header.js"></script>
     </header>
     <!-- Fim da HEADER --> 
 
@@ -58,7 +58,7 @@
             <h2 id="loginTitle" class="login-title">Entrar na conta</h2>
             <p class="login-signup-link">
                 Ainda não tem uma conta?
-                <a href="#" class="login-signup-link__anchor">Registre-se Agora</a>
+                <a href="./cadastro.html" class="login-signup-link__anchor">Registre-se Agora</a>
             </p>
 
             <form id="loginForm" class="login-form" action="" method="post" novalidate>
@@ -76,10 +76,9 @@
                             <img src="../public/icons/EyeSlashFill.svg" alt="" class="toggle-password__icon">
                         </button>
                     </div>
-                    <a href="#" class="forgot-password">Esqueci minha senha</a>
                     <div class="error-message" id="passwordError"></div>
+                    <div class="general-error-message" id="loginErrorMessage"></div>
                 </div>
-
                 <button type="submit" class="btn-login">Entrar</button>
             </form>
         </section>
@@ -196,21 +195,7 @@
     <!-- Fim da FOOTER -->
 
 
-    <script>
-        const toggleBtn = document.querySelector('.toggle-password');
-        const pwdInput = document.querySelector('.password-input');
-        const iconImg = document.querySelector('.toggle-password__icon');
-
-        toggleBtn.addEventListener('click', () => {
-            const show = pwdInput.type === 'password';
-            pwdInput.type = show ? 'text' : 'password';
-            iconImg.src = show
-                ? '../public/icons/EyeFill.svg'
-                : '../public/icons/EyeSlashFill.svg';
-            toggleBtn.setAttribute('aria-label', show ? 'Esconder senha' : 'Ver senha');
-        });
-
-    </script>
+    <script src="../public/js/login.js"></script>
 
 
 </body>
