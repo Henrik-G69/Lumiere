@@ -106,11 +106,10 @@
     line-height: 1.2;
 }
 .error-message{
-    margin-top: 0.2rem;
-    font-size: 0.64rem;
-    color: #e40000;
+    font-size: 0.85rem;
+    font-weight:550;
+    color: #ff2424;   
     min-height: 0.96em;
-    margin-left: calc(0.4rem + 16px);
 }
 
 input[type="checkbox"]{
