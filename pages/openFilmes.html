@@ -20,31 +20,34 @@
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li> <a class="nav-options" href="#">Início</a></li>
-                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
-                <li><a class="nav-options" href="#">Minhas Listas</a></li>
-                <li><a class="nav-options" href="#">Reviews</a></li>
-                <li><a class="nav-options" href="#">Match Game</a></li>
-                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
+                <li> <a class="nav-options" href="../index.html">Início</a></li>
+                <li><a class="nav-options" href="filmesSeries.html">Filmes & Séries</a></li>
+                <li><a class="nav-options" href="minhaslistas.html">Minhas Listas</a></li>
+                <li><a class="nav-options" href="review.html">Reviews</a></li>
+                <li><a class="nav-options" href="matchGame.html">Match Game</a></li>
             </ul>
         </nav>
         <div class="header-actions">
-            <!--search section-->
-            <div class="search-container">
-                <button class="btn-icon">
+            <!-- search section transformado em form -->
+            <form class="search-container" action="pesquisa.html" method="get">
+                <!-- botão de ícone para parecer igual -->
+                <button type="submit" class="btn-icon">
                     <img src="../public/icons/Search.svg" alt="Search Icon">
                 </button>
-                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
                     autocomplete="off" />
+                <!-- o <ul> continua lá para você renderizar dropdown, se quiser -->
                 <ul id="results-list" class="dropdown"></ul>
-            </div>
+            </form>
+            <!-- end of search section -->
 
-            <!--end of search section-->
             <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+                <a href="perfil.html">
+                    <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+                </a>
             </button>
         </div>
-        <script src="header.js"></script>
+        <script src="/public/js/header.js"></script>
     </header>
     <!-- Fim da HEADER -->
 
@@ -372,112 +375,114 @@
         </div>
     </section>
 
-    <!-- Início da FOOTER -->
-    <footer class="footer">
-        <div class="footer__inner">
+        <!-- Início da FOOTER -->
+        <footer class="footer">
+            <div class="footer__inner">
 
-            <!-- Colunas principais -->
-            <div class="footer__cols">
+                <!-- Colunas principais -->
+                <div class="footer__cols">
 
-                <div class="footer__col">
-                    <h4 class="footer__title">Início</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Categorias</a></li>
-                        <li><a href="#">Jogos</a></li>
-                        <li><a href="#">Listas</a></li>
-                        <li><a href="#">Reviews</a></li>
-                        <li><a href="#">Login</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Filmes</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Séries</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Gêneros</a></li>
-                        <li><a href="#">Em alta</a></li>
-                        <li><a href="#">Novidades</a></li>
-                        <li><a href="#">Populares</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Jogos</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Match game</a></li>
-                        <li><a href="#">Qual é o filme?</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Reviews</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Meus reviews</a></li>
-                        <li><a href="#">Novos reviews</a></li>
-                        <li><a href="#">Reviews em alta</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Listas</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Minhas Listas</a></li>
-                        <li><a href="#">Nova Lista</a></li>
-                        <li><a href="#">Watchlist</a></li>
-                        <li><a href="#">Matchlist</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col">
-                    <h4 class="footer__title">Perfil</h4>
-                    <ul class="footer__list">
-                        <li><a href="#">Editar Perfil</a></li>
-                        <li><a href="#">Minhas Atividades</a></li>
-                        <li><a href="#">Favoritos</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer__col footer__col--social">
-                    <h4 class="footer__title">Conecte-se conosco</h4>
-                    <div class="footer__social">
-                        <a href="#" aria-label="Instagram">
-                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                        </a>
-                        <a href="#" aria-label="Facebook">
-                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                        </a>
+                    <div class="footer__col">
+                        <h4 class="footer__title">Início</h4>
+                        <ul class="footer__list">
+                            <li><a href="filmesSeries.html">Categorias</a></li>
+                            <li><a href="matchGame.html">Jogos</a></li>
+                            <li><a href="minhaslistas.html">Listas</a></li>
+                            <li><a href="review.html">Reviews</a></li>
+                            <li><a href="login.html">Login</a></li>
+                        </ul>
                     </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Filmes</h4>
+                        <ul class="footer__list">
+                            <li><a href="filmesSeries.html">Gêneros</a></li>
+                            <li><a href="filmesSeries.html">Em alta</a></li>
+                            <li><a href="filmesSeries.html">Novidades</a></li>
+                            <li><a href="filmesSeries.html">Populares</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Séries</h4>
+                        <ul class="footer__list">
+                            <li><a href="filmesSeries.html">Gêneros</a></li>
+                            <li><a href="filmesSeries.html">Em alta</a></li>
+                            <li><a href="filmesSeries.html">Novidades</a></li>
+                            <li><a href="filmesSeries.html">Populares</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Jogos</h4>
+                        <ul class="footer__list">
+                            <li><a href="matchGame.html">Match game</a></li>
+                            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Reviews</h4>
+                        <ul class="footer__list">
+                            <li><a href="review.html">Meus reviews</a></li>
+                            <li><a href="review.html">Novos reviews</a></li>
+                            <li><a href="review.html">Reviews em alta</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Listas</h4>
+                        <ul class="footer__list">
+                            <li><a href="minhaslistas.html">Minhas Listas</a></li>
+                            <li><a href="minhaslistas.html">Nova Lista</a></li>
+                            <li><a href="minhaslistas.html">Watchlist</a></li>
+                            <li><a href="minhaslistas.html">Matchlist</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col">
+                        <h4 class="footer__title">Perfil</h4>
+                        <ul class="footer__list">
+                            <li><a href="perfil.html">Editar Perfil</a></li>
+                            <li><a href="perfil.html">Minhas Atividades</a></li>
+                            <li><a href="perfil.html">Favoritos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer__col footer__col--social">
+                        <h4 class="footer__title">Conecte-se conosco</h4>
+                        <div class="footer__social">
+                            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
+                                rel="noopener noreferrer">
+                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                            </a>
+                            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
+                                rel="noopener noreferrer">
+                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                            </a>
+                            <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /Colunas principais -->
+
+                <div class="footer__bottom">
+                    <p class="footer__copyright">
+                        ©2025 Lumière. Todos os direitos reservados.
+                    </p>
+                    <nav class="footer__policies" aria-label="Políticas do site">
+                        <a href="#">Termos de Uso</a>
+                        <span class="footer__sep">|</span>
+                        <a href="#">Políticas de Privacidade</a>
+                        <span class="footer__sep">|</span>
+                        <a href="#">Políticas de Cookies</a>
+                    </nav>
                 </div>
 
             </div>
-            <!-- /Colunas principais -->
-
-            <div class="footer__bottom">
-                <p class="footer__copyright">
-                    ©2025 Lumière. Todos os direitos reservados.
-                </p>
-                <nav class="footer__policies" aria-label="Políticas do site">
-                    <a href="#">Termos de Uso</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Privacidade</a>
-                    <span class="footer__sep">|</span>
-                    <a href="#">Políticas de Cookies</a>
-                </nav>
-            </div>
-
-        </div>
-    </footer>
-    <!-- Fim da FOOTER -->
+        </footer>
+        <!-- Fim da FOOTER -->
 </body>
