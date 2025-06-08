@@ -1,352 +1,60 @@
+/* --- Base e Estrutura Geral --- */
 .containers__separator {
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem 0;
-}
-
-.hero-section {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-}
-
-.hero-carousel {
-  position: relative;
-  height: 85vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  height: 100%;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  /* ALTERAÇÃO: Alinhar a caixa de detalhes à direita como na imagem de referência */
-  justify-content: flex-end;
-  color: white;
-}
-
-.carousel-image {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(60%);
-  z-index: 0;
-  display: block;
-
-}
-
-
-/* Dots */
-.carousel-dots {
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-
-}
-#movieCard{
-  display: none;
-}
-.carousel-details {
-  position: relative;
-  /* SUGESTÃO: Aumentar um pouco o max-width se o texto parecer muito espremido */
-  max-width: 550px;
-  /* Original: 500px. Ajuste conforme o visual desejado */
-  z-index: 1;
-  padding: 2rem;
-  border-radius: 12px;
-  right: 10vh;
-}
-
-.carousel-details h2 {
-  font-size: 2.4rem;
-  margin-bottom: 0.5rem;
-}
-
-.synopsis {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-.info-group {
-  display: flex;
-  gap: 1rem;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.watch-button {
-  background-color: #EB004B;
-  color: white;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  /* Adicionar transição suave */
-}
-
-.watch-button:hover {
-  background-color: #c8003f;
-  /* Tom mais escuro no hover */
-}
-
-.icon-button {
-  width: 36px;
-  height: 36px;
-  background-color: #1C1C1C;
-  color: white;
-  font-size: 1.2rem;
-  border: 1px solid #303030;
-  cursor: pointer;
-  border-radius: 6px;
-  display: inline-flex;
-  /* Para centralizar melhor o ícone */
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  /* Adicionar transição suave */
-}
-
-.icon-button:hover {
-  background-color: #303030;
-}
-
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  z-index: 2;
-}
-
-.carousel-button {
-  background-color: #EB004B;
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.arrow-hero {
-  background-color: #EB004B;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  border-radius: 8px;
-}
-
-.arrow {
-  background-color: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  border-radius: 8px;
-}
-
-.arrowLeft-icon,
-.arrowRight-icon {
-  margin-top: 0.1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-}
-
-.arrowLeft-icon {
-  rotate: 180deg;
-}
-
-.rating-hero {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.9rem;
-  color: #f1f1f1;
-}
-
-.rating-value-hero {
-  margin-left: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-
-.star-rating-hero {
-  position: relative;
-  display: inline-block;
-  --pct: 0%;
-  /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
-  width: auto;
-  /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
-  height: 16px;
-  /* Corresponde à altura das imagens das estrelas */
-}
-
-/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
-.star-rating-hero img {
-  display: block;
-  /* Evita problemas de espaçamento indesejado com imagens em linha */
-  width: auto;
-  /* Permite que as imagens escalem naturalmente com base na altura */
-  height: 16px;
-  /* Altura fixa para tamanho consistente das estrelas */
-}
-
-.star-rating {
-  position: relative;
-  display: inline-block;
-  --pct: 0%;
-  /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
-  width: auto;
-  /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
-  height: 12px;
-  /* Corresponde à altura das imagens das estrelas */
-}
-
-/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
-.star-rating img {
-  display: block;
-  /* Evita problemas de espaçamento indesejado com imagens em linha */
-  width: auto;
-  /* Permite que as imagens escalem naturalmente com base na altura */
-  height: 12px;
-  /* Altura fixa para tamanho consistente das estrelas */
-}
-
-/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
-.stars-full-wrapper {
-  position: absolute;
-  /* Posiciona este wrapper precisamente sobre.stars-bg */
-  top: 0;
-  left: 0;
-  height: 100%;
-  /* Garante que o wrapper corresponda à altura das estrelas */
-  /* Este é o cerne da solução: controla a largura visível e recorta */
-  width: var(--pct);
-  /* Define dinamicamente a largura da janela de recorte */
-  overflow: hidden;
-  /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
-}
-
-/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
-.stars-full {
-  position: absolute;
-  /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
-  top: 0;
-  left: 0;
-  /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
-       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
-  width: 100%;
-  /* Isso significa 100% da largura *total* da avaliação por estrelas */
-}
-
-.banner-buttons {
-  display: flex;
-  gap: 10px;
-}
-
-.banner-buttons .btn-play {
-  display: flex;
-  align-items: center;
-  background-color: #EB004B;
-  color: #fff;
-  padding: 14px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.banner-buttons .btn-icon {
-  display: flex;
-  align-items: center;
-  background-color: #333;
-  color: #fff;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 1.5rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem 0;
 }
 
 .lists-page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
 }
 
 .all-lists-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1366px;
-  margin: 0 auto;
-  border: 1px solid #3F3F3F;
-  border-radius: 12px;
-  padding: 3rem;
-  box-sizing: border-box;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    border: 1px solid #3F3F3F;
+    border-radius: 12px;
+    padding: 3rem;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .lists-top-container {
-  display: flex;
-  gap: 6.5px;
-  align-items: center;
-  position: absolute;
-  top: -0.75rem;
+    display: flex;
+    gap: 6.5px;
+    align-items: center;
+    position: absolute;
+    top: -0.75rem;
 }
 
-
 .list-section-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  color: #f1f1f1;
-  background-color: #eb004b;
-  font-weight: bold;
-  font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    color: #f1f1f1;
+    background-color: #eb004b;
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 .add-list-button {
-  border: 1px solid #eb004b;
-  border: none;
-  border-radius: 50%;
-  background: #1f1f1f;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+    border: none; /* Removido o border duplicado */
+    border-radius: 50%;
+    background: #1f1f1f;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .plus-icon-fill,
@@ -354,8 +62,8 @@
 .clock-icon-fill,
 .heart-icon-fill,
 .edit-icon-fill {
-  height: 1.75rem;
-  width: 1.75rem;
+    height: 1.75rem;
+    width: 1.75rem;
 }
 
 .plus-icon-fill:hover,
@@ -363,449 +71,859 @@
 .clock-icon-fill:hover,
 .heart-icon-fill:hover,
 .edit-icon-fill:hover {
-  height: 2rem;
-  width: 2rem;
+    height: 2rem;
+    width: 2rem;
 }
 
+/* --- Hero Section (mantido como fornecido, sem alterações de lógica) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.hero-carousel {
+    position: relative;
+    height: 85vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+}
+
+.carousel-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+    z-index: 0;
+    display: block;
+}
+
+/* Dots do Hero */
+.carousel-dots {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-details {
+    position: relative;
+    max-width: 550px;
+    z-index: 1;
+    padding: 2rem;
+    border-radius: 12px;
+    right: 10vh;
+}
+
+.carousel-details h2 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.synopsis {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.info-group {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.watch-button {
+    background-color: #EB004B;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.watch-button:hover {
+    background-color: #c8003f;
+}
+
+.icon-button {
+    width: 36px;
+    height: 36px;
+    background-color: #1C1C1C;
+    color: white;
+    font-size: 1.2rem;
+    border: 1px solid #303030;
+    cursor: pointer;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+    background-color: #303030;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.carousel-button {
+    background-color: #EB004B;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.arrow-hero {
+    background-color: #EB004B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    border-radius: 8px;
+}
+
+/* Rating do Hero */
+.rating-hero {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    color: #f1f1f1;
+}
+
+.rating-value-hero {
+    margin-left: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.star-rating-hero {
+    position: relative;
+    display: inline-block;
+    --pct: 0%;
+    width: auto;
+    height: 16px;
+}
+
+.star-rating-hero img {
+    display: block;
+    width: auto;
+    height: 16px;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.banner-buttons .btn-play {
+    display: flex;
+    align-items: center;
+    background-color: #EB004B;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.banner-buttons .btn-icon {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+/* --- List Carousel (films-carousel) - Foco Principal --- */
 .list-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
 }
 
 .list-details-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: relative;
+    margin-bottom: 1rem;
 }
 
 .list-description {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  overflow-x: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    overflow-x: auto;
 }
 
 .list-description p {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #f5f5f5;
-  white-space: nowrap;
-  margin: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    white-space: nowrap;
+    margin: 0;
 }
 
 .list-description .material-symbols-outlined {
-  font-size: 1.2rem;
-  color: #eb004b;
-  cursor: pointer;
+    font-size: 1.2rem;
+    color: #eb004b;
+    cursor: pointer;
 }
 
+/* Controles do Carrossel (Setas e Dots) - RESTAURADO PARA SEU ESTILO ORIGINAL */
 .carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #2E2E2E;
-  padding: 0.4rem;
-  border-radius: 6px;
+    display: flex;
+    align-items: center;
+    /* Seu estilo original */
+    gap: 0rem; /* Aproximadamente 6.4px */
+    background-color: #2E2E2E;
+    padding: 0.02rem; /* Aproximadamente 5.12px */
+    border-radius: 6px;
+    /* Posicionamento para as setas estarem ao lado do título */
+    position: absolute;
+    right: 1.5rem; /* Alinha com o padding do container */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-controls .arrow img {
+    width: 18px; /* Mantido seu estilo original */
+}
+
+/* Estilo geral da seta (ícone) */
+.arrow {
+    background: none; /* Mantendo 'none' para clareza, seu original tinha 'background-color: none' */
+    border: none;
+    cursor: pointer;
+    /* Seu estilo original de padding */
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* Seu estilo original */
+}
+
+/* Estilo para as imagens dos ícones de seta */
+.arrow img {
+    /* Seus estilos originais para tamanho do ícone */
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.arrowLeft-icon {
+    transform: rotate(180deg);
+}
+
+/* Esconder as setas e indicadores se o carrossel não puder rolar (controle via JS) */
+.arrow[style*="display: none"],
+.indicators[style*="display: none"] {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .indicators {
-  display: flex;
-  gap: 2px;
+    display: flex;
+    /* Seu estilo original de gap */
+    gap: 1.6px;
+    /* Removida margem que eu havia adicionado, se não estava no seu original */
+    margin: 0; 
 }
 
 .dot {
-  width: 1rem;
-  height: 0.25rem;
-  background: #3F3F3F;
-  border-radius: 1px;
+    /* Seus estilos originais de width, height, background e border-radius */
+    width: 0.8rem;
+    height: 0.2rem;
+    background: #3F3F3F;
+    border-radius: 0.8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .dot.active {
-  background: #EB004B;
+    background: #EB004B; /* Mantido seu estilo original */
 }
 
+
+/* --- films-carousel (AQUI ESTÁ A LÓGICA DE EXIBIÇÃO DE 5 ITENS) --- */
 .films-carousel {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding: 0.5rem 1rem;
-  justify-content: center;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
+
+/* Estilo para a scrollbar (visível, mas controlada por JS) */
+.films-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.films-carousel::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+
+.films-carousel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.films-carousel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 
 .film-on-list {
-  flex: 0 0 auto;
-  background: #3F3F3F;
-  padding: 0.5rem;
-  width: 176px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  border-radius: 4px;
-  align-items: center;
-}
-.film-on-list--animated {
-  opacity: 0;
-  transform: translateX(20px); 
-  animation: slideInFadeIn 0.6s ease-out forwards; 
+    flex: 0 0 auto;
+    width: 11rem; /* FIXO: Largura de cada item (176px). Isso é fundamental para o cálculo do JS */
+    background: #3F3F3F;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-radius: 4px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-@keyframes slideInFadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
+.film-on-list--animated {
     opacity: 1;
-    transform: translateX(0);
-  }
+    transform: translateY(0);
 }
+
 
 .film-banner-list-carousel {
-  width: 100%;
-  aspect-ratio: 140/190;
-  object-fit: cover;
-  border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    height: 16.5rem;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .film-on-list-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
-.list-banner-match-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+
+/* Estrelas para as listas de filmes/séries */
+.star-rating {
+    position: relative;
+    display: inline-block;
+    --pct: 0%;
+    width: auto;
+    height: 12px;
 }
 
-.list-banner-match {
-  object-fit: cover;
-  height: 8rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+.star-rating img {
+    display: block;
+    width: auto;
+    height: 12px;
 }
 
-/* MATCH CTA */
-.match-cta {
-  background-image: url('../img/Container.png');
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  object-fit: cover;
-  height: 11rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+.stars-full-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--pct);
+    overflow: hidden;
 }
 
-.open-serie-match-bakground {
-  width: 100%;
-  height: 100%;
+.stars-full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
-
-.open-serie-match-description {
-  display: flex;
-  flex-direction: row;
-  padding: 1rem 3rem 1rem 3rem;
-  font-size: 1.2rem;
-  justify-content: space-between;
-}
-
-.open-serie-match-button {
-  background-color: #ff005c;
-  font-weight: bold;
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 1rem;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-/* Estrelas */
 
 .list-details-timestamp,
 .rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  font-size: 0.65rem;
-  background: #1f1f1f;
-  color: #f5f5f5;
-  padding: 0.3rem 0.4rem;
-  border-radius: 6px;
-  border: 1px solid #555;
-  gap: 0.6rem;
-  margin-left: px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    font-size: 0.65rem;
+    background: #1f1f1f;
+    color: #f5f5f5;
+    padding: 0.3rem 0.4rem;
+    border-radius: 6px;
+    border: 1px solid #555;
+    gap: 0.6rem;
+    margin-left: 0;
 }
 
 .duration-icon {
-  width: 12px;
-  height: 12px;
+    width: 12px;
+    height: 12px;
 }
 
 .rating-value,
 .duration-value {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #f1f1f1;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #f1f1f1;
 }
 
-/* ==========  CATEGORIES  ========== */
+.film-on-list-details .series-timestamp .duration-value {
+    font-size: 0.5rem;
+}
 
+
+/* --- Categorias (mantido como fornecido, sem alterações de lógica) --- */
 .categories-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-block: 3rem;
-  /* space above & below the block */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-block: 3rem;
 }
 
 .categories-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 0.2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.2rem;
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .section-subtitle {
-  font-size: 0.875rem;
-  color: #aaaaaa;
-  max-width: 36rem;
-  /* keeps the line-length readable */
-  margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #aaaaaa;
+    max-width: 36rem;
+    margin-top: 0.25rem;
 }
 
 .categories-carousel {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  overflow-x: auto;
-  /* enables horizontal scroll on small screens */
-  padding-block: 0.25rem;
-  /* a little breathing room */
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-block: 0.25rem;
 }
 
 .category-card {
-  --card-size: 6.5rem;
-  /* tweak once, scales icon & radius */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  min-width: var(--card-size);
-  height: var(--card-size);
-  border: none;
-  border-radius: 0.75rem;
-  background: #EB004B;
-  cursor: pointer;
-  transition: transform 0.25s ease, background 0.25s ease;
+    --card-size: 6.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--card-size);
+    height: var(--card-size);
+    border: none;
+    border-radius: 0.75rem;
+    background: #EB004B;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
-  background: #EB004B;
+    transform: translateY(-4px);
+    background: #EB004B;
 }
 
 .category-icon {
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-bottom: 0.5rem;
-  filter: brightness(0) invert(1);
-  /* forces icon to white */
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-bottom: 0.5rem;
+    filter: brightness(0) invert(1);
 }
 
 .category-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #ffffff;
-  pointer-events: none;
-  /* keeps click on the whole card */
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    pointer-events: none;
 }
 
-/* Matches your existing arrows/dots – nothing else to change */
+/* --- Matches CTA (mantido como fornecido) --- */
+.list-banner-match-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 
+.list-banner-match {
+    object-fit: cover;
+    height: 8rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+}
 
+.match-cta {
+    background-image: url('../img/Container.png');
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    object-fit: cover;
+    height: 11rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+}
+
+.open-serie-match-bakground {
+    width: 100%;
+    height: 100%;
+}
+
+.open-serie-match-description {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 3rem 1rem 3rem;
+    font-size: 1.2rem;
+    justify-content: space-between;
+}
+
+.open-serie-match-button {
+    background-color: #ff005c;
+    font-weight: bold;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+/* --- Reviews (mantido como fornecido) --- */
 .container-reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-  background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #1f1f1f;
 }
 
 .reviews {
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-  gap: 20px;
-  background-color: #2e2e2e;
-  padding: 40px;
-  border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 20px;
+    background-color: #2e2e2e;
+    padding: 40px;
+    border-radius: 8px;
 }
 
 .review-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .review-item {
-  flex: 1 1 calc((100% - 20px) / 2);
-  min-width: 540px;
-  background-color: #2e2e2e;
-  border-radius: 8px;
-  padding: 20px;
-  box-sizing: border-box;
-  color: #ffffff;
-  margin: 0 auto;
+    flex: 1 1 calc((100% - 20px) / 2);
+    min-width: 540px;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #ffffff;
+    margin: 0 auto;
 }
 
 .card-film-title {
-  font-size: 1rem;
-  font-weight: bold;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .card-film-info {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
 }
 
 .card-film {
-  display: 0 1 10%;
-  max-width: auto;
-
+    flex: 0 1 auto; /* Corrigido de 'display: 0 1 10%' */
+    max-width: auto;
 }
 
 .card-info {
-  flex: 1;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: auto;
-  min-width: 156px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: auto;
+    min-width: 156px;
 }
 
 .banner-film {
-  width: 100%;
-  max-width: 10rem;
-  max-height: 12rem;
-  height: auto;
-  object-fit: cover;
-  border-radius: 4px;
+    width: 100%;
+    max-width: 10rem;
+    max-height: 12rem;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
 }
 
 .user-info {
-  flex: 1;
+    flex: 1;
 }
 
 .user-name {
-  margin: 0;
-  font-size: 1.2rem;
+    margin: 0;
+    font-size: 1.2rem;
 }
 
 .user-ranking {
-  margin: 4px 0 0;
-  font-size: 0.9rem;
-  color: #cccccc;
+    margin: 4px 0 0;
+    font-size: 0.9rem;
+    color: #cccccc;
 }
 
 .user-ranking span {
-  color: #ffffff;
+    color: #ffffff;
 }
 
-/* Ações do card (botões de interação) */
 .card-actions {
-  margin: 16px 0;
+    margin: 16px 0;
 }
 
 .card-actions button {
-  background: transparent;
-  border: 1px solid #3F3F3F;
-  color: #EB004B;
-  padding: 8px 12px;
-  border-radius: 4px;
-  margin-right: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid #3F3F3F;
+    color: #EB004B;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
 }
 
 .card-actions button:hover {
-  background: rgba(235, 0, 75, 0.1);
+    background: rgba(235, 0, 75, 0.1);
 }
 
-/* Descrição do review */
 .card-description {
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: #cccccc;
-  margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #cccccc;
+    margin: 0;
 }
 
 .review-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-check-reviews {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #EB004B;
-  font-weight: bold;
-  font-size: 16px;
-  color: #fff;
-  padding: 14px 20px;
-  border-radius: 4px;
-  gap: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EB004B;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 4px;
+    gap: 4px;
 }
 
 .cast-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cast-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  text-align: center;
-  color: #ffffff;
-  gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    gap: 10px;
+}
+
+.footer {
+    margin-top: 100px;
+}
+
+/* --- Ajustes de Responsividade (Adicionados/Revisados) --- */
+@media (max-width: 1200px) {
+    .film-on-list {
+        width: 10rem;
+    }
+    .film-banner-list-carousel {
+        height: 15rem;
+    }
+    .films-carousel {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .film-on-list {
+        width: 9rem;
+    }
+    .film-banner-list-carousel {
+        height: 13.5rem;
+    }
+    .films-carousel {
+        gap: 0.8rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .list-details-container {
+        padding: 0 1rem;
+    }
+    .carousel-controls {
+        right: 1rem;
+        /* Estilos de padding e gap das setas e dots devem ser mantidos */
+        /* padding: 0.02rem; */
+        /* gap: 0rem; */
+    }
+    /* Estilo das imagens das setas no controle do carrossel em telas menores */
+    .carousel-controls .arrow img {
+        width: 16px; /* Ajuste para ícones menores em telas menores */
+        height: 16px;
+    }
+    /* Estilo dos dots em telas menores */
+    .indicators {
+        /* gap: 1.6px; */
+    }
+    .dot {
+        /* width: 0.8rem; */
+        /* height: 0.2rem; */
+    }
+    .review-item {
+        min-width: unset;
+        flex: 1 1 100%;
+    }
+    .all-lists-container {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .film-on-list {
+        width: 8rem;
+    }
+    .film-banner-list-carousel {
+        height: 12rem;
+    }
+    .films-carousel {
+        gap: 0.5rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .list-details-container {
+        padding: 0 0.5rem;
+    }
+    .carousel-controls {
+        right: 0.5rem;
+    }
+    .list-description p {
+        font-size: 1rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .carousel-details {
+        right: 5vh;
+        padding: 1rem;
+    }
+    .carousel-details h2 {
+        font-size: 1.8rem;
+    }
+    .synopsis {
+        font-size: 0.8rem;
+    }
+    .watch-button, .btn-icon {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    .banner-buttons .btn-play {
+        padding: 10px 18px;
+    }
+    .banner-buttons .btn-icon {
+        padding: 10px;
+    }
 }
