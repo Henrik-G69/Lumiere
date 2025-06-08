@@ -50,7 +50,6 @@
   text-overflow: ellipsis;
   white-space: nowrap; /* Tenta manter em uma única linha se possível */
   text-align: center;
-  /* --- DESCOMENTE E USE ESTA LINHA --- */
   margin-top: 0px;    /* Garante que não haja margem acima do p */
   margin-bottom: 12px;
 }
@@ -84,6 +83,7 @@
   font-size: 1.1rem; /* Era 1.25rem */
   border-radius: 6px; /* Reduzi o border-radius para acompanhar o novo tamanho */
 }
+
 .container-details {
   display: flex;
   flex-direction: row;
@@ -99,6 +99,132 @@
   gap: 30px;
 }
 
+.episodes {
+  background-color: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.season-title {
+  margin-bottom: 0.5rem; /* Ajustado para 0.5rem, usando ponto */
+}
+
+.season {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.season-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.season-count {
+  font-weight: 600;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.season-div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* --- ALTERAÇÕES RECOMENDADAS E ALINHADAS COM O JS --- */
+
+/* CORREÇÃO APLICADA: 'episode-list' será usado para o controle de expansão/colapso */
+.episode-list {
+    max-height: 0; /* Inicia recolhido */
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+}
+
+/* CORREÇÃO APLICADA: Quando a div 'season' tem a classe 'expanded', `maxHeight` e `opacity` são definidos */
+.season.expanded .episode-list {
+    max-height: 1000px; /* Um valor grande o suficiente para conter todos os episódios */
+    opacity: 1;
+}
+
+/* CORREÇÃO APLICADA: Renomeado de .episode-item para .episode para consistência com o JS */
+.episode { /* Usado .episode no JS, então alterado aqui para consistência */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.episode-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ccc;
+  width: 30px;
+  flex-shrink: 0; /* Impede que o número encolha */
+}
+
+.episode-thumbnail {
+  width: 140px;
+  height: 80px; /* Adicionado altura fixa para padronizar as thumbnails */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+  border-radius: 5px;
+  flex-shrink: 0; /* Impede que a thumbnail encolha */
+}
+
+.episode-info {
+  flex: 1; /* Permite que o info ocupe o espaço restante */
+}
+
+.episode-title-duration {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.episode-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: #1f1f1f;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ccc;
+  margin-bottom: 0;
+}
+
+.duration-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border: none;
+}
+
+.episode-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
 .arrow {
   background-color: #1f1f1f;
   display: flex;
@@ -108,6 +234,24 @@
   border-radius: 100%;
   border: 1px solid #3a3a3a;
 }
+
+/* Adicionado para garantir que a imagem da seta rotacione */
+.arrow-icon {
+    transition: transform 0.3s ease; /* Transição para a rotação */
+    transform: rotate(0deg); /* Padrão: apontando para baixo (seção recolhida) */
+}
+
+/* CORREÇÃO APLICADA: Alinhando as classes CSS com as classes adicionadas/removidas no JS */
+.arrowUp-icon { /* Esta classe é adicionada quando a seção está expandida */
+    transform: rotate(90deg); /* Seta aponta para cima */
+}
+
+.arrowDown-icon { /* Esta classe é adicionada quando a seção está recolhida */
+    transform: rotate(0deg); /* Seta aponta para baixo (estado padrão) */
+}
+
+/* Fim das alterações para os episódios e seta */
+
 
 .arrowLeft-icon,
 .arrowRight-icon {
@@ -449,12 +593,14 @@
   padding: 6px 12px;
   border-radius: 6px;
   color: #eee;
-  cursor: pointer;
+  cursor: default; /* Alterado para cursor default, já que são preenchidos dinamicamente e podem não ser clicáveis */
 }
 
 .providers {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px; /* Espaçamento entre os links dos provedores */
+  align-items: center;
 }
 
 .providers img {
@@ -474,6 +620,9 @@
   background: #1f1f1f;
   border-radius: 8px;
   padding: 12px;
+  /* Oculto por padrão, será exibido via JS se houver nota válida */
+  display: flex; /* Mantém display flex para quando for exibido, permitindo alinhar h4 e .rating */
+  flex-direction: column; /* Alinha o h4 e o rating verticalmente */
 }
 
 .rating-box .rating{
@@ -511,14 +660,16 @@
 }
 
 
-
-/* MATCH CTA - (MANTENHA INALTERADO) */
 .match-cta {
   background-image: url('../img/Container.png');
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  padding: 60px 20px;
-  color: #fff;
+  object-fit: cover;
+  height: 11rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
 }
 
 .open-serie-match-bakground {
@@ -529,25 +680,19 @@
 .open-serie-match-description {
   display: flex;
   flex-direction: row;
+  padding: 1rem 3rem 1rem 3rem;
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .open-serie-match-button {
-  background-color: #EB004B;
+  background-color: #ff005c;
+  font-weight: bold;
   color: #fff;
   padding: 15px 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
   border-radius: 4px;
   margin-top: 20px;
-}
-.providers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px; /* Espaçamento entre os links dos provedores */
-  align-items: center;
 }
 
 .provider-link-tag {
@@ -568,6 +713,3 @@
   background-color: #333;
   border-color: #555;
 }
-
-
-/* Fim do arquivo CSS */

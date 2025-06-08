@@ -67,19 +67,15 @@
                 <h2>Description</h2>
                 <p></p>
             </section>
-
+            <section class="episodes" id="episodes-section">
+                <h2 class="season-title">Seasons and Episodes</h2>
+                <div id="seasons-list-container">
+                    </div>
+            </section>
             <section class="cast">
 
                 <div class="cast-list">
                     <h2>Cast</h2>
-                    <div class="buttons-arrows">
-                        <button class="arrow">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                        </button>
-                        <button class="arrow">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                        </button>
-                    </div>
                 </div>
                 <div class="cast-container">
                     </div>
@@ -89,7 +85,7 @@
                 <div class="cast-list">
                     <h2>Reviews</h2>
                     <button class="btn-add-review">
-                        <img src="../public/icons/PlusIcon.svg" alt="Add Icon" class="plus-icon">
+                        <img src="../public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
                         Add Your Review
                     </button>
                 </div>
@@ -127,82 +123,16 @@
                         <h3> Here to Watch</h3>
                     </div>
                     <div class="providers">
+                        <div class="buttons"></div>
                         </div>
                 </section>
 
                 <section class="section ratings">
-                    <div class="titulo-detalhes"> <img src="../public/icons/EstrelaIcon.svg" alt="Estrela"
-                            Class="icon-detalhes">
+                    <div class="titulo-detalhes"> <img src="../public/icons/EstrelaIcon.svg" alt="Estrela" Class="icon-detalhes">
                         <h3> Ratings</h3>
                     </div>
-                    <div class="grid-2x2">
-                        <div class="rating-box imdb-rating-box">
-                            <h4>IMDb</h4>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 0%;"> <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">--</span> </div>
-                            </div>
+                    <div class="grid-2x2" id="ratings-grid-container">
                         </div>
-                        <div class="rating-box">
-                            <h4>RottenTomatos</h4>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rating-box">
-                            <h4>Lumérie</h4>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="rating-box">
-                            <h4>Metacritic</h4>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
                 <section class="section genres">

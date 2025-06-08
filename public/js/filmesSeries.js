@@ -261,14 +261,41 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
 
                 if (posterImg) {
                     posterImg.addEventListener('click', () => {
-                        // Determina a página de destino com base no tipo de mídia
-                        const targetPage = mediaType === 'movie' ? 'openFilmes.html' : 'openSerie.html';
+                        // --- INÍCIO DA NOVA IMPLEMENTAÇÃO PARA PASSAR DADOS ---
+                        const targetPage = 'openFilmes.html';
 
-                        // Redireciona para a página de destino, passando o ID como um parâmetro de consulta
-                        window.location.href = `${targetPage}?id=${currentMedia.id}`;
+                        // Crie um objeto com os detalhes que você quer "pré-carregar"
+                        // Inclua apenas os campos que o banner e a descrição inicial em openFilmes.js precisam
+                        const preloadedDetails = {
+                            id: currentMedia.id,
+                            type: mediaType,
+                            title: currentMedia.title || currentMedia.name,
+                            overview: currentMedia.overview,
+                            poster_path: currentMedia.poster_path,
+                            backdrop_path: currentMedia.backdrop_path,
+                            vote_average: currentMedia.vote_average,
+                            release_date: currentMedia.release_date || currentMedia.first_air_date, // Pega a data de lançamento relevante
+                            genre_ids: currentMedia.genre_ids, // Se disponível
+                            // Se o mediaDetails já foi carregado e tem runtime/seasons, pode incluir para banner
+                            runtime: mediaDetails ? mediaDetails.runtime : undefined,
+                            number_of_seasons: mediaDetails ? mediaDetails.number_of_seasons : undefined,
+                            status: mediaDetails ? mediaDetails.status : undefined, // Para séries
+                            tagline: mediaDetails ? mediaDetails.tagline : undefined // Se o filme/série tem tagline
+                            // Adicione qualquer outro campo que você use no banner/descrição inicial da openFilmes.html
+                        };
+
+                        try {
+                            sessionStorage.setItem('preloadedContentDetails', JSON.stringify(preloadedDetails));
+                            console.log('Detalhes pré-carregados salvos no sessionStorage para ID:', currentMedia.id);
+                        } catch (e) {
+                            console.error('Erro ao salvar no sessionStorage:', e);
+                            // Pode haver um erro se o sessionStorage estiver cheio (improvável para um item)
+                        }
+                        // --- FIM DA NOVA IMPLEMENTAÇÃO ---
+
+                        // Redireciona para a página de destino, passando o ID E o TIPO como parâmetros de consulta
+                        window.location.href = `${targetPage}?id=${currentMedia.id}&type=${mediaType}`;
                     });
-
-
                 }
 
 
