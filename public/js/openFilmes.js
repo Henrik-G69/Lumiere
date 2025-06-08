@@ -1,17 +1,15 @@
-// openFilmes.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Configurações da API ---
-    const TMDB_API_KEY = '98f79a8fc16247f2c16e9d0b422dbfbe';
-    const OMDB_API_KEY = '3ea301f'; // Sua chave da OMDb API
+    // API
+    const TMDB_API_KEY = '98f79a8fc16247f2c16e9d0b422dbfbe'; //API que traz as maiores informações dos filmes e series
+    const OMDB_API_KEY = '3ea301f'; //API que chama os ratings dos filmes e series
     const BASE_API_URL = 'https://api.themoviedb.org/3';
     const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
     const BASE_BACKDROP_URL = 'https://image.tmdb.org/t/p/w1280';
 
-    // URL para a imagem placeholder. Verifique se o caminho está correto.
+    // placeholder em caso de imagens quebradas
     const PLACEHOLDER_IMAGE_URL = '../public/icons/place-holder.svg';
 
-    // Mapa de URLs base dos provedores de streaming, aluguel e compra.
+    // Mapa de URLs base dos provedores de streaming
     const STREAMING_PROVIDER_URLS = {
         'Netflix': 'https://www.netflix.com/',
         'Amazon Prime Video': 'https://www.primevideo.com/',
@@ -42,18 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
         'Claro Video': 'https://www.claro.com.br/claro-video',
         'Google Play Movies': 'https://play.google.com/store/movies',
         'Google Play Movies & TV': 'https://play.google.com/store/movies',
-        'YouTube': 'https://www.youtube.com/', // URL base mais genérica para YouTube
+        'YouTube': 'https://www.youtube.com/',
         'Apple TV': 'https://tv.apple.com/',
         'iTunes': 'https://itunes.apple.com/',
         'Amazon Video': 'https://www.amazon.com/gp/video/storefront/',
         'Microsoft Store': 'https://www.microsoft.com/en-us/store/movies-and-tv',
     };
 
-    // --- Elementos do DOM (cache para performance e legibilidade) ---
+    // elementos do DOM/pagina ---
     const elements = {
+        mainContent: document.querySelector('main'),
+        //seção de banner, nome, rating e genero
+        bannerSection: document.querySelector('.banner'),
         bannerImg: document.querySelector('.banner-img'),
         bannerTitle: document.querySelector('.banner-info h1'),
+        //bannerDescription == genero e avaliação
         bannerDescription: document.querySelector('.banner-info p'),
+        //containers restantes, como os da descrição, etc
         mainDescription: document.querySelector('section.description p'),
         castContainer: document.querySelector('.cast-container'),
         releasedYearElement: document.querySelector('.section.year .value'),
@@ -61,32 +64,28 @@ document.addEventListener('DOMContentLoaded', () => {
         genresContainer: document.querySelector('.section.genres .buttons'),
         directorSection: document.querySelector('.director-section'),
         musicSection: document.querySelector('.music-section'),
-
-        // Elemento para o contêiner pai onde os ratings serão criados dinamicamente
         ratingsGridContainer: document.querySelector('#ratings-grid-container'),
-        ratingsSection: document.querySelector('.section.ratings'), // Seção pai para mostrar/esconder
-
+        ratingsSection: document.querySelector('.section.ratings'),
         playNowButton: document.querySelector('.btn-play'),
 
         // Referências para as seções de provedores
         watchSection: document.querySelector('.section.watch'),
 
-        // Referência para a seção de episódios e o novo contêiner
+        // seção de episodios e seu container
         episodesSection: document.querySelector('#episodes-section'),
         seasonsListContainer: document.querySelector('#seasons-list-container'),
-
         containerDetails: document.querySelector('.container-details'),
-        mainContent: document.querySelector('main'),
-        bannerSection: document.querySelector('.banner'),
+
+
+        //referente ao CTA (call to action) do match no final da pagina
         matchCta: document.querySelector('.match-cta'),
         matchButton: document.querySelector('.open-serie-match-button')
     };
 
-    // --- Funções de Ajuda ---
 
     /**
-     * Extrai o ID e o tipo de conteúdo (filme/série) da URL.
-     * @returns {object} Um objeto com id e type.
+     * Extrai o ID e o tipo de conteúdo (filme/série) da URL
+     * @returns {object} retorna um objeto com o id e o type
      */
     function getContentIdAndTypeFromUrl() {
         const params = new URLSearchParams(window.location.search);
@@ -99,19 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Busca a URL do trailer no YouTube.
-     * Tenta buscar em inglês primeiro, depois em português.
-     * @param {string} id O ID do conteúdo.
-     * @param {string} contentType O tipo de conteúdo ('movie' ou 'tv').
+     * Busca o trailer no youtube
+     * Tenta buscar primeiro em português, depois em inglês
+     * @param {string} id O ID do conteúdo
+     * @param {string} contentType O tipo, se é 'movie' ou 'tv'
      * @returns {string|null} A URL do trailer do YouTube ou null se não encontrado.
      */
     async function fetchTrailerUrl(id, contentType) {
         try {
-            // Tenta buscar em português (pt-BR) primeiro
+            // busca em português primeiro
             let response = await fetch(`${BASE_API_URL}/${contentType}/${id}/videos?api_key=${TMDB_API_KEY}&language=pt-BR`);
             let data = await response.json();
 
-            // Se não houver resultados em português ou a resposta não for OK, tenta em inglês (en-US)
+            // se não houver resultados em português ou a resposta não for OK, então tenta em inglês
             if (!response.ok || !data.results || data.results.length === 0) {
                 response = await fetch(`${BASE_API_URL}/${contentType}/${id}/videos?api_key=${TMDB_API_KEY}&language=en-US`);
                 data = await response.json();
@@ -127,27 +126,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Encontra a URL de um trailer ou teaser do YouTube nos resultados da API.
-     * @param {Array} videos Lista de objetos de vídeo da API.
-     * @returns {string|null} URL do YouTube.
+     * encontra a URL de um trailer ou teaser do YouTube nos resultados da API
+     * @param {Array} videos lista de objetos de vídeo da API
+     * @returns {string|null} URL do YouTube
      */
     function findYouTubeVideo(videos) {
         const trailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-        // CORREÇÃO APLICADA: Formato da URL do YouTube para o botão "Play Now"
         if (trailer) return `https://www.youtube.com/watch?v=${trailer.key}`; 
 
         const teaser = videos.find(video => video.type === 'Teaser' && video.site === 'YouTube');
-        // CORREÇÃO APLICADA: Formato da URL do YouTube para o botão "Play Now"
         if (teaser) return `https://www.youtube.com/watch?v=${teaser.key}`;
 
         return null;
     }
 
     /**
-     * Busca os provedores de streaming para o Brasil.
+     * busca os provedores de streaming para o Brasil
      * @param {string} id O ID do conteúdo.
      * @param {string} contentType O tipo de conteúdo ('movie' ou 'tv').
-     * @returns {object|null} Objeto com os provedores para o Brasil ou null.
+     * @returns {object|null} objeto com os provedores para o Brasil ou null.
      */
     async function fetchWatchProviders(id, contentType) {
         try {
@@ -156,18 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`Erro ao buscar provedores: ${response.statusText}`);
             }
             const data = await response.json();
-            return data.results.BR || null; // Retorna provedores para o Brasil
+            return data.results.BR || null; //retorna provedores brasileiros
         } catch (error) {
             console.error('Erro ao buscar provedores de watch:', error);
             return null;
         }
     }
 
-    // --- NOVA FUNÇÃO: Busca ratings de IMDb, Rotten Tomatoes e Metacritic da OMDb API. ---
     /**
-     * Busca ratings de IMDb, Rotten Tomatoes e Metacritic da OMDb API.
-     * @param {string} imdbId O ID IMDb do conteúdo (ex: 'tt1234567').
-     * @returns {object} Um objeto com as notas, ou valores vazios se não encontrados.
+     * busca os ratings de IMDb, Rotten Tomatoes e Metacritic da OMDb API
+     * @param {string} imdbId O ID IMDb do conteúdo
+     * @returns {object} retorna um objeto com as notas, ou valores vazios - se não encontrados
      */
     async function fetchOmdbRatings(imdbId) {
         if (!imdbId) return {};
@@ -196,15 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return {};
         }
     }
-
-    // --- NOVA FUNÇÃO: Cria e retorna um elemento HTML para um box de rating. ---
     /**
-     * Cria e retorna um elemento HTML para um box de rating.
-     * @param {string} title O título da fonte do rating (ex: 'IMDb').
-     * @param {string} value O valor do rating a ser exibido (já na escala de 1-5, ex: '3.9').
-     * @param {number} percentage A porcentagem de preenchimento das estrelas (0-100).
-     * @param {string|null} linkUrl A URL para onde o box deve linkar, ou null.
-     * @returns {HTMLElement} O elemento div do rating box.
+     * cria e retorna um elemento HTML para um box de rating que vai ser acoplado ao design
+     * caso necessário
+     * @param {string} title o título do site de rating (como o imdb)
+     * @param {string} value o valor do rating (1-5 estrelas)
+     * @param {number} percentage A porcentagem de preenchimento das estrelas (0-100)
+     * @param {string|null} linkUrl a URL para onde o box deve linkar, ou null
+     * @returns {HTMLElement} O elemento div do rating box
      */
     function createRatingBoxElement(title, value, percentage, linkUrl) {
         const ratingBox = document.createElement('div');
@@ -230,9 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
             link.href = linkUrl;
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
-            link.style.textDecoration = 'none'; // Remove sublinhado padrão do link
-            link.style.color = 'inherit'; // Mantém a cor do texto padrão
-            link.style.display = 'block'; // Para o link preencher o box
+            link.style.textDecoration = 'none'; // remove o sublinhado padrão de link
+            link.style.color = 'inherit'; // mantém a cor do texto padrão
+            link.style.display = 'block'; // para o link preencher o box
             link.innerHTML = innerHTML;
             ratingBox.appendChild(link);
         } else {
@@ -243,11 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Busca os detalhes e créditos de um filme ou série, e também o IMDb ID.
-     * Tenta 'movie' e 'tv' se o tipo preferido não for especificado ou falhar.
-     * @param {string} id O ID do conteúdo.
-     * @param {string} [preferredType=null] O tipo de conteúdo preferido ('movie' ou 'tv').
-     * @returns {object|null} Objeto contendo content, credits, type e imdb_id ou null.
+     * busca os detalhes e créditos de um filme ou série, e também o IMDb ID
+     * tenta 'movie' e 'tv' se o tipo não for especificado ou falhar
+     * @param {string} id O ID do conteúdo
+     * @param {string} [preferredType=null] o tipo de conteúdo ('movie' ou 'tv')
+     * @returns {object|null} objeto contendo content, credits, type e imdb_id ou null
      */
     async function fetchContentDetails(id, preferredType = null) {
         if (!id) {
@@ -311,8 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Popula os detalhes do conteúdo na página HTML.
-     * @param {object} data Objeto contendo content, credits, type e imdb_id.
+     * preenche os detalhes do conteudo html
+     * @param {object} data objeto contendo content, credits, type e imdb_id.
      */
     async function populateContentDetails(data) {
         if (!data || !data.content) {
@@ -323,11 +318,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const content = data.content;
         const credits = data.credits;
         const contentType = data.type;
-        const imdbId = data.imdb_id; // Obter o IMDb ID
+        const imdbId = data.imdb_id; // obtem o IMDb ID
 
         document.title = `${content.title || content.name} - Detalhes`;
 
-        // --- Banner Image ---
+        // imagem do banner
         if (elements.bannerImg) {
             if (content.backdrop_path) {
                 elements.bannerImg.src = `${BASE_BACKDROP_URL}${content.backdrop_path}`;
@@ -341,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- Banner Title & Description ---
+        // banner, titulo e descrição (estrelas e generos)
         if (elements.bannerTitle) {
             elements.bannerTitle.textContent = content.title || content.name || 'Título Indisponível';
         }
@@ -353,22 +348,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 infoItems.push(genreNames.join(' • '));
             }
             if (content.vote_average) {
-                // Aqui no banner, a nota continua de 0 a 10 como vem da TMDb, pois não é um rating box de 1 a 5 estrelas
-                const formattedRating = content.vote_average.toFixed(1);
+                //  a nota que vem de 0 a 10 da TMDb é convertida para uma escala de 1 a 5
+                const formattedRating = (content.vote_average / 2).toFixed(1); 
                 infoItems.push(`${formattedRating} ★`);
             }
             elements.bannerDescription.textContent = infoItems.join(' • ') || 'Informações não disponíveis.';
         }
 
-        // --- Main Description ---
+        // descrição
         if (elements.mainDescription) {
             elements.mainDescription.textContent = content.overview || 'Descrição não disponível.';
         }
 
-        // --- Cast ---
+        // casting (atores, diretores, etc)
         if (elements.castContainer && credits && credits.cast) {
             elements.castContainer.innerHTML = '';
-            const topCast = credits.cast.slice(0, 10); // Limita ao top 10
+            const topCast = credits.cast.slice(0, 12); // limita a 12 integrantes do cast que aparecem
 
             topCast.forEach(person => {
                 const profilePath = person.profile_path ? `${BASE_IMAGE_URL}${person.profile_path}` : PLACEHOLDER_IMAGE_URL;
@@ -383,13 +378,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Released Year ---
+        // ano de lançamento
         if (elements.releasedYearElement) {
             const date = contentType === 'movie' ? content.release_date : content.first_air_date;
             elements.releasedYearElement.textContent = date ? new Date(date).getFullYear() : 'N/A';
         }
 
-        // --- Genres ---
+        // generos
         if (elements.genresContainer && content.genres) {
             elements.genresContainer.innerHTML = '';
             content.genres.forEach(genre => {
@@ -399,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Languages ---
+        // idiomas disponiveis
         if (elements.languagesContainer && content.spoken_languages) {
             elements.languagesContainer.innerHTML = '';
             content.spoken_languages.forEach(lang => {
@@ -409,7 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --- Director/Creator ---
+        // diretores/criadores 
         if (elements.directorSection) {
             const personCardImg = elements.directorSection.querySelector('.person-card img');
             const personCardName = elements.directorSection.querySelector('.person-card .name');
@@ -423,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mainPerson = credits.crew.find(member => member.job === 'Director');
                 role = 'Diretor';
             } else if (contentType === 'tv' && content.created_by && content.created_by.length > 0) {
-                // Para séries, usa o primeiro criador
+                // em questão de series, usa o primeiro criador que a api de volver
                 mainPerson = content.created_by[0];
                 role = 'Criador(es)';
             }
@@ -443,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- Music Composer ---
+        // compositor das musicas
         if (elements.musicSection && credits && credits.crew) {
             const musicComposer = credits.crew.find(member => member.job === 'Original Music Composer' || member.job === 'Composer');
             const personCardImg = elements.musicSection.querySelector('.person-card img');
@@ -464,25 +459,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // --- INÍCIO DO CÓDIGO DO RATING-BOX ---
-        // --- Ratings (IMDb, Rotten Tomatoes, Metacritic, Lumière) ---
+        // Ratings (IMDb, Rotten Tomatoes, Metacritic, Lumière) 
         if (elements.ratingsGridContainer) {
-            elements.ratingsGridContainer.innerHTML = ''; // Limpa o contêiner de ratings
+            elements.ratingsGridContainer.innerHTML = ''; // limpa o container de ratings para evitar erros
 
-            // Busca ratings da OMDb se o IMDb ID estiver disponível
+            // busca ratings da OMDb se o IMDb ID estiver disponível
             let omdbRatings = {};
             if (imdbId) {
                 omdbRatings = await fetchOmdbRatings(imdbId);
             }
 
-            let anyRatingDisplayed = false; // Flag para controlar a visibilidade da seção
+            let anyRatingDisplayed = false; // flag para controlar a visibilidade da seção e ir sendo modificado posteriormente
 
-            // Função auxiliar para adicionar um rating box se o valor for válido
-            // Ajustada para padronizar as notas de 1 a 5 no display e no cálculo da porcentagem.
+            // função para adicionar um rating box se o valor for válido
+            // transforma as notas para um ranking de 1 a 5
             const addRatingBox = (title, originalValue, originalMaxValue, linkUrl) => {
                 if (originalValue !== undefined && originalValue !== null && originalValue !== 'N/A' && originalValue !== '--' && originalValue !== '') {
-                    let displayValue5Star = null; // Valor a ser exibido na escala de 1 a 5
-                    let percentageForStars = 0; // Porcentagem para o preenchimento das estrelas (0-100)
+                    let displayValue5Star = null; // valor a ser exibido na escala de 1 a 5
+                    let percentageForStars = 0; // porcentagem para o preenchimento das estrelas (0-100)
 
                     if (typeof originalValue === 'string') {
                         let numericValue;
@@ -498,19 +492,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         if (!isNaN(numericValue) && originalMaxValue > 0) {
-                            displayValue5Star = ((numericValue / originalMaxValue) * 5).toFixed(1); // Converte para 1-5
-                            percentageForStars = (numericValue / originalMaxValue) * 100; // Porcentagem original
+                            displayValue5Star = ((numericValue / originalMaxValue) * 5).toFixed(1); // converte para 1-5
+                            percentageForStars = (numericValue / originalMaxValue) * 100; // porcentagem original
                         } else {
-                            return; // Se não puder converter, não adiciona o box
+                            return; // se não puder converter, não adiciona o box
                         }
-                    } else if (typeof originalValue === 'number' && originalMaxValue > 0) { // Ex: 7.8, 85
-                        displayValue5Star = ((originalValue / originalMaxValue) * 5).toFixed(1); // Converte para 1-5
-                        percentageForStars = (originalValue / originalMaxValue) * 100; // Porcentagem original
+                    } else if (typeof originalValue === 'number' && originalMaxValue > 0) { // 
+                        displayValue5Star = ((originalValue / originalMaxValue) * 5).toFixed(1); //
+                        percentageForStars = (originalValue / originalMaxValue) * 100; // 
                     } else {
                         return; // Se não for número ou max for zero, não adiciona o box
                     }
 
-                    // Se a porcentagem calculada exceder 100 (por erros de arredondamento ou dados), limite-a
                     percentageForStars = Math.min(100, Math.max(0, percentageForStars));
 
                     const ratingBoxElement = createRatingBoxElement(title, displayValue5Star, percentageForStars, linkUrl);
@@ -549,23 +542,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 addRatingBox('Metacritic', mcRating, 100, mcLink); // Passa "75/100" e o max original de 100
             }
 
-            // Controla a visibilidade da seção Ratings completa
+            // Controla a visibilidade da seção ratings completa
             if (elements.ratingsSection) {
                 elements.ratingsSection.style.display = anyRatingDisplayed ? 'block' : 'none';
             }
         }
-        // --- FIM DO CÓDIGO DO RATING-BOX ---
 
 
-        // --- Watch Providers (Streaming, Rent, Buy) ---
+        // provedores de streaming
         if (elements.watchSection && content.id && contentType) {
             const providers = await fetchWatchProviders(content.id, contentType);
 
-            // Esta é a parte que preenche o div 'providers' com os links
-            // Agora, com a classe 'buttons' no HTML, .querySelector('.providers.buttons') funcionará
+            // é a parte que preenche o div 'providers' com os links
             const allProvidersContainer = elements.watchSection.querySelector('.providers.buttons');
-            if (allProvidersContainer) { // Certifique-se de que o elemento foi encontrado
-                allProvidersContainer.innerHTML = '';
+            if (allProvidersContainer) { 
+                allProvidersContainer.innerHTML = ''; //limpa o container para evitar erros
 
                 const allAvailableProviders = [];
                 if (providers?.flatrate) allAvailableProviders.push(...providers.flatrate);
@@ -597,26 +588,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     elements.watchSection.style.display = 'none';
                 }
             } else {
-                elements.watchSection.style.display = 'none'; // Se o contêiner não for encontrado, oculta a seção
+                elements.watchSection.style.display = 'none'; // se o contêiner não for encontrado, oculta a seção
             }
         }
 
 
-        // --- Temporadas e Episódios (Visibilidade e População Dinâmica) ---
+        // temporadas e episodios
         if (elements.episodesSection) {
             if (contentType === 'tv') {
                 elements.episodesSection.style.display = 'block';
                 if (content.seasons && content.seasons.length > 0) {
                     populateSeasonsAndEpisodes(content.id, content.seasons);
-                } else {
-                    elements.seasonsListContainer.innerHTML = '<p>Nenhuma temporada encontrada para esta série.</p>';
                 }
             } else {
                 elements.episodesSection.style.display = 'none';
             }
         }
 
-        // --- Play Now Button (Trailer) ---
+        // play now (trailer)
         if (elements.playNowButton && content.id && contentType) {
             const trailerUrl = await fetchTrailerUrl(content.id, contentType);
             if (trailerUrl) {
@@ -632,9 +621,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Popula as temporadas e episódios de uma série dinamicamente.
-     * @param {number} seriesId O ID da série.
-     * @param {Array} seasonsArray A lista de temporadas da API principal da série.
+     * preenche as temporadas e episódios de uma série dinamicamente.
+     * @param {number} seriesId O ID da série
+     * @param {Array} seasonsArray a lista de temporadas da API principal da série
      */
     async function populateSeasonsAndEpisodes(seriesId, seasonsArray) {
         if (!elements.seasonsListContainer) return;
@@ -658,9 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
             seasonDiv.classList.add('season');
             seasonDiv.dataset.seasonNumber = season.season_number;
 
-            // Não usamos o poster da temporada aqui, apenas para o cabeçalho e info
-            // const seasonPosterPath = season.poster_path ? `${BASE_IMAGE_URL}${season.poster_path}` : PLACEHOLDER_IMAGE_URL;
-
+            //html das temporadas e episodios
             seasonDiv.innerHTML = `
                 <div class="season-header">
                     <div class="season-div">
@@ -680,25 +667,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const episodeListDiv = seasonDiv.querySelector('.episode-list');
             const arrowImg = arrowButton.querySelector('.arrow-icon');
 
-            // Adiciona funcionalidade de expansão/colapso
+            // adiciona funcionalidade de expansão/fechamento
                        arrowButton.addEventListener('click', async () => {
                 const isCurrentlyExpanded = seasonDiv.classList.contains('expanded');
                 
                 if (isCurrentlyExpanded) {
-                    // Se está expandida, feche
+                    // se está expandida, feche
                     seasonDiv.classList.remove('expanded');
-                    // CORREÇÃO APLICADA: Define maxHeight para 0 para iniciar a transição de fechamento
                     episodeListDiv.style.maxHeight = '0'; 
-                    episodeListDiv.style.opacity = '0'; // Garante que a opacidade também transicione
+                    episodeListDiv.style.opacity = '0'; // garante que opacidade tambem transicione
                     arrowImg.classList.add('arrowDown-icon');
                     arrowImg.classList.remove('arrowUp-icon');
                 } else {
-                    // Se está fechada, expanda
+                    // se está fechada, expanda
                     seasonDiv.classList.add('expanded');
                     arrowImg.classList.add('arrowUp-icon');
                     arrowImg.classList.remove('arrowDown-icon');
 
-                    // CORREÇÃO APLICADA: Carrega episódios apenas se ainda não foram carregados
                     if (episodeListDiv.children.length === 0) { 
                         try {
                             const response = await fetch(`${BASE_API_URL}/tv/${seriesId}/season/${season.season_number}?api_key=${TMDB_API_KEY}&language=pt-BR`);
@@ -738,16 +723,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             episodeListDiv.innerHTML = '<p>Erro ao carregar episódios.</p>';
                         }
                     }
-                    // CORREÇÃO APLICADA: Define maxHeight para se adaptar ao conteúdo (scrollHeight) e opacidade
-                    // Isso garante que a seção se expanda o suficiente para todos os episódios.
-                    // É importante que o conteúdo já esteja no DOM para que scrollHeight seja preciso
+                    //expande a div para caber todos os episodios
                     episodeListDiv.style.maxHeight = episodeListDiv.scrollHeight + 'px';
                     episodeListDiv.style.opacity = '1';
                 }
             });
 
 
-            // Expande a primeira temporada válida por padrão, se ainda não o fez
+            // a primeira temporada aparece expandida por padrão
             if (!firstSeasonRendered) {
                 arrowButton.click();
                 firstSeasonRendered = true;
@@ -755,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Lógica Principal de Inicialização ---
+    // logica principal de inicialização
     const {
         id,
         type
@@ -764,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (elements.matchButton) {
         elements.matchButton.addEventListener('click', () => {
-            window.location.href = '../pages/matchGame.html'; // Use 'matchGame.html' para consistência com o header
+            window.location.href = '../pages/matchGame.html'; 
         });
     }
     if (id) {
@@ -775,14 +758,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (elements.containerDetails) {
                         elements.containerDetails.style.display = 'flex';
                     }
-                } else { // <-- SE O FILME/SÉRIE NÃO FOR ENCONTRADO
+                } else { 
                     if (elements.mainContent) {
                         elements.mainContent.innerHTML = '<p class="error-message">Filme/Série não encontrado. Verifique o ID ou tipo.</p>';
                     }
-                    // <-- O CÓDIGO DO BOTÃO 'MATCH!' ESTÁ AQUI
                     if (elements.matchButton) {
                         elements.matchButton.addEventListener('click', () => {
-                            window.location.href = '../pages/match.html'; // Ou 'match.html' se for o nome do seu arquivo
+                            window.location.href = '../pages/match.html'; 
                         });
                     }
                     if (elements.bannerSection) {

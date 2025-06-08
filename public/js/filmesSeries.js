@@ -7,38 +7,32 @@ const films_latest = document.getElementById('carouselFilms__latest');
 const films_topRated = document.getElementById('carouselFilms__topRated');
 const films_horror = document.getElementById('carouselFilms__horror');
 const films_classics = document.getElementById('carouselFilms__classics');
-
-
 const series_top10 = document.getElementById('carouselSeries__top10');
 const series_latest = document.getElementById('carouselSeries__latest');
 const series_popCultureClassics = document.getElementById('carouselSeries__popCultureClassics');
 const series_topRated = document.getElementById('carouselSeries__topRated');
-
-
 const movieCardTemplate = document.getElementById('movieCardTemplate').content.firstElementChild;
-
-
 const CACHE_KEY_POPULAR_MOVIES = 'popularMoviesLastYearCache';
 const CACHE_KEY_LATEST_MOVIES = 'latestMoviesCache';
 const CACHE_KEY_TOP_RATED_MOVIES = 'topRatedMoviesCache';
 const CACHE_KEY_HORROR_MOVIES = 'horrorMoviesCache';
 const CACHE_KEY_CLASSICS_MOVIES = 'classicsMoviesCache';
-
-
 const CACHE_KEY_POPULAR_SERIES = 'popularSeriesLastYearCache';
 const CACHE_KEY_LATEST_SERIES = 'latestSeriesCache';
 const CACHE_KEY_POP_CULTURE_CLASSICS_SERIES = 'popCultureClassicsSeriesCache';
 const CACHE_KEY_TOP_RATED_SERIES = 'topRatedSeriesCache';
-
-
 const CACHE_KEY_MEDIA_DETAILS = 'mediaDetailsCache_'; 
 const CACHE_DURATION_MS = 3600000; 
+/*criamos um método de cache para evitar requisições constantes da API, otimizando
+memória e desempenho, o cache dura por 1h e depois disso há outra requisição */
+
+
 
 /**
- * Formata o tempo de execução para filmes ou o número de temporadas para séries.
- * @param {object} mediaDetails Detalhes da mídia (filme ou série).
- * @param {string} mediaType Tipo de mídia ('movie' ou 'tv').
- * @returns {string} Tempo formatado (ex: "2h30" ou "5 Temporadas").
+ * formata o tempo de execução para filmes ou o número de temporadas para séries.
+ * @param {object} mediaDetails detalhes (filme ou série).
+ * @param {string} mediaType tipo de card ('movie' ou 'tv').
+ * @returns {string} tempo formatado (em horas ou temporadas).
  */
 function formatDuration(mediaDetails, mediaType) {
     if (!mediaDetails) {
@@ -64,59 +58,52 @@ function formatDuration(mediaDetails, mediaType) {
             return '1S';
         } else if (seasons > 1) {
             return `${seasons}S`;
-        } else if (status === 'Returning Series' || status === 'In Production' || status === 'Planned') {
-            return 'Em Andamento'; // Para séries ainda no ar sem número de temporadas definido
         }
-        return 'N/A';
     }
     return 'N/A';
 }
 
 
 /**
- * Função auxiliar para formatar objetos Date para o formato YYYY-MM-DD.
- * @param {Date} date O objeto Date a ser formatado.
+ * função para formatar objetos date para o formatoYYYY-MM-DD.
+ * @param {Date} date o objeto a ser formatado.
  * @returns {string} A data formatada.
  */
 function formatDate(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês começa do 0, adiciona zero à esquerda
-    const day = String(date.getDate()).padStart(2, '0'); // Adiciona zero à esquerda
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // mês começando com 0, adiciona zero à esquerda
+    const day = String(date.getDate()).padStart(2, '0'); // adiciona zero à esquerda para formatar em dois digitos
     return `${year}-${month}-${day}`;
 }
 
-// Obter a data de hoje para filtros de discover
+// obtem a data de hoje para filtros de discover
 const today = new Date();
 const todayFormatted = formatDate(today);
 
-// Obter a data de um ano atrás para filtros de discover
+// obtem a data de um ano atrás para filtros de discover
 const oneYearAgo = new Date();
-oneYearAgo.setFullYear(today.getFullYear() - 1); // Subtrai 1 ano
+oneYearAgo.setFullYear(today.getFullYear() - 1); // subtrai 1 ano
 const oneYearAgoFormatted = formatDate(oneYearAgo);
 
-// Data limite para "Clássicos do Século Passado" (Filmes)
+// data limite como criterio de "Clássicos do Século Passado" (lista de filmes)
 const endOfLastCentury = '1999-12-31';
 
-// Data limite para "Clássicos da Cultura Pop (Séries)" - por exemplo, séries lançadas antes de 2010
-const endOfPopCultureClassics = '2018-12-31'; // Ajuste conforme seu critério de "clássicos da cultura pop" para séries
+// data limite para "Clássicos da Cultura Pop (Séries)" - por exemplo, séries lançadas antes de 2012
+const endOfPopCultureClassics = '2012-12-31'; 
 
-// ID do gênero Terror na TMDB
+// ID do gênero Terror na TMDB para a lista de filmes de terror 
 const HORROR_GENRE_ID = 27;
 
 
 /**
- * Função genérica para carregar e exibir mídias (filmes ou séries) em uma lista.
- * Implementa cache para a lista de mídias e para os detalhes de cada mídia.
- * Esta função foi modificada para puxar múltiplas páginas da API.
+ * função que carrega os detalhes dos filmes e series, independente do tipo
+ * também implementa cache para a lista de mídias e para os detalhes de cada mídia
  * @param {HTMLElement} element O elemento DOM onde as mídias serão exibidas.
  * @param {string} listCacheKey A chave para o cache da lista de mídias no localStorage.
  * @param {string} apiEndpointBase O caminho base do endpoint da API da TMDB (ex: 'movie/popular?api_key=...').
- * NÃO inclua o parâmetro '&page=' aqui, ele será adicionado internamente.
- * @param {string} loadingMessage A mensagem a ser exibida enquanto as mídias estão carregando.
- * @param {string} noMediaMessage A mensagem a ser exibida se nenhuma mídia for encontrada.
  * @param {string} mediaType Tipo de mídia ('movie' ou 'tv').
  * @param {number} pagesToLoad O número de páginas da API a serem carregadas (padrão: 1).
- * @returns {Promise<Array>} Uma promessa que resolve com a lista de mídias.
+ * @returns {Promise<Array>}
  */
 async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage, noMediaMessage, mediaType, pagesToLoad = 1) {
     if (!element) {
@@ -126,16 +113,16 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
     element.innerHTML = loadingMessage;
 
     try {
-        let allMedia = []; // Array para armazenar mídias de todas as páginas
+        let allMedia = []; // array para armazenar mídias de todas as páginas
         let isListCacheValid = false;
 
         const savedListCache = localStorage.getItem(listCacheKey);
         if (savedListCache) {
             const { data, timestamp, fetchedPagesCount } = JSON.parse(savedListCache);
             const now = Date.now();
-            // Verifica se o cache ainda é válido E se ele já contém o número de páginas desejado
+            // verifica se o cache ainda é válido e se ele já contém o número de páginas desejado
             if (now - timestamp < CACHE_DURATION_MS && fetchedPagesCount >= pagesToLoad) {
-                allMedia = data; // Carrega todos os dados do cache se já tiver as páginas necessárias
+                allMedia = data; // carrega todos os dados do cache se já tiver as páginas necessárias
                 isListCacheValid = true;
                 console.log(`${loadingMessage.replace('Carregando ', '').replace('...', '')} (${fetchedPagesCount} páginas) carregados do cache.`);
             } else {
@@ -143,71 +130,71 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
             }
         }
 
-        // Se o cache não for válido ou não existir, faz as requisições à API
+        // se o cache não for válido ou não existir, faz as requisições à API
         if (!isListCacheValid) {
             for (let page = 1; page <= pagesToLoad; page++) {
                 try {
-                    // Adiciona o parâmetro de página ao endpoint base
+                    //aAdiciona o parâmetro de página ao endpoint base
                     const endpointWithPage = `${apiEndpointBase}&page=${page}`;
                     console.log(`Fazendo requisição à API: https://api.themoviedb.org/3/${endpointWithPage}`);
                     const response = await fetch(`https://api.themoviedb.org/3/${endpointWithPage}`);
 
-                    if (!response.ok) { // Verifica se a resposta HTTP foi bem-sucedida (status 2xx)
+                    if (!response.ok) { // verifica se a resposta HTTP foi bem-sucedida (as duas requisições, no caso)
                         throw new Error(`Erro HTTP! Status: ${response.status} ao carregar página ${page} de: ${apiEndpointBase}`);
                     }
 
                     const apiData = await response.json();
                     if (apiData.results && apiData.results.length > 0) {
-                        allMedia = allMedia.concat(apiData.results); // Concatena os resultados de cada página
+                        allMedia = allMedia.concat(apiData.results); // concatena os resultados de cada página
                     } else {
-                        // Se uma página não retornar resultados, não há mais dados para buscar, então para o loop.
+                        // se uma página não retornar resultados, não há mais dados para buscar, então para o loop.
                         console.log(`Página ${page} não retornou resultados para ${loadingMessage}. Parando de carregar.`);
                         break;
                     }
 
-                    // PEQUENO ATRASO (IMPORTANTE para evitar rate limits do TMDB)
-                    // Não espere após a última página que será buscada
+                    // atribui um pequeno atraso, evitando estourar o limite da api de requisições por segundo
+                    //e tornando a distribuição dos dados no design mais "dinamico"
+                    // não espera após a última página que será buscada
                     if (page < pagesToLoad) {
-                        await new Promise(resolve => setTimeout(resolve, 150)); // Atraso de 150ms entre as requisições
+                        await new Promise(resolve => setTimeout(resolve, 150)); // atraso de 150ms
                     }
 
                 } catch (pageError) {
                     console.error(`Erro ao buscar página ${page} para ${loadingMessage}:`, pageError);
-                    // Se uma página falhar, você pode decidir parar ou tentar a próxima.
-                    // Aqui, optamos por parar para não ter dados incompletos ou requisições desnecessárias.
+                    // Se uma página falhar, para.
                     break;
                 }
             }
-            // Salva todos os resultados combinados no cache, junto com a quantidade de páginas buscadas
+            // salva todos os resultados no cache, junto com a quantidade de páginas buscadas
             const cacheEntry = {
                 data: allMedia,
                 timestamp: Date.now(),
-                fetchedPagesCount: pagesToLoad // Armazena quantas páginas foram buscadas e cacheadas
+                fetchedPagesCount: pagesToLoad // armazena quantas páginas foram buscadas e cacheadas
             };
             localStorage.setItem(listCacheKey, JSON.stringify(cacheEntry));
             console.log(`Novas ${loadingMessage.replace('Carregando ', '').replace('...', '').toLowerCase()} (${pagesToLoad} páginas) salvas no cache.`);
         }
 
-        element.innerHTML = ''; // Limpa a mensagem de carregamento após obter as mídias
+        element.innerHTML = ''; //limpa as mensagens de carregamento depois de requisitar
 
-        // Verifica se há mídias para exibir
+        // verifica se há mídias para exibir
         if (allMedia && allMedia.length > 0) {
-            // Verifica se o template do card de mídia existe
+            // verifica se o template do card de mídia existe
             if (!movieCardTemplate) {
                 console.error("Template de card de filme/série com ID 'movieCardTemplate' não encontrado no DOM.");
                 element.innerHTML = '<p style="color: red;">Erro: Template de mídia não encontrado.</p>';
                 return allMedia;
             }
 
-            // Preenche todos os cards (o carrossel vai gerenciar a rolagem)
+            // preenche todos os cards (o carrossel vai gerenciar a rolagem)
             for (let i = 0; i < allMedia.length; i++) {
-                const currentMedia = allMedia[i]; // Agora usamos 'allMedia' que contém resultados de várias páginas
+                const currentMedia = allMedia[i];
 
                 let duration = 'N/A';
                 let mediaDetails;
 
-                // Lógica de cache para os DETALHES individuais da mídia
-                const mediaDetailsCacheKey = `${CACHE_KEY_MEDIA_DETAILS}${mediaType}_${currentMedia.id}`; // Adiciona mediaType à chave
+                // lógica de cache para os detalhes individuais da mídia
+                const mediaDetailsCacheKey = `${CACHE_KEY_MEDIA_DETAILS}${mediaType}_${currentMedia.id}`; 
                 const savedDetailsCache = localStorage.getItem(mediaDetailsCacheKey);
 
                 if (savedDetailsCache) {
@@ -218,7 +205,7 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
                     }
                 }
 
-                // Se os detalhes não foram válidos do cache, faça a requisição
+                // se os detalhes não foram válidos do cache, faça a requisição
                 if (!mediaDetails) {
                     try {
                         const mediaDetailsResponse = await fetch(`https://api.themoviedb.org/3/${mediaType}/${currentMedia.id}?api_key=${api_key}&language=en-US`);
@@ -240,48 +227,46 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
                     }
                 }
 
-                // Atualiza a duração/temporadas se os detalhes foram obtidos
+                // atualiza a duração/temporadas se os detalhes foram obtidos
                 if (mediaDetails) {
                     duration = formatDuration(mediaDetails, mediaType);
                 }
 
-                // Criação e preenchimento do card de mídia usando o template
+                // criação e preenchimento do card de mídia usando o template
                 const mediaCard = movieCardTemplate.cloneNode(true);
 
-                // Preenche a imagem do pôster (usa poster_path tanto para filmes quanto para séries)
+                // preenche a imagem do pôster (usa poster_path tanto para filmes quanto para séries)
                 const posterImg = mediaCard.querySelector('.film-banner-list-carousel');
                 if (posterImg && currentMedia.poster_path) {
                     posterImg.src = `${img_url}${currentMedia.poster_path}`;
                     posterImg.alt = `Pôster da ${mediaType === 'movie' ? 'filme' : 'série'} ${currentMedia.title || currentMedia.name}`;
                 } else {
-                    posterImg.src = '../public/img/placeholder.png'; // Imagem placeholder
+                    posterImg.src = '../public/img/placeholder.png'; // Imagem placeholder em caso de erro
                     posterImg.alt = 'Imagem não disponível';
                 }
 
 
                 if (posterImg) {
                     posterImg.addEventListener('click', () => {
-                        // --- INÍCIO DA NOVA IMPLEMENTAÇÃO PARA PASSAR DADOS ---
                         const targetPage = 'openFilmes.html';
 
-                        // Crie um objeto com os detalhes que você quer "pré-carregar"
-                        // Inclua apenas os campos que o banner e a descrição inicial em openFilmes.js precisam
+                        /*obs.: essa parte é essencial
+                        ela remaneja o cache das informações principais do filme/serie quando os seus cards forem clicados
+                        enviando para a página de apertura (openFilmes), o que evita múltiplas requisições e um
+                        "delay" quando a página é aperta, tornando melhor a UX */
                         const preloadedDetails = {
                             id: currentMedia.id,
                             type: mediaType,
                             title: currentMedia.title || currentMedia.name,
-                            overview: currentMedia.overview,
-                            poster_path: currentMedia.poster_path,
-                            backdrop_path: currentMedia.backdrop_path,
-                            vote_average: currentMedia.vote_average,
-                            release_date: currentMedia.release_date || currentMedia.first_air_date, // Pega a data de lançamento relevante
+                            overview: currentMedia.overview, //sinpose
+                            poster_path: currentMedia.poster_path, //caminho do poster
+                            backdrop_path: currentMedia.backdrop_path, //caminho da imagem de fundo/banner larga(o)
+                            vote_average: currentMedia.vote_average, //avaliaçao media do publico do moviedb
+                            release_date: currentMedia.release_date || currentMedia.first_air_date,
                             genre_ids: currentMedia.genre_ids, // Se disponível
-                            // Se o mediaDetails já foi carregado e tem runtime/seasons, pode incluir para banner
-                            runtime: mediaDetails ? mediaDetails.runtime : undefined,
+                            runtime: mediaDetails ? mediaDetails.runtime : undefined, //duraçaodo filme
                             number_of_seasons: mediaDetails ? mediaDetails.number_of_seasons : undefined,
-                            status: mediaDetails ? mediaDetails.status : undefined, // Para séries
-                            tagline: mediaDetails ? mediaDetails.tagline : undefined // Se o filme/série tem tagline
-                            // Adicione qualquer outro campo que você use no banner/descrição inicial da openFilmes.html
+                            status: mediaDetails ? mediaDetails.status : undefined, // para séries e especifica o status, em andamento ou finalizada
                         };
 
                         try {
@@ -289,26 +274,23 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
                             console.log('Detalhes pré-carregados salvos no sessionStorage para ID:', currentMedia.id);
                         } catch (e) {
                             console.error('Erro ao salvar no sessionStorage:', e);
-                            // Pode haver um erro se o sessionStorage estiver cheio (improvável para um item)
                         }
-                        // --- FIM DA NOVA IMPLEMENTAÇÃO ---
-
-                        // Redireciona para a página de destino, passando o ID E o TIPO como parâmetros de consulta
+                        // redireciona para a página de destino, passando o ID e o type ('film' ou 'tv'/serie) como parâmetros de consulta
                         window.location.href = `${targetPage}?id=${currentMedia.id}&type=${mediaType}`;
                     });
                 }
 
 
-                // Preenche a duração/temporadas
+                // preenche a duração/temporadas
                 const durationElement = mediaCard.querySelector('.duration-value');
                 if (durationElement) {
                     durationElement.textContent = duration;
                 }
 
-                // Preenche a avaliação (usa vote_average tanto para filmes quanto para séries)
+                // preenche a avaliação (usa vote_average tanto para filmes quanto para séries)
                 const rating = currentMedia.vote_average;
                 const displayRating = rating !== null && rating !== undefined && rating > 0
-                                    ? (rating / 2).toFixed(1) // Divide por 2 para escala de 5 estrelas e formata
+                                    ? (rating / 2).toFixed(1) // divide por 2 para escala de 5 estrelas e formata
                                     : 'N/A';
 
                 const ratingListValueElement = mediaCard.querySelector('.rating-list-value');
@@ -317,21 +299,21 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
                 }
                 const starRatingDiv = mediaCard.querySelector('.star-rating');
                 if (starRatingDiv && rating !== null && rating !== undefined && rating > 0) {
-                    const percentage = (rating / 10) * 100; // Converte para porcentagem (escala de 10)
+                    const percentage = (rating / 10) * 100; // converte para porcentagem (escala de 10)
                     starRatingDiv.style.setProperty('--pct', `${percentage}%`);
                 } else if (starRatingDiv) {
                     starRatingDiv.style.setProperty('--pct', `0%`); // Sem estrelas se não houver avaliação ou for 0
                 }
 
-                // Adiciona o card ao elemento pai (carrossel)
+                // adiciona o card ao elemento pai (carrossel)
                 element.appendChild(mediaCard);
             }
         } else {
-            // Se não houver mídias, exibe a mensagem de "não encontrado"
+            // se não houver mídias, exibe a mensagem de "não encontrado"
             element.innerHTML = `<p>${noMediaMessage}</p>`;
         }
 
-        return allMedia; // Retorna a lista de mídias
+        return allMedia; // retorna a lista
 
     } catch (error) {
         console.error(`Erro ao carregar ${loadingMessage.replace('Carregando ', '').replace('...', '').toLowerCase()}:`, error);
@@ -342,9 +324,7 @@ async function loadMedia(element, listCacheKey, apiEndpointBase, loadingMessage,
     }
 }
 
-// --- FUNÇÕES ESPECÍFICAS PARA CADA LISTA DE FILMES ---
 
-// Note: O '&page=1' foi removido do endpoint, e o 2 foi passado como pagesToLoad
 async function getTop10Films() {
     const discoverEndpoint = `discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${oneYearAgoFormatted}&primary_release_date.lte=${todayFormatted}&vote_count.gte=500`;
     return loadMedia(
@@ -354,7 +334,7 @@ async function getTop10Films() {
         'Carregando filmes populares do último ano...',
         'Nenhum filme popular do último ano encontrado.',
         'movie',
-        2 // Puxar 2 páginas (40 filmes)
+        2 // puxa 2 páginas de requisições da API (40 filmes)
     );
 }
 
@@ -368,7 +348,7 @@ async function getLatestFilms() {
         'Carregando filmes mais recentes...',
         'Nenhum filme mais recente encontrado.',
         'movie',
-        2 // Puxar 2 páginas (40 filmes)
+        2 
     );
 }
 
@@ -382,7 +362,7 @@ async function getTopRatedFilms() {
         'Carregando filmes mais bem avaliados de todos os tempos...',
         'Nenhum filme mais bem avaliado encontrado.',
         'movie',
-        2 // Puxar 2 páginas (40 filmes)
+        2 
     );
 }
 
@@ -396,7 +376,7 @@ async function getHorrorFilms() {
         'Carregando filmes de Terror...',
         'Nenhum filme de Terror encontrado.',
         'movie',
-        2 // Puxar 2 páginas (40 filmes)
+        2 
     );
 }
 
@@ -410,13 +390,13 @@ async function getClassicsFilms() {
         'Carregando Clássicos do Século Passado...',
         'Nenhum Clássico do Século Passado encontrado.',
         'movie',
-        2 // Puxar 2 páginas (40 filmes)
+        2 
     );
 }
 
-// --- FUNÇÕES ESPECÍFICAS PARA CADA LISTA DE SÉRIES ---
+// lista de series
 
-// Top 10 Séries Agora (Populares do último ano)
+// Top 10 Séries Agora (populares do último ano)
 async function getTop10Series() {
     const discoverEndpoint = `discover/tv?api_key=${api_key}&language=en-US&sort_by=popularity.desc&first_air_date.gte=${oneYearAgoFormatted}&first_air_date.lte=${todayFormatted}&vote_count.gte=200`;
     return loadMedia(
@@ -426,11 +406,11 @@ async function getTop10Series() {
         'Carregando séries populares do último ano...',
         'Nenhuma série popular do último ano encontrada.',
         'tv',
-        2 // Puxar 2 páginas (40 séries)
+        2 
     );
 }
 
-// Novas Séries (Séries recém-lançadas, populares e bem avaliadas)
+// Novas Séries (séries recém-lançadas, populares e bem avaliadas)
 async function getLatestSeries() {
     const threeMonthsAgo = new Date();
     threeMonthsAgo.setMonth(today.getMonth() - 3);
@@ -445,11 +425,11 @@ async function getLatestSeries() {
         'Carregando novas séries (recentes e populares)...',
         'Nenhuma série recente e popular encontrada.',
         'tv',
-        2 // Puxar 2 páginas (40 séries)
+        2 
     );
 }
 
-// Clássicos da Cultura Pop (Séries) - substituindo "Recomendados"
+// Clássicos da Cultura Pop 
 async function getPopCultureClassicsSeries() {
     const popClassicsEndpoint = `discover/tv?api_key=${api_key}&language=en-US&sort_by=popularity.desc&first_air_date.lte=${endOfPopCultureClassics}&vote_count.gte=500`;
     return loadMedia(
@@ -459,11 +439,11 @@ async function getPopCultureClassicsSeries() {
         'Carregando Clássicos da Cultura Pop (Séries)...',
         'Nenhum Clássico da Cultura Pop encontrado.',
         'tv',
-        2 // Puxar 2 páginas (40 séries)
+        2 
     );
 }
 
-// Séries Mais Bem Avaliadas de Todos os Tempos (NOVA LISTA)
+// Séries Mais Bem Avaliadas de Todos os Tempos 
 async function getTopRatedSeries() {
     const topRatedEndpoint = `discover/tv?api_key=${api_key}&language=en-US&sort_by=vote_average.desc&vote_count.gte=1000`;
     return loadMedia(
@@ -473,62 +453,50 @@ async function getTopRatedSeries() {
         'Carregando Séries Mais Bem Avaliadas de Todos os Tempos...',
         'Nenhuma série mais bem avaliada encontrada.',
         'tv',
-        2 // Puxar 2 páginas (40 séries)
+        2 
     );
 }
 
-// --- FUNÇÕES E CÓDIGO RELACIONADOS A CARROSSÉIS DE GÊNEROS E SEÇÃO DE MATCHES PERMANECEM REMOVIDOS ---
+
+// Função para obter a largura de um item (incluindo o gap/margin)
+// Movida para fora do loop filmsCarousels.forEach para evitar redefinição.
+const getItemWidthWithGap = (carouselElement, item) => {
+    if (!item) {
+        // Fallback se não há itens para medir. Use o CSS calculado para o gap
+        const computedStyle = getComputedStyle(carouselElement); // Usa o elemento passado como argumento
+        const gapValue = parseFloat(computedStyle.gap);
+        return 176 + (isNaN(gapValue) ? 0 : gapValue);
+    }
+    const computedStyle = getComputedStyle(carouselElement); // Usa o elemento passado como argumento
+    const gapValue = parseFloat(computedStyle.gap);
+    return item.offsetWidth + (isNaN(gapValue) ? 0 : gapValue);
+};
 
 
-// --- CHAMADAS PARA INICIAR O CARREGAMENTO DE TODAS AS LISTAS AO CARREGAR A PÁGINA ---
+// inicia o carregamento de todas as listas
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Lógica EXCLUSIVA para os Carrosséis de Lista (APENAS .films-carousel) ---
 
-    // Seleciona APENAS os carrosséis com a classe .films-carousel
     const filmsCarousels = document.querySelectorAll('.films-carousel');
 
     filmsCarousels.forEach(carousel => {
-        const carouselId = carousel.id; // Pegar o ID do carrossel para referenciar os controles
+        const carouselId = carousel.id; // pegar o ID do carrossel para referenciar os controles
 
         let leftArrow, rightArrow, indicatorsContainer;
 
-        // É ESSENCIAL que o .films-carousel tenha um ID e que as setas e indicadores
-        // tenham um data-carousel-id que corresponda a esse ID.
         if (carouselId) {
             leftArrow = document.querySelector(`.arrow.carousel-arrow-left[data-carousel-id="${carouselId}"]`);
             rightArrow = document.querySelector(`.arrow.carousel-arrow-right[data-carousel-id="${carouselId}"]`);
             indicatorsContainer = document.querySelector(`.indicators[data-carousel-id="${carouselId}"]`);
         } else {
             console.warn(`Carrossel de filmes/séries sem ID encontrado:`, carousel, `As setas e indicadores podem não funcionar corretamente. Um 'id' é necessário para que a lógica funcione.`);
-            return; // Pula este carrossel se não tiver um ID
+            return; // pula o carrossel se não tiver um ID
         }
 
-        // Se os controles não forem encontrados para um carrossel de lista,
-        // isso geralmente significa um problema de setup no HTML.
-        if (!leftArrow || !rightArrow || !indicatorsContainer) {
-            // Este log é importante para depuração se você não tiver os controles HTML para um ID
-            console.warn(`Controles (setas ou indicadores) para o carrossel #${carouselId} não encontrados. Verifique se o ID do carrossel corresponde ao data-carousel-id nos botões e indicators.`, carousel);
-            return; // Pula este carrossel se não tiver controles associados
-        }
+        const itemsPerPageLogic = 5; // mostra 5 itens para pagina do carrossel rodada
+        let currentPage = 0; // pagina atual do carrossel
 
-        const itemsPerPageLogic = 5; // Para .films-carousel, sempre 5 itens por "página"
-        let currentPage = 0; // Página atual para este carrossel
-
-        // Função para obter a largura de um item (incluindo o gap/margin)
-        const getItemWidthWithGap = (item) => {
-            if (!item) {
-                // Fallback se não há itens para medir. Use o CSS calculado para o gap
-                const computedStyle = getComputedStyle(carousel);
-                const gapValue = parseFloat(computedStyle.gap);
-                return 176 + (isNaN(gapValue) ? 0 : gapValue);
-            }
-            const computedStyle = getComputedStyle(carousel);
-            const gapValue = parseFloat(computedStyle.gap);
-            return item.offsetWidth + (isNaN(gapValue) ? 0 : gapValue);
-        };
-
-        // Função para calcular o número total de páginas (ou "grupos" de itens)
+        // função para calcular o número total de páginas (ou "grupos" de itens)
         const getTotalPages = () => {
             const totalItems = carousel.children.length;
             if (totalItems === 0) return 0;
@@ -536,19 +504,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.ceil(totalItems / itemsPerPageLogic);
         };
 
-        // Função para rolar para uma "página" específica
+        // função para rolar para uma "página" específica
         const goToPage = (pageIndex) => {
             const totalPages = getTotalPages();
             if (totalPages === 0) return;
 
-            // Garante que o pageIndex esteja dentro dos limites
+            // garante que o pageIndex esteja dentro dos limites
             pageIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
 
             const firstItem = carousel.children[0];
             if (!firstItem) return;
 
-            const itemWidthWithGap = getItemWidthWithGap(firstItem);
-            const scrollAmount = itemWidthWithGap * itemsPerPageLogic * pageIndex; // Sempre pula de 5 em 5 itens
+            // Passa 'carousel' para a função getItemWidthWithGap
+            const itemWidthWithGap = getItemWidthWithGap(carousel, firstItem);
+            const scrollAmount = itemWidthWithGap * itemsPerPageLogic * pageIndex; // sempre pula de 5 em 5 itens
 
             const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
             carousel.scroll({
@@ -567,14 +536,14 @@ document.addEventListener('DOMContentLoaded', () => {
             indicatorsContainer.innerHTML = '';
             const totalPages = getTotalPages();
 
-            if (totalPages <= 1) { // Se houver apenas 1 página ou menos, esconde os indicadores
+            if (totalPages <= 1) { // se houver apenas 1 página ou menos, esconde os indicadores
                 indicatorsContainer.style.display = 'none';
                 return;
             }
 
             indicatorsContainer.style.display = 'flex';
 
-            // Loop para criar um dot para CADA página
+            // loop para criar um dot para CADA página
             for (let i = 0; i < totalPages; i++) {
                 const dot = document.createElement('span');
                 dot.classList.add('dot');
@@ -592,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
 
-            // Margem de erro para a comparação de rolagem (evita problemas de sub-pixel)
+            // margem de erro para a comparação de rolagem
             const scrollThreshold = 5;
 
             if (carousel.scrollLeft <= scrollThreshold) {
@@ -613,10 +582,8 @@ document.addEventListener('DOMContentLoaded', () => {
             leftArrow.addEventListener('click', () => {
                 if (currentPage > 0) {
                     goToPage(currentPage - 1);
-                } else {
-                    // Se estiver na primeira página e clicar na seta esquerda, esconde a seta
-                    updateArrowVisibility();
-                }
+                } 
+                // else { updateArrowVisibility(); } removido - redundante
             });
         }
 
@@ -624,14 +591,12 @@ document.addEventListener('DOMContentLoaded', () => {
             rightArrow.addEventListener('click', () => {
                 if (currentPage < getTotalPages() - 1) {
                     goToPage(currentPage + 1);
-                } else {
-                    // Se estiver na última página e clicar na seta direita, esconde a seta
-                    updateArrowVisibility();
                 }
+                // else { updateArrowVisibility(); } removido - redundante
             });
         }
 
-        // Listener para atualizar dots e setas ao rolar (manual ou com JS)
+        // listener para atualizar dots e setas ao rolar
         let scrollTimeout;
         carousel.addEventListener('scroll', () => {
             clearTimeout(scrollTimeout);
@@ -640,11 +605,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!firstItem) {
                     currentPage = 0;
                 } else {
-                    const itemWidthWithGap = getItemWidthWithGap(firstItem);
+                    // Passa 'carousel' para a função getItemWidthWithGap
+                    const itemWidthWithGap = getItemWidthWithGap(carousel, firstItem);
                     const currentScrollLeft = carousel.scrollLeft;
-                    // Calcula a página atual baseada na rolagem
+                    // calcula a página atual baseada na rolagem
                     currentPage = Math.round(currentScrollLeft / (itemWidthWithGap * itemsPerPageLogic));
-                    // Garante que currentPage não exceda o total de páginas
+                    // garante que currentPage não exceda o total de páginas
                     currentPage = Math.min(currentPage, getTotalPages() - 1);
                 }
 
@@ -653,39 +619,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
         });
 
-        // Observador para reagir a mudanças no número de itens (quando a API carrega os cards)
+        // observador para reagir a quando a quantia de cards mudar 
         const observer = new MutationObserver(() => {
-            // Tenta ir para a página atual, mas garante que não exceda o limite de páginas
-            // É importante chamar goToPage *antes* de updateIndicators/updateArrowVisibility,
-            // pois goToPage já faz essas chamadas internamente e garante o currentPage correto.
             goToPage(Math.min(currentPage, getTotalPages() - 1));
 
             if (carousel.children.length > 0) {
-                // Adiciona a animação de entrada aos novos itens carregados
+                // animação de entrada para novos itens carregados
                 Array.from(carousel.children).forEach((item, index) => {
-                    // Verifica se o item já tem a classe de animação para não aplicar múltiplas vezes
+                    // verifica se o item já tem a classe de animação para não aplicar múltiplas vezes
                     if (!item.classList.contains('film-on-list--animated')) {
                         item.classList.add('film-on-list--animated');
-                        // Atraso para animação em cascata (se houver muitos itens novos)
+                        // atraso para animação em cascata 
                         item.style.animationDelay = `${index * 0.05}s`;
                     }
                 });
             }
         });
-        // Observa apenas as mudanças nos filhos diretos (adicionar/remover cards)
+        // (adicionar/remover cards)
         observer.observe(carousel, { childList: true });
 
-        // Inicialização: Garante que as setas e dots estejam corretos no carregamento inicial
-        setTimeout(() => { // Pequeno atraso para garantir que o layout esteja completo
+        // garante que as setas e dots estejam corretos no carregamento inicial
+        setTimeout(() => { // pequeno atraso para garantir que o layout esteja completo
             updateIndicators();
             updateArrowVisibility();
-        }, 200); // Aumentei um pouco o atraso para mais certeza com o cálculo de layout
+        }, 200); 
     });
 
-    // --- Fim: Lógica dos Carrosséis de Lista (.films-carousel) ---
-
-
-    // --- Chamadas para carregar dados das listas de FILMES e SÉRIES ---
+    // chama as funções para carregar os dados
     getTop10Films();
     getLatestFilms();
     getTopRatedFilms();
@@ -696,6 +656,4 @@ document.addEventListener('DOMContentLoaded', () => {
     getLatestSeries();
     getPopCultureClassicsSeries();
     getTopRatedSeries();
-
-    // Funções e chamadas para carrosséis de gêneros e matches foram removidas conforme solicitado.
 });
