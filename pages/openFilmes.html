@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhe de Filmes</title>
@@ -13,49 +12,39 @@
 </head>
 
 <body>
-    <!-- Início da HEADER -->
     <header class="header">
-        <div class="logo">
-            <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
-        </div>
-        <nav class="nav-main" aria-label="Navegação principal">
-            <ul>
-                <li> <a class="nav-options" href="#">Início</a></li>
-                <li><a class="nav-options" href="#">Filmes & Séries</a></li>
-                <li><a class="nav-options" href="#">Minhas Listas</a></li>
-                <li><a class="nav-options" href="#">Reviews</a></li>
-                <li><a class="nav-options" href="#">Match Game</a></li>
-                <li><a class="nav-options" href="#">Qual é o Filme?</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <!--search section-->
-            <div class="search-container">
-                <button class="btn-icon">
-                    <img src="../public/icons/Search.svg" alt="Search Icon">
-                </button>
-                <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
-                    autocomplete="off" />
-                <ul id="results-list" class="dropdown"></ul>
-            </div>
-
-            <!--end of search section-->
+    <div class="logo">
+        <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+    </div>
+    <nav class="nav-main" aria-label="Navegação principal">
+        <ul>
+            <li> <a class="nav-options" href="/index.html">Início</a></li>
+            <li><a class="nav-options" href="/pages/filmesSeries.html">Filmes & Séries</a></li>
+            <li><a class="nav-options" href="/pages/minhaslistas.html">Minhas Listas</a></li>
+            <li><a class="nav-options" href="/pages/review.html">Reviews</a></li>
+            <li><a class="nav-options" href="/pages/matchGame.html">Match Game</a></li>
+        </ul>
+    </nav>
+    <div class="header-actions">
+        <div class="search-container">
             <button class="btn-icon">
-                <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+                <img src="../public/icons/Search.svg" alt="Search Icon">
             </button>
+            <input type="text" id="search-input" class="search-input" placeholder="Pesquisar..."
+                autocomplete="off" />
+            <ul id="results-list" class="dropdown"></ul>
         </div>
-        <script src="header.js"></script>
-    </header>
-    <!-- Fim da HEADER -->
 
-    <!-- Seção principal: Banner da série -->
+        <button class="btn-icon">
+            <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+        </button>
+    </div>
+</header>
     <section class="banner">
-        <img src="../public/img/strangerthings_s3_illustrated_vertical_final_rgb_digital__en-1.webp"
-            alt="Stranger Things" class="banner-img">
+        <img src="" alt="Imagem de banner não disponível" class="banner-img">
         <div class="banner-info">
-            <h1>Stranger Things</h1>
-            <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-                supernatural forces and one strange little girl.</p>
+            <h1></h1>
+            <p></p>
             <div class="banner-buttons">
                 <button class="btn-play">
                     <img src="../public/icons/playIcon.svg" alt="Play Icon" class="play-icon">
@@ -67,25 +56,18 @@
                 <button class="btn-icon">
                     <img src="../public/icons/Curtir.svg" alt="Like Icon" class="like-icon">
                 </button>
-                <button class="btn-icon">
-                    <img src="../public/icons/Audio.svg" alt="Volume Icon" class="volume-icon">
-                </button>
             </div>
         </div>
     </section>
 
     <div class="container-details">
-        <!-- Seção de Temporadas e Episódios -->
         <div class="main-content">
 
-            <!-- Seção de Descrição expandida -->
             <section class="description">
                 <h2>Description</h2>
-                <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-                    supernatural forces and one strange little girl.</p>
+                <p></p>
             </section>
 
-            <!-- Seção de Elenco -->
             <section class="cast">
 
                 <div class="cast-list">
@@ -99,18 +81,10 @@
                         </button>
                     </div>
                 </div>
-                <!-- Cada .cast-member representa um ator/atriz -->
-                <div class="cast-member">
-                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                    <img src="../public/img/AtorST3.png" alt="Ator 2">
-                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                    <img src="../public/img/AtrizST3.png" alt="Ator 1">
-                </div>
+                <div class="cast-container">
+                    </div>
             </section>
 
-            <!-- Seção de Reviews -->
             <section class="reviews">
                 <div class="cast-list">
                     <h2>Reviews</h2>
@@ -120,78 +94,7 @@
                     </button>
                 </div>
                 <div class="review-list">
-                    <article class="review-item">
-                        <div class="card-header">
-                            <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                            <div class="user-info">
-                                <h3 class="user-name">Aniket Roy</h3>
-                                <p class="user-ranking">
-                                    83° ranking <span>(540 XP)</span>
-                                </p>
-                            </div>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-actions">
-                            <button type="button">Season 1</button>
-                            <button type="button">Episode 7</button>
-                        </div>
-
-                        <p class="card-description">
-                            This movie was recommended to me by a very dear friend who went for the movie by
-                            herself. I
-                            went to the cinemas to watch but couldn’t watch it.
-                        </p>
-                    </article>
-                    <article class="review-item">
-                        <div class="card-header">
-                            <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                            <div class="user-info">
-                                <h3 class="user-name">Aniket Roy</h3>
-                                <p class="user-ranking">
-                                    83° ranking <span>(540 XP)</span>
-                                </p>
-                            </div>
-                            <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                        alt="Five Stars Background">
-
-                                    <div class="stars-full-wrapper">
-                                        <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                            alt="Five Stars Fill">
-                                    </div>
-                                </div>
-                                <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-actions">
-                            <button type="button">Season 1</button>
-                            <button type="button">Episode 7</button>
-                        </div>
-
-                        <p class="card-description">
-                            This movie was recommended to me by a very dear friend who went for the movie by
-                            herself. I
-                            went to the cinemas to watch but couldn’t watch it.
-                        </p>
-                    </article>
-                    </article>
-                </div>
+                    </div>
                 <div class="review-actions">
                     <button class="btn-check-reviews">Check Reviews
                         <img src="../public/icons/Arrow.svg" alt="Arrow Icon" class="arrow-icon">
@@ -201,58 +104,42 @@
         </div>
 
         <div>
-            <!-- Seção lateral: Detalhes adicionais da série -->
             <div class="detail-card">
-                <!-- Released Year -->
                 <section class="section year">
                     <div class="titulo-detalhes"><img src="../public/icons/Calendario.svg" alt="Calendario"
                             Class="icon-detalhes">
                         <h3> Released Year</h3>
                     </div>
-                    <p class="value">2022</p>
+                    <p class="value"></p>
                 </section>
 
-                <!-- Available Languages -->
                 <section class="section languages">
                     <div class="titulo-detalhes"><img src="../public/icons/LinguagemIcon.svg" alt="Linguagem"
                             Class="icon-detalhes">
                         <h3> Available Languages</h3>
                     </div>
                     <div class="buttons">
-                        <button>English</button>
-                        <button>Hindi</button>
-                        <button>Tamil</button>
-                        <button>Telegu</button>
-                        <button>Kannada</button>
-                    </div>
+                        </div>
                 </section>
 
-                <!-- Where to Watch -->
                 <section class="section watch">
                     <div class="titulo-detalhes"><img src="../public/icons/Eye.svg" alt="Olho" Class="icon-detalhes">
                         <h3> Here to Watch</h3>
                     </div>
                     <div class="providers">
-                        <img src="../public/img/Netflix.png" alt="Netflix">
-                        <img src="../public/img/Netflix.png" alt="Max">
-                        <img src="../public/img/Netflix.png" alt="Prime Video">
-                        <img src="../public/img/Netflix.png" alt="Globo Play">
-                        <img src="../public/img/Netflix.png" alt="Disney+">
-                    </div>
+                        </div>
                 </section>
 
-                <!-- Ratings -->
                 <section class="section ratings">
                     <div class="titulo-detalhes"> <img src="../public/icons/EstrelaIcon.svg" alt="Estrela"
                             Class="icon-detalhes">
                         <h3> Ratings</h3>
                     </div>
                     <div class="grid-2x2">
-                        <div class="rating-box">
+                        <div class="rating-box imdb-rating-box">
                             <h4>IMDb</h4>
                             <div class="rating">
-                                <div class="star-rating" style="--pct: 70%;">
-                                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                <div class="star-rating" style="--pct: 0%;"> <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
                                         alt="Five Stars Background">
 
                                     <div class="stars-full-wrapper">
@@ -261,8 +148,7 @@
                                     </div>
                                 </div>
                                 <div class="rating-text">
-                                    <span class="rating-value">4.2</span>
-                                </div>
+                                    <span class="rating-value">--</span> </div>
                             </div>
                         </div>
                         <div class="rating-box">
@@ -319,39 +205,33 @@
                     </div>
                 </section>
 
-                <!-- Genres -->
                 <section class="section genres">
                     <div class="titulo-detalhes"><img src="../public/icons/GeneroIcon.svg" alt="Genero"
                             Class="icon-detalhes">
                         <h3> Genres</h3>
                     </div>
                     <div class="buttons">
-                        <button>Sci-Fi TV</button>
-                        <button>Teen TV Shows</button>
-                        <button>US TV Shows</button>
-                    </div>
+                        </div>
                 </section>
 
-                <!-- Director -->
-                <section class="section person">
+                <section class="section person director-section">
                     <h3>Director</h3>
                     <div class="person-card">
-                        <img src="../public/img/AtorST3.png" alt="The Duffer Brothers">
+                        <img src="" alt="Imagem de pessoa não disponível">
                         <div class="info">
-                            <p class="name">The Duffer Brothers</p>
-                            <p class="sub">From USA</p>
+                            <p class="name"></p>
+                            <p class="sub"></p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Music -->
-                <section class="section person">
+                <section class="section person music-section">
                     <h3>Music</h3>
                     <div class="person-card">
-                        <img src="../public/img/AtorST3.png" alt="Kyle Dixon">
+                        <img src="" alt="Imagem de pessoa não disponível">
                         <div class="info">
-                            <p class="name">Kyle Dixon</p>
-                            <p class="sub">From USA</p>
+                            <p class="name"></p>
+                            <p class="sub"></p>
                         </div>
                     </div>
                 </section>
@@ -359,7 +239,6 @@
         </div>
     </div>
 
-    <!-- Seção de chamada para ação (Match) -->
     <section class="match-cta">
         <div class="open-serie-match-description">
             <div class="open-serie-match-description-text">
@@ -372,11 +251,9 @@
         </div>
     </section>
 
-    <!-- Início da FOOTER -->
     <footer class="footer">
         <div class="footer__inner">
 
-            <!-- Colunas principais -->
             <div class="footer__cols">
 
                 <div class="footer__col">
@@ -462,8 +339,6 @@
                 </div>
 
             </div>
-            <!-- /Colunas principais -->
-
             <div class="footer__bottom">
                 <p class="footer__copyright">
                     ©2025 Lumière. Todos os direitos reservados.
@@ -479,5 +354,7 @@
 
         </div>
     </footer>
-    <!-- Fim da FOOTER -->
+    <script src="../public/js/openFilmes.js"></script>
+    <script src="../public/js/header.js"></script>
 </body>
+</html>

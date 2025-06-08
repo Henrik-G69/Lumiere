@@ -1,9 +1,9 @@
-
-/* BANNER */
+/* BANNER - (MANTENHA INALTERADO) */
 .banner {
   position: relative;
   height: 80vh;
   gap: 20px;
+  overflow: hidden;
 }
 
 .banner-img {
@@ -17,27 +17,48 @@
 .banner-info {
   position: absolute;
   width: 100%;
-  top: 68%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
   padding: 2rem;
+  box-sizing: border-box;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  color: #fff;
 }
 
 .banner-info h1 {
   font-size: 3rem;
+  max-height: 3.6em; /* Permite cerca de 2 linhas para o título */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-align: center;
+  margin-bottom: 0px; /* Garante que não haja margem abaixo do h1 */
 }
 
 .banner-info p {
-  font-size: 1rem;
-  max-height: 48px;
-  overflow:hidden;
+  font-size: 1.1rem; /* Aumentei um pouco a fonte para os gêneros/nota */
+  font-weight: bold; /* Deixa a informação mais proeminente */
+  max-height: 1.5em; /* Ajustado para uma única linha (ou no máximo duas se for muito longo) */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Tenta manter em uma única linha se possível */
+  text-align: center;
+  /* --- DESCOMENTE E USE ESTA LINHA --- */
+  margin-top: 0px;    /* Garante que não haja margem acima do p */
+  margin-bottom: 12px;
 }
 
+/* Mantenha os estilos para banner-buttons inalterados */
 .banner-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px; /* Reduzi um pouco o gap entre os botões também, para que fiquem mais próximos */
 }
 
 .banner-buttons .btn-play {
@@ -45,10 +66,11 @@
   align-items: center;
   background-color: #EB004B;
   color: #fff;
-  padding: 14px 24px;
-  border-radius: 8px;
+  /* Diminuído ainda mais */
+  padding: 10px 18px; /* Era 12px 20px */
+  border-radius: 6px; /* Reduzi o border-radius para acompanhar o novo tamanho */
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 0; /* Geralmente o 'gap' já cuida do espaçamento, pode remover margin-right aqui */
 }
 
 .banner-buttons .btn-icon {
@@ -56,11 +78,12 @@
   align-items: center;
   background-color: #333;
   color: #fff;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 1.5rem;
+  /* Diminuído ainda mais */
+  padding: 10px; /* Era 12px */
+  /* Diminuído ainda mais para o tamanho do ícone */
+  font-size: 1.1rem; /* Era 1.25rem */
+  border-radius: 6px; /* Reduzi o border-radius para acompanhar o novo tamanho */
 }
-
 .container-details {
   display: flex;
   flex-direction: row;
@@ -99,7 +122,7 @@
 }
 
 
-/* SIDEBAR */
+/* SIDEBAR - (MANTENHA INALTERADO) */
 .sidebar {
   background-color: #1f1f1f;
   padding: 20px;
@@ -118,8 +141,13 @@
   border-radius: 4px;
   margin-right: 5px;
 }
+.section.languages .buttons button,
+.section.genres .buttons button{
+  cursor: default;
+}
 
-/* DESCRIPTION */
+
+/* DESCRIPTION - (MANTENHA INALTERADO) */
 .description {
   display: flex;
   flex-direction: column;
@@ -129,7 +157,6 @@
   border-radius: 8px;
 }
 
-/* CAST */
 .cast {
   display: flex;
   flex-direction: column;
@@ -147,25 +174,63 @@
 
 .buttons-arrows {
   display: flex;
-
   align-items: center;
   gap: 10px;
 }
 
+/* ESTILO PARA O CONTAINER DO ELENCO */
+.cast-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espaçamento entre os membros do elenco */
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
 
+/* ESTILO PARA CADA MEMBRO INDIVIDUAL DO ELENCO */
 .cast-member {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0px; /* REDUZI O GAP AQUI para aproximar os elementos internos (imagem, nome, papel) */
+  min-width: 100px;
+  /* Garante que o texto dentro não empurre o card para os lados */
+  flex-shrink: 0; /* Impede que o item encolha abaixo do min-width */
+  width: 100px; /* Define uma largura fixa para cada card, se preferir um tamanho uniforme */
 }
 
 .cast-member img {
   width: 6rem;
   height: 6rem;
-  border-radius: 0, 5rem;
+  border-radius: 0.5rem;
   object-fit: cover;
 }
 
-/* REVIEWS */
+/* ESTILO PARA O NOME DO ATOR/ATRIZ */
+.cast-name {
+  font-weight: bold;
+  margin: 0; /* ZERADO A MARGEM para remover qualquer espaçamento extra */
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Garante que o texto não exceda a largura do .cast-member */
+}
+
+/* ESTILO PARA A FUNÇÃO DO ATOR/ATRIZ */
+.cast-role {
+  font-size: 0.65rem;
+  color: #aaa;
+  margin: 0; /* ZERADO A MARGEM para remover qualquer espaçamento extra */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Garante que o texto não exceda a largura do .cast-member */
+}
+
+
+/* REVIEWS - (MANTENHA INALTERADO) */
 .reviews {
   display: flex;
   flex-direction: column;
@@ -258,42 +323,34 @@
 .star-rating {
     position: relative;
     display: inline-block;
-    --pct: 0%; 
-    /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
-    width: auto; /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
-    height: 16px; /* Corresponde à altura das imagens das estrelas */
+    --pct: 0%;
+    width: auto;
+    height: 16px;
 }
 
-/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
 .star-rating img {
-    display: block; /* Evita problemas de espaçamento indesejado com imagens em linha */
-    width: auto;    /* Permite que as imagens escalem naturalmente com base na altura */
-    height: 16px;   /* Altura fixa para tamanho consistente das estrelas */
+    display: block;
+    width: auto;
+    height: 16px;
 }
 
-/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
 .stars-full-wrapper {
-    position: absolute; /* Posiciona este wrapper precisamente sobre.stars-bg */
+    position: absolute;
     top: 0;
     left: 0;
-    height: 100%; /* Garante que o wrapper corresponda à altura das estrelas */
-    /* Este é o cerne da solução: controla a largura visível e recorta */
-    width: var(--pct); /* Define dinamicamente a largura da janela de recorte */
-    overflow: hidden; /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+    height: 100%;
+    width: var(--pct);
+    overflow: hidden;
 }
 
-/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
 .stars-full {
-    position: absolute; /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+    position: absolute;
     top: 0;
     left: 0;
-    /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
-       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
-    width: 100%; /* Isso significa 100% da largura *total* da avaliação por estrelas */
+    width: 100%;
 }
 
 
-/* Ações do card (botões de interação) */
 .card-actions {
   margin: 16px 0;
 }
@@ -313,7 +370,6 @@
   background: rgba(235, 0, 75, 0.1);
 }
 
-/* Descrição do review */
 .card-description {
   font-size: 0.95rem;
   line-height: 1.4;
@@ -339,7 +395,7 @@
 }
 
 
-/* DETAIL CARD */
+/* DETAIL CARD - (MANTENHA INALTERADO) */
 
 .detail-card {
   background: #2e2e2e;
@@ -422,7 +478,7 @@
 
 .rating-box .rating{
   border:none
-} 
+}
 
 .rating-box h4 {
   font-size: 14px;
@@ -456,7 +512,7 @@
 
 
 
-/* MATCH CTA */
+/* MATCH CTA - (MANTENHA INALTERADO) */
 .match-cta {
   background-image: url('../img/Container.png');
   display: flex;
@@ -487,5 +543,31 @@
   border-radius: 4px;
   margin-top: 20px;
 }
+.providers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Espaçamento entre os links dos provedores */
+  align-items: center;
+}
+
+.provider-link-tag {
+  background-color: #1f1f1f;
+  color: #eee;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border: 1px solid #3a3a3a;
+  text-decoration: none; /* Remove o sublinhado padrão do link */
+  cursor: pointer; /* Garante que o cursor de mão apareça */
+  transition: background-color 0.2s ease, border-color 0.2s ease; /* Transição suave ao passar o mouse */
+}
+
+.provider-link-tag:hover {
+  color: #EB004B;
+  background-color: #333;
+  border-color: #555;
+}
+
 
 /* Fim do arquivo CSS */
