@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filmes e Series</title>
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-    <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
@@ -29,7 +27,6 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <!--search section-->
             <div class="search-container">
                 <button class="btn-icon">
                     <img src="../public/icons/Search.svg" alt="Search Icon">
@@ -39,35 +36,20 @@
                 <ul id="results-list" class="dropdown"></ul>
             </div>
 
-            <!--end of search section-->
             <button class="btn-icon">
                 <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
             </button>
         </div>
         <script src="/public/js/header.js"></script>
     </header>
-    <!-- Fim da HEADER -->
-
     <div class="containers__separator">
 
-        <!-- Início da seção de herói -->
         <section class="hero-section">
             <div class="hero-carousel">
-                <div class="carousel-nav">
-                    <button class="arrow-hero">
-                        <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                    </button>
-                    <button class="arrow-hero">
-                        <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                    </button>
-                </div>
-
                 <div class="carousel-track">
                     <div class="carousel-slide active">
                         <img src="../public/img/American-Psycho.png" alt="American Psycho Poster"
                             class="carousel-image">
-
-
                         <div class="carousel-details">
                             <h2>American Psycho</h2>
                             <p class="synopsis">
@@ -79,7 +61,6 @@
                                     <div class="star-rating-hero" style="--pct: 70%;">
                                         <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
                                             alt="Five Stars Background">
-
                                         <div class="stars-full-wrapper">
                                             <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
                                                 alt="Five Stars Fill">
@@ -104,10 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Slide 2 e 3 iguais com conteúdo diferente -->
-                </div>
-
-                <!-- Dots centralizados -->
+                    </div>
                 <div class="carousel-dots">
                     <span class="dot active"></span>
                     <span class="dot"></span>
@@ -115,65 +93,39 @@
                 </div>
             </div>
         </section>
-        <!-- Fim da seção de herói -->
-
         <section class="categories-section">
             <div class="all-lists-container">
                 <div class="lists-top-container">
                     <button class="list-section-button">Filmes</button>
                 </div>
+
                 <div class="list-item">
                     <div class="list-details-container">
                         <div class="categories-header">
-                            <p>Gênero de Filmes</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
+                            <p>Gêneros de Filmes</p>
                         </div>
                     </div>
-                    <!-- Horizontal list of category cards -->
-                    <div class="categories-carousel">
-                        <!-- Romance -->
+                    <div id="carouselFilms__genres" class="categories-carousel films-carousel">
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_beating-heart.svg" alt="Romance Icon"
                                 class="category-icon" />
                             <span class="category-label">Romance</span>
                         </button>
-
-                        <!-- Drama -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_popcorn.svg" alt="Drama Icon"
                                 class="category-icon" />
                             <span class="category-label">Drama</span>
                         </button>
-
-                        <!-- Horror -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_ghost.svg" alt="Horror Icon"
                                 class="category-icon" />
                             <span class="category-label">Horror</span>
                         </button>
-
-                        <!-- Comédia -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_face-with-tears-of-joy.svg"
                                 alt="Comedy Icon" class="category-icon" />
                             <span class="category-label">Comédia</span>
                         </button>
-
-                        <!-- Ação -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_clapper-board.svg" alt="Action Icon"
                                 class="category-icon" />
@@ -181,116 +133,116 @@
                         </button>
                     </div>
                 </div>
+
                 <div class="list-item">
                     <div class="list-details-container">
                         <div class="list-description">
-                            <p>Top 10 Filmes Agora</p>
+                            <p>Top filmes atuais</p>
                         </div>
                         <div class="carousel-controls">
-                            <button class="arrow">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__top10">
                                 <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
+                            <div class="indicators" data-carousel-id="carouselFilms__top10">
                             </div>
-                            <button class="arrow">
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__top10">
                                 <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
-                    <div id = 'carouselFilms' class="films-carousel">
-                        <div class="film-on-list">
-                            <img class="film-banner-list-carousel" src=""/>
-                            <div class="film-on-list-details">
-                                <div class="list-details-timestamp">
-                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                                    <div class="duration-text">
-                                        <span class="duration-value"></span>
-                                    </div>
-                                </div>
-                                <div class="rating">
-                                    <div class="star-rating" style="--pct: 84%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                            alt="Five Stars Background">
-
-                                        <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                alt="Five Stars Fill">
-                                        </div>
-                                    </div>
-                                    <div class="rating-text">
-                                        <span class="rating-list-value"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div id='carouselFilms__top10' class="films-carousel">
                     </div>
                 </div>
+
                 <div class="list-item">
                     <div class="list-details-container">
                         <div class="list-description">
                             <p>Novos Filmes</p>
                         </div>
                         <div class="carousel-controls">
-                            <button class="arrow">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__latest">
                                 <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
+                            <div class="indicators" data-carousel-id="carouselFilms__latest">
                             </div>
-                            <button class="arrow">
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__latest">
                                 <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
-                    <div id="movieCard" class="films-carousel">
-                        <div class="film-on-list">
-                            <img class="film-banner-list-carousel" src=""/>
-                            <div class="film-on-list-details">
-                                <div class="list-details-timestamp">
-                                    <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                                    <div class="duration-text">
-                                        <span class="duration-value"></span>
-                                    </div>
-                                </div>
-                                <div class="rating">
-                                    <div class="star-rating" style="--pct: 84%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                            alt="Five Stars Background">
+                    <div id='carouselFilms__latest' class="films-carousel">
+                    </div>
+                </div>
 
-                                        <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                alt="Five Stars Fill">
-                                        </div>
-                                    </div>
-                                    <div class="rating-text">
-                                        <span class="rating-list-value">4.2</span>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Mais Bem Avaliados de Todos os Tempos</p>
                         </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__topRated">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselFilms__topRated">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__topRated">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id='carouselFilms__topRated' class="films-carousel">
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Filmes de Terror</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__horror">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselFilms__horror">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__horror">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id='carouselFilms__horror' class="films-carousel">
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Clássicos do Século Passado</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__classics">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselFilms__classics">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__classics">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id='carouselFilms__classics' class="films-carousel">
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="match-section">
-            <!-- this is the second list section,
-         it'll be the match section, including the
-         match banner-->
             <div class="lists-page">
                 <div class="all-lists-container">
                     <div class="lists-top-container">
                         <button class="list-section-button">Matches</button>
                     </div>
+
                     <div class="list-item">
                         <div class="list-details-container">
                             <div class="list-description">
@@ -301,24 +253,17 @@
                                 </button>
                             </div>
                             <div class="carousel-controls">
-                                <button class="arrow">
+                                <button class="arrow carousel-arrow-left" data-carousel-id="carouselMatches__userMatches">
                                     <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                                 </button>
-                                <div class="indicators">
-                                    <span class="dot active"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <button class="arrow">
+                                <div class="indicators" data-carousel-id="carouselMatches__userMatches">
+                                    </div>
+                                <button class="arrow carousel-arrow-right" data-carousel-id="carouselMatches__userMatches">
                                     <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                                 </button>
                             </div>
                         </div>
-                        <!--here we have the banner of the match game-->
 
-                        <!-- Seção de chamada para ação (Match) -->
                         <section class="match-cta">
                             <div class="open-serie-match-description">
                                 <div class="open-serie-match-description-text">
@@ -330,70 +275,44 @@
                                 </div>
                             </div>
                         </section>
-                        <!-- Fim da seção de chamada para ação (Match) -->
-
                     </div>
                 </div>
             </div>
         </section>
 
-                <section class="categories-section">
+        <section class="categories-section">
             <div class="all-lists-container">
                 <div class="lists-top-container">
                     <button class="list-section-button">Series</button>
                 </div>
+
                 <div class="list-item">
                     <div class="list-details-container">
                         <div class="categories-header">
                             <p>Gênero de Series</p>
                         </div>
-                        <div class="carousel-controls">
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
                     </div>
-                    <!-- Horizontal list of category cards -->
-                    <div class="categories-carousel">
-                        <!-- Romance -->
+                    <div id="carouselSeries__genres" class="categories-carousel films-carousel">
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_beating-heart.svg" alt="Romance Icon"
                                 class="category-icon" />
                             <span class="category-label">Romance</span>
                         </button>
-
-                        <!-- Drama -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_popcorn.svg" alt="Drama Icon"
                                 class="category-icon" />
                             <span class="category-label">Drama</span>
                         </button>
-
-                        <!-- Horror -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_ghost.svg" alt="Horror Icon"
                                 class="category-icon" />
                             <span class="category-label">Horror</span>
                         </button>
-
-                        <!-- Comédia -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_face-with-tears-of-joy.svg"
                                 alt="Comedy Icon" class="category-icon" />
                             <span class="category-label">Comédia</span>
                         </button>
-
-                        <!-- Ação -->
                         <button class="category-card">
                             <img src="../public/icons/fluent-emoji-high-contrast_clapper-board.svg" alt="Action Icon"
                                 class="category-icon" />
@@ -401,90 +320,88 @@
                         </button>
                     </div>
                 </div>
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Top 10 Series Agora</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Novas Series</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Recomendados para Você</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
-                            </div>
-                            <button class="arrow">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
 
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Top 10 Séries Agora</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__top10">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselSeries__top10">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__top10">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="carouselSeries__top10" class="films-carousel"></div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Novas Séries</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__latest">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselSeries__latest">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__latest">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="carouselSeries__latest" class="films-carousel"></div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Séries Mais Bem Avaliadas de Todos os Tempos</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__topRated">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselSeries__topRated">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__topRated">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="carouselSeries__topRated" class="films-carousel"></div>
+                </div>
+
+                <div class="list-item">
+                    <div class="list-details-container">
+                        <div class="list-description">
+                            <p>Clássicos da Cultura Pop (Séries)</p>
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__popCultureClassics">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            </button>
+                            <div class="indicators" data-carousel-id="carouselSeries__popCultureClassics">
+                            </div>
+                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__popCultureClassics">
+                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="carouselSeries__popCultureClassics" class="films-carousel"></div>
                 </div>
             </div>
         </section>
 
-
-
-
-
-
-
-
-
-
-        <!-- Início da FOOTER -->
         <footer class="footer">
             <div class="footer__inner">
 
-                <!-- Colunas principais -->
                 <div class="footer__cols">
 
                     <div class="footer__col">
@@ -570,8 +487,6 @@
                     </div>
 
                 </div>
-                <!-- /Colunas principais -->
-
                 <div class="footer__bottom">
                     <p class="footer__copyright">
                         ©2025 Lumière. Todos os direitos reservados.
@@ -587,6 +502,29 @@
 
             </div>
         </footer>
-        <!-- Fim da FOOTER -->
-        <script src="/public/js/filmesSeries.js"></script>
+        <template id="movieCardTemplate"> <div class="film-on-list">
+                <img class="film-banner-list-carousel" src="" alt="Pôster do filme"/>
+                <div class="film-on-list-details">
+                    <div class="list-details-timestamp">
+                        <img src="../public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
+                        <div class="duration-text">
+                            <span class="duration-value"></span>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="star-rating" style="--pct: 84%;">
+                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Fundo de cinco estrelas vazias">
+                            <div class="stars-full-wrapper">
+                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Preenchimento de cinco estrelas">
+                            </div>
+                        </div>
+                        <div class="rating-text">
+                            <span class="rating-list-value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div> <script src="/public/js/filmesSeries.js"></script>
 </body>
+</html>
