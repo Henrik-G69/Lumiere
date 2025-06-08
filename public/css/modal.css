@@ -1,0 +1,172 @@
+/* modal.css */
+
+/* Container do diálogo */
+dialog.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    border: none;
+    border-radius: 32px;
+    padding: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Conteúdo interno */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    background: #1f1f1f;
+    color: #f5f5f5;
+    border-radius: 32px;
+}
+
+/* Linhas do modal */
+.modal-content .modal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Row 1: campos inline */
+.row--inputs .form-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  flex: 1;
+}
+
+/* Busca maior */
+.flex-grow-2 {
+  flex: 2;
+}
+
+/* Season/Episode container como row e oculto por padrão */
+#season-episode-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    /* tamanho mínimo
+       para manter alinhado com outros campos */
+    min-width: 140px;
+}
+.hidden #season-episode-container,
+#season-episode-container.hidden {
+    display: none;
+}
+
+/* Row 2: textarea ocupa tudo */
+.row--textarea {
+  flex-direction: column;
+}
+
+/* Row 3: botões alinhados à direita */
+.row--buttons {
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Título */
+.modal-content h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* Labels */
+.modal-content label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Inputs, selects e textarea */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+    height: 38.4px;
+    padding: 0.48rem 0.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.8rem;
+    background: #ececec;
+    color: #1f1f1f;
+    margin-top: 0.4rem;
+}
+
+.modal-content textarea {
+    min-height: 80px;
+    padding-top: 0.6rem;
+}
+
+/* Dropdown de resultados */
+.modal-content .results {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    max-height: 120px;
+    overflow-y: auto;
+    background: #ececec;
+    border: 1px solid #3f3f3f;
+    border-radius: 0.4rem;
+}
+
+.modal-content .results li {
+    padding: 0.6rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #1f1f1f;
+}
+.modal-content .results li:hover {
+    background: #d4d4d4;
+}
+
+/* Botões do modal */
+.modal-content menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 12px;
+}
+
+.modal-content button {
+    height: 44.8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.48rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#modal-cancel {
+    background: #3f3f3f;
+    color: #ccc;
+}
+#modal-cancel:hover {
+    background: #2e2e2e;
+}
+
+#modal-save {
+    background: #EB004B;
+    color: #fff;
+}
+#modal-save:hover {
+    background: #A10035;
+}
+
+/* Classe utilitária */
+.hidden {
+    display: none;
+}
