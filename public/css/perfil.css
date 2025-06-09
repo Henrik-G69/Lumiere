@@ -28,6 +28,8 @@ body {
     height: 100px;
     border-radius: 50%;
     background: #333;
+    object-fit: cover;
+    border: 2px solid #f50057; /* Adiciona uma borda para destaque */
 }
 
 .menu {
@@ -61,10 +63,17 @@ body {
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* Ajuste o gap para acomodar as mensagens de erro, se necessário */
     max-width: 500px;
     margin: 0 auto;
 }
+
+/* Adiciona um pouco de margem inferior aos inputs para a mensagem de erro */
+form input:not([type="checkbox"]):not([type="file"]),
+form select {
+    margin-bottom: 5px; /* Para dar espaço ao span de erro */
+}
+
 
 input,
 select {
@@ -74,6 +83,14 @@ select {
     border-radius: 6px;
     background-color: #444;
     color: white;
+}
+
+/* Estilo para o label da data de nascimento */
+.input-label {
+    display: block; /* Garante que o label ocupe sua própria linha */
+    color: #ccc; /* Cor um pouco mais clara para labels */
+    font-size: 0.9em;
+    margin-bottom: 5px; /* Espaçamento entre o label e o input */
 }
 
 button {
@@ -91,31 +108,44 @@ button:hover {
     background-color: #c2185b;
 }
 
-.config {
-    background: #3a3a3a;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    margin: 40px auto 0 auto;
+/* Estilos para mensagens de erro */
+.error-message {
+    color: #ff4d4f; /* Vermelho claro para erros */
+    font-size: 0.85em;
+    margin-top: -10px; /* Puxa para cima para ficar mais próximo do campo */
+    margin-bottom: 10px; /* Adiciona espaço para o próximo elemento */
+    display: block; /* Garante que o span ocupe sua própria linha */
+    text-align: left; /* Alinha o texto à esquerda */
 }
 
-.config label {
+/* Estilos para mensagens de sucesso (opcional, para feedback de salvamento) */
+.success-message {
+    color: #4CAF50; /* Verde para sucesso */
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
     display: block;
-    margin-bottom: 10px;
 }
 
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
+/* Estilos específicos para os novos botões */
+.btn-delete {
+    background-color: #dc3545; /* Vermelho para exclusão */
 }
 
-.movies-grid img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
+.btn-delete:hover {
+    background-color: #c82333;
 }
+
+.btn-logout {
+    background-color: #6c757d; /* Cinza para sair */
+}
+
+.btn-logout:hover {
+    background-color: #5a6268;
+}
+
+/* Removidos estilos de .config, .movies-grid, .community-links */
+/* Removidos estilos de .profile-photo-upload, .avatar-preview, .upload-button */
 
 .tab-content {
     display: none;
@@ -123,28 +153,6 @@ button:hover {
 
 .tab-content.active {
     display: block;
-}
-
-.community-links {
-    list-style: none;
-    padding-left: 0;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.community-links li {
-    margin: 10px 0;
-}
-
-.community-links a {
-    text-decoration: none;
-    color: #f50057;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.community-links a:hover {
-    color: #c2185b;
 }
 
 /* Responsivo */
@@ -159,17 +167,28 @@ button:hover {
         flex-direction: row;
         overflow-x: auto;
         justify-content: space-around;
+        padding-bottom: 0; /* Remove padding para otimizar espaço */
+    }
+
+    .profile {
+        display: none; /* Esconde o avatar e nome na sidebar em mobile, pode ser ajustado */
     }
 
     .menu {
         display: flex;
         flex-direction: row;
         gap: 10px;
+        flex-wrap: nowrap; /* Impede que os itens quebrem linha */
+        padding: 10px 0;
+        border-top: 1px solid #333;
     }
 
     .menu li {
         flex: 1;
         text-align: center;
+        padding: 8px;
+        font-size: 0.9em;
+        min-width: fit-content; /* Garante que o texto não seja cortado */
     }
 
     .main {
