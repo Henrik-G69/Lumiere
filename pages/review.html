@@ -10,9 +10,63 @@
     <link rel="stylesheet" href="../public/css/footer.css">
     <link rel="stylesheet" href="../public/css/header.css">
     <link rel="stylesheet" href="../public/css/review.css">
+    <link rel="stylesheet" href="../public/css/modal.css">
 </head>
 
 <body>
+
+    <!-- 1. Modal já presente no DOM -->
+    <dialog id="review-modal" class="modal">
+        <form class="modal-content" method="dialog">
+            <h2>Add Review</h2>
+
+            <!-- Row 1: pesquisa, temporada, episódio, nota -->
+            <div class="modal-row row--inputs">
+                <div class="form-group-tipo">
+                    <label for="modal-type">Tipo</label>
+                    <select id="modal-type">
+                        <option value="movie">Filme</option>
+                        <option value="tv">Série</option>
+                    </select>
+                </div>
+                <div class="form-group-titulo flex-grow-2">
+                    <label for="modal-search">Buscar título</label>
+                    <input type="text" id="modal-search" autocomplete="off" placeholder="Digite o nome…" />
+                    <ul id="modal-results" class="results"></ul>
+                </div>
+                <div class="form-group-ep-temp" id="season-episode-wrapper">
+                    <div class="season-input">
+                    <label for="modal-season">Season</label>
+                    <select id="modal-season"></select>
+                    </div>
+                    <div class="episode-input">
+                    <label for="modal-episode">Episode</label>
+                    <select id="modal-episode"></select>
+                    </div> 
+                </div>
+                <div class="form-group-nota">
+                    <label for="modal-rating">Nota (0–10)</label>
+                    <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
+                </div>
+            </div>
+
+            <!-- Row 2: comentário -->
+            <div class="modal-row row--textarea">
+                <div class="form-group" style="width:100%">
+                    <label for="modal-text">Comentário</label>
+                    <textarea id="modal-text" required></textarea>
+                </div>
+            </div>
+
+            <!-- Row 3: botões -->
+            <div class="modal-row row--buttons">
+                <button id="modal-cancel" type="button">Cancelar</button>
+                <button id="modal-save" type="button">Salvar</button>
+            </div>
+        </form>
+
+    </dialog>
+
     <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
@@ -63,141 +117,45 @@
                     Add Your Review
                 </button>
             </div>
-            <div class="review-list">
+            <div class="review-list"></div>
+
+            <template id="review-item-template">
                 <article class="review-item">
                     <div class="card-film-info">
                         <div class="card-film">
-                            <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
+                            <img src="" alt="Banner" class="banner-film">
                         </div>
                         <div class="card-info">
                             <div class="card-header">
-                                <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
+                                <img src="" alt="Avatar" class="avatar">
                                 <div class="user-info">
-                                    <h3 class="user-name">Aniket Roy</h3>
-                                    <p class="user-ranking">
-                                        83° ranking <span>(540 XP)</span>
-                                    </p>
+                                    <h3 class="user-name" aria-label="Nome do usuário">Usuário</h3>
+                                    <p class="user-ranking"><!-- ranking° ranking --><span>(0 XP)</span></p>
                                 </div>
                                 <div class="rating">
-                                    <div class="star-rating" style="--pct: 70%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                            alt="Five Stars Background">
-
+                                    <div class="star-rating" style="--pct:0%;">
+                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="">
                                         <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                alt="Five Stars Fill">
+                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="">
                                         </div>
                                     </div>
                                     <div class="rating-text">
-                                        <span class="rating-value">4.2</span>
+                                        <span class="rating-value">0.0</span>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-actions">
-                                <button type="button">Batman:O Cavaleiro das Trevas</button>
-                                <button type="button">2008</button>
+                                <button type="button" class="action-title"></button>
+                                <button type="button" class="action-year"></button>
+                                <button type="button" class="action-season"></button>
+                                <button type="button" class="action-episode"></button>
                             </div>
-
-                            <p class="card-description">
-                                This movie was recommended to me by a very dear friend who went for the movie by
-                                herself. I
-                                went to the cinemas to watch but couldn’t watch it.
-                            </p>
+                            <p class="card-description"></p>
                         </div>
                     </div>
                 </article>
-                <article class="review-item">
-                    <div class="card-film-info">
-                        <div class="card-film">
-                            <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
-                        </div>
-                        <div class="card-info">
-                            <div class="card-header">
-                                <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                                <div class="user-info">
-                                    <h3 class="user-name">Aniket Roy</h3>
-                                    <p class="user-ranking">
-                                        83° ranking <span>(540 XP)</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <div class="star-rating" style="--pct: 70%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                            alt="Five Stars Background">
+            </template>
 
-                                        <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                alt="Five Stars Fill">
-                                        </div>
-                                    </div>
-                                    <div class="rating-text">
-                                        <span class="rating-value">4.2</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-actions">
-                                <button type="button">Stranger Things</button>
-                                <button type="button">2016</button>
-                                <button type="button">Season 1</button>
-                                <button type="button">Episode 7</button>
-                            </div>
-
-                            <p class="card-description">
-                                This movie was recommended to me by a very dear friend who went for the movie by
-                                herself. I
-                                went to the cinemas to watch but couldn’t watch it.
-                            </p>
-                        </div>
-                    </div>
-                </article>
-                <article class="review-item">
-                    <div class="card-film-info">
-                        <div class="card-film">
-                            <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
-                        </div>
-                        <div class="card-info">
-                            <div class="card-header">
-                                <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                                <div class="user-info">
-                                    <h3 class="user-name">Aniket Roy</h3>
-                                    <p class="user-ranking">
-                                        83° ranking <span>(540 XP)</span>
-                                    </p>
-                                </div>
-                                <div class="rating">
-                                    <div class="star-rating" style="--pct: 70%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                            alt="Five Stars Background">
-
-                                        <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                alt="Five Stars Fill">
-                                        </div>
-                                    </div>
-                                    <div class="rating-text">
-                                        <span class="rating-value">4.2</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card-actions">
-                                <button type="button">Stranger Things</button>
-                                <button type="button">2016</button>
-                                <button type="button">Season 1</button>
-                                <button type="button">Episode 7</button>
-                            </div>
-
-                            <p class="card-description">
-                                This movie was recommended to me by a very dear friend who went for the movie by
-                                herself. I
-                                went to the cinemas to watch but couldn’t watch it.
-                            </p>
-                        </div>
-                    </div>
-                </article>
-            </div>
             <div class="paginacao">
                 <div class="carousel-controls">
                     <button class="arrow">
@@ -205,126 +163,126 @@
                     </button>
                     <div class="indicators">
                         <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
                     </div>
                     <button class="arrow">
                         <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                     </button>
+                </div>
+            </div>
         </section>
     </div>
     <!-- Fim da Seção de Reviews -->
 
-        <!-- Início da FOOTER -->
-        <footer class="footer">
-            <div class="footer__inner">
+    <!-- Início da FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
 
-                <!-- Colunas principais -->
-                <div class="footer__cols">
+            <!-- Colunas principais -->
+            <div class="footer__cols">
 
-                    <div class="footer__col">
-                        <h4 class="footer__title">Início</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Categorias</a></li>
-                            <li><a href="matchGame.html">Jogos</a></li>
-                            <li><a href="minhaslistas.html">Listas</a></li>
-                            <li><a href="review.html">Reviews</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Filmes</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Séries</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Jogos</h4>
-                        <ul class="footer__list">
-                            <li><a href="matchGame.html">Match game</a></li>
-                            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Reviews</h4>
-                        <ul class="footer__list">
-                            <li><a href="review.html">Meus reviews</a></li>
-                            <li><a href="review.html">Novos reviews</a></li>
-                            <li><a href="review.html">Reviews em alta</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Listas</h4>
-                        <ul class="footer__list">
-                            <li><a href="minhaslistas.html">Minhas Listas</a></li>
-                            <li><a href="minhaslistas.html">Nova Lista</a></li>
-                            <li><a href="minhaslistas.html">Watchlist</a></li>
-                            <li><a href="minhaslistas.html">Matchlist</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Perfil</h4>
-                        <ul class="footer__list">
-                            <li><a href="perfil.html">Editar Perfil</a></li>
-                            <li><a href="perfil.html">Minhas Atividades</a></li>
-                            <li><a href="perfil.html">Favoritos</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col footer__col--social">
-                        <h4 class="footer__title">Conecte-se conosco</h4>
-                        <div class="footer__social">
-                            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                            </a>
-                            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                            </a>
-                            <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                            </a>
-                        </div>
-                    </div>
-
+                <div class="footer__col">
+                    <h4 class="footer__title">Início</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Categorias</a></li>
+                        <li><a href="matchGame.html">Jogos</a></li>
+                        <li><a href="minhaslistas.html">Listas</a></li>
+                        <li><a href="review.html">Reviews</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
                 </div>
-                <!-- /Colunas principais -->
 
-                <div class="footer__bottom">
-                    <p class="footer__copyright">
-                        ©2025 Lumière. Todos os direitos reservados.
-                    </p>
-                    <nav class="footer__policies" aria-label="Políticas do site">
-                        <a href="#">Termos de Uso</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Privacidade</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Cookies</a>
-                    </nav>
+                <div class="footer__col">
+                    <h4 class="footer__title">Filmes</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Gêneros</a></li>
+                        <li><a href="filmesSeries.html">Em alta</a></li>
+                        <li><a href="filmesSeries.html">Novidades</a></li>
+                        <li><a href="filmesSeries.html">Populares</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Séries</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Gêneros</a></li>
+                        <li><a href="filmesSeries.html">Em alta</a></li>
+                        <li><a href="filmesSeries.html">Novidades</a></li>
+                        <li><a href="filmesSeries.html">Populares</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Jogos</h4>
+                    <ul class="footer__list">
+                        <li><a href="matchGame.html">Match game</a></li>
+                        <li><a href="qualOFilme.html">Qual é o filme?</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Reviews</h4>
+                    <ul class="footer__list">
+                        <li><a href="review.html">Meus reviews</a></li>
+                        <li><a href="review.html">Novos reviews</a></li>
+                        <li><a href="review.html">Reviews em alta</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Listas</h4>
+                    <ul class="footer__list">
+                        <li><a href="minhaslistas.html">Minhas Listas</a></li>
+                        <li><a href="minhaslistas.html">Nova Lista</a></li>
+                        <li><a href="minhaslistas.html">Watchlist</a></li>
+                        <li><a href="minhaslistas.html">Matchlist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Perfil</h4>
+                    <ul class="footer__list">
+                        <li><a href="perfil.html">Editar Perfil</a></li>
+                        <li><a href="perfil.html">Minhas Atividades</a></li>
+                        <li><a href="perfil.html">Favoritos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col footer__col--social">
+                    <h4 class="footer__title">Conecte-se conosco</h4>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                        </a>
+                        <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                        </a>
+                        <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                        </a>
+                    </div>
                 </div>
 
             </div>
-        </footer>
-        <!-- Fim da FOOTER -->
+            <!-- /Colunas principais -->
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    ©2025 Lumière. Todos os direitos reservados.
+                </p>
+                <nav class="footer__policies" aria-label="Políticas do site">
+                    <a href="#">Termos de Uso</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Privacidade</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Cookies</a>
+                </nav>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Fim da FOOTER -->
+
+    <script type="module" src="../public/js/review.js"></script>
 </body>
