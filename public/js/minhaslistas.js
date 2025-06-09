@@ -38,9 +38,8 @@ movieSearchResultTemplate.innerHTML = `
 `;
 
 let currentEditingListId = null; // Guarda o ID da lista que está sendo editada
-let moviesInCurrentModalList = []; // Array temporário para filmes no modal (IDs + detalhes básicos)
+let moviesInCurrentModalList = []; 
 
-// --- FUNÇÕES DE GERENCIAMENTO DE LISTAS NO LOCAL STORAGE (já fornecidas, apenas repetidas para contexto) ---
 
 function getLoggedInUserEmail() {
     return localStorage.getItem('loggedInUserEmail');
@@ -154,8 +153,6 @@ function deleteUserList(listId) {
     return false;
 }
 
-// --- FUNÇÕES DE FORMATO (já no seu código) ---
-
 function formatDuration(mediaDetails, mediaType) { /* ... seu código ... */
     if (!mediaDetails) {
         return 'N/A';
@@ -175,26 +172,18 @@ function formatDuration(mediaDetails, mediaType) { /* ... seu código ... */
         }
     } else if (mediaType === 'tv') {
         const seasons = mediaDetails.number_of_seasons;
-        // Se a série estiver 'Ended' e tiver mais de 1 temporada, mostra a quantidade de temporadas.
-        // Se estiver 'Returning Series' ou 'Canceled' e tiver mais de 1 temporada, também.
-        // Se tiver apenas 1 temporada, mostra '1S'.
+        // se a série estiver 'Ended' e tiver mais de 1 temporada, mostra a quantidade de temporadas.
+        // se estiver 'Returning Series' ou 'Canceled' e tiver mais de 1 temporada, também.
+        // se tiver apenas 1 temporada, mostra '1S'.
         if (seasons === 1) {
             return '1S';
         } else if (seasons > 1) {
             return `${seasons}S`;
         }
-         // Adicionei uma condição para 'Ended' ou 'Canceled' sem número de temporadas ou se for 0.
-        // Isso pode acontecer se o campo 'seasons' não for bem preenchido ou se a série for muito nova.
-        if (status === 'Ended' || status === 'Canceled') {
-            return 'Finalizada';
-        } else if (status === 'Returning Series') {
-            return 'Em andamento';
-        }
     }
     return 'N/A';
 }
 
-// Essa função já existe no seu código, não é preciso duplicá-la
 const getItemWidthWithGap = (carouselElement, item) => {
     if (!item) {
         const computedStyle = getComputedStyle(carouselElement);
@@ -206,7 +195,7 @@ const getItemWidthWithGap = (carouselElement, item) => {
     return item.offsetWidth + (isNaN(gapValue) ? 0 : gapValue);
 };
 
-// --- LÓGICA DE CARROSSEL (refatorada para ser uma função autônoma) ---
+
 
 /**
  * Função para inicializar um carrossel específico.
@@ -222,8 +211,8 @@ function initializeCarousel(carousel) {
         return;
     }
 
-    // Usar seletores que dependem do `data-carousel-id`
-    const parentContainer = carousel.closest('.list-item'); // Busca as setas e indicadores dentro do mesmo list-item
+
+    const parentContainer = carousel.closest('.list-item'); // busca as setas e indicadores dentro do mesmo list-item
     if (!parentContainer) {
         console.error('Contêiner pai .list-item não encontrado para o carrossel:', carousel);
         return;
@@ -357,7 +346,7 @@ function initializeCarousel(carousel) {
     });
     observer.observe(carousel, { childList: true });
 
-    // Garante que as setas e dots estejam corretos no carregamento inicial
+    // garante que as setas e dots estejam corretos no carregamento inicial
     setTimeout(() => {
         updateIndicators();
         updateArrowVisibility();
@@ -365,7 +354,7 @@ function initializeCarousel(carousel) {
 }
 
 
-// --- FUNÇÕES DE RENDERIZAÇÃO ---
+
 
 /**
  * Carrega e exibe os filmes de uma lista específica do usuário.
@@ -450,7 +439,7 @@ async function renderUserListMovies(carouselElement, movieIds, listId, mediaType
                 posterImg.alt = 'Imagem não disponível';
             }
 
-            // Click listener para o card (para abrir a página de detalhes)
+            // para abrir a página de detalhes
             if (posterImg) {
                 posterImg.addEventListener('click', () => {
                     const targetPage = 'openFilmes.html';
@@ -502,19 +491,17 @@ async function renderUserListMovies(carouselElement, movieIds, listId, mediaType
             }
 
             // Botão para remover filme diretamente do carrossel da lista
-            // Certifique-se de que 'mediaCard' é o elemento DOM que representa o filme individual
-// (o '.film-on-list' ou um contêiner similar que você deseja remover).
 const removeMovieBtn = mediaCard.querySelector('.remove-movie-from-list-button');
 
 if (removeMovieBtn) {
     removeMovieBtn.addEventListener('click', async (event) => {
-        event.stopPropagation(); // Impede que o clique no botão de remover acione eventos de clique no poster/card do filme
+        event.stopPropagation(); // impede que o clique no botão de remover acione eventos de clique no poster/card do filme
         
         if (confirm(`Tem certeza que deseja remover "${movie.title || movie.name}" desta lista?`)) {
-            const userEmail = getLoggedInUserEmail(); // Função externa para obter o email do usuário logado
-            let allUserLists = getAllUserListsFromLocalStorage(); // Função externa para obter todas as listas do local storage
+            const userEmail = getLoggedInUserEmail(); 
+            let allUserLists = getAllUserListsFromLocalStorage(); 
             
-            // Verifica se as listas do usuário existem
+            // verifica se as listas do usuário existem
             if (!allUserLists || !allUserLists[userEmail]) {
                 console.error('Nenhuma lista encontrada para o usuário logado. Não é possível remover o filme.');
                 return;
@@ -524,12 +511,6 @@ if (removeMovieBtn) {
             const targetList = userLists.find(l => l.id === listId); // Encontra a lista específica pelo ID
 
             if (targetList) {
-                // Filtra o array de filmes, removendo o filme com o ID correspondente.
-                // É CRUCIAL que o tipo do ID (string ou número) seja consistente aqui
-                // com o tipo dos IDs armazenados em targetList.films.
-                // Se targetList.films guarda números, use `id !== movie.id`.
-                // Se targetList.films guarda strings, use `id !== movie.id.toString()`.
-                // Mantenha movie.id.toString() se você tem certeza que os IDs no storage são strings.
                 targetList.films = targetList.films.filter(id => id !== movie.id.toString());
                 
                 // Salva as listas atualizadas de volta no Local Storage
@@ -568,9 +549,6 @@ if (removeMovieBtn) {
     initializeCarousel(carouselElement);
 }
 
-/**
- * Renderiza todas as listas do usuário na página.
- */
 async function renderAllUserLists() {
     const loggedInUserEmail = getLoggedInUserEmail();
     if (!loggedInUserEmail) {
@@ -752,7 +730,6 @@ function renderSelectedMoviesInModal() {
     });
 }
 
-// --- EVENT LISTENERS GLOBAIS E MODAL ---
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Renderiza as listas iniciais
@@ -812,7 +789,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
-// --- FUNÇÃO DE PESQUISA DO MOVIEDB ---
 
 async function searchMovies(query) {
     searchResults.innerHTML = '<p>Pesquisando...</p>';
