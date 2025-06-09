@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 32px;
     background-color: #1f1f1f; /* ou #1C1C1C */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
@@ -64,7 +64,6 @@
     display: flex;
     align-items: center;
     gap: 2.5em;
-    margin-right: 40px;
 }
 .header-actions .btn-icon {
     cursor: pointer;

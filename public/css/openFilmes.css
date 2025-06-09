@@ -1,9 +1,8 @@
-
-/* BANNER */
 .banner {
   position: relative;
   height: 80vh;
   gap: 20px;
+  overflow: hidden;
 }
 
 .banner-img {
@@ -17,27 +16,46 @@
 .banner-info {
   position: absolute;
   width: 100%;
-  top: 68%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
   padding: 2rem;
+  box-sizing: border-box;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  color: #fff;
 }
 
 .banner-info h1 {
   font-size: 3rem;
+  max-height: 3.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-align: center;
+  margin-bottom: 0px;
 }
 
 .banner-info p {
-  font-size: 1rem;
-  max-height: 48px;
-  overflow:hidden;
+  font-size: 1.1rem;
+  font-weight: bold;
+  max-height: 1.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 12px;
 }
 
 .banner-buttons {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .banner-buttons .btn-play {
@@ -45,10 +63,10 @@
   align-items: center;
   background-color: #EB004B;
   color: #fff;
-  padding: 14px 24px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 6px;
   font-weight: bold;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .banner-buttons .btn-icon {
@@ -56,9 +74,9 @@
   align-items: center;
   background-color: #333;
   color: #fff;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 1.5rem;
+  padding: 10px;
+  font-size: 1.1rem;
+  border-radius: 6px;
 }
 
 .container-details {
@@ -76,6 +94,127 @@
   gap: 30px;
 }
 
+.episodes {
+  background-color: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.season-title {
+  margin-bottom: 0.5rem;
+}
+
+.season {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.season-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.season-count {
+  font-weight: 600;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.season-div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.episode-list {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.season.expanded .episode-list {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.episode {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-top: 1px solid #3a3a3a;
+}
+
+.episode-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ccc;
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.episode-thumbnail {
+  width: 140px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.episode-info {
+  flex: 1;
+}
+
+.episode-title-duration {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.episode-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: #1f1f1f;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ccc;
+  margin-bottom: 0;
+}
+
+.duration-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border: none;
+}
+
+.episode-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
 .arrow {
   background-color: #1f1f1f;
   display: flex;
@@ -84,6 +223,19 @@
   padding: 10px;
   border-radius: 100%;
   border: 1px solid #3a3a3a;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.arrowUp-icon {
+    transform: rotate(90deg);
+}
+
+.arrowDown-icon {
+    transform: rotate(0deg);
 }
 
 .arrowLeft-icon,
@@ -98,8 +250,6 @@
   rotate: 180deg;
 }
 
-
-/* SIDEBAR */
 .sidebar {
   background-color: #1f1f1f;
   padding: 20px;
@@ -118,8 +268,11 @@
   border-radius: 4px;
   margin-right: 5px;
 }
+.section.languages .buttons button,
+.section.genres .buttons button{
+  cursor: default;
+}
 
-/* DESCRIPTION */
 .description {
   display: flex;
   flex-direction: column;
@@ -129,7 +282,6 @@
   border-radius: 8px;
 }
 
-/* CAST */
 .cast {
   display: flex;
   flex-direction: column;
@@ -147,25 +299,56 @@
 
 .buttons-arrows {
   display: flex;
-
   align-items: center;
   gap: 10px;
 }
 
+.cast-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
 
 .cast-member {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0px;
+  min-width: 100px;
+  flex-shrink: 0;
+  width: 100px;
 }
 
 .cast-member img {
   width: 6rem;
   height: 6rem;
-  border-radius: 0, 5rem;
+  border-radius: 0.5rem;
   object-fit: cover;
 }
 
-/* REVIEWS */
+.cast-name {
+  font-weight: bold;
+  margin: 0;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.cast-role {
+  font-size: 0.65rem;
+  color: #aaa;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
 .reviews {
   display: flex;
   flex-direction: column;
@@ -258,42 +441,33 @@
 .star-rating {
     position: relative;
     display: inline-block;
-    --pct: 0%; 
-    /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
-    width: auto; /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
-    height: 16px; /* Corresponde à altura das imagens das estrelas */
+    --pct: 0%;
+    width: auto;
+    height: 16px;
 }
 
-/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
 .star-rating img {
-    display: block; /* Evita problemas de espaçamento indesejado com imagens em linha */
-    width: auto;    /* Permite que as imagens escalem naturalmente com base na altura */
-    height: 16px;   /* Altura fixa para tamanho consistente das estrelas */
+    display: block;
+    width: auto;
+    height: 16px;
 }
 
-/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
 .stars-full-wrapper {
-    position: absolute; /* Posiciona este wrapper precisamente sobre.stars-bg */
+    position: absolute;
     top: 0;
     left: 0;
-    height: 100%; /* Garante que o wrapper corresponda à altura das estrelas */
-    /* Este é o cerne da solução: controla a largura visível e recorta */
-    width: var(--pct); /* Define dinamicamente a largura da janela de recorte */
-    overflow: hidden; /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+    height: 100%;
+    width: var(--pct);
+    overflow: hidden;
 }
 
-/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
 .stars-full {
-    position: absolute; /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
+    position: absolute;
     top: 0;
     left: 0;
-    /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
-       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
-    width: 100%; /* Isso significa 100% da largura *total* da avaliação por estrelas */
+    width: 100%;
 }
 
-
-/* Ações do card (botões de interação) */
 .card-actions {
   margin: 16px 0;
 }
@@ -313,7 +487,6 @@
   background: rgba(235, 0, 75, 0.1);
 }
 
-/* Descrição do review */
 .card-description {
   font-size: 0.95rem;
   line-height: 1.4;
@@ -337,9 +510,6 @@
   border-radius: 4px;
   gap: 4px;
 }
-
-
-/* DETAIL CARD */
 
 .detail-card {
   background: #2e2e2e;
@@ -393,12 +563,14 @@
   padding: 6px 12px;
   border-radius: 6px;
   color: #eee;
-  cursor: pointer;
+  cursor: default;
 }
 
 .providers {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
 .providers img {
@@ -418,11 +590,13 @@
   background: #1f1f1f;
   border-radius: 8px;
   padding: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .rating-box .rating{
   border:none
-} 
+}
 
 .rating-box h4 {
   font-size: 14px;
@@ -454,15 +628,16 @@
   color: #aaa;
 }
 
-
-
-/* MATCH CTA */
 .match-cta {
   background-image: url('../img/Container.png');
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  padding: 60px 20px;
-  color: #fff;
+  object-fit: cover;
+  height: 11rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
 }
 
 .open-serie-match-bakground {
@@ -473,19 +648,401 @@
 .open-serie-match-description {
   display: flex;
   flex-direction: row;
+  padding: 1rem 3rem 1rem 3rem;
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .open-serie-match-button {
-  background-color: #EB004B;
+  background-color: #ff005c;
+  font-weight: bold;
   color: #fff;
   padding: 15px 30px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1rem;
   border-radius: 4px;
   margin-top: 20px;
 }
 
-/* Fim do arquivo CSS */
+.provider-link-tag {
+  background-color: #1f1f1f;
+  color: #eee;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border: 1px solid #3a3a3a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.provider-link-tag:hover {
+  color: #EB004B;
+  background-color: #333;
+  border-color: #555;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Telas de até 1024px (Laptops menores, Tablets em paisagem) */
+@media (max-width: 1024px) {
+  .banner-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .banner-info p {
+    font-size: 1rem;
+  }
+
+  .banner-buttons .btn-play,
+  .banner-buttons .btn-icon {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
+
+  .container-details {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .main-content {
+    gap: 20px;
+  }
+
+  .episodes,
+  .description,
+  .cast,
+  .reviews {
+    padding: 30px;
+    gap: 15px;
+  }
+
+  .season-count {
+    font-size: 20px;
+  }
+
+  .episode-number {
+    font-size: 20px;
+  }
+
+  .episode-thumbnail {
+    width: 120px;
+    height: 70px;
+  }
+
+  .episode-info h3 {
+    font-size: 15px;
+  }
+
+  .duration {
+    font-size: 13px;
+  }
+
+  .episode-info p {
+    font-size: 13px;
+  }
+
+  .detail-card {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .match-cta {
+    height: 10rem;
+  }
+
+  .open-serie-match-description {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .open-serie-match-button {
+    padding: 12px 24px;
+  }
+}
+
+/* Telas de até 768px (Tablets em retrato, Smartphones maiores) */
+@media (max-width: 768px) {
+  .banner {
+    height: 60vh; /* Altura do banner reduzida */
+  }
+
+  .banner-info h1 {
+    font-size: 2rem;
+  }
+
+  .banner-info p {
+    font-size: 0.9rem;
+  }
+
+  .banner-buttons {
+    flex-direction: column; /* Botões empilham em telas menores */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .banner-buttons .btn-play,
+  .banner-buttons .btn-icon {
+    width: 100%; /* Botões ocupam largura total */
+    max-width: 200px; /* Limita a largura para não ficarem muito grandes */
+    justify-content: center; /* Centraliza o conteúdo dentro dos botões */
+    padding: 10px 16px;
+  }
+
+  .container-details {
+    flex-direction: column; /* Conteúdo principal e sidebar empilham */
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .main-content {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .detail-card {
+    max-width: 100%; /* Sidebar ocupa toda a largura */
+    margin: 0; /* Remove margem para ocupar toda a largura */
+    padding: 20px;
+  }
+
+  .episodes,
+  .description,
+  .cast,
+  .reviews {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .season-count {
+    font-size: 18px;
+  }
+
+  .episode-number {
+    font-size: 18px;
+  }
+
+  .episode-thumbnail {
+    width: 100px;
+    height: 60px;
+  }
+
+  .episode-info h3 {
+    font-size: 14px;
+  }
+
+  .duration {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  .episode-info p {
+    font-size: 12px;
+  }
+
+  .cast-member {
+    width: 80px; /* Reduz a largura dos membros do elenco */
+    min-width: 80px;
+  }
+
+  .cast-member img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .cast-name {
+    font-size: 0.8rem;
+  }
+
+  .cast-role {
+    font-size: 0.6rem;
+  }
+
+  .review-item {
+    padding: 15px;
+  }
+
+  .user-name {
+    font-size: 1.1rem;
+  }
+
+  .user-ranking {
+    font-size: 0.8rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .match-cta {
+    height: auto; /* Altura se ajusta ao conteúdo */
+    padding: 15px;
+    margin: 10px;
+    background-size: cover; /* Garante que a imagem de fundo cubra o contêiner */
+  }
+
+  .open-serie-match-description {
+    flex-direction: column; /* Texto e botão empilham */
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    gap: 10px;
+  }
+
+  .open-serie-match-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+  }
+}
+
+/* Telas de até 480px (Smartphones pequenos) */
+@media (max-width: 480px) {
+  .banner {
+    height: 50vh;
+  }
+
+  .banner-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-info p {
+    font-size: 0.8rem;
+  }
+
+  .banner-buttons .btn-play,
+  .banner-buttons .btn-icon {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .container-details {
+    padding: 8px;
+    gap: 15px;
+  }
+
+  .episodes,
+  .description,
+  .cast,
+  .reviews {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .season-header {
+    padding: 10px 15px;
+  }
+
+  .season-count {
+    font-size: 16px;
+  }
+
+  .episode-number {
+    font-size: 16px;
+  }
+
+  .episode-thumbnail {
+    width: 80px;
+    height: 45px;
+  }
+
+  .episode-info h3 {
+    font-size: 13px;
+  }
+
+  .duration {
+    font-size: 11px;
+  }
+
+  .episode-info p {
+    font-size: 11px;
+  }
+
+  .cast-member {
+    width: 70px;
+    min-width: 70px;
+  }
+
+  .cast-member img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .cast-name {
+    font-size: 0.75rem;
+  }
+
+  .cast-role {
+    font-size: 0.55rem;
+  }
+
+  .review-item {
+    padding: 10px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .user-name {
+    font-size: 1rem;
+  }
+
+  .user-ranking {
+    font-size: 0.7rem;
+  }
+
+  .card-description {
+    font-size: 0.85rem;
+  }
+
+  .btn-add-review,
+  .btn-check-reviews {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .detail-card {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .section h3 {
+    font-size: 13px;
+  }
+
+  .section .value {
+    font-size: 18px;
+  }
+
+  .providers img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .rating-box {
+    padding: 10px;
+  }
+
+  .rating-box h4 {
+    font-size: 13px;
+  }
+
+  .person-card img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .person-card .info .name {
+    font-size: 0.9rem;
+  }
+
+  .person-card .info .sub {
+    font-size: 11px;
+  }
+
+  .open-serie-match-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
