@@ -52,56 +52,56 @@
     <!-- Fim da HEADER -->
 
     <div class="search-page">
+    <!-- SIDEBAR DE FILTROS -->
+    <aside class="filter-panel">
+      <!-- 1) Busca -->
+      <div class="filter-search">
+        <input type="text" id="filter-query" placeholder="Pesquisar..." />
+        <button type="button" id="btn-query">Pesquisar</button>
+      </div>
 
-        <!-- 1) SIDEBAR DE FILTROS -->
-        <aside class="filter-panel">
-            <!-- 1) Busca -->
-            <div class="filter-search">
-                <input type="text" placeholder="Pesquisar..." />
-                <button type="button">Pesquisar</button>
-            </div>
+      <!-- 2) Tipo de Conteúdo -->
+      <div class="filter-group">
+        <span class="group-title">Tipo</span>
+        <div class="pills">
+          <label><input type="checkbox" name="type" value="movie" checked/> <span>Filmes</span></label>
+          <label><input type="checkbox" name="type" value="tv"    checked/> <span>Séries</span></label>
+        </div>
+      </div>
 
-            <!-- 2) Tipo de Conteúdo -->
+      <!-- 3) Gêneros -->
+      <div class="filter-group">
+        <span class="group-title">Gêneros</span>
+        <div class="genre-tag-input">
+          <input type="text" id="genre-search" placeholder="Buscar gêneros..." autocomplete="off"/>
+          <ul id="genre-results" class="dropdown"></ul>
+          <div id="genre-tags" class="tag-container"></div>
+        </div>
+      </div>
+
+      <!-- 4) Ano de Lançamento (intervalo) -->
+      <div class="filter-group">
+        <label class="group-title" for="year-min">Ano de Lançamento</label>
+        <div class="range-inputs">
+          <input type="number" id="year-min" min="1900" max="2025" value="1900"/>
+          <span>–</span>
+          <input type="number" id="year-max" min="1900" max="2025" value="2025"/>
+        </div>
+      </div>
+
+      <!-- 5) Duração (intervalo em minutos) -->
+      <div class="filter-group">
+        <label class="group-title" for="dur-min">Duração (min)</label>
+        <div class="range-inputs">
+          <input type="number" id="dur-min" min="0"   max="600" value="0"/>
+          <span>–</span>
+          <input type="number" id="dur-max" min="0"   max="600" value="300"/>
+        </div>
+      </div>
+
+        <!-- 6) Nota -->
             <div class="filter-group">
-                <span class="group-title">Tipo</span>
-                <div class="pills">
-                    <label>
-                        <input type="checkbox" name="feature" value="filme"  checked />
-                        <span>Filmes</span>
-                    </label>
-                    <label>
-                        <input type="checkbox" name="feature" value="serie" checked />
-                        <span>Séries</span>
-                    </label>
-                </div>
-            </div>
-
-            <!-- 3) Gêneros (Busca + Tags) -->
-            <div class="filter-group">
-                <span class="group-title">Gêneros</span>
-                <div class="genre-tag-input">
-                    <input type="text" id="genre-search" placeholder="Buscar gêneros..." />
-                    <div id="genre-tags" class="tag-container"></div>
-                </div>
-            </div>
-
-            <!-- 4) Ano de Lançamento -->
-            <div class="filter-group">
-                <label for="release-year">Ano de Lançamento</label>
-                <input type="range" id="release-year" min="1900" max="2025" step="1" />
-                <output id="year-output">2023</output>
-            </div>
-
-            <!-- 5) Duração -->
-            <div class="filter-group">
-                <label for="discount">Duração (minutos)</label>
-                <input type="range" id="discount" min="30" max="300" step="10" />
-                <output id="duration-output">120 min</output>
-            </div>
-
-            <!-- 6) Nota -->
-            <div class="filter-group">
-                <span class="group-title">Nota</span>
+                <span class="group-title">Nota ≥</span>
                 <div class="pills">
                     <label>
                         <input type="checkbox" name="rating" value="1" />
@@ -176,186 +176,139 @@
                 </div>
             </div>
 
-            <!-- 7) Ordenar por -->
-            <div class="filter-group">
-                <label for="sort">Ordenar por</label>
-                <select id="sort">
-                    <option value="relevance">Relevância</option>
-                    <option value="rating-desc">Nota (Maior)</option>
-                    <option value="release-desc">Mais Recentes</option>
-                    <option value="duration-asc">Duração (Curta → Longa)</option>
-                </select>
-            </div>
-        </aside>
+      <!-- 7) Ordenar por -->
+      <div class="filter-group">
+        <label for="sort" class="group-title">Ordenar por</label>
+        <select id="sort">
+          <option value="popularity.desc">Popularidade</option>
+          <option value="release_date.desc">Lançamento</option>
+          <option value="vote_average.desc">Nota</option>
+          <option value="runtime.asc">Duração</option>
+        </select>
+      </div>
+    </aside>
 
+    <!-- RESULTADOS -->
+    <main class="results">
+      <p class="search-summary">
+        Exibindo resultados para: <strong id="summary-query">Todos</strong>
+      </p>
+      <div class="movie-catalog" id="catalog">
+        <!-- preenchido pelo JS -->
+      </div>
+    </main>
+  </div>
 
-        <!-- 2) RESULTADOS -->
-        <main class="results">
-            <p class="search-summary">
-                Exibindo resultados para: <strong>“Batman”</strong>
-            </p>
+    <!-- Início da FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
 
-            <div class="movie-catalog">
-                <!-- Repita este bloco para cada poster -->
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Batman: O Cavaleiro das Trevas">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Stranger Things">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <div class="movie-item">
-                    <img src="../public/img/batman.jpg" alt="Outro Filme">
-                </div>
-                <!-- ... -->
-            </div>
-        </main>
+            <!-- Colunas principais -->
+            <div class="footer__cols">
 
-    </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Início</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Categorias</a></li>
+                        <li><a href="matchGame.html">Jogos</a></li>
+                        <li><a href="minhaslistas.html">Listas</a></li>
+                        <li><a href="review.html">Reviews</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
 
-        <!-- Início da FOOTER -->
-        <footer class="footer">
-            <div class="footer__inner">
+                <div class="footer__col">
+                    <h4 class="footer__title">Filmes</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Gêneros</a></li>
+                        <li><a href="filmesSeries.html">Em alta</a></li>
+                        <li><a href="filmesSeries.html">Novidades</a></li>
+                        <li><a href="filmesSeries.html">Populares</a></li>
+                    </ul>
+                </div>
 
-                <!-- Colunas principais -->
-                <div class="footer__cols">
+                <div class="footer__col">
+                    <h4 class="footer__title">Séries</h4>
+                    <ul class="footer__list">
+                        <li><a href="filmesSeries.html">Gêneros</a></li>
+                        <li><a href="filmesSeries.html">Em alta</a></li>
+                        <li><a href="filmesSeries.html">Novidades</a></li>
+                        <li><a href="filmesSeries.html">Populares</a></li>
+                    </ul>
+                </div>
 
-                    <div class="footer__col">
-                        <h4 class="footer__title">Início</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Categorias</a></li>
-                            <li><a href="matchGame.html">Jogos</a></li>
-                            <li><a href="minhaslistas.html">Listas</a></li>
-                            <li><a href="review.html">Reviews</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
+                <div class="footer__col">
+                    <h4 class="footer__title">Jogos</h4>
+                    <ul class="footer__list">
+                        <li><a href="matchGame.html">Match game</a></li>
+                        <li><a href="qualOFilme.html">Qual é o filme?</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Reviews</h4>
+                    <ul class="footer__list">
+                        <li><a href="review.html">Meus reviews</a></li>
+                        <li><a href="review.html">Novos reviews</a></li>
+                        <li><a href="review.html">Reviews em alta</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Listas</h4>
+                    <ul class="footer__list">
+                        <li><a href="minhaslistas.html">Minhas Listas</a></li>
+                        <li><a href="minhaslistas.html">Nova Lista</a></li>
+                        <li><a href="minhaslistas.html">Watchlist</a></li>
+                        <li><a href="minhaslistas.html">Matchlist</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h4 class="footer__title">Perfil</h4>
+                    <ul class="footer__list">
+                        <li><a href="perfil.html">Editar Perfil</a></li>
+                        <li><a href="perfil.html">Minhas Atividades</a></li>
+                        <li><a href="perfil.html">Favoritos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col footer__col--social">
+                    <h4 class="footer__title">Conecte-se conosco</h4>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                        </a>
+                        <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                        </a>
+                        <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+                            <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                        </a>
                     </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Filmes</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Séries</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Jogos</h4>
-                        <ul class="footer__list">
-                            <li><a href="matchGame.html">Match game</a></li>
-                            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Reviews</h4>
-                        <ul class="footer__list">
-                            <li><a href="review.html">Meus reviews</a></li>
-                            <li><a href="review.html">Novos reviews</a></li>
-                            <li><a href="review.html">Reviews em alta</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Listas</h4>
-                        <ul class="footer__list">
-                            <li><a href="minhaslistas.html">Minhas Listas</a></li>
-                            <li><a href="minhaslistas.html">Nova Lista</a></li>
-                            <li><a href="minhaslistas.html">Watchlist</a></li>
-                            <li><a href="minhaslistas.html">Matchlist</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Perfil</h4>
-                        <ul class="footer__list">
-                            <li><a href="perfil.html">Editar Perfil</a></li>
-                            <li><a href="perfil.html">Minhas Atividades</a></li>
-                            <li><a href="perfil.html">Favoritos</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col footer__col--social">
-                        <h4 class="footer__title">Conecte-se conosco</h4>
-                        <div class="footer__social">
-                            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                            </a>
-                            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                            </a>
-                            <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /Colunas principais -->
-
-                <div class="footer__bottom">
-                    <p class="footer__copyright">
-                        ©2025 Lumière. Todos os direitos reservados.
-                    </p>
-                    <nav class="footer__policies" aria-label="Políticas do site">
-                        <a href="#">Termos de Uso</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Privacidade</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Cookies</a>
-                    </nav>
                 </div>
 
             </div>
-        </footer>
-        <!-- Fim da FOOTER -->
+            <!-- /Colunas principais -->
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    ©2025 Lumière. Todos os direitos reservados.
+                </p>
+                <nav class="footer__policies" aria-label="Políticas do site">
+                    <a href="#">Termos de Uso</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Privacidade</a>
+                    <span class="footer__sep">|</span>
+                    <a href="#">Políticas de Cookies</a>
+                </nav>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Fim da FOOTER -->
+
+    <script src="../public/js/pesquisa.js"></script>
 </body>

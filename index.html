@@ -2,32 +2,105 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filmes e Series</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="../public/css/home.css">
     <link rel="stylesheet" href="../public/css/footer.css">
     <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/filmesSeries.css">
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
 
 <body>
+
+     <!-- 1. Modal já presente no DOM -->
+    <dialog id="review-modal" class="modal">
+        <form class="modal-content" method="dialog">
+            <h2>Add Review</h2>
+
+            <!-- Row 1: pesquisa, temporada, episódio, nota -->
+            <div class="modal-row row--inputs">
+                <div class="form-group-tipo">
+                    <label for="modal-type">Tipo</label>
+                    <select id="modal-type">
+                        <option value="movie">Filme</option>
+                        <option value="tv">Série</option>
+                    </select>
+                </div>
+                <div class="form-group-titulo flex-grow-2">
+                    <label for="modal-search">Buscar título</label>
+                    <input type="text" id="modal-search" autocomplete="off" placeholder="Digite o nome…" />
+                    <ul id="modal-results" class="results"></ul>
+                </div>
+                <div class="form-group-ep-temp" id="season-episode-wrapper">
+                    <div class="season-input">
+                    <label for="modal-season">Season</label>
+                    <select id="modal-season"></select>
+                    </div>
+                    <div class="episode-input">
+                    <label for="modal-episode">Episode</label>
+                    <select id="modal-episode"></select>
+                    </div> 
+                </div>
+                <div class="form-group-nota">
+                    <label for="modal-rating">Nota (0–10)</label>
+                    <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
+                </div>
+            </div>
+
+            <!-- Row 2: comentário -->
+            <div class="modal-row row--textarea">
+                <div class="form-group" style="width:100%">
+                    <label for="modal-text">Comentário</label>
+                    <textarea id="modal-text" required></textarea>
+                </div>
+            </div>
+
+            <!-- Row 3: botões -->
+            <div class="modal-row row--buttons">
+                <button id="modal-cancel" type="button">Cancelar</button>
+                <button id="modal-save" type="button">Salvar</button>
+            </div>
+        </form>
+
+    </dialog>
+    
+    <!-- Início da HEADER (em index.html) -->
     <header class="header">
         <div class="logo">
-            <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+            <!-- Logo leva para a própria página inicial (index.html) -->
+            <a href="index.html">
+                <img src="public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+            </a>
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
-                <li> <a class="nav-options" href="../index.html">Início</a></li>
-                <li><a class="nav-options" href="pages/filmesSeries.html">Filmes & Séries</a></li>
-                <li><a class="nav-options" href="pages/minhaslistas.html">Minhas Listas</a></li>
-                <li><a class="nav-options" href="pages/review.html">Reviews</a></li>
-                <li><a class="nav-options" href="pages/matchGame.html">Match Game</a></li>
+                <li>
+                    <!-- Início -->
+                    <a class="nav-options" href="index.html">Início</a>
+                </li>
+                <li>
+                    <!-- Filmes & Séries -->
+                    <a class="nav-options" href="pages/filmesSeries.html">Filmes &amp; Séries</a>
+                </li>
+                <li>
+                    <!-- Minhas Listas -->
+                    <a class="nav-options" href="pages/minhaslistas.html">Minhas Listas</a>
+                </li>
+                <li>
+                    <!-- Reviews -->
+                    <a class="nav-options" href="pages/review.html">Reviews</a>
+                </li>
+                <li>
+                    <!-- Match Game -->
+                    <a class="nav-options" href="pages/matchGame.html">Match Game</a>
+                </li>
             </ul>
         </nav>
         <div class="header-actions">
             <!-- search section transformado em form -->
-            <form class="search-container" action="pesquisa.html" method="get">
+            <form class="search-container" action="pages/pesquisa.html" method="get">
                 <!-- botão de ícone para parecer igual -->
                 <button type="submit" class="btn-icon">
                     <img src="../public/icons/Search.svg" alt="Search Icon">
@@ -40,21 +113,36 @@
             <!-- end of search section -->
 
             <button class="btn-icon">
-                <a href="perfil.html">
+                <a href="pages/perfil.html">
                     <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
                 </a>
             </button>
         </div>
-        <script src="/public/js/header.js"></script>
+
+        <script src="../js/header.js"></script>
     </header>
+    <!-- Fim da HEADER -->
+
     <div class="containers__separator">
 
+        <!-- Início da seção de herói -->
         <section class="hero-section">
             <div class="hero-carousel">
+                <div class="carousel-nav">
+                    <button class="arrow-hero">
+                        <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                    </button>
+                    <button class="arrow-hero">
+                        <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                    </button>
+                </div>
+
                 <div class="carousel-track">
                     <div class="carousel-slide active">
                         <img src="../public/img/American-Psycho.png" alt="American Psycho Poster"
                             class="carousel-image">
+
+
                         <div class="carousel-details">
                             <h2>American Psycho</h2>
                             <p class="synopsis">
@@ -66,6 +154,7 @@
                                     <div class="star-rating-hero" style="--pct: 70%;">
                                         <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
                                             alt="Five Stars Background">
+
                                         <div class="stars-full-wrapper">
                                             <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
                                                 alt="Five Stars Fill">
@@ -90,7 +179,10 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                    <!-- Slide 2 e 3 iguais com conteúdo diferente -->
+                </div>
+
+                <!-- Dots centralizados -->
                 <div class="carousel-dots">
                     <span class="dot active"></span>
                     <span class="dot"></span>
@@ -98,6 +190,8 @@
                 </div>
             </div>
         </section>
+        <!-- Fim da seção de herói -->
+
         <section class="categories-section">
             <div class="all-lists-container">
                 <div class="lists-top-container">
@@ -258,12 +352,14 @@
                                 </button>
                             </div>
                             <div class="carousel-controls">
-                                <button class="arrow carousel-arrow-left" data-carousel-id="carouselMatches__userMatches">
+                                <button class="arrow carousel-arrow-left"
+                                    data-carousel-id="carouselMatches__userMatches">
                                     <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                                 </button>
                                 <div class="indicators" data-carousel-id="carouselMatches__userMatches">
-                                    </div>
-                                <button class="arrow carousel-arrow-right" data-carousel-id="carouselMatches__userMatches">
+                                </div>
+                                <button class="arrow carousel-arrow-right"
+                                    data-carousel-id="carouselMatches__userMatches">
                                     <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                                 </button>
                             </div>
@@ -285,194 +381,242 @@
             </div>
         </section>
 
-        <section class="categories-section">
+        <!-- Seção de Reviews -->
+        <div class="container-reviews">
+            <section class="reviews">
+                <div class="cast-list">
+                    <div class="cast-item">
+                        <h2>Reviews</h2>
+                    </div>
+                    <button class="btn-add-review">
+                        <img src="../public/icons/PlusIcon.svg" alt="Add Icon" class="plus-icon">
+                        Add Your Review
+                    </button>
+                </div>
+                <div class="review-list"></div>
+
+                <template id="review-item-template">
+                    <article class="review-item">
+                        <div class="card-film-info">
+                            <div class="card-film">
+                                <img src="" alt="Banner" class="banner-film">
+                            </div>
+                            <div class="card-info">
+                                <div class="card-header">
+                                    <img src="" alt="Avatar" class="avatar">
+                                    <div class="user-info">
+                                        <h3 class="user-name" aria-label="Nome do usuário">Usuário</h3>
+                                        <p class="user-ranking"><!-- ranking° ranking --><span>(0 XP)</span></p>
+                                    </div>
+                                    <div class="rating">
+                                        <div class="star-rating" style="--pct:0%;">
+                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="">
+                                            <div class="stars-full-wrapper">
+                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="rating-text">
+                                            <span class="rating-value">0.0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-actions">
+                                    <button type="button" class="action-title"></button>
+                                    <button type="button" class="action-year"></button>
+                                    <button type="button" class="action-season"></button>
+                                    <button type="button" class="action-episode"></button>
+                                </div>
+                                <p class="card-description"></p>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+
+                <div class="paginacao">
+                    <div class="carousel-controls">
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                        </button>
+                        <div class="indicators">
+                            <span class="dot active"></span>
+                        </div>
+                        <button class="arrow">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Fim da Seção de Reviews -->
+
+        <div class="lists-page">
             <div class="all-lists-container">
                 <div class="lists-top-container">
-                    <button class="list-section-button">Series</button>
+                    <button class="list-section-button">Minhas Listas</button>
+                    <button class="add-list-button" id="addListBtn">
+                        <img src="../public/icons/PlusCircleFill.svg" alt="Add Icon" class="plus-icon-fill">
+                    </button>
                 </div>
-
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="categories-header">
-                            <p>Gênero de Series</p>
-                        </div>
-                    </div>
-                    <div id="carouselSeries__genres" class="categories-carousel films-carousel">
-                        <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_beating-heart.svg" alt="Romance Icon"
-                                class="category-icon" />
-                            <span class="category-label">Romance</span>
-                        </button>
-                        <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_popcorn.svg" alt="Drama Icon"
-                                class="category-icon" />
-                            <span class="category-label">Drama</span>
-                        </button>
-                        <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_ghost.svg" alt="Horror Icon"
-                                class="category-icon" />
-                            <span class="category-label">Horror</span>
-                        </button>
-                        <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_face-with-tears-of-joy.svg"
-                                alt="Comedy Icon" class="category-icon" />
-                            <span class="category-label">Comédia</span>
-                        </button>
-                        <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_clapper-board.svg" alt="Action Icon"
-                                class="category-icon" />
-                            <span class="category-label">Ação</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Top 10 Séries Agora</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__top10">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators" data-carousel-id="carouselSeries__top10">
-                            </div>
-                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__top10">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                    <div id="carouselSeries__top10" class="films-carousel"></div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Novas Séries</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__latest">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators" data-carousel-id="carouselSeries__latest">
-                            </div>
-                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__latest">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                    <div id="carouselSeries__latest" class="films-carousel"></div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Séries Mais Bem Avaliadas de Todos os Tempos</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__topRated">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators" data-carousel-id="carouselSeries__topRated">
-                            </div>
-                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__topRated">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                    <div id="carouselSeries__topRated" class="films-carousel"></div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-details-container">
-                        <div class="list-description">
-                            <p>Clássicos da Cultura Pop (Séries)</p>
-                        </div>
-                        <div class="carousel-controls">
-                            <button class="arrow carousel-arrow-left" data-carousel-id="carouselSeries__popCultureClassics">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                            </button>
-                            <div class="indicators" data-carousel-id="carouselSeries__popCultureClassics">
-                            </div>
-                            <button class="arrow carousel-arrow-right" data-carousel-id="carouselSeries__popCultureClassics">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-                            </button>
-                        </div>
-                    </div>
-                    <div id="carouselSeries__popCultureClassics" class="films-carousel"></div>
+                <div id="user-lists-content">
                 </div>
             </div>
-        </section>
+        </div>
+        <template id="listItemTemplate">
+            <div class="list-item">
+                <div class="list-details-container">
+                    <div class="list-description">
+                        <p class="list-name-display"></p> <button class="edit-list-button" title="Editar Lista">
+                            <img src="../public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
+                        </button>
+                        <button class="delete-list-button" title="Deletar Lista">
+                            <img src="../public/icons/trash.svg" alt="Delete Icon" class="trash-icon-fill">
+                        </button>
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="arrow carousel-arrow-left" data-carousel-id="">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                        </button>
+                        <div class="indicators" data-carousel-id="">
+                        </div>
+                        <button class="arrow carousel-arrow-right" data-carousel-id="">
+                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                        </button>
+                    </div>
+                </div>
+                <div class="films-carousel" id="">
+                </div>
+            </div>
+        </template>
 
+        <template id="movieCardTemplate">
+            <div class="film-on-list">
+                <img class="film-banner-list-carousel" src="" alt="Pôster do filme" />
+                <div class="film-on-list-details">
+                    <div class="list-details-timestamp">
+                        <img src="../public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
+                        <div class="duration-text">
+                            <span class="duration-value"></span>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <div class="star-rating" style="--pct: 84%;">
+                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                alt="Fundo de cinco estrelas vazias">
+                            <div class="stars-full-wrapper">
+                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                    alt="Preenchimento de cinco estrelas">
+                            </div>
+                        </div>
+                        <div class="rating-text">
+                            <span class="rating-list-value"></span>
+                        </div>
+                    </div>
+                    <button class="remove-movie-from-list-button" title="Remover da lista">
+                        X
+                    </button>
+                </div>
+            </div>
+        </template>
+
+
+        <div id="listModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="modalTitle">Criar Nova Lista</h2>
+                <label for="listNameInput">Nome da Lista:</label>
+                <input type="text" id="listNameInput" placeholder="Ex: Filmes de Ação, Watchlist..." required>
+                <p id="listNameError" class="error-message"></p>
+
+                <div class="modal-search-section">
+                    <label for="movieSearchInput">Adicionar Filmes:</label>
+                    <div class="search-input-container">
+                        <input type="text" id="movieSearchInput" placeholder="Pesquisar filmes/séries...">
+                        <button id="searchMovieBtn">Pesquisar</button>
+                    </div>
+                    <div id="searchResults" class="search-results-dropdown">
+                    </div>
+                </div>
+
+                <div class="modal-selected-movies">
+                    <h3>Filmes na Lista:</h3>
+                    <ul id="selectedMoviesList">
+                    </ul>
+                </div>
+
+                <button id="saveListBtn">Salvar Lista</button>
+            </div>
+        </div>
+        <!-- Início da FOOTER -->
         <footer class="footer">
             <div class="footer__inner">
 
+                <!-- Colunas principais -->
                 <div class="footer__cols">
 
                     <div class="footer__col">
                         <h4 class="footer__title">Início</h4>
                         <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Categorias</a></li>
-                            <li><a href="matchGame.html">Jogos</a></li>
-                            <li><a href="minhaslistas.html">Listas</a></li>
-                            <li><a href="review.html">Reviews</a></li>
-                            <li><a href="login.html">Login</a></li>
+                            <li><a href="/pages/filmesSeries.html">Categorias</a></li>
+                            <li><a href="/pages/matchGame.html">Jogos</a></li>
+                            <li><a href="/pages/minhaslistas.html">Listas</a></li>
+                            <li><a href="/pages/review.html">Reviews</a></li>
+                            <li><a href="/pages/login.html">Login</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Filmes</h4>
                         <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
+                            <li><a href="/pages/filmesSeries.html">Gêneros</a></li>
+                            <li><a href="/pages/filmesSeries.html">Em alta</a></li>
+                            <li><a href="/pages/filmesSeries.html">Novidades</a></li>
+                            <li><a href="/pages/filmesSeries.html">Populares</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Séries</h4>
                         <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
+                            <li><a href="/pages/filmesSeries.html">Gêneros</a></li>
+                            <li><a href="/pages/filmesSeries.html">Em alta</a></li>
+                            <li><a href="/pages/filmesSeries.html">Novidades</a></li>
+                            <li><a href="/pages/filmesSeries.html">Populares</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Jogos</h4>
                         <ul class="footer__list">
-                            <li><a href="matchGame.html">Match game</a></li>
-                            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
+                            <li><a href="/pages/matchGame.html">Match game</a></li>
+                            <li><a href="/pages/qualOFilme.html">Qual é o filme?</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Reviews</h4>
                         <ul class="footer__list">
-                            <li><a href="review.html">Meus reviews</a></li>
-                            <li><a href="review.html">Novos reviews</a></li>
-                            <li><a href="review.html">Reviews em alta</a></li>
+                            <li><a href="/pages/review.html">Meus reviews</a></li>
+                            <li><a href="/pages/review.html">Novos reviews</a></li>
+                            <li><a href="/pages/review.html">Reviews em alta</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Listas</h4>
                         <ul class="footer__list">
-                            <li><a href="minhaslistas.html">Minhas Listas</a></li>
-                            <li><a href="minhaslistas.html">Nova Lista</a></li>
-                            <li><a href="minhaslistas.html">Watchlist</a></li>
-                            <li><a href="minhaslistas.html">Matchlist</a></li>
+                            <li><a href="/pages/minhaslistas.html">Minhas Listas</a></li>
+                            <li><a href="/pages/minhaslistas.html">Nova Lista</a></li>
+                            <li><a href="/pages/minhaslistas.html">Watchlist</a></li>
+                            <li><a href="/pages/minhaslistas.html">Matchlist</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Perfil</h4>
                         <ul class="footer__list">
-                            <li><a href="perfil.html">Editar Perfil</a></li>
-                            <li><a href="perfil.html">Minhas Atividades</a></li>
-                            <li><a href="perfil.html">Favoritos</a></li>
+                            <li><a href="/pages/perfil.html">Editar Perfil</a></li>
+                            <li><a href="/pages/perfil.html">Minhas Atividades</a></li>
+                            <li><a href="/pages/perfil.html">Favoritos</a></li>
                         </ul>
                     </div>
 
@@ -494,6 +638,8 @@
                     </div>
 
                 </div>
+                <!-- /Colunas principais -->
+
                 <div class="footer__bottom">
                     <p class="footer__copyright">
                         ©2025 Lumière. Todos os direitos reservados.
@@ -509,29 +655,14 @@
 
             </div>
         </footer>
-        <template id="movieCardTemplate"> <div class="film-on-list">
-                <img class="film-banner-list-carousel" src="" alt="Pôster do filme"/>
-                <div class="film-on-list-details">
-                    <div class="list-details-timestamp">
-                        <img src="../public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
-                        <div class="duration-text">
-                            <span class="duration-value"></span>
-                        </div>
-                    </div>
-                    <div class="rating">
-                        <div class="star-rating" style="--pct: 84%;">
-                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Fundo de cinco estrelas vazias">
-                            <div class="stars-full-wrapper">
-                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Preenchimento de cinco estrelas">
-                            </div>
-                        </div>
-                        <div class="rating-text">
-                            <span class="rating-list-value"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
-    </div> <script src="/public/js/filmesSeries.js"></script>
+        <!-- Fim da FOOTER -->
+
+        <script src="../public/js/header.js"></script>
+        <script src="../public/js/home.js"></script>
+        <script src="../public/js/modal.js"></script>
+        <script type="module" src="../public/js/reviews.js"></script>
+        <script type="module" src="../public/js/minhaslistas.js"></script>
+        <script type="module" src="../public/js/filmesSeries.js"></script>
 </body>
+
 </html>
