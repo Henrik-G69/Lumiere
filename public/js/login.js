@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loginForm.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        //se baseia na mesma forma da tela de cadastro, limpando erros anteriores
+        // se baseia na mesma forma da tela de cadastro, limpando erros anteriores
         emailError.textContent = '';
         passwordError.textContent = '';
         loginErrorMessage.textContent = ''; 
@@ -55,11 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const foundUser = users.find(user => user.email === email && user.password === password);
 
         if (foundUser) {
-            //se o usuario foi achado, armazena seu email e seu login
+            // se o usuario foi achado, armazena seu email e seu login
             localStorage.setItem('loggedInUserEmail', foundUser.email);
             localStorage.setItem('loggedInUserNickname', foundUser.nickname);
             localStorage.setItem('loggedInUserAvatar', foundUser.avatar || '../icons/PersonCircle.svg');
-            window.location.href = '../index.html'; // Redireciona para a página inicial
+            window.location.href = '../index.html'; // redireciona para a página inicial
         }  else {
             loginErrorMessage.textContent = 'Email ou senha inválidos. Por favor, tente novamente.';
         }
