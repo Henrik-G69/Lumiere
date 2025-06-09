@@ -1,87 +1,118 @@
+// API
+const TMDB_API_KEY = '98f79a8fc16247f2c16e9d0b422dbfbe'; //API que traz as maiores informações dos filmes e series
+const OMDB_API_KEY = '3ea301f'; //API que chama os ratings dos filmes e series
+const BASE_API_URL = 'https://api.themoviedb.org/3';
+const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+const BASE_BACKDROP_URL = 'https://image.tmdb.org/t/p/w1280';
+
+// placeholder em caso de imagens quebradas
+const PLACEHOLDER_IMAGE_URL = '../public/icons/place-holder.svg';
+
+// Mapa de URLs base dos provedores de streaming
+const STREAMING_PROVIDER_URLS = {
+    'Netflix': 'https://www.netflix.com/',
+    'Amazon Prime Video': 'https://www.primevideo.com/',
+    'Prime Video': 'https://www.primevideo.com/',
+    'Disney Plus': 'https://www.disneyplus.com/',
+    'Disney+': 'https://www.disneyplus.com/',
+    'Max': 'https://www.max.com/',
+    'HBO Max': 'https://www.max.com/',
+    'Globoplay': 'https://globoplay.globo.com/',
+    'Globo Play': 'https://globoplay.globo.com/',
+    'Star Plus': 'https://www.starplus.com/',
+    'Star+': 'https://www.starplus.com/',
+    'Paramount+': 'https://www.paramountplus.com/',
+    'Paramount Plus': 'https://www.paramountplus.com/',
+    'Paramount Plus Apple TV Channel': 'https://www.paramountplus.com/',
+    'Paramount Plus Premium': 'https://www.paramountplus.com/',
+    'Mubi': 'https://www.mubi.com/',
+    'Oldflix': 'https://www.oldflix.com.br/',
+    'Telecine Play': 'https://www.telecineplay.com.br/',
+    'Telecine': 'https://www.telecineplay.com.br/',
+    'Telecine Amazon Channel': 'https://www.primevideo.com/',
+    'Apple TV Plus': 'https://www.apple.com/apple-tv-plus/',
+    'Apple TV+': 'https://www.apple.com/apple-tv-plus/',
+    'Lionsgate Plus': 'https://www.lionsgateplus.com/',
+    'Lionsgate+': 'https://www.lionsgateplus.com/',
+    'Looke': 'https://www.looke.com.br/',
+    'Looke Amazon Channel': 'https://www.primevideo.com/',
+    'Claro Video': 'https://www.claro.com.br/claro-video',
+    'Google Play Movies': 'https://play.google.com/store/movies',
+    'Google Play Movies & TV': 'https://play.google.com/store/movies',
+    'YouTube': 'https://www.youtube.com/',
+    'Apple TV': 'https://tv.apple.com/',
+    'iTunes': 'https://itunes.apple.com/',
+    'Amazon Video': 'https://www.amazon.com/gp/video/storefront/',
+    'Microsoft Store': 'https://www.microsoft.com/en-us/store/movies-and-tv',
+};
+
+// elementos do DOM/pagina ---
+const elements = {
+    mainContent: document.querySelector('main'),
+    //seção de banner, nome, rating e genero
+    bannerSection: document.querySelector('.banner'),
+    bannerImg: document.querySelector('.banner-img'),
+    bannerTitle: document.querySelector('.banner-info h1'),
+    //bannerDescription == genero e avaliação
+    bannerDescription: document.querySelector('.banner-info p'),
+    //containers restantes, como os da descrição, etc
+    mainDescription: document.querySelector('section.description p'),
+    castContainer: document.querySelector('.cast-container'),
+    releasedYearElement: document.querySelector('.section.year .value'),
+    languagesContainer: document.querySelector('.section.languages .buttons'),
+    genresContainer: document.querySelector('.section.genres .buttons'),
+    directorSection: document.querySelector('.director-section'),
+    musicSection: document.querySelector('.music-section'),
+    ratingsGridContainer: document.querySelector('#ratings-grid-container'),
+    ratingsSection: document.querySelector('.section.ratings'),
+    playNowButton: document.querySelector('.btn-play'),
+
+    // Referências para as seções de provedores
+    watchSection: document.querySelector('.section.watch'),
+
+    // seção de episodios e seu container
+    episodesSection: document.querySelector('#episodes-section'),
+    seasonsListContainer: document.querySelector('#seasons-list-container'),
+    containerDetails: document.querySelector('.container-details'),
+
+
+    //referente ao CTA (call to action) do match no final da pagina
+    matchCta: document.querySelector('.match-cta'),
+    matchButton: document.querySelector('.open-serie-match-button')
+};
+
+/**
+ * Busca detalhes + créditos + imdb_id de um conteúdo.
+ * @export
+ * @param {string} id 
+ * @param {string|null} preferredType 
+ * @returns {Promise<{content:object,credits:object,type:string,imdb_id:string}|null>}
+ */
+export async function fetchContentDetails(id, preferredType = null) {
+  if (!id) return null;
+  const typesToTry = preferredType ? [preferredType] : ['movie','tv'];
+  let contentData, creditsData, imdbId, contentType;
+
+  for (const type of typesToTry) {
+    const res = await fetch(`${BASE_API_URL}/${type}/${id}?api_key=${TMDB_API_KEY}&language=pt-BR`);
+    if (!res.ok) {
+      if (res.status === 404 && !preferredType) continue;
+      else break;
+    }
+    contentData = await res.json();
+    contentType = type;
+    const cred = await fetch(`${BASE_API_URL}/${type}/${id}/credits?api_key=${TMDB_API_KEY}&language=pt-BR`);
+    creditsData = cred.ok ? await cred.json() : null;
+    const ext = await fetch(`${BASE_API_URL}/${type}/${id}/external_ids?api_key=${TMDB_API_KEY}`);
+    imdbId = ext.ok ? (await ext.json()).imdb_id : null;
+    break;
+  }
+
+  if (!contentData) return null;
+  return { content: contentData, credits: creditsData, type: contentType, imdb_id: imdbId };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // API
-    const TMDB_API_KEY = '98f79a8fc16247f2c16e9d0b422dbfbe'; //API que traz as maiores informações dos filmes e series
-    const OMDB_API_KEY = '3ea301f'; //API que chama os ratings dos filmes e series
-    const BASE_API_URL = 'https://api.themoviedb.org/3';
-    const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-    const BASE_BACKDROP_URL = 'https://image.tmdb.org/t/p/w1280';
-
-    // placeholder em caso de imagens quebradas
-    const PLACEHOLDER_IMAGE_URL = '../public/icons/place-holder.svg';
-
-    // Mapa de URLs base dos provedores de streaming
-    const STREAMING_PROVIDER_URLS = {
-        'Netflix': 'https://www.netflix.com/',
-        'Amazon Prime Video': 'https://www.primevideo.com/',
-        'Prime Video': 'https://www.primevideo.com/',
-        'Disney Plus': 'https://www.disneyplus.com/',
-        'Disney+': 'https://www.disneyplus.com/',
-        'Max': 'https://www.max.com/',
-        'HBO Max': 'https://www.max.com/',
-        'Globoplay': 'https://globoplay.globo.com/',
-        'Globo Play': 'https://globoplay.globo.com/',
-        'Star Plus': 'https://www.starplus.com/',
-        'Star+': 'https://www.starplus.com/',
-        'Paramount+': 'https://www.paramountplus.com/',
-        'Paramount Plus': 'https://www.paramountplus.com/',
-        'Paramount Plus Apple TV Channel': 'https://www.paramountplus.com/',
-        'Paramount Plus Premium': 'https://www.paramountplus.com/',
-        'Mubi': 'https://www.mubi.com/',
-        'Oldflix': 'https://www.oldflix.com.br/',
-        'Telecine Play': 'https://www.telecineplay.com.br/',
-        'Telecine': 'https://www.telecineplay.com.br/',
-        'Telecine Amazon Channel': 'https://www.primevideo.com/',
-        'Apple TV Plus': 'https://www.apple.com/apple-tv-plus/',
-        'Apple TV+': 'https://www.apple.com/apple-tv-plus/',
-        'Lionsgate Plus': 'https://www.lionsgateplus.com/',
-        'Lionsgate+': 'https://www.lionsgateplus.com/',
-        'Looke': 'https://www.looke.com.br/',
-        'Looke Amazon Channel': 'https://www.primevideo.com/',
-        'Claro Video': 'https://www.claro.com.br/claro-video',
-        'Google Play Movies': 'https://play.google.com/store/movies',
-        'Google Play Movies & TV': 'https://play.google.com/store/movies',
-        'YouTube': 'https://www.youtube.com/',
-        'Apple TV': 'https://tv.apple.com/',
-        'iTunes': 'https://itunes.apple.com/',
-        'Amazon Video': 'https://www.amazon.com/gp/video/storefront/',
-        'Microsoft Store': 'https://www.microsoft.com/en-us/store/movies-and-tv',
-    };
-
-    // elementos do DOM/pagina ---
-    const elements = {
-        mainContent: document.querySelector('main'),
-        //seção de banner, nome, rating e genero
-        bannerSection: document.querySelector('.banner'),
-        bannerImg: document.querySelector('.banner-img'),
-        bannerTitle: document.querySelector('.banner-info h1'),
-        //bannerDescription == genero e avaliação
-        bannerDescription: document.querySelector('.banner-info p'),
-        //containers restantes, como os da descrição, etc
-        mainDescription: document.querySelector('section.description p'),
-        castContainer: document.querySelector('.cast-container'),
-        releasedYearElement: document.querySelector('.section.year .value'),
-        languagesContainer: document.querySelector('.section.languages .buttons'),
-        genresContainer: document.querySelector('.section.genres .buttons'),
-        directorSection: document.querySelector('.director-section'),
-        musicSection: document.querySelector('.music-section'),
-        ratingsGridContainer: document.querySelector('#ratings-grid-container'),
-        ratingsSection: document.querySelector('.section.ratings'),
-        playNowButton: document.querySelector('.btn-play'),
-
-        // Referências para as seções de provedores
-        watchSection: document.querySelector('.section.watch'),
-
-        // seção de episodios e seu container
-        episodesSection: document.querySelector('#episodes-section'),
-        seasonsListContainer: document.querySelector('#seasons-list-container'),
-        containerDetails: document.querySelector('.container-details'),
-
-
-        //referente ao CTA (call to action) do match no final da pagina
-        matchCta: document.querySelector('.match-cta'),
-        matchButton: document.querySelector('.open-serie-match-button')
-    };
-
 
     /**
      * Extrai o ID e o tipo de conteúdo (filme/série) da URL
@@ -96,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             type
         };
     }
+
 
     /**
      * Busca o trailer no youtube
@@ -132,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function findYouTubeVideo(videos) {
         const trailer = videos.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-        if (trailer) return `https://www.youtube.com/watch?v=${trailer.key}`; 
+        if (trailer) return `https://www.youtube.com/watch?v=${trailer.key}`;
 
         const teaser = videos.find(video => video.type === 'Teaser' && video.site === 'YouTube');
         if (teaser) return `https://www.youtube.com/watch?v=${teaser.key}`;
@@ -238,74 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * busca os detalhes e créditos de um filme ou série, e também o IMDb ID
-     * tenta 'movie' e 'tv' se o tipo não for especificado ou falhar
-     * @param {string} id O ID do conteúdo
-     * @param {string} [preferredType=null] o tipo de conteúdo ('movie' ou 'tv')
-     * @returns {object|null} objeto contendo content, credits, type e imdb_id ou null
-     */
-    async function fetchContentDetails(id, preferredType = null) {
-        if (!id) {
-            console.error('ID do conteúdo não fornecido.');
-            return null;
-        }
-
-        let contentType = preferredType;
-        let contentData = null;
-        let creditsData = null;
-        let imdbId = null;
-
-        const typesToTry = preferredType ? [preferredType] : ['movie', 'tv'];
-
-        for (const type of typesToTry) {
-            try {
-                const contentResponse = await fetch(`${BASE_API_URL}/${type}/${id}?api_key=${TMDB_API_KEY}&language=pt-BR`);
-
-                if (contentResponse.ok) {
-                    contentData = await contentResponse.json();
-                    contentType = type; // Confirma o tipo encontrado
-
-                    // Fetch credits
-                    const creditsResponse = await fetch(`${BASE_API_URL}/${type}/${id}/credits?api_key=${TMDB_API_KEY}&language=pt-BR`);
-                    if (creditsResponse.ok) {
-                        creditsData = await creditsResponse.json();
-                    } else {
-                        console.warn(`Não foi possível carregar créditos para ${type} ID ${id}.`);
-                    }
-
-                    // Fetch external IDs for IMDb ID
-                    const externalIdsResponse = await fetch(`${BASE_API_URL}/${type}/${id}/external_ids?api_key=${TMDB_API_KEY}`);
-                    if (externalIdsResponse.ok) {
-                        const externalIdsData = await externalIdsResponse.json();
-                        imdbId = externalIdsData.imdb_id;
-                    } else {
-                        console.warn(`Não foi possível carregar IDs externos para ${type} ID ${id}.`);
-                    }
-                    break;
-                } else if (contentResponse.status === 404 && !preferredType) {
-                    console.log(`ID ${id} não encontrado como ${type}. Tentando o próximo tipo...`);
-                    continue;
-                } else {
-                    throw new Error(`Erro ao buscar ${type} ID ${id}: ${contentResponse.statusText}`);
-                }
-            } catch (error) {
-                console.error(`Erro na requisição para ${type} ID ${id}:`, error);
-                if (preferredType) return null;
-            }
-        }
-
-        if (contentData && contentType) {
-            return {
-                content: contentData,
-                credits: creditsData,
-                type: contentType,
-                imdb_id: imdbId
-            };
-        }
-        return null;
-    }
-
-    /**
      * preenche os detalhes do conteudo html
      * @param {object} data objeto contendo content, credits, type e imdb_id.
      */
@@ -349,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (content.vote_average) {
                 //  a nota que vem de 0 a 10 da TMDb é convertida para uma escala de 1 a 5
-                const formattedRating = (content.vote_average / 2).toFixed(1); 
+                const formattedRating = (content.vote_average / 2).toFixed(1);
                 infoItems.push(`${formattedRating} ★`);
             }
             elements.bannerDescription.textContent = infoItems.join(' • ') || 'Informações não disponíveis.';
@@ -522,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Rotten Tomatoes Rating
             const rtRating = omdbRatings.rottenTomatoes; // Ex: "85%"
             if (rtRating) {
-                const rtLink = `https://www.rottentomatoes.com/`; 
+                const rtLink = `https://www.rottentomatoes.com/`;
                 addRatingBox('Rotten Tomatoes', rtRating, 100, rtLink); // Passa "85%" e o max original de 100
             }
 
@@ -555,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // é a parte que preenche o div 'providers' com os links
             const allProvidersContainer = elements.watchSection.querySelector('.providers.buttons');
-            if (allProvidersContainer) { 
+            if (allProvidersContainer) {
                 allProvidersContainer.innerHTML = ''; //limpa o container para evitar erros
 
                 const allAvailableProviders = [];
@@ -668,13 +632,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const arrowImg = arrowButton.querySelector('.arrow-icon');
 
             // adiciona funcionalidade de expansão/fechamento
-                       arrowButton.addEventListener('click', async () => {
+            arrowButton.addEventListener('click', async () => {
                 const isCurrentlyExpanded = seasonDiv.classList.contains('expanded');
-                
+
                 if (isCurrentlyExpanded) {
                     // se está expandida, feche
                     seasonDiv.classList.remove('expanded');
-                    episodeListDiv.style.maxHeight = '0'; 
+                    episodeListDiv.style.maxHeight = '0';
                     episodeListDiv.style.opacity = '0'; // garante que opacidade tambem transicione
                     arrowImg.classList.add('arrowDown-icon');
                     arrowImg.classList.remove('arrowUp-icon');
@@ -684,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     arrowImg.classList.add('arrowUp-icon');
                     arrowImg.classList.remove('arrowDown-icon');
 
-                    if (episodeListDiv.children.length === 0) { 
+                    if (episodeListDiv.children.length === 0) {
                         try {
                             const response = await fetch(`${BASE_API_URL}/tv/${seriesId}/season/${season.season_number}?api_key=${TMDB_API_KEY}&language=pt-BR`);
                             if (!response.ok) {
@@ -744,10 +708,17 @@ document.addEventListener('DOMContentLoaded', () => {
         type
     } = getContentIdAndTypeFromUrl();
 
-    
+    const checkBtn = document.querySelector('.btn-check-reviews');
+    if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+            // navega para openReview.html passando id e type
+            window.location.href = `openReview.html?id=${id}&type=${type}`;
+        });
+    }
+
     if (elements.matchButton) {
         elements.matchButton.addEventListener('click', () => {
-            window.location.href = '../pages/matchGame.html'; 
+            window.location.href = '../pages/matchGame.html';
         });
     }
     if (id) {
@@ -758,13 +729,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (elements.containerDetails) {
                         elements.containerDetails.style.display = 'flex';
                     }
-                } else { 
+                } else {
                     if (elements.mainContent) {
                         elements.mainContent.innerHTML = '<p class="error-message">Filme/Série não encontrado. Verifique o ID ou tipo.</p>';
                     }
                     if (elements.matchButton) {
                         elements.matchButton.addEventListener('click', () => {
-                            window.location.href = '../pages/match.html'; 
+                            window.location.href = '../pages/match.html';
                         });
                     }
                     if (elements.bannerSection) {

@@ -10,6 +10,11 @@ const STORAGE_KEY = 'app_reviews';
 function getReviews() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 }
+
+export function getAllReviews() {
+  return getReviews();
+}
+
 export function addReview(r) {
   const arr = getReviews();
   arr.unshift(r);
@@ -62,9 +67,22 @@ export function renderReviewCard(r, prepend = false) {
   else container.appendChild(article);
 }
 
-/** Renderiza apenas uma página de reviews e cria paginação */
-export function renderPage(page = 1) {
-  const all = getReviews();
+/**
+ * Renderiza uma página de reviews, opcionalmente filtrando por id/type
+ * @param {number} page 
+ * @param {string|null} filterId 
+ * @param {string|null} filterType 
+ */
+export function renderPage(page = 1, filterId = null, filterType = null) {
+  let all = getReviews();
+
+  // ▶️ Se vier filtro, aplicamos
+  if (filterId && filterType) {
+    all = all.filter(r =>
+      String(r.id) === String(filterId) &&
+      String(r.type) === String(filterType)
+    );
+  }
   const total = all.length;
   const totalPages = Math.ceil(total / REVIEWS_PER_PAGE) || 1;
   currentPage = Math.min(Math.max(1, page), totalPages);
@@ -100,20 +118,26 @@ function renderPagination(totalPages) {
 
 /** Init */
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.btn-add-review').addEventListener('click', initModal);
-  renderPage(1);
-  // seta esquerda
-  const prevBtn = document.querySelector('.carousel-controls .arrow:first-child');
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) renderPage(currentPage - 1);
-  });
-
-  // seta direita
-  const nextBtn = document.querySelector('.carousel-controls .arrow:last-child');
-  nextBtn.addEventListener('click', () => {
-    // totalPages você pode recalcular ou armazenar globalmente
-    const totalPages = Math.ceil(getReviews().length / REVIEWS_PER_PAGE) || 1;
-    if (currentPage < totalPages) renderPage(currentPage + 1);
-  });
-
+  const path = window.location.pathname;
+  document.querySelector('.btn-add-review').addEventListener('click', () => {
+  initModal();   // sem parâmetro → libera search e tipo
 });
+
+  // só chamo o renderPage se for a página genérica de lista
+  if (path.endsWith('/review.html')) {
+    renderPage(1);
+
+    const prevBtn = document.querySelector('.carousel-controls .arrow:first-child');
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) renderPage(currentPage - 1);
+    });
+    const nextBtn = document.querySelector('.carousel-controls .arrow:last-child');
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(getReviews().length / REVIEWS_PER_PAGE) || 1;
+      if (currentPage < totalPages) renderPage(currentPage + 1);
+    });
+  }
+});
+
+
+
