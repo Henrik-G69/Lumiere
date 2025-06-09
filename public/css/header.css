@@ -78,64 +78,77 @@
 }
 
 /* CONTAINER DE BUSCA */
+/* Container da busca - Essencial para posicionamento relativo */
 .search-container {
-    position: relative;
-    display: flex;
+    position: relative; /* Torna este o ponto de referência para elementos filhos posicionados absolutamente */
+    display: flex; /* Mantém o layout do botão e input */
     align-items: center;
-}
-.search-input {
-    width: 0;
-    opacity: 0;
-    padding: 0;
-    margin-left: 0;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    border: none;
-    outline: none;
-    border-radius: 20px;
-    background-color: #1f1f1f;
-    color: #fff;
-}
-.search-container:hover .search-input,
-.search-container.active .search-input {
-    width: 160px;
-    opacity: 1;
-    padding: 0 10px;
-    margin-left: 10px;
-    height: 35px;
-    background-color: #3f3f3f;
+    /* Outros estilos do seu search-container, se houver */
 }
 
-/* DROPDOWNS DE RESULTADOS */
-.results-dropdown,
-.dropdown {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 200px;
-    background-color: #1f1f1f;
-    color: #fff;
-    list-style: none;
-    margin: 0;
-    padding: 5px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    max-height: 200px;
-    overflow-y: auto;
-    display: none;
-    z-index: 999;
+/* Input de busca */
+.search-input {
+    /* Mantenha seus estilos existentes */
+    width: 200px; /* Exemplo: defina uma largura para o input */
+    padding: 8px 12px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #eee;
+    border-radius: 5px;
 }
-.results-dropdown li,
-.dropdown li {
-    padding: 10px 15px;
+
+/* Botão do ícone de busca */
+.search-container .btn-icon {
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    padding: 5px;
+    margin-right: 5px; /* Espaçamento entre o botão e o input */
 }
-.results-dropdown li:hover,
+
+/* Estilos para a lista de resultados da busca (o dropdown) */
+.dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute; /* Posição absoluta em relação ao .search-container */
+    top: 100%; /* Começa 100% abaixo do topo do pai (.search-container) */
+    left: 0; /* Alinha à esquerda do pai */
+    width: 100%; /* Ocupa a largura total do pai */
+    background-color: #333; /* Cor de fundo do dropdown */
+    border: 1px solid #555;
+    max-height: 300px; /* Altura máxima para rolagem */
+    overflow-y: auto;
+    z-index: 1000; /* Garante que fique por cima de outros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Inicia escondido */
+    border-radius: 0 0 5px 5px; /* Bordas arredondadas apenas na parte inferior */
+}
+
+.dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex; /* Para alinhar imagem e texto */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 10px; /* Espaço entre a imagem e o texto */
+    border-bottom: 1px solid #444; /* Linha divisória */
+    color: #eee; /* Cor do texto */
+}
+
+.dropdown li:last-child {
+    border-bottom: none; /* Remove a linha do último item */
+}
+
 .dropdown li:hover,
-.results-dropdown li.active,
-.dropdown li.active {
-    background-color: #2e2e2e;
+.dropdown li.active { /* 'active' para navegação por teclado */
+    background-color: #555; /* Cor de fundo ao passar o mouse */
+    color: #fff;
+}
+
+.dropdown li img {
+    width: 40px; /* Largura do poster */
+    height: 60px; /* Altura do poster (proporcional à largura do filme) */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+    border-radius: 3px; /* Bordas arredondadas */
+    flex-shrink: 0; /* Impede que a imagem encolha */
 }

@@ -5,15 +5,16 @@
     <!-- Meta tags e título -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review de Serie</title>
+    <title>Review de Filme</title>
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/footer.css">
     <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/reviewSerie.css">
+    <link rel="stylesheet" href="../public/css/openReview.css">
+    <link rel="stylesheet" href="../public/css/modal.css">
 </head>
 
 <body>
-   <!-- Início da HEADER -->
+    <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
@@ -51,28 +52,74 @@
     </header>
     <!-- Fim da HEADER -->
 
+    <!-- 1. Modal já presente no DOM -->
+    <dialog id="review-modal" class="modal">
+        <form class="modal-content" method="dialog">
+            <h2>Add Review</h2>
+
+            <!-- Row 1: pesquisa, temporada, episódio, nota -->
+            <div class="modal-row row--inputs">
+                <div class="form-group-tipo">
+                    <label for="modal-type">Tipo</label>
+                    <select id="modal-type">
+                        <option value="movie">Filme</option>
+                        <option value="tv">Série</option>
+                    </select>
+                </div>
+                <div class="form-group-titulo flex-grow-2">
+                    <label for="modal-search">Buscar título</label>
+                    <input type="text" id="modal-search" autocomplete="off" placeholder="Digite o nome…" />
+                    <ul id="modal-results" class="results"></ul>
+                </div>
+                <div class="form-group-ep-temp" id="season-episode-wrapper">
+                    <div class="season-input">
+                        <label for="modal-season">Season</label>
+                        <select id="modal-season"></select>
+                    </div>
+                    <div class="episode-input">
+                        <label for="modal-episode">Episode</label>
+                        <select id="modal-episode"></select>
+                    </div>
+                </div>
+                <div class="form-group-nota">
+                    <label for="modal-rating">Nota (0–10)</label>
+                    <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
+                </div>
+            </div>
+
+            <!-- Row 2: comentário -->
+            <div class="modal-row row--textarea">
+                <div class="form-group" style="width:100%">
+                    <label for="modal-text">Comentário</label>
+                    <textarea id="modal-text" required></textarea>
+                </div>
+            </div>
+
+            <!-- Row 3: botões -->
+            <div class="modal-row row--buttons">
+                <button id="modal-cancel" type="button">Cancelar</button>
+                <button id="modal-save" type="button">Salvar</button>
+            </div>
+        </form>
+
+    </dialog>
 
     <!-- Seção principal: Banner da série -->
     <section class="banner">
-        <img src="../public/img/strangerthings_s3_illustrated_vertical_final_rgb_digital__en-1.webp"
-            alt="Stranger Things" class="banner-img">
+        <img src="" alt="Banner não disponível" class="banner-img">
         <div class="banner-info">
-            <h1>Stranger Things</h1>
-            <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-                supernatural forces and one strange little girl.</p>
+            <h1></h1>
+            <p></p>
             <div class="banner-buttons">
                 <button class="btn-play">
                     <img src="../public/icons/playIcon.svg" alt="Play Icon" class="play-icon">
-                    Play Now
+                    Trailer
                 </button>
                 <button class="btn-icon">
                     <img src="../public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
                 </button>
                 <button class="btn-icon">
                     <img src="../public/icons/Curtir.svg" alt="Like Icon" class="like-icon">
-                </button>
-                <button class="btn-icon">
-                    <img src="../public/icons/Audio.svg" alt="Volume Icon" class="volume-icon">
                 </button>
             </div>
         </div>
@@ -81,8 +128,7 @@
         <!-- Seção de Descrição expandida -->
         <section class="description">
             <h2>Description</h2>
-            <p>When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying
-                supernatural forces and one strange little girl.</p>
+            <p></p>
         </section>
 
         <!-- Seção de Reviews -->
@@ -90,9 +136,6 @@
             <section class="reviews">
                 <div class="cast-list">
                     <div class="cast-item">
-                        <button class="arrow">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-                        </button>
                         <h2>Reviews</h2>
                     </div>
                     <button class="btn-add-review">
@@ -100,141 +143,45 @@
                         Add Your Review
                     </button>
                 </div>
-                <div class="review-list">
+                <div class="review-list"></div>
+
+                <template id="review-item-template">
                     <article class="review-item">
                         <div class="card-film-info">
                             <div class="card-film">
-                                <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
+                                <img src="" alt="Banner" class="banner-film">
                             </div>
                             <div class="card-info">
                                 <div class="card-header">
-                                    <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
+                                    <img src="" alt="Avatar" class="avatar">
                                     <div class="user-info">
-                                        <h3 class="user-name">Aniket Roy</h3>
-                                        <p class="user-ranking">
-                                            83° ranking <span>(540 XP)</span>
-                                        </p>
+                                        <h3 class="user-name" aria-label="Nome do usuário">Usuário</h3>
+                                        <p class="user-ranking"><!-- ranking° ranking --><span>(0 XP)</span></p>
                                     </div>
                                     <div class="rating">
-                                        <div class="star-rating" style="--pct: 70%;">
-                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                                alt="Five Stars Background">
-
+                                        <div class="star-rating" style="--pct:0%;">
+                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="">
                                             <div class="stars-full-wrapper">
-                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                    alt="Five Stars Fill">
+                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="rating-text">
-                                            <span class="rating-value">4.2</span>
+                                            <span class="rating-value">0.0</span>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="card-actions">
-                                    <button type="button">Batman:O Cavaleiro das Trevas</button>
-                                    <button type="button">2008</button>
+                                    <button type="button" class="action-title"></button>
+                                    <button type="button" class="action-year"></button>
+                                    <button type="button" class="action-season"></button>
+                                    <button type="button" class="action-episode"></button>
                                 </div>
-
-                                <p class="card-description">
-                                    This movie was recommended to me by a very dear friend who went for the movie by
-                                    herself. I
-                                    went to the cinemas to watch but couldn’t watch it.
-                                </p>
+                                <p class="card-description"></p>
                             </div>
                         </div>
                     </article>
-                    <article class="review-item">
-                        <div class="card-film-info">
-                            <div class="card-film">
-                                <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
-                            </div>
-                            <div class="card-info">
-                                <div class="card-header">
-                                    <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                                    <div class="user-info">
-                                        <h3 class="user-name">Aniket Roy</h3>
-                                        <p class="user-ranking">
-                                            83° ranking <span>(540 XP)</span>
-                                        </p>
-                                    </div>
-                                    <div class="rating">
-                                        <div class="star-rating" style="--pct: 70%;">
-                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                                alt="Five Stars Background">
+                </template>
 
-                                            <div class="stars-full-wrapper">
-                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                    alt="Five Stars Fill">
-                                            </div>
-                                        </div>
-                                        <div class="rating-text">
-                                            <span class="rating-value">4.2</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-actions">
-                                    <button type="button">Stranger Things</button>
-                                    <button type="button">2016</button>
-                                    <button type="button">Season 1</button>
-                                    <button type="button">Episode 7</button>
-                                </div>
-
-                                <p class="card-description">
-                                    This movie was recommended to me by a very dear friend who went for the movie by
-                                    herself. I
-                                    went to the cinemas to watch but couldn’t watch it.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="review-item">
-                        <div class="card-film-info">
-                            <div class="card-film">
-                                <img src="../public/img/batman.jpg" alt="Banner" class="banner-film">
-                            </div>
-                            <div class="card-info">
-                                <div class="card-header">
-                                    <img src="../public/img/AtorST3.png" alt="Avatar" class="avatar">
-                                    <div class="user-info">
-                                        <h3 class="user-name">Aniket Roy</h3>
-                                        <p class="user-ranking">
-                                            83° ranking <span>(540 XP)</span>
-                                        </p>
-                                    </div>
-                                    <div class="rating">
-                                        <div class="star-rating" style="--pct: 70%;">
-                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
-                                                alt="Five Stars Background">
-
-                                            <div class="stars-full-wrapper">
-                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
-                                                    alt="Five Stars Fill">
-                                            </div>
-                                        </div>
-                                        <div class="rating-text">
-                                            <span class="rating-value">4.2</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-actions">
-                                    <button type="button">Stranger Things</button>
-                                    <button type="button">2016</button>
-                                    <button type="button">Season 1</button>
-                                    <button type="button">Episode 7</button>
-                                </div>
-
-                                <p class="card-description">
-                                    This movie was recommended to me by a very dear friend who went for the movie by
-                                    herself. I
-                                    went to the cinemas to watch but couldn’t watch it.
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
                 <div class="paginacao">
                     <div class="carousel-controls">
                         <button class="arrow">
@@ -242,16 +189,15 @@
                         </button>
                         <div class="indicators">
                             <span class="dot active"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
-                            <span class="dot"></span>
                         </div>
                         <button class="arrow">
                             <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                         </button>
+                    </div>
+                </div>
             </section>
         </div>
+        <!-- Fim da Seção de Reviews -->
 
         <!-- Início da FOOTER -->
         <footer class="footer">
@@ -363,4 +309,9 @@
             </div>
         </footer>
         <!-- Fim da FOOTER -->
+
+        <script type="module" src="../public/js/openReview.js"></script>
+        <script src="../public/js/header.js"></script>
+        <script type="module" src="../public/js/openFilmes.js"></script>
+        <script type="module"src="../public/js/review.js"></script>
 </body>

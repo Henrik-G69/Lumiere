@@ -5,8 +5,41 @@ const apiKey   = '98f79a8fc16247f2c16e9d0b422dbfbe';
 const tmdbBase = 'https://api.themoviedb.org/3';
 const img_url  = 'https://image.tmdb.org/t/p/w500';
 
-export function initModal() {
+// guarda, se vierem de openReview
+let forced = null;
+
+export async function initModal(preselect = null) {
+  forced = preselect;            // null na global; {id,type,title} no detalhe
   const dlg = document.getElementById('review-modal');
+
+   // antes de abrir, bloquemos ou não
+  const typeEl   = dlg.querySelector('#modal-type');
+  const searchEl = dlg.querySelector('#modal-search');
+  const resultsEl = dlg.querySelector('#modal-results');
+  const seCont   = dlg.querySelector('#season-episode-wrapper');
+
+  if (forced) {
+    // travar
+    typeEl.value       = forced.type;
+    typeEl.disabled    = true;
+    searchEl.value     = forced.title;
+    searchEl.disabled  = true;
+    resultsEl.innerHTML = '';
+    seCont.classList.toggle('hidden', forced.type !== 'tv');
+    // se for série, já carregue temporadas
+    if (forced.type === 'tv') {
+      // reutiliza a função de selectItem (você já tem no seu modal.js)
+      await selectItem({ id: forced.id, name: forced.title }, forced.type);
+    }
+  } else {
+    // liberar
+    typeEl.disabled    = false;
+    searchEl.disabled  = false;
+    resultsEl.innerHTML = '';
+    seCont.classList.add('hidden');
+    searchEl.value     = '';
+  }
+
   dlg.showModal();
 }
 

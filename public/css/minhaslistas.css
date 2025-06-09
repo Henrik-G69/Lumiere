@@ -1,301 +1,738 @@
+/* --- Variáveis CSS (opcional, mas boa prática para cores) --- */
+:root {
+    --primary-red: #eb004b; /* Vermelho Lumière */
+    --accent-red: #ff3377;
+    --dark-bg: #1a1a1a;
+    --medium-dark-bg: #1f1f1f;
+    --light-dark-bg: #2e2e2e;
+    --border-color: #3f3f3f;
+    --text-light: #f5f5f5;
+    --text-medium: #ccc;
+    --text-dark: #888;
+    --button-green: #28a745;
+    --button-green-hover: #218838;
+    --button-red: #eb004b;
+    --button-red-hover: #b20b1c;
+    --error-color: #ff0000;
+    --button-red-rgb: 235, 0, 75; /* Usado para cores RGBA */
+}
+
+
+/* --- Global Resets & Base Styles --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* --- Main Content - Lists Page --- */
 .lists-page {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 0 1rem; /* Adiciona padding para evitar que o conteúdo cole nas bordas em telas menores */
+    box-sizing: border-box; /* Garante que padding e borda não aumentem a largura total */
 }
 
+/* --- All Lists Container --- */
 .all-lists-container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-  max-width: 1366px;
-  margin: 0 auto;
-  border: 1px solid #3F3F3F;
-  border-radius: 12px;
-  padding: 3rem;
-  box-sizing: border-box;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    box-sizing: border-box;
+    position: relative; /* Necessário para posicionar .lists-top-container */
+    background-color: var(--medium-dark-bg); /* Fundo para a área das listas */
 }
 
+@media (max-width: 768px) {
+    .all-lists-container {
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .all-lists-container {
+        padding: 1.5rem 1rem;
+        gap: 1rem;
+    }
+}
+
+/* --- Top Section of Lists Container (Button & Add Button) --- */
 .lists-top-container {
-  display: flex;
-  gap: 6.5px;
-  align-items: center;
-  position: absolute;
-  top: -0.75rem;
+    display: flex;
+    gap: 6.5px;
+    align-items: center;
+    position: absolute;
+    top: -0.75rem; /* Ajuste para sobrepor a borda */
+    left: 2rem; /* Alinha com o padding do container */
+    padding-right: 1rem; /* Adiciona um pouco de padding para o background */
 }
 
+/* Estilos para a área de resultados da pesquisa no modal */
+#searchResults.search-results-dropdown {
+    display: none; /* Esconde o container de resultados por padrão */
+    margin-top: 15px; /* Adicione a distância desejada aqui, por exemplo, 15px */
+    background-color: var(--light-dark-bg); /* Exemplo: Um fundo para o dropdown */
+    border: 1px solid var(--border-color); /* Exemplo: Uma borda para o dropdown */
+    border-radius: 5px; /* Exemplo: Cantos arredondados */
+    max-height: 300px; /* Exemplo: Limita a altura do dropdown */
+    overflow-y: auto; /* Exemplo: Adiciona scroll se os resultados excederem a altura */
+    padding: 5px; /* Exemplo: Espaçamento interno */
+}
+
+@media (max-width: 768px) {
+    .lists-top-container {
+        left: 1rem; /* Ajusta a posição para telas menores */
+    }
+}
 
 .list-section-button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.25rem;
-  color: #f1f1f1;
-  background-color: #eb004b;
-  font-weight: bold;
-  font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--text-light);
+    background-color: var(--primary-red);
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: default; /* Este botão é um título, não um clique */
 }
 
-.add-list-button {
-  border: 1px solid #eb004b;
-  border: none;
-  border-radius: 50%;
-  background: #1f1f1f;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.add-list-button,
+.edit-list-button, /* Botão de editar dentro da lista */
+.delete-list-button /* Novo botão de deletar */ {
+    border: none;
+    border-radius: 50%;
+    background-color: transparent; /* Certifica que o background é transparente para mostrar o ícone */
+    color: var(--text-light); /* Cor padrão para ícones (se forem fontes) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: transform 0.2s ease-in-out;
 }
 
+/* Tamanho padrão dos ícones */
 .plus-icon-fill,
 .check-icon-fill,
 .clock-icon-fill,
 .heart-icon-fill,
-.edit-icon-fill {
-  height: 1.75rem;
-  width: 1.75rem;
+.edit-icon-fill,
+.trash-icon-fill /* Ícone de lixeira para deletar */ {
+    color: white; /* Cor dos ícones SVG, se aplicável */
+    height: 1.75rem;
+    width: 1.75rem;
+    vertical-align: middle;
 }
 
+/* Efeito de hover para todos os ícones de ação */
+.add-list-button:hover .plus-icon-fill,
+.edit-list-button:hover .edit-icon-fill,
+.delete-list-button:hover .trash-icon-fill,
 .plus-icon-fill:hover,
 .check-icon-fill:hover,
 .clock-icon-fill:hover,
-.heart-icon-fill:hover,
-.edit-icon-fill:hover {
-  height: 2rem;
-  width: 2rem;
+.heart-icon-fill:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
+/* --- Individual List Item (Container for list name and carousel) --- */
 .list-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 60px;
 }
 
 .list-details-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+    position: relative; /* Necessário para posicionar .carousel-controls absolutos */
 }
 
 .list-description {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  overflow-x: auto;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
-.list-description p {
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: #f5f5f5;
-  white-space: nowrap;
-  margin: 0;
+.list-name-display {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
 }
 
+/* Estilos para o ícone de edição (se for material symbols) */
 .list-description .material-symbols-outlined {
-  font-size: 1.2rem;
-  color: #eb004b;
-  cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--primary-red);
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
+.list-description .material-symbols-outlined:hover {
+    color: var(--accent-red);
+}
+
+/* --- Carousel Controls (Arrows & Indicators) --- */
 .carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #2E2E2E;
-  padding: 0.4rem;
-  border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+    background-color: #2E2E2E;
+    padding: 0.02rem;
+    border-radius: 6px;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
-.arrowLeft-icon,
-.arrowRight-icon {
-  margin-top: 0.1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
+.carousel-controls .arrow img {
+    width: 18px;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.arrow img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .arrowLeft-icon {
-  rotate: 180deg;
+    transform: rotate(180deg);
+}
+
+.arrow[style*="display: none"],
+.indicators[style*="display: none"] {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .indicators {
-  display: flex;
-  gap: 2px;
+    display: flex;
+    gap: 1.6px;
+    margin: 0;
 }
 
 .dot {
-  width: 1rem;
-  height: 0.25rem;
-  background: #3F3F3F;
-  border-radius: 1px;
+    width: 0.8rem;
+    height: 0.2rem;
+    background: #3F3F3F;
+    border-radius: 0.8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .dot.active {
-  background: #EB004B;
+    background: #EB004B;
 }
 
+
+/* --- Films Carousel --- */
 .films-carousel {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding: 0.5rem 1rem;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem 1rem;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.films-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .film-on-list {
-  flex: 0 0 auto;
-  background: #3F3F3F;
-  padding: 0.5rem;
-  width: 176px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  border-radius: 4px;
-  
+    flex: 0 0 auto;
+    background: var(--border-color);
+    padding: 0.5rem;
+    width: 176px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.film-on-list:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Animação para os itens do carrossel ao serem adicionados */
+.film-on-list--animated {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.4s forwards ease-out;
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .film-banner-list-carousel {
-  width: 100%;
-  aspect-ratio: 140/190;
-  object-fit: cover;
-  border-radius: 6px;
+    width: 100%;
+    aspect-ratio: 140 / 190;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .film-on-list-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.5rem;
+    width: 100%; /* Garante que os detalhes ocupem a largura do card */
 }
 
-.list-banner-match-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+/* Botão de remover filme individual */
+.remove-movie-from-list-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: rgba(var(--button-red-rgb)); /* Usando RGBA com variável */
+    border: none;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 6px;
+    padding: 0.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
-.list-banner-match {
-  object-fit: cover;
-  height: 8rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+.film-on-list:hover .remove-movie-from-list-button {
+    opacity: 1;
 }
 
-/* MATCH CTA */
-.match-cta {
-  background-image: url('../img/Container.png');
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  object-fit: cover;
-  height: 11rem;
-  width: 100%;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
+.remove-movie-from-list-button img {
+    width: 1rem;
+    height: 1rem;
+    filter: brightness(0) invert(1);
 }
 
-.open-serie-match-bakground {
-  width: 100%;
-  height: 100%;
-}
-
-.open-serie-match-description {
-  display: flex;
-  flex-direction: row;
-  padding: 1rem 3rem 1rem 3rem;
-  font-size: 1.2rem;
-  justify-content: space-between;
-}
-
-.open-serie-match-button {
-  background-color: #ff005c;
-  font-weight: bold;
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 1rem;
-  border-radius: 4px;
-  margin-top: 20px;
-}
-
-/* Estrelas */
-
+/* --- Timestamp & Rating Styles --- */
 .list-details-timestamp,
 .rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  font-size: 0.65rem;
-  background: #1f1f1f;
-  color: #f5f5f5;
-  padding: 0.3rem 0.4rem;
-  border-radius: 6px;
-  border: 1px solid #555;
-  gap: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    font-size: 0.7rem;
+    background: var(--medium-dark-bg);
+    color: var(--text-light);
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    gap: 0.3rem;
+    flex-shrink: 0;
 }
 
 .duration-icon {
-  width: 12px;
-  height: 12px;
+    width: 12px;
+    height: 12px;
+    filter: brightness(0) invert(1);
 }
 
-.rating-value,
+.rating-list-value,
 .duration-value {
-  font-size: 0.65rem;
-  font-weight: bold;
-  color: #f1f1f1;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--text-light);
 }
 
+/* Star Rating Component */
 .star-rating {
-  position: relative;
-  display: inline-block;
-  --pct: 0%;
-  /* Garante que o contêiner tenha um tamanho definido com base nas imagens */
-  width: auto;
-  /* Ou corresponda à largura intrínseca da imagem das estrelas cheias */
-  height: 12px;
-  /* Corresponde à altura das imagens das estrelas */
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Largura total das 5 estrelas */
+    height: 12px;
+    overflow: hidden;
 }
 
-/* Estilo base para todas as imagens dentro do componente de avaliação por estrelas */
 .star-rating img {
-  display: block;
-  /* Evita problemas de espaçamento indesejado com imagens em linha */
-  width: auto;
-  /* Permite que as imagens escalem naturalmente com base na altura */
-  height: 12px;
-  /* Altura fixa para tamanho consistente das estrelas */
+    display: block;
+    height: 100%;
+    width: auto;
 }
 
-/* O novo elemento wrapper que lida com o recorte da imagem das estrelas cheias */
+.stars-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%) brightness(0.6);
+}
+
 .stars-full-wrapper {
-  position: absolute;
-  /* Posiciona este wrapper precisamente sobre.stars-bg */
-  top: 0;
-  left: 0;
-  height: 100%;
-  /* Garante que o wrapper corresponda à altura das estrelas */
-  /* Este é o cerne da solução: controla a largura visível e recorta */
-  width: var(--pct);
-  /* Define dinamicamente a largura da janela de recorte */
-  overflow: hidden;
-  /* Crucialmente, recorta qualquer conteúdo (a imagem interna) que se estenda além de sua largura */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--pct);
+    overflow: hidden;
 }
 
-/* A imagem das estrelas cheias em si, agora posicionada dentro de seu novo wrapper */
 .stars-full {
-  position: absolute;
-  /* Posiciona esta imagem dentro de seu pai.stars-full-wrapper */
-  top: 0;
-  left: 0;
-  /* Garante que a imagem ocupe sua largura intrínseca total para ser recortada pelo wrapper.
-       Ela deve ser tão larga quanto o componente de avaliação por estrelas completo. */
-  width: 100%;
-  /* Isso significa 100% da largura *total* da avaliação por estrelas */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+}
+
+
+/* --- Match Section (CTA) --- */
+.list-banner-match-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.match-cta {
+    background-image: url('../img/Container.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 11rem;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    color: var(--text-light);
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.open-serie-match-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    font-size: 1.2rem;
+    gap: 10px;
+}
+
+.open-serie-match-description h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.open-serie-match-button {
+    background-color: var(--primary-red);
+    font-weight: bold;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.open-serie-match-button:hover {
+    background-color: var(--accent-red);
+}
+
+/* --- Modal Styles (Main List Modal) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--medium-dark-bg); /* Usando variável */
+    margin: auto;
+    padding: 30px;
+    border: 1px solid var(--text-dark); /* Usando variável */
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--text-light);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close-button {
+    color: var(--text-dark); /* Usando variável */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--text-light); /* Usando variável */
+}
+
+.modal-content label {
+    font-size: 0.95rem;
+    color: var(--text-medium); /* Usando variável */
+    margin-bottom: -5px;
+}
+
+.modal-content input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid var(--border-color); /* Usando variável */
+    border-radius: 5px;
+    background-color: #444; /* Mantido como não variável, se não houver no :root */
+    color: var(--text-light); /* Usando variável */
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.modal-content input[type="text"]:focus {
+    border-color: var(--primary-red); /* Usando variável */
+}
+
+.modal-content button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-red); /* Usando variável */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-content button:hover {
+    background-color: var(--button-red-hover); /* Usando variável */
+}
+
+.modal-content .search-input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-content .search-input-container input {
+    flex-grow: 1;
+}
+
+/* Estilos para a área de resultados da pesquisa */
+.search-results-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color); /* Usando variável */
+    border-radius: 5px;
+    background-color: var(--light-dark-bg); /* Usando variável */
+    padding: 5px 0;
+    margin-top: -10px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #444; /* Mantido, se não houver variável específica */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover {
+    background-color: #3a3a3a; /* Mantido, se não houver variável específica */
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item .search-result-poster {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.search-result-item .search-result-title {
+    flex-grow: 1;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-item .add-to-modal-list-btn {
+    background-color: var(--button-green); /* Usando variável */
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.search-result-item .add-to-modal-list-btn:hover {
+    background-color: var(--button-green-hover); /* Usando variável */
+}
+
+.search-result-item .add-to-modal-list-btn.added {
+    background-color: #6c757d; /* Mantido, se não houver variável específica */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Estilos para a lista de filmes selecionados */
+.modal-selected-movies h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: var(--text-light); /* Usando variável */
+}
+
+#selectedMoviesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color); /* Usando variável */
+    border-radius: 5px;
+    background-color: var(--light-dark-bg); /* Usando variável */
+    padding: 5px 0;
+}
+
+#noMoviesSelectedText {
+    color: var(--text-medium); /* Usando variável */
+    text-align: center;
+    padding: 10px;
+}
+
+.selected-movie-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    gap: 10px;
+    border-bottom: 1px solid #444; /* Mantido, se não houver variável específica */
+}
+
+.selected-movie-item:last-child {
+    border-bottom: none;
+}
+
+.selected-movie-item .selected-movie-poster {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.selected-movie-item .remove-from-modal-list-btn {
+    background-color: var(--button-red); /* Usando variável */
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    margin-left: auto;
+}
+
+.selected-movie-item .remove-from-modal-list-btn:hover {
+    background-color: var(--button-red-hover); /* Usando variável */
+}
+
+.error-message {
+    color: var(--error-color); /* Usando variável */
+    font-size: 0.85rem;
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+/* Media Queries para responsividade do modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    .modal-content label {
+        font-size: 0.9rem;
+    }
+    .search-input-container {
+        flex-direction: column;
+    }
+    .modal-content input[type="text"],
+    .modal-content button {
+        width: 100%;
+    }
+    .search-result-item .search-result-title,
+    .selected-movie-item span {
+        font-size: 0.85rem;
+    }
 }

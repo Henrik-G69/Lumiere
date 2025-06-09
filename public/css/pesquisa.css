@@ -68,32 +68,6 @@
   color: #cccccc;
 }
 
-/* sliders */
-.filter-group input[type="range"] {
-  width: 100%;
-  -webkit-appearance: none;
-  height: 8px;
-  border-radius: 8px;
-  background: #3f3f3f;
-  outline: none;
-}
-.filter-group input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  background: #EB004B;
-  cursor: pointer;
-  margin-top: -6px; /* centraliza o thumb no track */
-}
-.filter-group input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  background: #EB004B;
-  cursor: pointer;
-}
-
 /* título de cada conjunto de pills */
 .group-title {
   display: block;
@@ -329,4 +303,24 @@
   display: block;
   border-radius: 8px;
   object-fit: cover;
+}
+
+/* range-inputs (intervalos ano/duração) */
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.range-inputs input {
+  width: 100%;
+  padding: 8px;
+  background: #2e2e2e;
+  color: #fff;
+  border: 1px solid #3f3f3f;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  box-sizing: border-box;
+}
+.range-inputs span {
+  color: #cccccc;
 }
