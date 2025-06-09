@@ -27,23 +27,40 @@ dialog.modal {
 
 /* Linhas do modal */
 .modal-content .modal-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Row 1: campos inline */
-.row--inputs .form-group {
-  display: flex;
-  flex-direction: column;
-  min-width: 120px;
-  flex: 1;
+.row--inputs .form-group-tipo,
+.row--inputs .form-group-titulo,
+.row--inputs .form-group-nota {
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    flex: 1;
+}
+
+.row--inputs .form-group-ep-temp {
+    display: flex;
+    flex-direction: row;
+    min-width: 120px;
+    flex: 1;
+}
+
+.episode-input,
+.season-input {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 4px;
 }
 
 /* Busca maior */
 .flex-grow-2 {
-  flex: 2;
+    flex: 2;
 }
 
 /* Season/Episode container como row e oculto por padrão */
@@ -55,6 +72,7 @@ dialog.modal {
        para manter alinhado com outros campos */
     min-width: 140px;
 }
+
 .hidden #season-episode-container,
 #season-episode-container.hidden {
     display: none;
@@ -62,14 +80,14 @@ dialog.modal {
 
 /* Row 2: textarea ocupa tudo */
 .row--textarea {
-  flex-direction: column;
+    flex-direction: column;
 }
 
 /* Row 3: botões alinhados à direita */
 .row--buttons {
-  justify-content: flex-end;
-  gap: 0.8rem;
-  margin-top: 0.5rem;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
 }
 
 /* Título */
@@ -102,6 +120,7 @@ dialog.modal {
 }
 
 .modal-content textarea {
+    width: 100%;
     min-height: 80px;
     padding-top: 0.6rem;
 }
@@ -124,6 +143,7 @@ dialog.modal {
     font-size: 0.8rem;
     color: #1f1f1f;
 }
+
 .modal-content .results li:hover {
     background: #d4d4d4;
 }
@@ -137,7 +157,7 @@ dialog.modal {
 }
 
 .modal-content button {
-    height: 44.8px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -151,17 +171,21 @@ dialog.modal {
 }
 
 #modal-cancel {
+    padding: 0.8rem 2rem;
     background: #3f3f3f;
     color: #ccc;
 }
+
 #modal-cancel:hover {
     background: #2e2e2e;
 }
 
 #modal-save {
+    padding: 0.8rem 2rem;
     background: #EB004B;
     color: #fff;
 }
+
 #modal-save:hover {
     background: #A10035;
 }

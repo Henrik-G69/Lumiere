@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             //se o usuario foi achado, armazena seu email e seu login
             localStorage.setItem('loggedInUserEmail', foundUser.email);
             localStorage.setItem('loggedInUserNickname', foundUser.nickname);
-            window.location.href = './home.html';
+            window.location.href = '../index.html'; // Redireciona para a página inicial
         }  else {
             loginErrorMessage.textContent = 'Email ou senha inválidos. Por favor, tente novamente.';
         }
