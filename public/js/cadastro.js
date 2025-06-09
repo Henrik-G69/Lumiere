@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nicknameError.textContent = 'Por favor, insira seu apelido.';
             isValid = false;
         } else if (nicknameInput.value.trim().length <= 2){
-            nicknameError.textContent == 'Seu apelido deve ter mais do que duas letras'
+            nicknameError.textContent = 'Seu apelido deve ter mais do que duas letras'
             isValid = false;
         }
 
@@ -160,7 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }    
 
-        const userData = {      
+        const userData = { 
+            avatar: '../icons/PersonCircle.svg', // avatar padrão     
             firstName: firstNameInput.value.trim(),
             lastName: lastNameInput.value.trim(),
             nickname: nicknameInput.value.trim(),

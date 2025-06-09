@@ -27,7 +27,7 @@ export function renderReviewCard(r, prepend = false) {
   article.querySelector('.banner-film').alt = r.title;
 
   // Avatar / usuário
-  article.querySelector('.avatar').src = r.user.avatar;
+  article.querySelector('.avatar').src = r.user.avatar || '../icons/PersonCircle.svg';
   article.querySelector('.user-name').textContent = r.user.name;
   article.querySelector('.user-ranking').innerHTML = `${r.user.ranking}° ranking <span>(${r.user.xp} XP)</span>`;
 

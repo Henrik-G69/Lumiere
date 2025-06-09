@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
       user: {
         email : localStorage.getItem('loggedInUserEmail'),
         name  : localStorage.getItem('loggedInUserNickname'),
-        avatar: '../public/img/default-avatar.png',
+        avatar: localStorage.getItem('loggedInUserAvatar') || '../public/icons/PersonCircle.svg',
         ranking: '–',
         xp: 0
       },
