@@ -6,66 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="../public/css/home.css">
-    <link rel="stylesheet" href="../public/css/footer.css">
-    <link rel="stylesheet" href="../public/css/header.css">
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="public/css/home.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="public/css/header.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/modal.css">
 </head>
 
-<body>
-
-     <!-- 1. Modal já presente no DOM -->
-    <dialog id="review-modal" class="modal">
-        <form class="modal-content" method="dialog">
-            <h2>Add Review</h2>
-
-            <!-- Row 1: pesquisa, temporada, episódio, nota -->
-            <div class="modal-row row--inputs">
-                <div class="form-group-tipo">
-                    <label for="modal-type">Tipo</label>
-                    <select id="modal-type">
-                        <option value="movie">Filme</option>
-                        <option value="tv">Série</option>
-                    </select>
-                </div>
-                <div class="form-group-titulo flex-grow-2">
-                    <label for="modal-search">Buscar título</label>
-                    <input type="text" id="modal-search" autocomplete="off" placeholder="Digite o nome…" />
-                    <ul id="modal-results" class="results"></ul>
-                </div>
-                <div class="form-group-ep-temp" id="season-episode-wrapper">
-                    <div class="season-input">
-                    <label for="modal-season">Season</label>
-                    <select id="modal-season"></select>
-                    </div>
-                    <div class="episode-input">
-                    <label for="modal-episode">Episode</label>
-                    <select id="modal-episode"></select>
-                    </div> 
-                </div>
-                <div class="form-group-nota">
-                    <label for="modal-rating">Nota (0–10)</label>
-                    <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
-                </div>
-            </div>
-
-            <!-- Row 2: comentário -->
-            <div class="modal-row row--textarea">
-                <div class="form-group" style="width:100%">
-                    <label for="modal-text">Comentário</label>
-                    <textarea id="modal-text" required></textarea>
-                </div>
-            </div>
-
-            <!-- Row 3: botões -->
-            <div class="modal-row row--buttons">
-                <button id="modal-cancel" type="button">Cancelar</button>
-                <button id="modal-save" type="button">Salvar</button>
-            </div>
-        </form>
-
-    </dialog>
-    
+<body>    
     <!-- Início da HEADER (em index.html) -->
     <header class="header">
         <div class="logo">
@@ -119,7 +67,6 @@
             </button>
         </div>
 
-        <script src="../js/header.js"></script>
     </header>
     <!-- Fim da HEADER -->
 
@@ -546,6 +493,58 @@
                 <button id="saveListBtn">Salvar Lista</button>
             </div>
         </div>
+             <!-- 1. Modal já presente no DOM -->
+    <dialog id="review-modal" class="modal">
+        <form class="modal-content" method="dialog">
+            <h2>Add Review</h2>
+
+            <!-- Row 1: pesquisa, temporada, episódio, nota -->
+            <div class="modal-row row--inputs">
+                <div class="form-group-tipo">
+                    <label for="modal-type">Tipo</label>
+                    <select id="modal-type">
+                        <option value="movie">Filme</option>
+                        <option value="tv">Série</option>
+                    </select>
+                </div>
+                <div class="form-group-titulo flex-grow-2">
+                    <label for="modal-search">Buscar título</label>
+                    <input type="text" id="modal-search" autocomplete="off" placeholder="Digite o nome…" />
+                    <ul id="modal-results" class="results"></ul>
+                </div>
+                <div class="form-group-ep-temp" id="season-episode-wrapper">
+                    <div class="season-input">
+                    <label for="modal-season">Season</label>
+                    <select id="modal-season"></select>
+                    </div>
+                    <div class="episode-input">
+                    <label for="modal-episode">Episode</label>
+                    <select id="modal-episode"></select>
+                    </div> 
+                </div>
+                <div class="form-group-nota">
+                    <label for="modal-rating">Nota (0–10)</label>
+                    <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
+                </div>
+            </div>
+
+            <!-- Row 2: comentário -->
+            <div class="modal-row row--textarea">
+                <div class="form-group" style="width:100%">
+                    <label for="modal-text">Comentário</label>
+                    <textarea id="modal-text" required></textarea>
+                </div>
+            </div>
+
+            <!-- Row 3: botões -->
+            <div class="modal-row row--buttons">
+                <button id="modal-cancel" type="button">Cancelar</button>
+                <button id="modal-save" type="button">Salvar</button>
+            </div>
+        </form>
+
+    </dialog>
+
         <!-- Início da FOOTER -->
         <footer class="footer">
             <div class="footer__inner">
@@ -657,12 +656,10 @@
         </footer>
         <!-- Fim da FOOTER -->
 
-        <script src="../public/js/header.js"></script>
-        <script src="../public/js/home.js"></script>
-        <script src="../public/js/modal.js"></script>
-        <script type="module" src="../public/js/reviews.js"></script>
-        <script type="module" src="../public/js/minhaslistas.js"></script>
-        <script type="module" src="../public/js/filmesSeries.js"></script>
+        <script src="/public/js/header.js"></script>
+        <script src="/public/js/home.js"></script>
+        <script type="module" src="public/js/review.js"></script>
+        <script type="module" src="/public/js/minhaslistas.js"></script>
 </body>
 
 </html>
