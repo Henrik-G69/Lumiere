@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil do Usuário</title>
     <link rel="stylesheet" href="../public/css/style.css" />
-    <link rel="stylesheet" href="../public/css/header.css" />
-    <link rel="stylesheet" href="../public/css/perfil.css" />
-    <link rel="stylesheet" href="perfil.css" />
+    <link rel="stylesheet" href="../public/css/header.css"/>
+    <link rel="stylesheet" href="../public/css/perfil.css"/>
+    <link rel="stylesheet" href="../public/css/footer.css"/>
 </head>
 
 <body>
-    <!-- Início da HEADER -->
     <header class="header">
         <div class="logo">
             <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
@@ -27,19 +26,14 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <!-- search section transformado em form -->
             <form class="search-container" action="pesquisa.html" method="get">
-                <!-- botão de ícone para parecer igual -->
                 <button type="submit" class="btn-icon">
                     <img src="../public/icons/Search.svg" alt="Search Icon">
                 </button>
                 <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
                     autocomplete="off" />
-                <!-- o <ul> continua lá para você renderizar dropdown, se quiser -->
                 <ul id="results-list" class="dropdown"></ul>
             </form>
-            <!-- end of search section -->
-
             <button class="btn-icon">
                 <a href="perfil.html">
                     <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
@@ -48,87 +42,51 @@
         </div>
         <script src="/public/js/header.js"></script>
     </header>
-    <!-- Fim da HEADER -->
-
     <div class="container">
         <div class="sidebar">
             <div class="profile">
-                <img src="../public/img/perfil.jpg" class="avatar" alt="Foto de perfil do usuário">
-                <h2>Perfil</h2>
+                <img src="../public/icons/PersonCircle.svg" class="avatar" alt="Foto de perfil do usuário"> 
+                <h2 id="profile-name-display">Perfil</h2>
             </div>
             <ul class="menu">
-                <li class="tab-link active" data-tab="perfil">Perfil</li>
-                <li class="tab-link" data-tab="comunidades">Comunidades</li>
-                <li class="tab-link" data-tab="salvos">Itens salvos</li>
-                <li class="tab-link" data-tab="config">Configurações</li>
+                 <li class="tab-link active" data-tab="perfil">Meu Perfil</li>
             </ul>
         </div>
 
         <div class="main">
             <div class="tab-content active" id="perfil">
-                <h1>Editar Perfil</h1>
+                <h1>Meu Perfil</h1>
                 <form id="profile-form">
-                    <input type="email" placeholder="Email" name="email" />
-                    <input type="text" placeholder="Nome" name="nome" />
-                    <input type="text" placeholder="Telefone Fixo" name="fixo" />
-                    <input type="text" placeholder="Celular" name="celular" />
-                    <input type="date" name="nascimento" />
-                    <select name="privacidade">
-                        <option value="privado">Perfil Privado</option>
-                        <option value="publico">Perfil Público</option>
-                    </select>
+                    <input type="email" placeholder="Email" name="email" id="profile-email" readonly />
+                    
+                    <input type="text" placeholder="Nome de Usuário (Nickname)" name="nome" id="profile-name" />
+                    <span class="error-message" id="error-nickname"></span>
+                    
+                    <label for="profile-nascimento" class="input-label">Data de Nascimento:</label>
+                    <input type="date" name="nascimento" id="profile-nascimento" />
+                    <span class="error-message" id="error-nascimento"></span>
+                    
                     <h2>Alterar Senha</h2>
-                    <input type="password" placeholder="Senha atual" name="senha_atual" />
-                    <input type="password" placeholder="Nova senha" name="nova_senha" />
-                    <input type="password" placeholder="Repetir nova senha" name="repetir_senha" />
-                    <button type="submit">Salvar</button>
+                    <input type="password" placeholder="Senha atual" name="senha_atual" id="profile-senha-atual" />
+                    <span class="error-message" id="error-senha-atual"></span>
+                    <input type="password" placeholder="Nova senha" name="nova_senha" id="profile-nova-senha" />
+                    <span class="error-message" id="error-nova-senha"></span>
+                    <input type="password" placeholder="Repetir nova senha" name="repetir_senha" id="profile-repetir-senha" />
+                    <span class="error-message" id="error-repetir-senha"></span>
+                    
+                    <button type="submit" id="save-profile-btn">Salvar Alterações</button>
+                    <button type="button" class="btn-delete" id="delete-account-btn">Excluir Conta</button>
+                    <button type="button" class="btn-logout" id="logout-btn">Sair da Conta</button>
+                    <span class="success-message" id="profile-success-message"></span>
                 </form>
             </div>
 
-            <div class="tab-content" id="comunidades">
-                <h1>Comunidades</h1>
-                <ul class="community-links">
-                    <li><a href="https://filmow.com" target="_blank">Filmow</a></li>
-                    <li><a href="https://www.letterboxd.com" target="_blank">Letterboxd</a></li>
-                    <li><a href="https://www.imdb.com" target="_blank">IMDb</a></li>
-                    <li><a href="https://www.themoviedb.org" target="_blank">TMDb</a></li>
-                </ul>
             </div>
-
-            <div class="tab-content" id="salvos">
-                <h1>Filmes Salvos</h1>
-                <div class="movies-grid">
-                    <img src="https://image.tmdb.org/t/p/w300/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Filme 1" />
-                    <img src="https://image.tmdb.org/t/p/w300/qnqGbB22YJ7dSs4o6M7exTpNxPz.jpg" alt="Filme 2" />
-                    <img src="https://image.tmdb.org/t/p/w300/5GA3vV1aWWHTSDO5eno8V5zDo8r.jpg" alt="Filme 3" />
-                    <img src="https://image.tmdb.org/t/p/w300/b1Y8SUb12gPHCSSSNlbX4nB3IKy.jpg" alt="Filme 4" />
-                    <img src="https://image.tmdb.org/t/p/w300/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg" alt="Filme 5" />
-                    <img src="https://image.tmdb.org/t/p/w300/bGZn5RVzMMXju4ev7xbl1aLdXqq.jpg" alt="Filme 6" />
-                    <img src="../public/img/espetacular homem aranha.webp" alt="homem aranha" />
-                    <img src="../public/img/harry potter.webp" alt="harry potter" />
-                    <img src="../public/img/nocaute.jpg" alt="nocaute" />
-
-                </div>
-            </div>
-
-            <div class="tab-content" id="config">
-                <h1>Configurações</h1>
-                <div class="config">
-                    <label><input type="checkbox" /> Receber notificações</label>
-                    <label><input type="checkbox" /> Mostrar online</label>
-                    <label><input type="checkbox" /> Tema escuro</label>
-                    <label><input type="checkbox" /> Autoplay de vídeos</label>
-                    <label><input type="checkbox" /> Lembrar login</label>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <!-- Início da FOOTER -->
     <footer class="footer">
         <div class="footer__inner">
 
-            <!-- Colunas principais -->
             <div class="footer__cols">
 
                 <div class="footer__col">
@@ -216,8 +174,6 @@
                 </div>
 
             </div>
-            <!-- /Colunas principais -->
-
             <div class="footer__bottom">
                 <p class="footer__copyright">
                     ©2025 Lumière. Todos os direitos reservados.
@@ -233,8 +189,6 @@
 
         </div>
     </footer>
-    <!-- Fim da FOOTER -->
-
     <script src="../public/js/perfil.js"></script>
 </body>
 

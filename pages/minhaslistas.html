@@ -2,990 +2,237 @@
 <html lang="pt-BR">
 
 <head>
-  <!-- Meta tags e título -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minhas Listas</title>
   <link rel="stylesheet" href="../public/css/style.css">
   <link rel="stylesheet" href="../public/css/footer.css">
   <link rel="stylesheet" href="../public/css/header.css">
-  <link rel="stylesheet" href="../public/css/minhasListas.css">
+  <link rel="stylesheet" href="../public/css/minhaslistas.css">
+  <link rel="stylesheet" href="../public/css/modal.css">
 </head>
 
 <body>
-  <!-- Início da HEADER -->
-    <header class="header">
-        <div class="logo">
-            <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
-        </div>
-        <nav class="nav-main" aria-label="Navegação principal">
-            <ul>
-                <li> <a class="nav-options" href="../index.html">Início</a></li>
-                <li><a class="nav-options" href="filmesSeries.html">Filmes & Séries</a></li>
-                <li><a class="nav-options" href="minhaslistas.html">Minhas Listas</a></li>
-                <li><a class="nav-options" href="review.html">Reviews</a></li>
-                <li><a class="nav-options" href="matchGame.html">Match Game</a></li>
-            </ul>
-        </nav>
-        <div class="header-actions">
-            <!-- search section transformado em form -->
-            <form class="search-container" action="pesquisa.html" method="get">
-                <!-- botão de ícone para parecer igual -->
-                <button type="submit" class="btn-icon">
-                    <img src="../public/icons/Search.svg" alt="Search Icon">
-                </button>
-                <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
-                    autocomplete="off" />
-                <!-- o <ul> continua lá para você renderizar dropdown, se quiser -->
-                <ul id="results-list" class="dropdown"></ul>
-            </form>
-            <!-- end of search section -->
-
-            <button class="btn-icon">
-                <a href="perfil.html">
-                    <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
-                </a>
-            </button>
-        </div>
-        <script src="/public/js/header.js"></script>
-    </header>
-    <!-- Fim da HEADER -->
-
-
-  <!-- lists-page is the container that demarks
-       the start of a list section, likeas 'filmes com
-       anne hathaway' or 'matches que você já fez'-->
+  <header class="header">
+    <div class="logo">
+      <img src="../public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+    </div>
+    <nav class="nav-main" aria-label="Navegação principal">
+      <ul>
+        <li> <a class="nav-options" href="../index.html">Início</a></li>
+        <li><a class="nav-options" href="filmesSeries.html">Filmes & Séries</a></li>
+        <li><a class="nav-options" href="minhaslistas.html">Minhas Listas</a></li>
+        <li><a class="nav-options" href="review.html">Reviews</a></li>
+        <li><a class="nav-options" href="matchGame.html">Match Game</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <form class="search-container" action="pesquisa.html" method="get">
+        <button type="submit" class="btn-icon">
+          <img src="../public/icons/Search.svg" alt="Search Icon">
+        </button>
+        <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
+          autocomplete="off" />
+        <ul id="results-list" class="dropdown"></ul>
+      </form>
+      <button class="btn-icon">
+        <a href="perfil.html">
+          <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+        </a>
+      </button>
+    </div>
+    <script src="/public/js/header.js"></script>
+  </header>
   <div class="lists-page">
-    <!-- the following container is the one *actually*
-       having the section and its elements-->
     <div class="all-lists-container">
-      <!-- lists-top-container refers to the items
-           on the top of each container, and yes,
-           it's important.-->
       <div class="lists-top-container">
         <button class="list-section-button">Minhas Listas</button>
-        <button class="add-list-button">
+        <button class="add-list-button" id="addListBtn">
           <img src="../public/icons/PlusCircleFill.svg" alt="Add Icon" class="plus-icon-fill">
         </button>
       </div>
-      <!-- list-item is the container of a list,
-           it contains its description and the movies
-           within it-->
-      <div class="list-item">
-        <div class="list-details-container">
-          <div class="list-description">
-            <p>Filmes com a Anne Hathaway</p>
-            <button class="add-list-button">
-              <img src="../public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
-            </button>
-          </div>
-          <div class="carousel-controls">
-            <button class="arrow">
-              <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-            </button>
-            <div class="indicators">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <button class="arrow">
-              <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-            </button>
-          </div>
+      <div id="user-lists-content">
         </div>
-        <div class="films-carousel">
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
+    </div>
+  </div>
+  <template id="listItemTemplate">
+    <div class="list-item">
+      <div class="list-details-container">
+        <div class="list-description">
+          <p class="list-name-display"></p> <button class="edit-list-button" title="Editar Lista">
+            <img src="../public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
+          </button>
+          <button class="delete-list-button" title="Deletar Lista">
+            <img src="../public/icons/trash.svg" alt="Delete Icon" class="trash-icon-fill">
+          </button>
+        </div>
+        <div class="carousel-controls">
+          <button class="arrow carousel-arrow-left" data-carousel-id="">
+            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+          </button>
+          <div class="indicators" data-carousel-id="">
             </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button class="arrow carousel-arrow-right" data-carousel-id="">
+            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+          </button>
         </div>
       </div>
-      <div class="list-item">
-        <div class="list-details-container">
-          <div class="list-description">
-            <p>Filmes com a Anne Hathaway</p>
-            <button class="add-list-button">
-              <img src="../public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
-            </button>
-          </div>
-          <div class="carousel-controls">
-            <button class="arrow">
-              <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-            </button>
-            <div class="indicators">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-            <button class="arrow">
-              <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-            </button>
+      <div class="films-carousel" id="">
+        </div>
+    </div>
+  </template>
+
+  <template id="movieCardTemplate">
+    <div class="film-on-list">
+      <img class="film-banner-list-carousel" src="" alt="Pôster do filme" />
+      <div class="film-on-list-details">
+        <div class="list-details-timestamp">
+          <img src="../public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
+          <div class="duration-text">
+            <span class="duration-value"></span>
           </div>
         </div>
-        <div class="films-carousel">
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
+        <div class="rating">
+          <div class="star-rating" style="--pct: 84%;">
+            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Fundo de cinco estrelas vazias">
+            <div class="stars-full-wrapper">
+              <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Preenchimento de cinco estrelas">
             </div>
           </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
+          <div class="rating-text">
+            <span class="rating-list-value"></span>
           </div>
         </div>
+        <button class="remove-movie-from-list-button" title="Remover da lista">
+          X
+        </button>
       </div>
     </div>
-    <!-- this is the second list section,
-         it'll be the match section, including the
-         match banner-->
-    <div class="lists-page">
-      <div class="all-lists-container">
-        <div class="lists-top-container">
-          <button class="list-section-button">Matches</button>
+  </template>
+
+
+  <div id="listModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="modalTitle">Criar Nova Lista</h2>
+      <label for="listNameInput">Nome da Lista:</label>
+      <input type="text" id="listNameInput" placeholder="Ex: Filmes de Ação, Watchlist..." required>
+      <p id="listNameError" class="error-message"></p>
+
+      <div class="modal-search-section">
+        <label for="movieSearchInput">Adicionar Filmes:</label>
+        <div class="search-input-container">
+          <input type="text" id="movieSearchInput" placeholder="Pesquisar filmes/séries...">
+          <button id="searchMovieBtn">Pesquisar</button>
         </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Matches que você já fez!</p>
-              <button class="add-list-button">
-                <img src="../public/icons/SuitHeartFill.svg" alt="Heart Icon" class="heart-icon-fill">
-              </button>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-              </button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-              </button>
-            </div>
+        <div id="searchResults" class="search-results-dropdown">
           </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          <!--here we have the banner of the match game-->
-
-          <!-- Seção de chamada para ação (Match) -->
-          <section class="match-cta">
-            <div class="open-serie-match-description">
-              <div class="open-serie-match-description-text">
-                <h2>Precisando de uma recomendação?</h2>
-                <h2>Faça um Match!</h2>
-              </div>
-              <div>
-                <button class="open-serie-match-button">Match!</button>
-              </div>
-            </div>
-          </section>
-          <!-- Fim da seção de chamada para ação (Match) -->
-
-        </div>
       </div>
-    </div>
-    <!--here is the third section! hehe =] -->
-    <div class="lists-page">
-      <div class="all-lists-container">
-        <div class="lists-top-container">
-          <button class="list-section-button">WatchList</button>
-        </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Para você ver mais tarde</p>
-              <button class="add-list-button">
-                <img src="../public/icons/ClockFill.svg" alt="Clock Icon" class="clock-icon-fill">
-              </button>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-              </button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-              </button>
-            </div>
-          </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
 
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
+      <div class="modal-selected-movies">
+        <h3>Filmes na Lista:</h3>
+        <ul id="selectedMoviesList">
+          </ul>
       </div>
-    </div>
-    <!--here we have the history section,
-        it's a quite importante list, although
-        the visual isn't exactly related to its importance,
-        but its infos will be used in the match algorithm-->
-    <div class="lists-page">
-      <div class="all-lists-container">
-        <div class="lists-top-container">
-          <button class="list-section-button">Histórico</button>
-        </div>
-        <div class="list-item">
-          <div class="list-details-container">
-            <div class="list-description">
-              <p>Histórico do que você já assistiu</p>
-              <button class="add-list-button">
-                <img src="../public/icons/CheckCircleFill.svg" alt="Check Icon" class="check-icon-fill">
-              </button>
-            </div>
-            <div class="carousel-controls">
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
-              </button>
-              <div class="indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-              </div>
-              <button class="arrow">
-                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
-              </button>
-            </div>
-          </div>
-          <div class="films-carousel">
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
 
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-              <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-              <div class="film-on-list-details">
-                <div class="list-details-timestamp">
-                  <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                  <div class="duration-text">
-                    <span class="duration-value">1:30h</span>
-                  </div>
-                </div>
-                <div class="rating">
-                  <div class="star-rating" style="--pct: 84%;">
-                    <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                    <div class="stars-full-wrapper">
-                      <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                    </div>
-                  </div>
-                  <div class="rating-text">
-                    <span class="rating-value">4.2</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-            <div class="film-on-list">
-            <img class="film-banner-list-carousel" src="../public/img/batman.jpg" alt="Batman" />
-            <div class="film-on-list-details">
-              <div class="list-details-timestamp">
-                <img src="../public/icons/Clock.svg" alt="clock-icon" class="duration-icon">
-                <div class="duration-text">
-                  <span class="duration-value">1:30h</span>
-                </div>
-              </div>
-              <div class="rating">
-                <div class="star-rating" style="--pct: 84%;">
-                  <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="Five Stars Background">
-
-                  <div class="stars-full-wrapper">
-                    <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="Five Stars Fill">
-                  </div>
-                </div>
-                <div class="rating-text">
-                  <span class="rating-value">4.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
+      <button id="saveListBtn">Salvar Lista</button>
     </div>
   </div>
 
 
-        <!-- Início da FOOTER -->
-        <footer class="footer">
-            <div class="footer__inner">
-
-                <!-- Colunas principais -->
-                <div class="footer__cols">
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Início</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Categorias</a></li>
-                            <li><a href="matchGame.html">Jogos</a></li>
-                            <li><a href="minhaslistas.html">Listas</a></li>
-                            <li><a href="review.html">Reviews</a></li>
-                            <li><a href="login.html">Login</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Filmes</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Séries</h4>
-                        <ul class="footer__list">
-                            <li><a href="filmesSeries.html">Gêneros</a></li>
-                            <li><a href="filmesSeries.html">Em alta</a></li>
-                            <li><a href="filmesSeries.html">Novidades</a></li>
-                            <li><a href="filmesSeries.html">Populares</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Jogos</h4>
-                        <ul class="footer__list">
-                            <li><a href="matchGame.html">Match game</a></li>
-                            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Reviews</h4>
-                        <ul class="footer__list">
-                            <li><a href="review.html">Meus reviews</a></li>
-                            <li><a href="review.html">Novos reviews</a></li>
-                            <li><a href="review.html">Reviews em alta</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Listas</h4>
-                        <ul class="footer__list">
-                            <li><a href="minhaslistas.html">Minhas Listas</a></li>
-                            <li><a href="minhaslistas.html">Nova Lista</a></li>
-                            <li><a href="minhaslistas.html">Watchlist</a></li>
-                            <li><a href="minhaslistas.html">Matchlist</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col">
-                        <h4 class="footer__title">Perfil</h4>
-                        <ul class="footer__list">
-                            <li><a href="perfil.html">Editar Perfil</a></li>
-                            <li><a href="perfil.html">Minhas Atividades</a></li>
-                            <li><a href="perfil.html">Favoritos</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__col footer__col--social">
-                        <h4 class="footer__title">Conecte-se conosco</h4>
-                        <div class="footer__social">
-                            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
-                            </a>
-                            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
-                                rel="noopener noreferrer">
-                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
-                            </a>
-                            <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /Colunas principais -->
-
-                <div class="footer__bottom">
-                    <p class="footer__copyright">
-                        ©2025 Lumière. Todos os direitos reservados.
-                    </p>
-                    <nav class="footer__policies" aria-label="Políticas do site">
-                        <a href="#">Termos de Uso</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Privacidade</a>
-                        <span class="footer__sep">|</span>
-                        <a href="#">Políticas de Cookies</a>
-                    </nav>
-                </div>
-
-            </div>
-        </footer>
-        <!-- Fim da FOOTER -->
-</body>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4 class="footer__title">Início</h4>
+          <ul class="footer__list">
+            <li><a href="filmesSeries.html">Categorias</a></li>
+            <li><a href="matchGame.html">Jogos</a></li>
+            <li><a href="minhaslistas.html">Listas</a></li>
+            <li><a href="review.html">Reviews</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Filmes</h4>
+          <ul class="footer__list">
+            <li><a href="filmesSeries.html">Gêneros</a></li>
+            <li><a href="filmesSeries.html">Em alta</a></li>
+            <li><a href="filmesSeries.html">Novidades</a></li>
+            <li><a href="filmesSeries.html">Populares</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Séries</h4>
+          <ul class="footer__list">
+            <li><a href="filmesSeries.html">Gêneros</a></li>
+            <li><a href="filmesSeries.html">Em alta</a></li>
+            <li><a href="filmesSeries.html">Novidades</a></li>
+            <li><a href="filmesSeries.html">Populares</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Jogos</h4>
+          <ul class="footer__list">
+            <li><a href="matchGame.html">Match game</a></li>
+            <li><a href="qualOFilme.html">Qual é o filme?</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Reviews</h4>
+          <ul class="footer__list">
+            <li><a href="review.html">Meus reviews</a></li>
+            <li><a href="review.html">Novos reviews</a></li>
+            <li><a href="review.html">Reviews em alta</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Listas</h4>
+          <ul class="footer__list">
+            <li><a href="minhaslistas.html">Minhas Listas</a></li>
+            <li><a href="minhaslistas.html">Nova Lista</a></li>
+            <li><a href="minhaslistas.html">Watchlist</a></li>
+            <li><a href="minhaslistas.html">Matchlist</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Perfil</h4>
+          <ul class="footer__list">
+            <li><a href="perfil.html">Editar Perfil</a></li>
+            <li><a href="perfil.html">Minhas Atividades</a></li>
+            <li><a href="perfil.html">Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--social">
+          <h4 class="footer__title">Conecte-se conosco</h4>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+            </a>
+            <a href="https://www.facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+            </a>
+            <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+              <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          ©2025 Lumière. Todos os direitos reservados.
+        </p>
+        <nav class="footer__policies" aria-label="Políticas do site">
+          <a href="#">Termos de Uso</a>
+          <span class="footer__sep">|</span>
+          <a href="#">Políticas de Privacidade</a>
+          <span class="footer__sep">|</span>
+          <a href="#">Políticas de Cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="../public/js/minhaslistas.js"></script>
+  </body>
 
 </html>
