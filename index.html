@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="public/css/home.css">
-    <link rel="stylesheet" href="public/css/footer.css">
-    <link rel="stylesheet" href="public/css/header.css">
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/modal.css">
+    <link rel="stylesheet" href="./public/css/home.css">
+    <link rel="stylesheet" href="./public/css/footer.css">
+    <link rel="stylesheet" href="./public/css/header.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/modal.css">
 </head>
 
 <body>    
@@ -19,39 +19,39 @@
         <div class="logo">
             <!-- Logo leva para a própria página inicial (index.html) -->
             <a href="index.html">
-                <img src="public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
+                <img src="./public/icons/LogoLumiere.svg" alt="Lumière Logo" class="logo-img">
             </a>
         </div>
         <nav class="nav-main" aria-label="Navegação principal">
             <ul>
                 <li>
                     <!-- Início -->
-                    <a class="nav-options" href="index.html">Início</a>
+                    <a class="nav-options" href="./index.html">Início</a>
                 </li>
                 <li>
                     <!-- Filmes & Séries -->
-                    <a class="nav-options" href="pages/filmesSeries.html">Filmes &amp; Séries</a>
+                    <a class="nav-options" href="./pages/filmesSeries.html">Filmes &amp; Séries</a>
                 </li>
                 <li>
                     <!-- Minhas Listas -->
-                    <a class="nav-options" href="pages/minhaslistas.html">Minhas Listas</a>
+                    <a class="nav-options" href="./pages/minhaslistas.html">Minhas Listas</a>
                 </li>
                 <li>
                     <!-- Reviews -->
-                    <a class="nav-options" href="pages/review.html">Reviews</a>
+                    <a class="nav-options" href="./pages/review.html">Reviews</a>
                 </li>
                 <li>
                     <!-- Match Game -->
-                    <a class="nav-options" href="pages/matchGame.html">Match Game</a>
+                    <a class="nav-options" href="./pages/matchGame.html">Match Game</a>
                 </li>
             </ul>
         </nav>
         <div class="header-actions">
             <!-- search section transformado em form -->
-            <form class="search-container" action="pages/pesquisa.html" method="get">
+            <form class="search-container" action="./public/pages/pesquisa.html" method="get">
                 <!-- botão de ícone para parecer igual -->
                 <button type="submit" class="btn-icon">
-                    <img src="../public/icons/Search.svg" alt="Search Icon">
+                    <img src="./public/icons/Search.svg" alt="Search Icon">
                 </button>
                 <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
                     autocomplete="off" />
@@ -61,8 +61,8 @@
             <!-- end of search section -->
 
             <button class="btn-icon">
-                <a href="pages/perfil.html">
-                    <img src="../public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
+                <a href="./public//pages/perfil.html">
+                    <img src="./public/icons/PersonCircle.svg" alt="Perfil Icon" class="perfil-icon">
                 </a>
             </button>
         </div>
@@ -77,16 +77,16 @@
             <div class="hero-carousel">
                 <div class="carousel-nav">
                     <button class="arrow-hero">
-                        <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                        <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                     </button>
                     <button class="arrow-hero">
-                        <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                        <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                     </button>
                 </div>
 
                 <div class="carousel-track">
                     <div class="carousel-slide active">
-                        <img src="../public/img/American-Psycho.png" alt="American Psycho Poster"
+                        <img src="./public/img/American-Psycho.png" alt="American Psycho Poster"
                             class="carousel-image">
 
 
@@ -99,11 +99,11 @@
                                 <span class="genre">Terror • Comedy</span>
                                 <span class="rating-hero">General Rating:
                                     <div class="star-rating-hero" style="--pct: 70%;">
-                                        <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                                        <img class="stars-bg" src="./public/icons/FiveStarsEmpty.svg"
                                             alt="Five Stars Background">
 
                                         <div class="stars-full-wrapper">
-                                            <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                            <img class="stars-full" src="./public/icons/FiveStarsFull.svg"
                                                 alt="Five Stars Fill">
                                         </div>
                                     </div>
@@ -114,14 +114,14 @@
                             </div>
                             <div class="banner-buttons">
                                 <button class="btn-play">
-                                    <img src="../public/icons/playIcon.svg" alt="Play Icon" class="play-icon">
+                                    <img src="./public/icons/playIcon.svg" alt="Play Icon" class="play-icon">
                                     Where to Watch
                                 </button>
                                 <button class="btn-icon">
-                                    <img src="../public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
+                                    <img src="./public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
                                 </button>
                                 <button class="btn-icon">
-                                    <img src="../public/icons/Curtir.svg" alt="Like Icon" class="like-icon">
+                                    <img src="./public/icons/Curtir.svg" alt="Like Icon" class="like-icon">
                                 </button>
                             </div>
                         </div>
@@ -153,27 +153,27 @@
                     </div>
                     <div id="carouselFilms__genres" class="categories-carousel films-carousel">
                         <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_beating-heart.svg" alt="Romance Icon"
+                            <img src="./public/icons/fluent-emoji-high-contrast_beating-heart.svg" alt="Romance Icon"
                                 class="category-icon" />
                             <span class="category-label">Romance</span>
                         </button>
                         <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_popcorn.svg" alt="Drama Icon"
+                            <img src="./public/icons/fluent-emoji-high-contrast_popcorn.svg" alt="Drama Icon"
                                 class="category-icon" />
                             <span class="category-label">Drama</span>
                         </button>
                         <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_ghost.svg" alt="Horror Icon"
+                            <img src="./public/icons/fluent-emoji-high-contrast_ghost.svg" alt="Horror Icon"
                                 class="category-icon" />
                             <span class="category-label">Horror</span>
                         </button>
                         <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_face-with-tears-of-joy.svg"
+                            <img src="./public/icons/fluent-emoji-high-contrast_face-with-tears-of-joy.svg"
                                 alt="Comedy Icon" class="category-icon" />
                             <span class="category-label">Comédia</span>
                         </button>
                         <button class="category-card">
-                            <img src="../public/icons/fluent-emoji-high-contrast_clapper-board.svg" alt="Action Icon"
+                            <img src="./public/icons/fluent-emoji-high-contrast_clapper-board.svg" alt="Action Icon"
                                 class="category-icon" />
                             <span class="category-label">Ação</span>
                         </button>
@@ -187,12 +187,12 @@
                         </div>
                         <div class="carousel-controls">
                             <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__top10">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
                             <div class="indicators" data-carousel-id="carouselFilms__top10">
                             </div>
                             <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__top10">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
@@ -207,12 +207,12 @@
                         </div>
                         <div class="carousel-controls">
                             <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__latest">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
                             <div class="indicators" data-carousel-id="carouselFilms__latest">
                             </div>
                             <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__latest">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
@@ -227,12 +227,12 @@
                         </div>
                         <div class="carousel-controls">
                             <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__topRated">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
                             <div class="indicators" data-carousel-id="carouselFilms__topRated">
                             </div>
                             <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__topRated">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
@@ -247,12 +247,12 @@
                         </div>
                         <div class="carousel-controls">
                             <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__horror">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
                             <div class="indicators" data-carousel-id="carouselFilms__horror">
                             </div>
                             <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__horror">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
@@ -267,12 +267,12 @@
                         </div>
                         <div class="carousel-controls">
                             <button class="arrow carousel-arrow-left" data-carousel-id="carouselFilms__classics">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                             </button>
                             <div class="indicators" data-carousel-id="carouselFilms__classics">
                             </div>
                             <button class="arrow carousel-arrow-right" data-carousel-id="carouselFilms__classics">
-                                <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                             </button>
                         </div>
                     </div>
@@ -294,20 +294,20 @@
                             <div class="list-description">
                                 <p>Matches que você já fez!</p>
                                 <button class="add-list-button">
-                                    <img src="../public/icons/SuitHeartFill.svg" alt="Heart Icon"
+                                    <img src="./public/icons/SuitHeartFill.svg" alt="Heart Icon"
                                         class="heart-icon-fill">
                                 </button>
                             </div>
                             <div class="carousel-controls">
                                 <button class="arrow carousel-arrow-left"
                                     data-carousel-id="carouselMatches__userMatches">
-                                    <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                                    <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                                 </button>
                                 <div class="indicators" data-carousel-id="carouselMatches__userMatches">
                                 </div>
                                 <button class="arrow carousel-arrow-right"
                                     data-carousel-id="carouselMatches__userMatches">
-                                    <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                                    <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                                 </button>
                             </div>
                         </div>
@@ -336,7 +336,7 @@
                         <h2>Reviews</h2>
                     </div>
                     <button class="btn-add-review">
-                        <img src="../public/icons/PlusIcon.svg" alt="Add Icon" class="plus-icon">
+                        <img src="./public/icons/plusIcon.svg" alt="Add Icon" class="plus-icon">
                         Add Your Review
                     </button>
                 </div>
@@ -357,9 +357,9 @@
                                     </div>
                                     <div class="rating">
                                         <div class="star-rating" style="--pct:0%;">
-                                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg" alt="">
+                                            <img class="stars-bg" src="./public/icons/FiveStarsEmpty.svg" alt="">
                                             <div class="stars-full-wrapper">
-                                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg" alt="">
+                                                <img class="stars-full" src="./public/icons/FiveStarsFull.svg" alt="">
                                             </div>
                                         </div>
                                         <div class="rating-text">
@@ -382,13 +382,13 @@
                 <div class="paginacao">
                     <div class="carousel-controls">
                         <button class="arrow">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                         </button>
                         <div class="indicators">
                             <span class="dot active"></span>
                         </div>
                         <button class="arrow">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                         </button>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
                 <div class="lists-top-container">
                     <button class="list-section-button">Minhas Listas</button>
                     <button class="add-list-button" id="addListBtn">
-                        <img src="../public/icons/PlusCircleFill.svg" alt="Add Icon" class="plus-icon-fill">
+                        <img src="./public/icons/PlusCircleFill.svg" alt="Add Icon" class="plus-icon-fill">
                     </button>
                 </div>
                 <div id="user-lists-content">
@@ -413,20 +413,20 @@
                 <div class="list-details-container">
                     <div class="list-description">
                         <p class="list-name-display"></p> <button class="edit-list-button" title="Editar Lista">
-                            <img src="../public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
+                            <img src="./public/icons/PencilFill.svg" alt="Edit Icon" class="edit-icon-fill">
                         </button>
                         <button class="delete-list-button" title="Deletar Lista">
-                            <img src="../public/icons/trash.svg" alt="Delete Icon" class="trash-icon-fill">
+                            <img src="./public/icons/trash.svg" alt="Delete Icon" class="trash-icon-fill">
                         </button>
                     </div>
                     <div class="carousel-controls">
                         <button class="arrow carousel-arrow-left" data-carousel-id="">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
+                            <img src="./public/icons/Arrow.svg" alt="Arrow-Left Icon" class="arrowLeft-icon">
                         </button>
                         <div class="indicators" data-carousel-id="">
                         </div>
                         <button class="arrow carousel-arrow-right" data-carousel-id="">
-                            <img src="../public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
+                            <img src="./public/icons/Arrow.svg" alt="Arrow-Right Icon" class="arrowRight-icon">
                         </button>
                     </div>
                 </div>
@@ -440,17 +440,17 @@
                 <img class="film-banner-list-carousel" src="" alt="Pôster do filme" />
                 <div class="film-on-list-details">
                     <div class="list-details-timestamp">
-                        <img src="../public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
+                        <img src="./public/icons/Clock.svg" alt="Ícone de relógio" class="duration-icon">
                         <div class="duration-text">
                             <span class="duration-value"></span>
                         </div>
                     </div>
                     <div class="rating">
                         <div class="star-rating" style="--pct: 84%;">
-                            <img class="stars-bg" src="../public/icons/FiveStarsEmpty.svg"
+                            <img class="stars-bg" src="./public/icons/FiveStarsEmpty.svg"
                                 alt="Fundo de cinco estrelas vazias">
                             <div class="stars-full-wrapper">
-                                <img class="stars-full" src="../public/icons/FiveStarsFull.svg"
+                                <img class="stars-full" src="./public/icons/FiveStarsFull.svg"
                                     alt="Preenchimento de cinco estrelas">
                             </div>
                         </div>
@@ -555,67 +555,67 @@
                     <div class="footer__col">
                         <h4 class="footer__title">Início</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/filmesSeries.html">Categorias</a></li>
-                            <li><a href="/pages/matchGame.html">Jogos</a></li>
-                            <li><a href="/pages/minhaslistas.html">Listas</a></li>
-                            <li><a href="/pages/review.html">Reviews</a></li>
-                            <li><a href="/pages/login.html">Login</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Categorias</a></li>
+                            <li><a href="./public/pages/matchGame.html">Jogos</a></li>
+                            <li><a href="./public/pages/minhaslistas.html">Listas</a></li>
+                            <li><a href="./public/pages/review.html">Reviews</a></li>
+                            <li><a href="./public/pages/login.html">Login</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Filmes</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/filmesSeries.html">Gêneros</a></li>
-                            <li><a href="/pages/filmesSeries.html">Em alta</a></li>
-                            <li><a href="/pages/filmesSeries.html">Novidades</a></li>
-                            <li><a href="/pages/filmesSeries.html">Populares</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Gêneros</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Em alta</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Novidades</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Populares</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Séries</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/filmesSeries.html">Gêneros</a></li>
-                            <li><a href="/pages/filmesSeries.html">Em alta</a></li>
-                            <li><a href="/pages/filmesSeries.html">Novidades</a></li>
-                            <li><a href="/pages/filmesSeries.html">Populares</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Gêneros</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Em alta</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Novidades</a></li>
+                            <li><a href="./public/pages/filmesSeries.html">Populares</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Jogos</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/matchGame.html">Match game</a></li>
-                            <li><a href="/pages/qualOFilme.html">Qual é o filme?</a></li>
+                            <li><a href="./public/pages/matchGame.html">Match game</a></li>
+                            <li><a href="./public/pages/qualOFilme.html">Qual é o filme?</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Reviews</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/review.html">Meus reviews</a></li>
-                            <li><a href="/pages/review.html">Novos reviews</a></li>
-                            <li><a href="/pages/review.html">Reviews em alta</a></li>
+                            <li><a href="./public/pages/review.html">Meus reviews</a></li>
+                            <li><a href="./public/pages/review.html">Novos reviews</a></li>
+                            <li><a href="./public/pages/review.html">Reviews em alta</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Listas</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/minhaslistas.html">Minhas Listas</a></li>
-                            <li><a href="/pages/minhaslistas.html">Nova Lista</a></li>
-                            <li><a href="/pages/minhaslistas.html">Watchlist</a></li>
-                            <li><a href="/pages/minhaslistas.html">Matchlist</a></li>
+                            <li><a href="./public/pages/minhaslistas.html">Minhas Listas</a></li>
+                            <li><a href="./public/pages/minhaslistas.html">Nova Lista</a></li>
+                            <li><a href="./public/pages/minhaslistas.html">Watchlist</a></li>
+                            <li><a href="./public/pages/minhaslistas.html">Matchlist</a></li>
                         </ul>
                     </div>
 
                     <div class="footer__col">
                         <h4 class="footer__title">Perfil</h4>
                         <ul class="footer__list">
-                            <li><a href="/pages/perfil.html">Editar Perfil</a></li>
-                            <li><a href="/pages/perfil.html">Minhas Atividades</a></li>
-                            <li><a href="/pages/perfil.html">Favoritos</a></li>
+                            <li><a href="./public/pages/perfil.html">Editar Perfil</a></li>
+                            <li><a href="./public/pages/perfil.html">Minhas Atividades</a></li>
+                            <li><a href="./public/pages/perfil.html">Favoritos</a></li>
                         </ul>
                     </div>
 
@@ -624,14 +624,14 @@
                         <div class="footer__social">
                             <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"
                                 rel="noopener noreferrer">
-                                <img src="../public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
+                                <img src="./public/icons/Instagram.svg" alt="Instagram" class="instagram-icon">
                             </a>
                             <a href="https://www.facebook.com" aria-label="Facebook" target="_blank"
                                 rel="noopener noreferrer">
-                                <img src="../public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
+                                <img src="./public/icons/Facebook.svg" alt="Facebook" class="facebook-icon">
                             </a>
                             <a href="https://x.com/" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-                                <img src="../public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
+                                <img src="./public/icons/Twitter.svg" alt="Twitter" class="twitter-icon">
                             </a>
                         </div>
                     </div>
@@ -656,10 +656,10 @@
         </footer>
         <!-- Fim da FOOTER -->
 
-        <script src="/public/js/header.js"></script>
-        <script src="/public/js/home.js"></script>
-        <script type="module" src="public/js/review.js"></script>
-        <script type="module" src="/public/js/minhaslistas.js"></script>
+        <script src="./public/js/header.js"></script>
+        <script src="./public/js/home.js"></script>
+        <script type="module" src="./public/js/review.js"></script>
+        <script type="module" src="./public/js/filmesSeries.js"></script>
 </body>
 
 </html>

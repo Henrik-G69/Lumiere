@@ -14,12 +14,10 @@
 
 <body>
 
-    <!-- 1. Modal já presente no DOM -->
     <dialog id="review-modal" class="modal">
         <form class="modal-content" method="dialog">
             <h2>Add Review</h2>
 
-            <!-- Row 1: pesquisa, temporada, episódio, nota -->
             <div class="modal-row row--inputs">
                 <div class="form-group-tipo">
                     <label for="modal-type">Tipo</label>
@@ -48,16 +46,12 @@
                     <input type="number" id="modal-rating" min="0" max="10" step="0.1" required />
                 </div>
             </div>
-
-            <!-- Row 2: comentário -->
             <div class="modal-row row--textarea">
                 <div class="form-group" style="width:100%">
                     <label for="modal-text">Comentário</label>
                     <textarea id="modal-text" required></textarea>
                 </div>
             </div>
-
-            <!-- Row 3: botões -->
             <div class="modal-row row--buttons">
                 <button id="modal-cancel" type="button">Cancelar</button>
                 <button id="modal-save" type="button">Salvar</button>
@@ -81,18 +75,15 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <!-- search section transformado em form -->
             <form class="search-container" action="pesquisa.html" method="get">
-                <!-- botão de ícone para parecer igual -->
                 <button type="submit" class="btn-icon">
                     <img src="../public/icons/Search.svg" alt="Search Icon">
                 </button>
                 <input type="text" name="Pesquisa" id="search-input" class="search-input" placeholder="Pesquisar..."
                     autocomplete="off" />
-                <!-- o <ul> continua lá para você renderizar dropdown, se quiser -->
                 <ul id="results-list" class="dropdown"></ul>
             </form>
-            <!-- end of search section -->
+
 
             <button class="btn-icon">
                 <a href="perfil.html">

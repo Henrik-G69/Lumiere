@@ -193,7 +193,7 @@ async function loadMedia(
           "preloadedContentDetails",
           JSON.stringify(details)
         );
-        window.location.href = `/pages/openFilmes.html?id=${movie.id}&type=${mediaType}`; // AJUSTE: Passando o mediaType correto na URL
+        window.location.href = `/Lumiere/pages/openFilmes.html?id=${movie.id}&type=${mediaType}`; // AJUSTE: Passando o mediaType correto na URL
       });
 
       // Duração (runtime sempre em minutos)

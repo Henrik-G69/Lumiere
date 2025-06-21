@@ -11,36 +11,22 @@ const PLACEHOLDER_IMAGE_URL = '../public/icons/place-holder.svg';
 // Mapa de URLs base dos provedores de streaming
 const STREAMING_PROVIDER_URLS = {
     'Netflix': 'https://www.netflix.com/',
-    'Amazon Prime Video': 'https://www.primevideo.com/',
-    'Prime Video': 'https://www.primevideo.com/',
-    'Disney Plus': 'https://www.disneyplus.com/',
-    'Disney+': 'https://www.disneyplus.com/',
-    'Max': 'https://www.max.com/',
-    'HBO Max': 'https://www.max.com/',
-    'Globoplay': 'https://globoplay.globo.com/',
-    'Globo Play': 'https://globoplay.globo.com/',
-    'Star Plus': 'https://www.starplus.com/',
-    'Star+': 'https://www.starplus.com/',
-    'Paramount+': 'https://www.paramountplus.com/',
-    'Paramount Plus': 'https://www.paramountplus.com/',
-    'Paramount Plus Apple TV Channel': 'https://www.paramountplus.com/',
-    'Paramount Plus Premium': 'https://www.paramountplus.com/',
+    'Prime Video': 'https://www.primevideo.com/', 
+    'Disney+': 'https://www.disneyplus.com/', 
+    'Max': 'https://www.max.com/', 
+    'Globoplay': 'https://globoplay.globo.com/', 
+    'Star+': 'https://www.starplus.com/', 
+    'Paramount+': 'https://www.paramountplus.com/', 
     'Mubi': 'https://www.mubi.com/',
     'Oldflix': 'https://www.oldflix.com.br/',
-    'Telecine Play': 'https://www.telecineplay.com.br/',
-    'Telecine': 'https://www.telecineplay.com.br/',
-    'Telecine Amazon Channel': 'https://www.primevideo.com/',
-    'Apple TV Plus': 'https://www.apple.com/apple-tv-plus/',
-    'Apple TV+': 'https://www.apple.com/apple-tv-plus/',
+    'Telecine': 'https://www.telecineplay.com.br/', 
+    'Apple TV+': 'https://www.apple.com/apple-tv-plus/', 
     'Lionsgate Plus': 'https://www.lionsgateplus.com/',
-    'Lionsgate+': 'https://www.lionsgateplus.com/',
     'Looke': 'https://www.looke.com.br/',
-    'Looke Amazon Channel': 'https://www.primevideo.com/',
     'Claro Video': 'https://www.claro.com.br/claro-video',
     'Google Play Movies': 'https://play.google.com/store/movies',
-    'Google Play Movies & TV': 'https://play.google.com/store/movies',
     'YouTube': 'https://www.youtube.com/',
-    'Apple TV': 'https://tv.apple.com/',
+    'Apple TV': 'https://tv.apple.com/', 
     'iTunes': 'https://itunes.apple.com/',
     'Amazon Video': 'https://www.amazon.com/gp/video/storefront/',
     'Microsoft Store': 'https://www.microsoft.com/en-us/store/movies-and-tv',
@@ -518,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const providers = await fetchWatchProviders(content.id, contentType);
 
             // é a parte que preenche o div 'providers' com os links
-            const allProvidersContainer = elements.watchSection.querySelector('.providers.buttons');
+            const allProvidersContainer = elements.watchSection.querySelector('.providers .buttons');
             if (allProvidersContainer) {
                 allProvidersContainer.innerHTML = ''; //limpa o container para evitar erros
 
@@ -712,13 +698,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkBtn) {
         checkBtn.addEventListener('click', () => {
             // navega para openReview.html passando id e type
-            window.location.href = `openReview.html?id=${id}&type=${type}`;
+            window.location.href = `/Lumiere/pages/openReview.html?id=${id}&type=${type}`;
         });
     }
 
     if (elements.matchButton) {
         elements.matchButton.addEventListener('click', () => {
-            window.location.href = '../pages/matchGame.html';
+            window.location.href = '/Lumiere/pages/matchGame.html';
         });
     }
     if (id) {
@@ -735,7 +721,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     if (elements.matchButton) {
                         elements.matchButton.addEventListener('click', () => {
-                            window.location.href = '../pages/match.html';
+                            window.location.href = '/Lumiere/pages/match.html';
                         });
                     }
                     if (elements.bannerSection) {

@@ -126,7 +126,7 @@ searchInput.addEventListener('input', () => {
           const itemId = li.dataset.itemId;
           const mediaType = li.dataset.mediaType;
           if (itemId && mediaType) {
-            window.location.href = `../pages/openFilmes.html?id=${itemId}&type=${mediaType}`;
+            window.location.href = `/Lumiere/pages/openFilmes.html?id=${itemId}&type=${mediaType}`;
           }
         });
 
@@ -200,7 +200,7 @@ searchInput.addEventListener('keydown', (e) => {
 
       if (itemId && mediaType) {
         // redireciona para openFilmes.html com o id e tipo de mídia do item selecionado
-        window.location.href = `../pages/openFilmes.html?id=${itemId}&type=${mediaType}`;
+        window.location.href = `./pages/openFilmes.html?id=${itemId}&type=${mediaType}`;
       }
     }
   }

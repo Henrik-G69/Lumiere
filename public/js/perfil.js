@@ -86,7 +86,7 @@ function displaySuccessMessage(message) {
 // redireciona para a página de login se não houver usuário logado
 function redirectToLoginIfNotLoggedIn() {
     if (!getLoggedInUserEmail()) {
-        window.location.href = 'login.html';
+        window.location.href = '/login.html';
     }
 }
 

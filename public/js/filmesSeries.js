@@ -302,7 +302,7 @@ async function loadMedia(
 
         if (posterImg) {
           posterImg.addEventListener("click", () => {
-            const targetPage = "openFilmes.html";
+            const targetPage = "/Lumiere/pages/openFilmes.html";
 
             /*obs.: essa parte é essencial
                         ela remaneja o cache das informações principais do filme/serie quando os seus cards forem clicados

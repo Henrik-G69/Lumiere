@@ -483,7 +483,7 @@ async function renderUserListMovies(
       // para abrir a página de detalhes
       if (posterImg) {
         posterImg.addEventListener("click", () => {
-          const targetPage = "openFilmes.html";
+          const targetPage = "/Lumiere/pages/openFilmes.html";
           const preloadedDetails = {
             id: movie.id,
             type: mediaType,
@@ -628,7 +628,7 @@ async function renderAllUserLists() {
     console.warn(
       "Nenhum usuário logado. Redirecionando para a página de login."
     );
-    window.location.href = "./pages/login.html";
+    window.location.href = "./login.html";
     return;
   }
 
