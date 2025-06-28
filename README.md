@@ -7,25 +7,25 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 ## SCREENSHOTS ##
 
 **Home**
-![Home](Lumiere/public/img/screenshots/home.png)
+![Home](public/img/screenshots/home.png)
 
 **Films & Series**
-![Films & Series](Lumiere/public/img/screenshots/filmesseries.png)
+![Films & Series](public/img/screenshots/filmesseries.png)
 
 **Filmes && Series View**
-![Filmes && Series View](Lumiere/public/img/screenshots/openfilmsseries.png)
+![Filmes && Series View](public/img/screenshots/openfilmsseries.png)
 
 **Lists**
-![Lists](Lumiere/public/img/screenshots/listas.png)
+![Lists](public/img/screenshots/listas.png)
 
 **Reviews**
-![Reviews](Lumiere/public/img/screenshots/reviews.png)
+![Reviews](public/img/screenshots/reviews.png)
 
 **Search Bar**
-![Search Bar](Lumiere/public/img/screenshots/search.png)
+![Search Bar](public/img/screenshots/search.png)
 
 **Sign Up**
-![Sign Up](Lumiere/public/img/screenshots/login.png)
+![Sign Up](public/img/screenshots/login.png)
 
 **Login**
-![Login](Lumiere/public/img/screenshots/login1.png)
+![Login](public/img/screenshots/login1.png)
