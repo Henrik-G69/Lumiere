@@ -1,6 +1,6 @@
 # Lumiere Project
 
-**Lumiere** is a web application that recommends movies based on the user's preferences. By analyzing selected films, it suggests new titles that match the user's tastes. It **connects to the OMDB API** to fetch real-time data such as posters, genres, ratings, and other **comprehensive details**, enhancing the **user experience (UX)** to be dynamic, personalized, and interactive.
+[**Lumiere**](https://henrik-g69.github.io/Lumiere/index.html) is a web application that recommends movies based on the user's preferences. By analyzing selected films, it suggests new titles that match the user's tastes. It **connects to the OMDB API** to fetch real-time data such as posters, genres, ratings, and other **comprehensive details**, enhancing the **user experience (UX)** to be dynamic, personalized, and interactive.
 
 Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **robust caching system** that significantly **reduces API calls (by 30%)** and makes the website highly **optimized**, leading to a **10% reduction in loading times**. This ensures a fluid and efficient content discovery experience.
 
@@ -32,3 +32,6 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 
 **Login**
 ![Login](public/img/screenshots/login1.png)
+
+##Link##
+You can check it out [**here**](https://henrik-g69.github.io/Lumiere/index.html)
