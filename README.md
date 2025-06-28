@@ -7,7 +7,7 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 ## SCREENSHOTS ##
 
 **Home**
-![Home](/Lumiere/public/img/screenshots/home.png)
+![Home](/public/img/screenshots/home.png)
 
 **Films & Series**
 ![Films & Series](public/img/screenshots/filmesseries.png)
