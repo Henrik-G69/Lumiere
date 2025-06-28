@@ -7,31 +7,33 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 ## SCREENSHOTS ##
 
 **Home**
-![Home](public/img/screenshots/home.png)
+[![Home](public/img/screenshots/home.png)](https://henrik-g69.github.io/Lumiere/index.html)
 
 **Films & Series**
-![Films & Series](public/img/screenshots/filmeseries.png)
-![Films & Series](public/img/screenshots/filmeseries1.png)
+[![Films & Series](public/img/screenshots/filmeseries.png)](https://henrik-g69.github.io/Lumiere/pages/filmesSeries.html)
+<br>
+[![Films & Series](public/img/screenshots/filmeseries1.png)](https://henrik-g69.github.io/Lumiere/pages/filmesSeries.html)
 
 **Filmes && Series View**
-![Filmes && Series View](public/img/screenshots/openfilmsseries.png)
-![Filmes && Series View](public/img/screenshots/openfilmsseries1.png)
+[![Filmes && Series View](public/img/screenshots/openfilmsseries.png)](https://henrik-g69.github.io/Lumiere/pages/openFilmes.html?id=533535&type=movie)
+<br>
+[![Filmes && Series View](public/img/screenshots/openfilmsseries1.png)](https://henrik-g69.github.io/Lumiere/pages/openFilmes.html?id=533535&type=movie)
 
 **Lists**
-![Lists](public/img/screenshots/listas.png)
+[![Lists](public/img/screenshots/listas.png)](https://henrik-g69.github.io/Lumiere/pages/minhaslistas.html)
 
 **Reviews**
-![Reviews](public/img/screenshots/reviews.png)
+[![Reviews](public/img/screenshots/reviews.png)](https://henrik-g69.github.io/Lumiere/pages/review.html)
 
 **Search Bar**
 <br>
-![Search Bar](public/img/screenshots/search.png)
+[![Search Bar](public/img/screenshots/search.png)](https://henrik-g69.github.io/Lumiere/index.html)
 
 **Sign Up**
-![Sign Up](public/img/screenshots/login.png)
+[![Sign Up](public/img/screenshots/login.png)](https://henrik-g69.github.io/Lumiere/pages/cadastro.html)
 
 **Login**
-![Login](public/img/screenshots/login1.png)
+[![Login](public/img/screenshots/login1.png)](https://henrik-g69.github.io/Lumiere/pages/login.html)
 
-##Link##
+## Link ##
 You can check it out [**here**](https://henrik-g69.github.io/Lumiere/index.html)
