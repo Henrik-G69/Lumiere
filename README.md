@@ -10,10 +10,12 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 ![Home](public/img/screenshots/home.png)
 
 **Films & Series**
-![Films & Series](public/img/screenshots/filmesseries.png)
+![Films & Series](public/img/screenshots/filmeseries.png)
+!(public/img/screenshots/filmeseries1.png)
 
 **Filmes && Series View**
 ![Filmes && Series View](public/img/screenshots/openfilmsseries.png)
+!(public/img/screenshots/openfilmsseries1.png)
 
 **Lists**
 ![Lists](public/img/screenshots/listas.png)
@@ -22,6 +24,7 @@ Built primarily with **HTML, CSS, and JavaScript**, Lumiere incorporates a **rob
 ![Reviews](public/img/screenshots/reviews.png)
 
 **Search Bar**
+<p></p>
 ![Search Bar](public/img/screenshots/search.png)
 
 **Sign Up**
